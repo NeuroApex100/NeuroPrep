@@ -4,73 +4,380 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NeuroPrep</title>
 
 <style>
+
+/* =========================
+   تنظیمات کلی
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Tahoma, sans-serif;
     background: #f4f6f8;
     margin: 0;
     padding: 0;
     text-align: center;
+    color: #263238;
 }
+
+/* =========================
+   Header
+========================= */
 
 header {
     background: #1f4e79;
     color: white;
-    padding: 25px;
+    padding: 22px 15px;
 }
 
-.container {
-    max-width: 700px;
-    margin: 30px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
+header h1 {
+    margin: 0 0 8px 0;
+    font-size: 28px;
 }
 
-button {
-    padding: 12px 20px;
-    margin: 8px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+header p {
+    margin: 0;
     font-size: 16px;
 }
 
+/* =========================
+   Container
+========================= */
+
+.container {
+    max-width: 750px;
+    margin: 25px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   Topics
+========================= */
+
 .topic {
     display: block;
-    width: 80%;
+    width: 90%;
     margin: 12px auto;
+    padding: 15px;
     background: #1f4e79;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: 0.2s;
+}
+
+.topic:hover {
+    background: #163b5c;
+}
+
+/* =========================
+   Question Header
+========================= */
+
+.question-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #f1f5f8;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    margin-bottom: 18px;
+
+    font-size: 14px;
+}
+
+#questionNumber {
+    font-weight: bold;
+}
+
+#score {
+    color: #1f4e79;
+    font-weight: bold;
+}
+
+/* =========================
+   Question
+========================= */
+
+#questionText {
+    font-size: 19px;
+    line-height: 2;
+
+    text-align: right;
+
+    margin: 20px 5px 25px;
+}
+
+/* =========================
+   Options
+========================= */
+
+.option {
+
+    display: flex;
+
+    align-items: center;
+
+    width: 95%;
+
+    margin: 12px auto;
+
+    padding: 14px 15px;
+
+    background: #f3f3f3;
+
+    border: 1px solid #ddd;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    text-align: right;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    transition: 0.2s;
+}
+
+.option:hover {
+    background: #e8eef2;
+}
+
+/* مربع انتخاب */
+
+.option-box {
+
+    width: 22px;
+    height: 22px;
+
+    border: 2px solid #777;
+
+    border-radius: 4px;
+
+    margin-left: 12px;
+
+    flex-shrink: 0;
+
+    background: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 16px;
+}
+
+/* گزینه انتخاب شده */
+
+.option.selected {
+
+    background: #e5edf3;
+
+    border: 2px solid #1f4e79;
+}
+
+.option.selected .option-box {
+
+    border-color: #1f4e79;
+
+    background: #1f4e79;
+
     color: white;
 }
 
-.option {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    background: #eeeeee;
-    text-align: right;
+/* پاسخ صحیح */
+
+.option.correct {
+
+    background: #e8f5e9;
+
+    border: 2px solid #66a36b;
+
+    color: #245b2a;
+}
+
+/* پاسخ غلط */
+
+.option.wrong {
+
+    background: #ffebee;
+
+    border: 2px solid #d88a8a;
+
+    color: #8a2525;
+}
+
+/* =========================
+   Buttons
+========================= */
+
+button {
+    padding: 12px 20px;
+
+    margin: 8px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 16px;
 }
 
 #submit {
+
     background: #1f4e79;
+
     color: white;
+
+    min-width: 130px;
 }
 
-#result {
-    margin-top: 20px;
-    padding: 15px;
-    background: #f1f1f1;
-    border-radius: 10px;
+#submit:hover {
+    background: #163b5c;
 }
+
+#next {
+
+    background: #4b7f52;
+
+    color: white;
+
+    min-width: 130px;
+}
+
+#next:hover {
+    background: #3d6943;
+}
+
+.back-button {
+
+    background: #777;
+
+    color: white;
+
+    min-width: 130px;
+}
+
+/* =========================
+   Result
+========================= */
+
+#result {
+
+    margin-top: 22px;
+
+    padding: 18px;
+
+    background: #f8faf9;
+
+    border-radius: 10px;
+
+    text-align: right;
+
+    line-height: 2;
+
+    border-right: 4px solid #1f4e79;
+}
+
+#answer {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin-top: 0;
+}
+
+#explanation {
+
+    font-size: 15px;
+
+    color: #455a64;
+}
+
+/* =========================
+   Hidden
+========================= */
 
 .hidden {
     display: none;
 }
+
+/* =========================
+   پایان آزمون
+========================= */
+
+#finalResult {
+
+    padding: 25px;
+
+    background: #f1f7f2;
+
+    border-radius: 12px;
+
+    line-height: 2;
+}
+
+#finalResult h2 {
+    color: #315f38;
+}
+
+/* =========================
+   موبایل
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 94%;
+        padding: 16px;
+        margin: 15px auto;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    #questionText {
+        font-size: 17px;
+    }
+
+    .option {
+        width: 100%;
+        font-size: 15px;
+        padding: 13px 10px;
+    }
+
+    .question-info {
+        font-size: 13px;
+    }
+}
+
 </style>
+
 </head>
+
 
 <body>
 
@@ -85,68 +392,78 @@ button {
 
 <div class="container">
 
-<!-- صفحه انتخاب مبحث -->
+
+<!-- ==================================
+     صفحه انتخاب فصل
+================================== -->
 
 <div id="topics">
 
-<h2>انتخاب مبحث</h2>
+<h2>انتخاب فصل</h2>
 
-<button class="topic" onclick="startStroke()">
+<p>
+فصل مورد نظر خود را انتخاب کنید
+</p>
+
+
+<button class="topic" onclick="startExam('stroke')">
 🧠 سکته مغزی
 </button>
 
-<button class="topic">
+
+<button class="topic" onclick="startExam('epilepsy')">
 ⚡ صرع
 </button>
 
-<button class="topic">
+
+<button class="topic" onclick="startExam('infection')">
 🦠 عفونی نورولوژی
 </button>
 
-<button class="topic">
+
+<button class="topic" onclick="startExam('demyelination')">
 🧬 MS و بیماری‌های دمیلینه‌کننده
 </button>
+
 
 </div>
 
 
-<!-- صفحه سؤال Stroke -->
 
-<div id="stroke" class="hidden">
+<!-- ==================================
+     صفحه آزمون
+================================== -->
 
-<h2>🧠 Stroke</h2>
+<div id="exam" class="hidden">
 
-<p>
-<strong>سؤال ۱</strong>
-</p>
 
-<h3>
-در بیمار مشکوک به سکته مغزی ایسکمیک حاد،
-مهم‌ترین بررسی تصویربرداری اولیه برای رد خونریزی
-داخل جمجمه کدام است؟
-</h3>
+<h2 id="topicTitle"></h2>
 
-<button class="option" onclick="selectAnswer('A')">
-A) MRI با کنتراست
-</button>
 
-<button class="option" onclick="selectAnswer('B')">
-B) CT اسکن بدون کنتراست
-</button>
+<div class="question-info">
 
-<button class="option" onclick="selectAnswer('C')">
-C) MRV
-</button>
+<span id="questionNumber"></span>
 
-<button class="option" onclick="selectAnswer('D')">
-D) CT آنژیوگرافی
-</button>
+<span id="score"></span>
 
-<br>
+</div>
+
+
+<h3 id="questionText"></h3>
+
+
+<div id="options"></div>
+
 
 <button id="submit" onclick="checkAnswer()">
 ثبت پاسخ
 </button>
+
+
+<button id="next" class="hidden" onclick="nextQuestion()">
+سؤال بعدی
+</button>
+
 
 <div id="result" class="hidden">
 
@@ -156,31 +473,407 @@ D) CT آنژیوگرافی
 
 </div>
 
-</div>
+
+<br>
+
+
+<button class="back-button" onclick="backToTopics()">
+بازگشت به فصل‌ها
+</button>
+
 
 </div>
+
+
+
+<!-- ==================================
+     پایان آزمون
+================================== -->
+
+<div id="finalResult" class="hidden">
+
+<h2>🎉 پایان آزمون</h2>
+
+<p id="finalScore"></p>
+
+<button class="topic" onclick="backToTopics()">
+انتخاب فصل جدید
+</button>
+
+</div>
+
+
+</div>
+
 
 
 <script>
 
+
+/* =====================================================
+   بانک سؤالات
+===================================================== */
+
+const questionBank = {
+
+
+/* =========================
+   STROKE
+========================= */
+
+stroke: [
+
+{
+question:
+"در بیمار مشکوک به سکته مغزی ایسکمیک حاد، مهم‌ترین بررسی تصویربرداری اولیه برای رد خونریزی داخل جمجمه کدام است؟",
+
+options: {
+
+A: "MRI با کنتراست",
+
+B: "CT اسکن بدون کنتراست",
+
+C: "MRV",
+
+D: "CT آنژیوگرافی"
+
+},
+
+correct: "B",
+
+explanation:
+"CT اسکن بدون کنتراست معمولاً بررسی اولیه برای رد خونریزی داخل جمجمه در سکته مغزی حاد است."
+},
+
+
+{
+question:
+"کدام گزینه از موارد مهم در ارزیابی اولیه بیمار مبتلا به سکته مغزی حاد است؟",
+
+options: {
+
+A: "اندازه‌گیری قند خون",
+
+B: "انجام EEG در تمام بیماران",
+
+C: "انجام LP در تمام بیماران",
+
+D: "انجام MRI با کنتراست در تمام بیماران"
+
+},
+
+correct: "A",
+
+explanation:
+"اندازه‌گیری قند خون اهمیت زیادی دارد زیرا هیپوگلیسمی می‌تواند علائمی شبیه سکته مغزی ایجاد کند."
+}
+
+],
+
+
+
+/* =========================
+   EPILEPSY
+========================= */
+
+epilepsy: [
+
+{
+question:
+"کدام الگوی EEG بیشتر با Absence seizure کلاسیک مرتبط است؟",
+
+options: {
+
+A: "3-Hz generalized spike-and-wave",
+
+B: "Hypsarrhythmia",
+
+C: "Temporal sharp waves",
+
+D: "Burst suppression"
+
+},
+
+correct: "A",
+
+explanation:
+"در Absence seizure کلاسیک معمولاً الگوی generalized 3-Hz spike-and-wave دیده می‌شود."
+}
+
+],
+
+
+
+/* =========================
+   INFECTION
+========================= */
+
+infection: [
+
+{
+question:
+"شایع‌ترین عامل مننژیت باکتریال در بزرگسالان کدام است؟",
+
+options: {
+
+A: "Streptococcus pneumoniae",
+
+B: "E. coli",
+
+C: "Listeria monocytogenes",
+
+D: "Neisseria gonorrhoeae"
+
+},
+
+correct: "A",
+
+explanation:
+"Streptococcus pneumoniae یکی از مهم‌ترین و شایع‌ترین عوامل مننژیت باکتریال در بزرگسالان است."
+}
+
+],
+
+
+
+/* =========================
+   DEMYELINATION
+========================= */
+
+demyelination: [
+
+{
+question:
+"کدام یافته MRI بیشتر به نفع Multiple Sclerosis است؟",
+
+options: {
+
+A: "ضایعات Periventricular",
+
+B: "فقط ضایعات قشری",
+
+C: "فقط ضایعات مخچه",
+
+D: "فقط ضایعات نخاعی"
+
+},
+
+correct: "A",
+
+explanation:
+"ضایعات Periventricular یکی از یافته‌های کلاسیک MRI در MS هستند."
+}
+
+]
+
+};
+
+
+
+/* =====================================================
+   متغیرهای آزمون
+===================================================== */
+
+let currentTopic = null;
+
+let currentQuestion = 0;
+
 let selectedAnswer = null;
 
+let score = 0;
 
-function startStroke() {
+let answered = false;
 
-document.getElementById("topics").classList.add("hidden");
 
-document.getElementById("stroke").classList.remove("hidden");
+
+/* =====================================================
+   شروع آزمون
+===================================================== */
+
+function startExam(topic) {
+
+currentTopic = topic;
+
+currentQuestion = 0;
+
+selectedAnswer = null;
+
+score = 0;
+
+answered = false;
+
+
+document.getElementById("topics")
+.classList.add("hidden");
+
+document.getElementById("finalResult")
+.classList.add("hidden");
+
+document.getElementById("exam")
+.classList.remove("hidden");
+
+
+let titles = {
+
+stroke: "🧠 سکته مغزی",
+
+epilepsy: "⚡ صرع",
+
+infection: "🦠 عفونی نورولوژی",
+
+demyelination: "🧬 MS و بیماری‌های دمیلینه‌کننده"
+
+};
+
+
+document.getElementById("topicTitle")
+.textContent = titles[topic];
+
+
+showQuestion();
 
 }
 
 
-function selectAnswer(answer) {
+
+/* =====================================================
+   نمایش سؤال
+===================================================== */
+
+function showQuestion() {
+
+let questions = questionBank[currentTopic];
+
+let q = questions[currentQuestion];
+
+
+selectedAnswer = null;
+
+answered = false;
+
+
+document.getElementById("questionNumber")
+.textContent =
+"سؤال " +
+(currentQuestion + 1) +
+" از " +
+questions.length;
+
+
+document.getElementById("score")
+.textContent =
+"امتیاز: " + score;
+
+
+
+document.getElementById("questionText")
+.textContent = q.question;
+
+
+
+let optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+
+
+Object.keys(q.options).forEach(function(letter) {
+
+let button =
+document.createElement("button");
+
+button.className = "option";
+
+button.dataset.answer = letter;
+
+
+let box =
+document.createElement("span");
+
+box.className = "option-box";
+
+box.textContent = "☐";
+
+
+let text =
+document.createElement("span");
+
+text.textContent =
+letter + ") " + q.options[letter];
+
+
+button.appendChild(box);
+
+button.appendChild(text);
+
+
+button.onclick = function() {
+
+selectAnswer(letter, button);
+
+};
+
+
+optionsContainer.appendChild(button);
+
+});
+
+
+
+document.getElementById("result")
+.classList.add("hidden");
+
+document.getElementById("next")
+.classList.add("hidden");
+
+document.getElementById("submit")
+.classList.remove("hidden");
+
+}
+
+
+
+/* =====================================================
+   انتخاب گزینه
+===================================================== */
+
+function selectAnswer(answer, button) {
+
+if (answered) return;
+
 
 selectedAnswer = answer;
 
+
+let options =
+document.querySelectorAll(".option");
+
+
+options.forEach(function(option) {
+
+option.classList.remove("selected");
+
+let box =
+option.querySelector(".option-box");
+
+box.textContent = "☐";
+
+});
+
+
+button.classList.add("selected");
+
+button.querySelector(".option-box")
+.textContent = "☑";
+
 }
 
+
+
+/* =====================================================
+   بررسی پاسخ
+===================================================== */
 
 function checkAnswer() {
 
@@ -193,33 +886,195 @@ return;
 }
 
 
-document.getElementById("result").classList.remove("hidden");
+if (answered) return;
 
 
-if (selectedAnswer === "B") {
+answered = true;
 
-document.getElementById("answer").textContent =
-"✅ پاسخ صحیح است";
 
-document.getElementById("explanation").textContent =
-"CT اسکن بدون کنتراست معمولاً بررسی اولیه برای رد خونریزی داخل جمجمه در سکته مغزی حاد است.";
+let questions = questionBank[currentTopic];
+
+let q = questions[currentQuestion];
+
+
+let options =
+document.querySelectorAll(".option");
+
+
+options.forEach(function(option) {
+
+let letter = option.dataset.answer;
+
+
+if (letter === q.correct) {
+
+option.classList.add("correct");
+
+option.querySelector(".option-box")
+.textContent = "✓";
+
+}
+
+
+if (
+letter === selectedAnswer &&
+selectedAnswer !== q.correct
+) {
+
+option.classList.add("wrong");
+
+option.querySelector(".option-box")
+.textContent = "✕";
+
+}
+
+});
+
+
+
+if (selectedAnswer === q.correct) {
+
+score++;
+
+
+document.getElementById("answer")
+.textContent = "✅ پاسخ صحیح است";
 
 }
 
 else {
 
-document.getElementById("answer").textContent =
-"❌ پاسخ نادرست است";
+document.getElementById("answer")
+.textContent =
+"❌ پاسخ نادرست است — پاسخ صحیح: " +
+q.correct;
 
-document.getElementById("explanation").textContent =
-"پاسخ صحیح: B) CT اسکن بدون کنتراست.";
+}
+
+
+
+document.getElementById("explanation")
+.textContent =
+q.explanation;
+
+
+document.getElementById("result")
+.classList.remove("hidden");
+
+
+document.getElementById("submit")
+.classList.add("hidden");
+
+
+if (
+currentQuestion <
+questions.length - 1
+) {
+
+document.getElementById("next")
+.classList.remove("hidden");
+
+}
+
+else {
+
+document.getElementById("next")
+.textContent = "مشاهده نتیجه";
+
+document.getElementById("next")
+.classList.remove("hidden");
 
 }
 
 }
+
+
+
+/* =====================================================
+   سؤال بعدی
+===================================================== */
+
+function nextQuestion() {
+
+let questions = questionBank[currentTopic];
+
+
+if (
+currentQuestion <
+questions.length - 1
+) {
+
+currentQuestion++;
+
+showQuestion();
+
+}
+
+else {
+
+showFinalResult();
+
+}
+
+}
+
+
+
+/* =====================================================
+   نتیجه نهایی
+===================================================== */
+
+function showFinalResult() {
+
+document.getElementById("exam")
+.classList.add("hidden");
+
+document.getElementById("finalResult")
+.classList.remove("hidden");
+
+
+let total =
+questionBank[currentTopic].length;
+
+
+let percentage =
+Math.round((score / total) * 100);
+
+
+document.getElementById("finalScore")
+.textContent =
+"تعداد پاسخ صحیح: " +
+score +
+" از " +
+total +
+" — درصد موفقیت: " +
+percentage +
+"%";
+
+}
+
+
+
+/* =====================================================
+   بازگشت به صفحه فصل‌ها
+===================================================== */
+
+function backToTopics() {
+
+document.getElementById("exam")
+.classList.add("hidden");
+
+document.getElementById("finalResult")
+.classList.add("hidden");
+
+document.getElementById("topics")
+.classList.remove("hidden");
+
+}
+
 
 </script>
 
 </body>
 
-</html
+</html>
