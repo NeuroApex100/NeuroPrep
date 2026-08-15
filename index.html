@@ -1,191 +1,1206 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>آزمون نورولوژی</title>
 
+
     <style>
+
+        /* =========================
+           تنظیمات اصلی
+        ========================= */
+
         body {
-            font-family: Tahoma, Arial, sans-serif;
+
+            font-family:
+                Tahoma,
+                Arial,
+                sans-serif;
+
             background: #f5f7fa;
+
             margin: 0;
+
             padding: 20px;
+
+            direction: rtl;
+
         }
+
 
         .container {
+
             max-width: 800px;
+
             margin: 30px auto;
+
             background: white;
+
             padding: 30px;
+
             border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+            box-shadow:
+                0 2px 10px rgba(0,0,0,0.1);
+
         }
+
 
         h1 {
+
             text-align: center;
+
+            font-weight: 500;
+
         }
+
+
+        h2 {
+
+            text-align: center;
+
+            font-weight: 500;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* =========================
+           متن انگلیسی
+        ========================= */
+
+        .english {
+
+            direction: ltr;
+
+            unicode-bidi: isolate;
+
+            display: inline-block;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+        }
+
+
+        /* =========================
+           سرفصل‌ها
+        ========================= */
+
+        .topic {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 15px;
+
+            margin: 10px 0;
+
+            border: 1px solid #d8e3ea;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            background: #f3f8f4;
+
+            color: #263238;
+
+            text-align: right;
+
+            font-family:
+                Tahoma,
+                Arial,
+                sans-serif;
+
+            font-size: 16px;
+
+            font-weight: 400;
+
+            line-height: 1.7;
+
+            transition: 0.2s;
+
+        }
+
+
+        .topic:hover {
+
+            background: #e8f2ea;
+
+            border-color: #9eb9a4;
+
+        }
+
+
+        .topic-number {
+
+            display: inline-block;
+
+            width: 30px;
+
+            font-weight: bold;
+
+            color: #527d59;
+
+        }
+
+
+        /* =========================
+           صفحه سؤال
+        ========================= */
 
         .question {
+
             font-size: 20px;
-            line-height: 2;
+
+            line-height: 2.2;
+
             margin-bottom: 25px;
+
+            text-align: right;
+
+            direction: rtl;
+
         }
+
+
+        .mixed-text {
+
+            direction: rtl;
+
+            unicode-bidi: plaintext;
+
+            text-align: right;
+
+            line-height: 2.2;
+
+        }
+
+
+        /* =========================
+           گزینه‌ها
+        ========================= */
 
         .option {
-            display: block;
-            padding: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 14px;
+
             margin: 10px 0;
-            border: 1px solid #ddd;
+
+            border: 1px solid #d8e3da;
+
             border-radius: 8px;
+
             cursor: pointer;
+
+            background: #f3f8f4;
+
+            transition: 0.2s;
+
+            font-size: 16px;
+
+            font-weight: 300;
+
+            line-height: 1.9;
+
+            direction: rtl;
+
         }
+
 
         .option:hover {
-            background: #f0f4f8;
+
+            background: #eaf3ec;
+
         }
+
+
+        .option input {
+
+            width: 19px;
+
+            height: 19px;
+
+            margin-left: 12px;
+
+            cursor: pointer;
+
+            accent-color: #527d59;
+
+        }
+
+
+        .option-text {
+
+            direction: rtl;
+
+            unicode-bidi: plaintext;
+
+            text-align: right;
+
+            flex: 1;
+
+        }
+
+
+        /* =========================
+           دکمه‌ها
+        ========================= */
 
         button {
+
             padding: 12px 25px;
+
             font-size: 16px;
+
             border: none;
+
             border-radius: 8px;
+
             cursor: pointer;
-            background: #2563eb;
-            color: white;
+
+            font-family:
+                Tahoma,
+                Arial,
+                sans-serif;
+
         }
+
+
+        .back-button {
+
+            background: #777;
+
+            color: white;
+
+            margin-top: 15px;
+
+        }
+
+
+        .submit-button {
+
+            background: #2563eb;
+
+            color: white;
+
+        }
+
+
+        .submit-button:hover {
+
+            background: #1d4ed8;
+
+        }
+
+
+        /* =========================
+           نتیجه
+        ========================= */
 
         #result {
+
             margin-top: 25px;
+
             padding: 20px;
+
             border-radius: 8px;
+
             display: none;
-            line-height: 2;
+
+            line-height: 2.2;
+
+            text-align: right;
+
+            direction: rtl;
+
         }
+
 
         .correct {
+
             background: #dcfce7;
+
+            border-right:
+                5px solid #4d9658;
+
         }
 
+
         .wrong {
+
             background: #fee2e2;
+
+            border-right:
+                5px solid #d46b6b;
+
         }
+
+
+        /* =========================
+           صفحه آماده‌سازی فصل
+        ========================= */
+
+        .coming-soon {
+
+            text-align: center;
+
+            padding: 30px 10px;
+
+            line-height: 2;
+
+            color: #455a64;
+
+        }
+
+
+        .coming-soon-title {
+
+            font-size: 21px;
+
+            font-weight: 500;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        /* =========================
+           موبایل
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding: 10px;
+
+            }
+
+
+            .container {
+
+                margin: 10px auto;
+
+                padding: 18px;
+
+            }
+
+
+            .topic {
+
+                font-size: 15px;
+
+                padding: 13px 10px;
+
+            }
+
+
+            .question {
+
+                font-size: 18px;
+
+            }
+
+
+            .option {
+
+                font-size: 15px;
+
+                padding: 12px;
+
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-    <h1>آزمون نورولوژی</h1>
 
-    <hr>
+    <!-- =====================================================
+         صفحه اصلی
+    ====================================================== -->
 
-    <div class="question">
-        <strong>سؤال ۱</strong>
+    <div id="home">
 
-        <p>
-            کدام دارو در درمان تجربی مننژیت باکتریال در فرد بالغ
-            می‌تواند مورد استفاده قرار گیرد؟
-        </p>
+        <h1>آزمون نورولوژی</h1>
+
+        <hr>
+
+        <h2>انتخاب سرفصل</h2>
+
+
+        <!-- 1 -->
+
+        <button class="topic"
+                onclick="openTopic('Cerebrovascular Diseases')">
+
+            <span class="topic-number">۱.</span>
+
+            <span class="english">
+                Cerebrovascular Diseases
+            </span>
+
+        </button>
+
+
+        <!-- 2 -->
+
+        <button class="topic"
+                onclick="openTopic('Epilepsy & Seizure')">
+
+            <span class="topic-number">۲.</span>
+
+            <span class="english">
+                Epilepsy &amp; Seizure
+            </span>
+
+        </button>
+
+
+        <!-- 3 -->
+
+        <button class="topic"
+                onclick="openTopic('Movement Disorders')">
+
+            <span class="topic-number">۳.</span>
+
+            <span class="english">
+                Movement Disorders
+            </span>
+
+        </button>
+
+
+        <!-- 4 -->
+
+        <button class="topic"
+                onclick="openTopic('Multiple Sclerosis & Demyelinating Diseases')">
+
+            <span class="topic-number">۴.</span>
+
+            <span class="english">
+                Multiple Sclerosis &amp; Demyelinating Diseases
+            </span>
+
+        </button>
+
+
+        <!-- 5 -->
+
+        <button class="topic"
+                onclick="openTopic('Neuromuscular Diseases')">
+
+            <span class="topic-number">۵.</span>
+
+            <span class="english">
+                Neuromuscular Diseases
+            </span>
+
+        </button>
+
+
+        <!-- 6 -->
+
+        <button class="topic"
+                onclick="openTopic('Headache & Facial Pain')">
+
+            <span class="topic-number">۶.</span>
+
+            <span class="english">
+                Headache &amp; Facial Pain
+            </span>
+
+        </button>
+
+
+        <!-- 7 -->
+
+        <button class="topic"
+                onclick="openTopic('Dementia & Cognitive Disorders')">
+
+            <span class="topic-number">۷.</span>
+
+            <span class="english">
+                Dementia &amp; Cognitive Disorders
+            </span>
+
+        </button>
+
+
+        <!-- 8 -->
+
+        <button class="topic"
+                onclick="openTopic('Neuroinfectious Diseases')">
+
+            <span class="topic-number">۸.</span>
+
+            <span class="english">
+                Neuroinfectious Diseases
+            </span>
+
+        </button>
+
+
+        <!-- 9 -->
+
+        <button class="topic"
+                onclick="openTopic('Neuroimmunology')">
+
+            <span class="topic-number">۹.</span>
+
+            <span class="english">
+                Neuroimmunology
+            </span>
+
+        </button>
+
+
+        <!-- 10 -->
+
+        <button class="topic"
+                onclick="openTopic('Neuro-oncology')">
+
+            <span class="topic-number">۱۰.</span>
+
+            <span class="english">
+                Neuro-oncology
+            </span>
+
+        </button>
+
+
+        <!-- 11 -->
+
+        <button class="topic"
+                onclick="openTopic('Neurogenetics & Metabolic Disorders')">
+
+            <span class="topic-number">۱۱.</span>
+
+            <span class="english">
+                Neurogenetics &amp; Metabolic Disorders
+            </span>
+
+        </button>
+
+
+        <!-- 12 -->
+
+        <button class="topic"
+                onclick="openTopic('Spinal Cord Disorders')">
+
+            <span class="topic-number">۱۲.</span>
+
+            <span class="english">
+                Spinal Cord Disorders
+            </span>
+
+        </button>
+
+
+        <!-- 13 -->
+
+        <button class="topic"
+                onclick="openTopic('Neuro-ophthalmology')">
+
+            <span class="topic-number">۱۳.</span>
+
+            <span class="english">
+                Neuro-ophthalmology
+            </span>
+
+        </button>
+
+
+        <!-- 14 -->
+
+        <button class="topic"
+                onclick="openTopic('Neuro-otology')">
+
+            <span class="topic-number">۱۴.</span>
+
+            <span class="english">
+                Neuro-otology
+            </span>
+
+        </button>
+
+
+        <!-- 15 -->
+
+        <button class="topic"
+                onclick="openTopic('Pediatric Neurology')">
+
+            <span class="topic-number">۱۵.</span>
+
+            <span class="english">
+                Pediatric Neurology
+            </span>
+
+        </button>
+
+
+        <!-- 16 -->
+
+        <button class="topic"
+                onclick="openTopic('Neurocritical Care')">
+
+            <span class="topic-number">۱۶.</span>
+
+            <span class="english">
+                Neurocritical Care
+            </span>
+
+        </button>
+
+
+        <!-- 17 -->
+
+        <button class="topic"
+                onclick="openTopic('Neurotrauma')">
+
+            <span class="topic-number">۱۷.</span>
+
+            <span class="english">
+                Neurotrauma
+            </span>
+
+        </button>
+
+
+        <!-- 18 -->
+
+        <button class="topic"
+                onclick="openTopic('Autonomic & Sleep Disorders')">
+
+            <span class="topic-number">۱۸.</span>
+
+            <span class="english">
+                Autonomic &amp; Sleep Disorders
+            </span>
+
+        </button>
+
+
+        <!-- 19 -->
+
+        <button class="topic"
+                onclick="openTopic('Neurodiagnostic Methods')">
+
+            <span class="topic-number">۱۹.</span>
+
+            <span class="english">
+                Neurodiagnostic Methods
+            </span>
+
+        </button>
+
+
+        <!-- 20 -->
+
+        <button class="topic"
+                onclick="openTopic('Neuropharmacology & Principles of Treatment')">
+
+            <span class="topic-number">۲۰.</span>
+
+            <span class="english">
+                Neuropharmacology &amp; Principles of Treatment
+            </span>
+
+        </button>
+
     </div>
 
-    <label class="option">
-        <input type="radio" name="answer" value="A">
-        A) Acyclovir
-    </label>
 
-    <label class="option">
-        <input type="radio" name="answer" value="B">
-        B) Ceftriaxone + Vancomycin
-    </label>
 
-    <label class="option">
-        <input type="radio" name="answer" value="C">
-        C) Isoniazid
-    </label>
+    <!-- =====================================================
+         صفحه فصل
+    ====================================================== -->
 
-    <label class="option">
-        <input type="radio" name="answer" value="D">
-        D) Levodopa
-    </label>
+    <div id="topicPage"
+         style="display:none;">
 
-    <br>
+        <h2 id="topicTitle"></h2>
 
-    <button onclick="checkAnswer()">ثبت پاسخ</button>
 
-    <div id="result"></div>
+        <div id="topicContent"></div>
+
+
+        <button class="back-button"
+                onclick="goHome()">
+
+            بازگشت به سرفصل‌ها
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         سؤال عفونی
+    ====================================================== -->
+
+    <div id="infectionQuestion"
+         style="display:none;">
+
+
+        <div class="question">
+
+            <strong>سؤال ۱</strong>
+
+            <p class="mixed-text">
+
+                کدام دارو در درمان تجربی
+                مننژیت باکتریال در فرد بالغ
+                می‌تواند مورد استفاده قرار گیرد؟
+
+            </p>
+
+        </div>
+
+
+
+        <!-- گزینه A -->
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="answer"
+                value="A">
+
+            <span class="option-text">
+
+                A)
+
+                <span class="english">
+                    Acyclovir
+                </span>
+
+            </span>
+
+        </label>
+
+
+
+        <!-- گزینه B -->
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="answer"
+                value="B">
+
+            <span class="option-text">
+
+                B)
+
+                <span class="english">
+                    Ceftriaxone + Vancomycin
+                </span>
+
+            </span>
+
+        </label>
+
+
+
+        <!-- گزینه C -->
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="answer"
+                value="C">
+
+            <span class="option-text">
+
+                C)
+
+                <span class="english">
+                    Isoniazid
+                </span>
+
+            </span>
+
+        </label>
+
+
+
+        <!-- گزینه D -->
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="answer"
+                value="D">
+
+            <span class="option-text">
+
+                D)
+
+                <span class="english">
+                    Levodopa
+                </span>
+
+            </span>
+
+        </label>
+
+
+        <br>
+
+
+        <button class="submit-button"
+                onclick="checkAnswer()">
+
+            ثبت پاسخ
+
+        </button>
+
+
+        <div id="result"></div>
+
+
+        <br>
+
+
+        <button class="back-button"
+                onclick="goHome()">
+
+            بازگشت به سرفصل‌ها
+
+        </button>
+
+
+    </div>
+
 
 </div>
 
+
+
 <script>
+
+
+/* =========================================================
+   باز کردن سرفصل
+========================================================= */
+
+function openTopic(topic) {
+
+
+    document
+        .getElementById("home")
+        .style.display = "none";
+
+
+    document
+        .getElementById("topicPage")
+        .style.display = "block";
+
+
+    document
+        .getElementById("infectionQuestion")
+        .style.display = "none";
+
+
+    /*
+       اگر فصل عفونی انتخاب شده باشد،
+       سؤال فعلی نمایش داده می‌شود.
+    */
+
+    if (topic === "Neuroinfectious Diseases") {
+
+
+        document
+            .getElementById("topicPage")
+            .style.display = "none";
+
+
+        document
+            .getElementById("infectionQuestion")
+            .style.display = "block";
+
+
+        return;
+
+    }
+
+
+    /*
+       سایر فصل‌ها فعلاً
+       در مرحله آماده‌سازی هستند.
+    */
+
+
+    document
+        .getElementById("topicTitle")
+        .innerHTML =
+        '<span class="english">' +
+        topic +
+        '</span>';
+
+
+    document
+        .getElementById("topicContent")
+        .innerHTML = `
+
+        <div class="coming-soon">
+
+            <div class="coming-soon-title">
+
+                این فصل آماده‌سازی می‌شود.
+
+            </div>
+
+            <div>
+
+                بانک سؤالات این فصل
+                در مرحله بعد اضافه خواهد شد.
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* =========================================================
+   بازگشت به صفحه اصلی
+========================================================= */
+
+function goHome() {
+
+
+    document
+        .getElementById("home")
+        .style.display = "block";
+
+
+    document
+        .getElementById("topicPage")
+        .style.display = "none";
+
+
+    document
+        .getElementById("infectionQuestion")
+        .style.display = "none";
+
+
+    /*
+       پاک کردن پاسخ قبلی
+    */
+
+    const selected =
+        document.querySelector(
+            'input[name="answer"]:checked'
+        );
+
+
+    if (selected) {
+
+        selected.checked = false;
+
+    }
+
+
+    document
+        .getElementById("result")
+        .style.display = "none";
+
+}
+
+
+
+/* =========================================================
+   بررسی پاسخ سؤال عفونی
+========================================================= */
 
 function checkAnswer() {
 
+
     const selected =
-        document.querySelector('input[name="answer"]:checked');
+        document.querySelector(
+            'input[name="answer"]:checked'
+        );
+
 
     const result =
         document.getElementById("result");
 
+
     if (!selected) {
-        alert("لطفاً ابتدا یک گزینه را انتخاب کنید.");
+
+        alert(
+            "لطفاً ابتدا یک گزینه را انتخاب کنید."
+        );
+
         return;
+
     }
+
+
+
+    /* ==============================
+       پاسخ صحیح
+    ============================== */
 
     if (selected.value === "B") {
 
+
         result.className = "correct";
 
+
         result.innerHTML = `
-            <strong>✅ پاسخ صحیح است.</strong>
+
+            <strong>
+                ✅ پاسخ صحیح است.
+            </strong>
+
             <br><br>
 
-            پاسخ صحیح: B) Ceftriaxone + Vancomycin
+
+            پاسخ صحیح:
+
+            B)
+
+            <span class="english">
+                Ceftriaxone + Vancomycin
+            </span>
+
 
             <br><br>
 
-            <strong>توضیح:</strong>
+
+            <strong>
+                توضیح:
+            </strong>
+
             <br>
 
-            در مننژیت باکتریال اکتسابی از جامعه در بالغین،
-            درمان تجربی معمولاً شامل یک سفالوسپورین نسل سوم
+
+            در مننژیت باکتریال اکتسابی
+            از جامعه در بالغین،
+            درمان تجربی معمولاً شامل
+            یک سفالوسپورین نسل سوم
             همراه با وانکومایسین است.
 
+
             <br><br>
 
-            <strong>نکته آزمونی:</strong>
+
+            <strong>
+                نکته آزمونی:
+            </strong>
+
             <br>
 
-            در افراد مسن یا افراد دارای نقص ایمنی،
-            برای پوشش Listeria باید Ampicillin نیز در نظر گرفته شود.
+
+            در افراد مسن یا افراد دارای
+            نقص ایمنی، برای پوشش
+
+            <span class="english">
+                Listeria
+            </span>
+
+            باید
+
+            <span class="english">
+                Ampicillin
+            </span>
+
+            نیز در نظر گرفته شود.
+
         `;
 
-    } else {
+    }
+
+
+    /* ==============================
+       پاسخ غلط
+    ============================== */
+
+    else {
+
 
         result.className = "wrong";
 
+
         result.innerHTML = `
-            <strong>❌ پاسخ نادرست است.</strong>
+
+            <strong>
+                ❌ پاسخ نادرست است.
+            </strong>
 
             <br><br>
 
-            پاسخ صحیح: B) Ceftriaxone + Vancomycin
+
+            پاسخ صحیح:
+
+            B)
+
+            <span class="english">
+                Ceftriaxone + Vancomycin
+            </span>
+
 
             <br><br>
 
-            <strong>توضیح:</strong>
+
+            <strong>
+                توضیح:
+            </strong>
+
             <br>
 
-            درمان تجربی مننژیت باکتریال در بالغین
-            شامل پوشش مناسب پنوموکوک و مننگوکوک است.
+
+            درمان تجربی مننژیت باکتریال
+            در بالغین شامل پوشش مناسب
+            پنوموکوک و مننگوکوک است.
+
         `;
+
     }
 
+
     result.style.display = "block";
+
 }
 
 </script>
 
+
 </body>
+
 </html>
