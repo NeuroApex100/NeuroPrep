@@ -9,71 +9,146 @@
 
 <style>
 
-/* =========================
-   تنظیمات کلی
-========================= */
+/* =========================================================
+   تنظیمات پایه
+========================================================= */
 
 * {
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, Tahoma, sans-serif;
-    background: #f4f6f8;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    color: #263238;
+html {
+    direction: rtl;
 }
 
-/* =========================
+body {
+    margin: 0;
+    padding: 0;
+
+    background: #f4f6f8;
+
+    color: #263238;
+
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   متن فارسی و انگلیسی
+========================================================= */
+
+.rtl-text {
+    direction: rtl;
+    unicode-bidi: isolate;
+    text-align: right;
+}
+
+.ltr {
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline;
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+}
+
+
+/* =========================================================
    Header
-========================= */
+========================================================= */
 
 header {
     background: #1f4e79;
+
     color: white;
+
     padding: 22px 15px;
 }
 
 header h1 {
     margin: 0 0 8px 0;
+
     font-size: 28px;
+
+    font-weight: 600;
 }
 
 header p {
     margin: 0;
+
     font-size: 16px;
+
+    font-weight: 400;
 }
 
-/* =========================
+
+/* =========================================================
    Container
-========================= */
+========================================================= */
 
 .container {
-    max-width: 750px;
+    width: 94%;
+    max-width: 760px;
+
     margin: 25px auto;
+
     background: white;
+
     padding: 25px;
+
     border-radius: 14px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+
+    box-shadow:
+        0 3px 12px rgba(0,0,0,0.08);
 }
 
-/* =========================
-   Topics
-========================= */
+
+/* =========================================================
+   عنوان‌ها
+========================================================= */
+
+h2 {
+    font-weight: 500;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   فصل‌ها
+========================================================= */
 
 .topic {
     display: block;
+
     width: 90%;
+
     margin: 12px auto;
+
     padding: 15px;
+
     background: #1f4e79;
+
     color: white;
+
     border: none;
+
     border-radius: 9px;
+
     cursor: pointer;
+
     font-size: 17px;
+
+    font-family: inherit;
+
     transition: 0.2s;
 }
 
@@ -81,13 +156,17 @@ header p {
     background: #163b5c;
 }
 
-/* =========================
-   Question Header
-========================= */
+
+/* =========================================================
+   اطلاعات سؤال
+========================================================= */
 
 .question-info {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     background: #f1f5f8;
@@ -102,46 +181,61 @@ header p {
 }
 
 #questionNumber {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 #score {
     color: #1f4e79;
-    font-weight: bold;
+
+    font-weight: 600;
 }
 
-/* =========================
-   Question
-========================= */
+
+/* =========================================================
+   متن سؤال
+========================================================= */
 
 #questionText {
-    font-size: 19px;
-    line-height: 2;
+
+    direction: rtl;
+
+    unicode-bidi: isolate;
 
     text-align: right;
+
+    font-size: 19px;
+
+    line-height: 2.2;
+
+    font-weight: 400;
 
     margin: 20px 5px 25px;
 }
 
-/* =========================
-   Options
-========================= */
+
+/* =========================================================
+   گزینه‌ها
+========================================================= */
 
 .option {
 
     display: flex;
 
-    align-items: center;
+    align-items: flex-start;
 
-    width: 95%;
+    width: 96%;
 
-    margin: 12px auto;
+    margin: 11px auto;
 
-    padding: 14px 15px;
+    padding: 14px 14px;
 
-    background: #f3f3f3;
+    /*
+       سبز بسیار کمرنگ
+       مطابق درخواست شما
+    */
+    background: #f2f8f3;
 
-    border: 1px solid #ddd;
+    border: 1px solid #d9e6dc;
 
     border-radius: 9px;
 
@@ -149,31 +243,43 @@ header p {
 
     text-align: right;
 
+    font-family: inherit;
+
     font-size: 16px;
 
-    font-weight: 400;
+    font-weight: 300;
+
+    line-height: 1.9;
+
+    color: #263238;
 
     transition: 0.2s;
 }
 
 .option:hover {
-    background: #e8eef2;
+    background: #eaf4ec;
 }
 
-/* مربع انتخاب */
+
+/* =========================================================
+   مربع انتخاب
+========================================================= */
 
 .option-box {
 
-    width: 22px;
-    height: 22px;
+    width: 23px;
 
-    border: 2px solid #777;
+    height: 23px;
+
+    min-width: 23px;
+
+    border: 1.7px solid #718078;
 
     border-radius: 4px;
 
     margin-left: 12px;
 
-    flex-shrink: 0;
+    margin-top: 2px;
 
     background: white;
 
@@ -184,53 +290,84 @@ header p {
     justify-content: center;
 
     font-size: 16px;
+
+    font-family: Arial, sans-serif;
+
+    direction: ltr;
+
 }
 
-/* گزینه انتخاب شده */
+
+/* متن گزینه */
+
+.option-text {
+
+    direction: rtl;
+
+    unicode-bidi: isolate;
+
+    text-align: right;
+
+    flex: 1;
+
+}
+
+
+/* =========================================================
+   گزینه انتخاب شده
+========================================================= */
 
 .option.selected {
 
-    background: #e5edf3;
+    background: #e5f0e7;
 
-    border: 2px solid #1f4e79;
+    border: 2px solid #6d9674;
 }
 
 .option.selected .option-box {
 
-    border-color: #1f4e79;
+    border-color: #5d8264;
 
-    background: #1f4e79;
+    background: #5d8264;
 
     color: white;
 }
 
-/* پاسخ صحیح */
+
+/* =========================================================
+   پاسخ صحیح
+========================================================= */
 
 .option.correct {
 
-    background: #e8f5e9;
+    background: #e4f3e6;
 
-    border: 2px solid #66a36b;
+    border: 2px solid #72a579;
 
-    color: #245b2a;
+    color: #285b2e;
 }
 
-/* پاسخ غلط */
+
+/* =========================================================
+   پاسخ غلط
+========================================================= */
 
 .option.wrong {
 
-    background: #ffebee;
+    background: #fbeaea;
 
-    border: 2px solid #d88a8a;
+    border: 2px solid #d48a8a;
 
-    color: #8a2525;
+    color: #8a2929;
 }
 
-/* =========================
-   Buttons
-========================= */
+
+/* =========================================================
+   دکمه‌ها
+========================================================= */
 
 button {
+
     padding: 12px 20px;
 
     margin: 8px;
@@ -242,7 +379,10 @@ button {
     cursor: pointer;
 
     font-size: 16px;
+
+    font-family: inherit;
 }
+
 
 #submit {
 
@@ -253,22 +393,26 @@ button {
     min-width: 130px;
 }
 
+
 #submit:hover {
     background: #163b5c;
 }
 
+
 #next {
 
-    background: #4b7f52;
+    background: #527d59;
 
     color: white;
 
     min-width: 130px;
 }
 
+
 #next:hover {
-    background: #3d6943;
+    background: #416747;
 }
+
 
 .back-button {
 
@@ -279,9 +423,10 @@ button {
     min-width: 130px;
 }
 
-/* =========================
-   Result
-========================= */
+
+/* =========================================================
+   نتیجه سؤال
+========================================================= */
 
 #result {
 
@@ -289,7 +434,7 @@ button {
 
     padding: 18px;
 
-    background: #f8faf9;
+    background: #f7faf8;
 
     border-radius: 10px;
 
@@ -300,33 +445,32 @@ button {
     border-right: 4px solid #1f4e79;
 }
 
+
 #answer {
 
     font-size: 18px;
 
-    font-weight: bold;
+    font-weight: 600;
 
     margin-top: 0;
 }
+
 
 #explanation {
 
     font-size: 15px;
 
+    font-weight: 300;
+
     color: #455a64;
+
+    line-height: 2.1;
 }
 
-/* =========================
-   Hidden
-========================= */
 
-.hidden {
-    display: none;
-}
-
-/* =========================
-   پایان آزمون
-========================= */
+/* =========================================================
+   نتیجه نهایی
+========================================================= */
 
 #finalResult {
 
@@ -339,39 +483,85 @@ button {
     line-height: 2;
 }
 
+
 #finalResult h2 {
+
     color: #315f38;
+
+    font-weight: 500;
 }
 
-/* =========================
+
+/* =========================================================
+   مخفی
+========================================================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   نمایش قطعه انگلیسی
+========================================================= */
+
+.medical-term {
+
+    direction: ltr;
+
+    unicode-bidi: isolate;
+
+    display: inline-block;
+
+    font-family:
+        Arial,
+        sans-serif;
+}
+
+
+/* =========================================================
    موبایل
-========================= */
+========================================================= */
 
 @media (max-width: 600px) {
 
     .container {
-        width: 94%;
+
+        width: 95%;
+
         padding: 16px;
+
         margin: 15px auto;
     }
+
 
     header h1 {
         font-size: 24px;
     }
 
+
     #questionText {
         font-size: 17px;
+
+        line-height: 2.15;
     }
+
 
     .option {
+
         width: 100%;
+
         font-size: 15px;
-        padding: 13px 10px;
+
+        padding: 12px 10px;
     }
 
+
     .question-info {
+
         font-size: 13px;
     }
+
 }
 
 </style>
@@ -380,6 +570,11 @@ button {
 
 
 <body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header>
 
@@ -390,12 +585,13 @@ button {
 </header>
 
 
+
 <div class="container">
 
 
-<!-- ==================================
+<!-- =========================================================
      صفحه انتخاب فصل
-================================== -->
+========================================================= -->
 
 <div id="topics">
 
@@ -406,23 +602,35 @@ button {
 </p>
 
 
-<button class="topic" onclick="startExam('stroke')">
+<button class="topic"
+        onclick="startExam('stroke')">
+
 🧠 سکته مغزی
+
 </button>
 
 
-<button class="topic" onclick="startExam('epilepsy')">
+<button class="topic"
+        onclick="startExam('epilepsy')">
+
 ⚡ صرع
+
 </button>
 
 
-<button class="topic" onclick="startExam('infection')">
+<button class="topic"
+        onclick="startExam('infection')">
+
 🦠 عفونی نورولوژی
+
 </button>
 
 
-<button class="topic" onclick="startExam('demyelination')">
+<button class="topic"
+        onclick="startExam('demyelination')">
+
 🧬 MS و بیماری‌های دمیلینه‌کننده
+
 </button>
 
 
@@ -430,9 +638,9 @@ button {
 
 
 
-<!-- ==================================
+<!-- =========================================================
      صفحه آزمون
-================================== -->
+========================================================= -->
 
 <div id="exam" class="hidden">
 
@@ -449,19 +657,26 @@ button {
 </div>
 
 
-<h3 id="questionText"></h3>
+<div id="questionText"></div>
 
 
 <div id="options"></div>
 
 
-<button id="submit" onclick="checkAnswer()">
+<button id="submit"
+        onclick="checkAnswer()">
+
 ثبت پاسخ
+
 </button>
 
 
-<button id="next" class="hidden" onclick="nextQuestion()">
+<button id="next"
+        class="hidden"
+        onclick="nextQuestion()">
+
 سؤال بعدی
+
 </button>
 
 
@@ -477,8 +692,11 @@ button {
 <br>
 
 
-<button class="back-button" onclick="backToTopics()">
+<button class="back-button"
+        onclick="backToTopics()">
+
 بازگشت به فصل‌ها
+
 </button>
 
 
@@ -486,18 +704,23 @@ button {
 
 
 
-<!-- ==================================
-     پایان آزمون
-================================== -->
+<!-- =========================================================
+     نتیجه نهایی
+========================================================= -->
 
-<div id="finalResult" class="hidden">
+<div id="finalResult"
+     class="hidden">
 
 <h2>🎉 پایان آزمون</h2>
 
 <p id="finalScore"></p>
 
-<button class="topic" onclick="backToTopics()">
+
+<button class="topic"
+        onclick="backToTopics()">
+
 انتخاب فصل جدید
+
 </button>
 
 </div>
@@ -510,16 +733,61 @@ button {
 <script>
 
 
-/* =====================================================
+/* =========================================================
+   تابع بسیار مهم برای نمایش صحیح فارسی + انگلیسی
+========================================================= */
+
+function formatMedicalText(text) {
+
+    /*
+       کاراکترهای HTML را ابتدا ایمن می‌کنیم
+       تا متن سؤال بتواند بدون مشکل نمایش داده شود.
+    */
+
+    let safeText = text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+
+    /*
+       تشخیص کلمات انگلیسی،
+       اعداد و ترکیبات پزشکی
+    */
+
+    safeText = safeText.replace(
+
+        /([A-Za-z]+(?:[A-Za-z0-9+\-./=()]*[A-Za-z0-9)])?)/g,
+
+        function(match) {
+
+            if (!match.trim()) {
+                return match;
+            }
+
+            return '<span class="medical-term">'
+                 + match
+                 + '</span>';
+        }
+
+    );
+
+
+    return safeText;
+}
+
+
+
+/* =========================================================
    بانک سؤالات
-===================================================== */
+========================================================= */
 
 const questionBank = {
 
 
-/* =========================
-   STROKE
-========================= */
+/* =========================================================
+   سکته مغزی
+========================================================= */
 
 stroke: [
 
@@ -548,33 +816,56 @@ explanation:
 
 {
 question:
-"کدام گزینه از موارد مهم در ارزیابی اولیه بیمار مبتلا به سکته مغزی حاد است؟",
+"در بیمار مبتلا به سکته مغزی حاد، کدام مورد می‌تواند یک Mimic مهم برای سکته مغزی باشد؟",
 
 options: {
 
-A: "اندازه‌گیری قند خون",
+A: "Hypoglycemia",
 
-B: "انجام EEG در تمام بیماران",
+B: "Hypercalcemia",
 
-C: "انجام LP در تمام بیماران",
+C: "Hyperuricemia",
 
-D: "انجام MRI با کنتراست در تمام بیماران"
+D: "Hyperlipidemia"
 
 },
 
 correct: "A",
 
 explanation:
-"اندازه‌گیری قند خون اهمیت زیادی دارد زیرا هیپوگلیسمی می‌تواند علائمی شبیه سکته مغزی ایجاد کند."
+"Hypoglycemia می‌تواند علائم نورولوژیک فوکال ایجاد کند و به‌عنوان Stroke mimic مطرح شود؛ بنابراین بررسی قند خون در ارزیابی اولیه اهمیت دارد."
+},
+
+
+{
+question:
+"کدام سکانس MRI در تشخیص زودرس سکته مغزی ایسکمیک بیشترین حساسیت را دارد؟",
+
+options: {
+
+A: "T1",
+
+B: "T2",
+
+C: "DWI",
+
+D: "SWI"
+
+},
+
+correct: "C",
+
+explanation:
+"DWI یا Diffusion Weighted Imaging در بسیاری از موارد می‌تواند ایسکمی حاد را بسیار زود نشان دهد. معمولاً کاهش سیگنال در ADC نیز همراه آن دیده می‌شود."
 }
 
 ],
 
 
 
-/* =========================
-   EPILEPSY
-========================= */
+/* =========================================================
+   صرع
+========================================================= */
 
 epilepsy: [
 
@@ -598,21 +889,44 @@ correct: "A",
 
 explanation:
 "در Absence seizure کلاسیک معمولاً الگوی generalized 3-Hz spike-and-wave دیده می‌شود."
+},
+
+
+{
+question:
+"کدام دارو معمولاً در درمان Generalized epilepsy گزینه مناسبی محسوب می‌شود؟",
+
+options: {
+
+A: "Valproate",
+
+B: "Carbamazepine در تمام انواع تشنج",
+
+C: "Gabapentin به‌عنوان انتخاب اول",
+
+D: "Vigabatrin در تمام انواع تشنج"
+
+},
+
+correct: "A",
+
+explanation:
+"Valproate در بسیاری از انواع Generalized epilepsy اثربخشی دارد؛ انتخاب دارو باید بر اساس نوع تشنج، سن، جنس و شرایط بیمار انجام شود."
 }
 
 ],
 
 
 
-/* =========================
-   INFECTION
-========================= */
+/* =========================================================
+   عفونی نورولوژی
+========================================================= */
 
 infection: [
 
 {
 question:
-"شایع‌ترین عامل مننژیت باکتریال در بزرگسالان کدام است؟",
+"یکی از شایع‌ترین عوامل مننژیت باکتریال در بزرگسالان کدام است؟",
 
 options: {
 
@@ -629,452 +943,27 @@ D: "Neisseria gonorrhoeae"
 correct: "A",
 
 explanation:
-"Streptococcus pneumoniae یکی از مهم‌ترین و شایع‌ترین عوامل مننژیت باکتریال در بزرگسالان است."
-}
+"Streptococcus pneumoniae از عوامل مهم و شایع مننژیت باکتریال در بزرگسالان است."
+},
 
-],
-
-
-
-/* =========================
-   DEMYELINATION
-========================= */
-
-demyelination: [
 
 {
 question:
-"کدام یافته MRI بیشتر به نفع Multiple Sclerosis است؟",
+"در بیمار مشکوک به مننژیت، کدام یافته می‌تواند نیاز به انجام تصویربرداری مغز قبل از Lumbar puncture را مطرح کند؟",
 
 options: {
 
-A: "ضایعات Periventricular",
+A: "Papilledema",
 
-B: "فقط ضایعات قشری",
+B: "سردرد خفیف",
 
-C: "فقط ضایعات مخچه",
+C: "تب به‌تنهایی",
 
-D: "فقط ضایعات نخاعی"
+D: "تهوع خفیف"
 
 },
 
 correct: "A",
 
 explanation:
-"ضایعات Periventricular یکی از یافته‌های کلاسیک MRI در MS هستند."
-}
-
-]
-
-};
-
-
-
-/* =====================================================
-   متغیرهای آزمون
-===================================================== */
-
-let currentTopic = null;
-
-let currentQuestion = 0;
-
-let selectedAnswer = null;
-
-let score = 0;
-
-let answered = false;
-
-
-
-/* =====================================================
-   شروع آزمون
-===================================================== */
-
-function startExam(topic) {
-
-currentTopic = topic;
-
-currentQuestion = 0;
-
-selectedAnswer = null;
-
-score = 0;
-
-answered = false;
-
-
-document.getElementById("topics")
-.classList.add("hidden");
-
-document.getElementById("finalResult")
-.classList.add("hidden");
-
-document.getElementById("exam")
-.classList.remove("hidden");
-
-
-let titles = {
-
-stroke: "🧠 سکته مغزی",
-
-epilepsy: "⚡ صرع",
-
-infection: "🦠 عفونی نورولوژی",
-
-demyelination: "🧬 MS و بیماری‌های دمیلینه‌کننده"
-
-};
-
-
-document.getElementById("topicTitle")
-.textContent = titles[topic];
-
-
-showQuestion();
-
-}
-
-
-
-/* =====================================================
-   نمایش سؤال
-===================================================== */
-
-function showQuestion() {
-
-let questions = questionBank[currentTopic];
-
-let q = questions[currentQuestion];
-
-
-selectedAnswer = null;
-
-answered = false;
-
-
-document.getElementById("questionNumber")
-.textContent =
-"سؤال " +
-(currentQuestion + 1) +
-" از " +
-questions.length;
-
-
-document.getElementById("score")
-.textContent =
-"امتیاز: " + score;
-
-
-
-document.getElementById("questionText")
-.textContent = q.question;
-
-
-
-let optionsContainer =
-document.getElementById("options");
-
-optionsContainer.innerHTML = "";
-
-
-
-Object.keys(q.options).forEach(function(letter) {
-
-let button =
-document.createElement("button");
-
-button.className = "option";
-
-button.dataset.answer = letter;
-
-
-let box =
-document.createElement("span");
-
-box.className = "option-box";
-
-box.textContent = "☐";
-
-
-let text =
-document.createElement("span");
-
-text.textContent =
-letter + ") " + q.options[letter];
-
-
-button.appendChild(box);
-
-button.appendChild(text);
-
-
-button.onclick = function() {
-
-selectAnswer(letter, button);
-
-};
-
-
-optionsContainer.appendChild(button);
-
-});
-
-
-
-document.getElementById("result")
-.classList.add("hidden");
-
-document.getElementById("next")
-.classList.add("hidden");
-
-document.getElementById("submit")
-.classList.remove("hidden");
-
-}
-
-
-
-/* =====================================================
-   انتخاب گزینه
-===================================================== */
-
-function selectAnswer(answer, button) {
-
-if (answered) return;
-
-
-selectedAnswer = answer;
-
-
-let options =
-document.querySelectorAll(".option");
-
-
-options.forEach(function(option) {
-
-option.classList.remove("selected");
-
-let box =
-option.querySelector(".option-box");
-
-box.textContent = "☐";
-
-});
-
-
-button.classList.add("selected");
-
-button.querySelector(".option-box")
-.textContent = "☑";
-
-}
-
-
-
-/* =====================================================
-   بررسی پاسخ
-===================================================== */
-
-function checkAnswer() {
-
-if (selectedAnswer === null) {
-
-alert("لطفاً ابتدا یک گزینه را انتخاب کنید.");
-
-return;
-
-}
-
-
-if (answered) return;
-
-
-answered = true;
-
-
-let questions = questionBank[currentTopic];
-
-let q = questions[currentQuestion];
-
-
-let options =
-document.querySelectorAll(".option");
-
-
-options.forEach(function(option) {
-
-let letter = option.dataset.answer;
-
-
-if (letter === q.correct) {
-
-option.classList.add("correct");
-
-option.querySelector(".option-box")
-.textContent = "✓";
-
-}
-
-
-if (
-letter === selectedAnswer &&
-selectedAnswer !== q.correct
-) {
-
-option.classList.add("wrong");
-
-option.querySelector(".option-box")
-.textContent = "✕";
-
-}
-
-});
-
-
-
-if (selectedAnswer === q.correct) {
-
-score++;
-
-
-document.getElementById("answer")
-.textContent = "✅ پاسخ صحیح است";
-
-}
-
-else {
-
-document.getElementById("answer")
-.textContent =
-"❌ پاسخ نادرست است — پاسخ صحیح: " +
-q.correct;
-
-}
-
-
-
-document.getElementById("explanation")
-.textContent =
-q.explanation;
-
-
-document.getElementById("result")
-.classList.remove("hidden");
-
-
-document.getElementById("submit")
-.classList.add("hidden");
-
-
-if (
-currentQuestion <
-questions.length - 1
-) {
-
-document.getElementById("next")
-.classList.remove("hidden");
-
-}
-
-else {
-
-document.getElementById("next")
-.textContent = "مشاهده نتیجه";
-
-document.getElementById("next")
-.classList.remove("hidden");
-
-}
-
-}
-
-
-
-/* =====================================================
-   سؤال بعدی
-===================================================== */
-
-function nextQuestion() {
-
-let questions = questionBank[currentTopic];
-
-
-if (
-currentQuestion <
-questions.length - 1
-) {
-
-currentQuestion++;
-
-showQuestion();
-
-}
-
-else {
-
-showFinalResult();
-
-}
-
-}
-
-
-
-/* =====================================================
-   نتیجه نهایی
-===================================================== */
-
-function showFinalResult() {
-
-document.getElementById("exam")
-.classList.add("hidden");
-
-document.getElementById("finalResult")
-.classList.remove("hidden");
-
-
-let total =
-questionBank[currentTopic].length;
-
-
-let percentage =
-Math.round((score / total) * 100);
-
-
-document.getElementById("finalScore")
-.textContent =
-"تعداد پاسخ صحیح: " +
-score +
-" از " +
-total +
-" — درصد موفقیت: " +
-percentage +
-"%";
-
-}
-
-
-
-/* =====================================================
-   بازگشت به صفحه فصل‌ها
-===================================================== */
-
-function backToTopics() {
-
-document.getElementById("exam")
-.classList.add("hidden");
-
-document.getElementById("finalResult")
-.classList.add("hidden");
-
-document.getElementById("topics")
-.classList.remove("hidden");
-
-}
-
-
-</script>
-
-</body>
-
-</html>
+"وجود Papilledema می‌تواند مطرح‌کننده افزایش فشار داخل جمجمه باشد و در چنین شرایطی قبل از Lum
