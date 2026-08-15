@@ -4,11 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NeuroPrep</title>
 
 <style>
-
 body {
     font-family: Arial, sans-serif;
     background: #f4f6f8;
@@ -40,14 +38,12 @@ button {
     font-size: 16px;
 }
 
-.language-button {
-    background: #eeeeee;
-}
-
-.chapter-button {
+.topic {
+    display: block;
+    width: 80%;
+    margin: 12px auto;
     background: #1f4e79;
     color: white;
-    width: 80%;
 }
 
 .option {
@@ -58,25 +54,23 @@ button {
     text-align: right;
 }
 
-.answer-button {
+#submit {
     background: #1f4e79;
     color: white;
-}
-
-.hidden {
-    display: none;
 }
 
 #result {
     margin-top: 20px;
     padding: 15px;
-    border-radius: 10px;
     background: #f1f1f1;
+    border-radius: 10px;
 }
 
+.hidden {
+    display: none;
+}
 </style>
 </head>
-
 
 <body>
 
@@ -84,110 +78,53 @@ button {
 
 <h1>🧠 NeuroPrep</h1>
 
-<p id="subtitle">
-آمادگی آزمون نورولوژی
-</p>
-
-<button class="language-button" onclick="setLanguage('fa')">
-🇮🇷 فارسی
-</button>
-
-<button class="language-button" onclick="setLanguage('en')">
-🇬🇧 English
-</button>
+<p>آمادگی آزمون نورولوژی</p>
 
 </header>
 
 
 <div class="container">
 
-
 <!-- صفحه انتخاب مبحث -->
 
 <div id="topics">
 
-<div id="fa-content">
-
 <h2>انتخاب مبحث</h2>
 
-<button class="chapter-button" onclick="startStroke()">
+<button class="topic" onclick="startStroke()">
 🧠 سکته مغزی
 </button>
 
-<button class="chapter-button">
+<button class="topic">
 ⚡ صرع
 </button>
 
-<button class="chapter-button">
+<button class="topic">
 🦠 عفونی نورولوژی
 </button>
 
-<button class="chapter-button">
+<button class="topic">
 🧬 MS و بیماری‌های دمیلینه‌کننده
 </button>
 
-<button class="chapter-button">
-💪 بیماری‌های نوروماسکولار
-</button>
-
-<button class="chapter-button">
-🧠 اختلالات حرکتی
-</button>
-
 </div>
 
 
-<div id="en-content" class="hidden">
+<!-- صفحه سؤال Stroke -->
 
-<h2>Select a Topic</h2>
+<div id="stroke" class="hidden">
 
-<button class="chapter-button" onclick="startStroke()">
-🧠 Stroke
-</button>
+<h2>🧠 Stroke</h2>
 
-<button class="chapter-button">
-⚡ Epilepsy
-</button>
-
-<button class="chapter-button">
-🦠 Neuroinfectious Diseases
-</button>
-
-<button class="chapter-button">
-🧬 MS & Demyelinating Diseases
-</button>
-
-<button class="chapter-button">
-💪 Neuromuscular Disorders
-</button>
-
-<button class="chapter-button">
-🧠 Movement Disorders
-</button>
-
-</div>
-
-</div>
-
-
-<!-- صفحه آزمون Stroke -->
-
-<div id="stroke-exam" class="hidden">
-
-<h2 id="exam-title">
-🧠 Stroke
-</h2>
-
-<p id="question-number">
-سؤال ۱
+<p>
+<strong>سؤال ۱</strong>
 </p>
 
-<h3 id="question-text">
-
-در بیمار مشکوک به سکته مغزی ایسکمیک حاد، مهم‌ترین بررسی تصویربرداری اولیه برای رد خونریزی داخل جمجمه کدام است؟
-
+<h3>
+در بیمار مشکوک به سکته مغزی ایسکمیک حاد،
+مهم‌ترین بررسی تصویربرداری اولیه برای رد خونریزی
+داخل جمجمه کدام است؟
 </h3>
-
 
 <button class="option" onclick="selectAnswer('A')">
 A) MRI با کنتراست
@@ -205,22 +142,21 @@ C) MRV
 D) CT آنژیوگرافی
 </button>
 
+<br>
 
-<button class="answer-button" onclick="checkAnswer()">
+<button id="submit" onclick="checkAnswer()">
 ثبت پاسخ
 </button>
 
-
 <div id="result" class="hidden">
 
-<p id="result-text"></p>
+<p id="answer"></p>
 
 <p id="explanation"></p>
 
 </div>
 
 </div>
-
 
 </div>
 
@@ -230,50 +166,11 @@ D) CT آنژیوگرافی
 let selectedAnswer = null;
 
 
-function setLanguage(language) {
-
-if (language === 'fa') {
-
-document.documentElement.lang = 'fa';
-document.documentElement.dir = 'rtl';
-
-document.getElementById('fa-content')
-.classList.remove('hidden');
-
-document.getElementById('en-content')
-.classList.add('hidden');
-
-document.getElementById('subtitle')
-.textContent = 'آمادگی آزمون نورولوژی';
-
-}
-
-else {
-
-document.documentElement.lang = 'en';
-document.documentElement.dir = 'ltr';
-
-document.getElementById('fa-content')
-.classList.add('hidden');
-
-document.getElementById('en-content')
-.classList.remove('hidden');
-
-document.getElementById('subtitle')
-.textContent = 'Neurology Exam Preparation';
-
-}
-
-}
-
-
 function startStroke() {
 
-document.getElementById('topics')
-.classList.add('hidden');
+document.getElementById("topics").classList.add("hidden");
 
-document.getElementById('stroke-exam')
-.classList.remove('hidden');
+document.getElementById("stroke").classList.remove("hidden");
 
 }
 
@@ -289,38 +186,35 @@ function checkAnswer() {
 
 if (selectedAnswer === null) {
 
-alert('لطفاً ابتدا یک گزینه را انتخاب کنید.');
+alert("لطفاً ابتدا یک گزینه را انتخاب کنید.");
 
 return;
 
 }
 
 
-if (selectedAnswer === 'B') {
+document.getElementById("result").classList.remove("hidden");
 
-document.getElementById('result-text')
-.textContent = '✅ پاسخ صحیح است';
 
-document.getElementById('explanation')
-.textContent =
-'CT اسکن بدون کنتراست معمولاً بررسی اولیه برای رد خونریزی داخل جمجمه در سکته مغزی حاد است.';
+if (selectedAnswer === "B") {
+
+document.getElementById("answer").textContent =
+"✅ پاسخ صحیح است";
+
+document.getElementById("explanation").textContent =
+"CT اسکن بدون کنتراست معمولاً بررسی اولیه برای رد خونریزی داخل جمجمه در سکته مغزی حاد است.";
 
 }
 
 else {
 
-document.getElementById('result-text')
-.textContent = '❌ پاسخ نادرست است';
+document.getElementById("answer").textContent =
+"❌ پاسخ نادرست است";
 
-document.getElementById('explanation')
-.textContent =
-'پاسخ صحیح: B) CT اسکن بدون کنتراست. این بررسی برای رد خونریزی داخل جمجمه در ارزیابی اولیه سکته مغزی حاد استفاده می‌شود.';
+document.getElementById("explanation").textContent =
+"پاسخ صحیح: B) CT اسکن بدون کنتراست.";
 
 }
-
-
-document.getElementById('result')
-.classList.remove('hidden');
 
 }
 
@@ -328,201 +222,4 @@ document.getElementById('result')
 
 </body>
 
-</html>
-
-On Tue, Aug 11, 2026, 18:13 Hamid Reza Mohammadi <hrezam50@gmail.com> wrote:
-https://accounts.google.com/devicephoneverification/start?request_id=6cf56df5-e58f-4f97-87b6-261bdef84617&hl=fa&pnv_flow=10&dsh=S-855259204:1786454331497193&tid=XSAG1xs7vSuLdDBdvdSzvw~~&flow=browser&idv_origin=1
-
-
-On Tue, Aug 11, 2026, 13:17 Hamid Reza Mohammadi <hrezam50@gmail.com> wrote:
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آزمون نورولوژی</title>
-
-    <style>
-        body {
-            font-family: Tahoma, Arial, sans-serif;
-            background: #f5f7fa;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .question {
-            font-size: 20px;
-            line-height: 2;
-            margin-bottom: 25px;
-        }
-
-        .option {
-            display: block;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .option:hover {
-            background: #f0f4f8;
-        }
-
-        button {
-            padding: 12px 25px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            background: #2563eb;
-            color: white;
-        }
-
-        #result {
-            margin-top: 25px;
-            padding: 20px;
-            border-radius: 8px;
-            display: none;
-            line-height: 2;
-        }
-
-        .correct {
-            background: #dcfce7;
-        }
-
-        .wrong {
-            background: #fee2e2;
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="container">
-
-    <h1>آزمون نورولوژی</h1>
-
-    <hr>
-
-    <div class="question">
-        <strong>سؤال ۱</strong>
-
-        <p>
-            کدام دارو در درمان تجربی مننژیت باکتریال در فرد بالغ
-            می‌تواند مورد استفاده قرار گیرد؟
-        </p>
-    </div>
-
-    <label class="option">
-        <input type="radio" name="answer" value="A">
-        A) Acyclovir
-    </label>
-
-    <label class="option">
-        <input type="radio" name="answer" value="B">
-        B) Ceftriaxone + Vancomycin
-    </label>
-
-    <label class="option">
-        <input type="radio" name="answer" value="C">
-        C) Isoniazid
-    </label>
-
-    <label class="option">
-        <input type="radio" name="answer" value="D">
-        D) Levodopa
-    </label>
-
-    <br>
-
-    <button onclick="checkAnswer()">ثبت پاسخ</button>
-
-    <div id="result"></div>
-
-</div>
-
-<script>
-
-function checkAnswer() {
-
-    const selected =
-        document.querySelector('input[name="answer"]:checked');
-
-    const result =
-        document.getElementById("result");
-
-    if (!selected) {
-        alert("لطفاً ابتدا یک گزینه را انتخاب کنید.");
-        return;
-    }
-
-    if (selected.value === "B") {
-
-        result.className = "correct";
-
-        result.innerHTML = `
-            <strong>✅ پاسخ صحیح است.</strong>
-            <br><br>
-
-            پاسخ صحیح: B) Ceftriaxone + Vancomycin
-
-            <br><br>
-
-            <strong>توضیح:</strong>
-            <br>
-
-            در مننژیت باکتریال اکتسابی از جامعه در بالغین،
-            درمان تجربی معمولاً شامل یک سفالوسپورین نسل سوم
-            همراه با وانکومایسین است.
-
-            <br><br>
-
-            <strong>نکته آزمونی:</strong>
-            <br>
-
-            در افراد مسن یا افراد دارای نقص ایمنی،
-            برای پوشش Listeria باید Ampicillin نیز در نظر گرفته شود.
-        `;
-
-    } else {
-
-        result.className = "wrong";
-
-        result.innerHTML = `
-            <strong>❌ پاسخ نادرست است.</strong>
-
-            <br><br>
-
-            پاسخ صحیح: B) Ceftriaxone + Vancomycin
-
-            <br><br>
-
-            <strong>توضیح:</strong>
-            <br>
-
-            درمان تجربی مننژیت باکتریال در بالغین
-            شامل پوشش مناسب پنوموکوک و مننگوکوک است.
-        `;
-    }
-
-    result.style.display = "block";
-}
-
-</script>
-
-</body>
 </html>
