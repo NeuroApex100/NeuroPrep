@@ -1,969 +1,191 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>NeuroPrep</title>
-
-<style>
-
-/* =========================================================
-   تنظیمات پایه
-========================================================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    direction: rtl;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-
-    background: #f4f6f8;
-
-    color: #263238;
-
-    font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
-
-    text-align: center;
-}
-
-
-/* =========================================================
-   متن فارسی و انگلیسی
-========================================================= */
-
-.rtl-text {
-    direction: rtl;
-    unicode-bidi: isolate;
-    text-align: right;
-}
-
-.ltr {
-    direction: ltr;
-    unicode-bidi: isolate;
-    display: inline;
-    font-family:
-        Arial,
-        Tahoma,
-        sans-serif;
-}
-
-
-/* =========================================================
-   Header
-========================================================= */
-
-header {
-    background: #1f4e79;
-
-    color: white;
-
-    padding: 22px 15px;
-}
-
-header h1 {
-    margin: 0 0 8px 0;
-
-    font-size: 28px;
-
-    font-weight: 600;
-}
-
-header p {
-    margin: 0;
-
-    font-size: 16px;
-
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   Container
-========================================================= */
-
-.container {
-    width: 94%;
-    max-width: 760px;
-
-    margin: 25px auto;
-
-    background: white;
-
-    padding: 25px;
-
-    border-radius: 14px;
-
-    box-shadow:
-        0 3px 12px rgba(0,0,0,0.08);
-}
-
-
-/* =========================================================
-   عنوان‌ها
-========================================================= */
-
-h2 {
-    font-weight: 500;
-}
-
-h3 {
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   فصل‌ها
-========================================================= */
-
-.topic {
-    display: block;
-
-    width: 90%;
-
-    margin: 12px auto;
-
-    padding: 15px;
-
-    background: #1f4e79;
-
-    color: white;
-
-    border: none;
-
-    border-radius: 9px;
-
-    cursor: pointer;
-
-    font-size: 17px;
-
-    font-family: inherit;
-
-    transition: 0.2s;
-}
-
-.topic:hover {
-    background: #163b5c;
-}
-
-
-/* =========================================================
-   اطلاعات سؤال
-========================================================= */
-
-.question-info {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    background: #f1f5f8;
-
-    padding: 10px 14px;
-
-    border-radius: 8px;
-
-    margin-bottom: 18px;
-
-    font-size: 14px;
-}
-
-#questionNumber {
-    font-weight: 600;
-}
-
-#score {
-    color: #1f4e79;
-
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   متن سؤال
-========================================================= */
-
-#questionText {
-
-    direction: rtl;
-
-    unicode-bidi: isolate;
-
-    text-align: right;
-
-    font-size: 19px;
-
-    line-height: 2.2;
-
-    font-weight: 400;
-
-    margin: 20px 5px 25px;
-}
-
-
-/* =========================================================
-   گزینه‌ها
-========================================================= */
-
-.option {
-
-    display: flex;
-
-    align-items: flex-start;
-
-    width: 96%;
-
-    margin: 11px auto;
-
-    padding: 14px 14px;
-
-    /*
-       سبز بسیار کمرنگ
-       مطابق درخواست شما
-    */
-    background: #f2f8f3;
-
-    border: 1px solid #d9e6dc;
-
-    border-radius: 9px;
-
-    cursor: pointer;
-
-    text-align: right;
-
-    font-family: inherit;
-
-    font-size: 16px;
-
-    font-weight: 300;
-
-    line-height: 1.9;
-
-    color: #263238;
-
-    transition: 0.2s;
-}
-
-.option:hover {
-    background: #eaf4ec;
-}
-
-
-/* =========================================================
-   مربع انتخاب
-========================================================= */
-
-.option-box {
-
-    width: 23px;
-
-    height: 23px;
-
-    min-width: 23px;
-
-    border: 1.7px solid #718078;
-
-    border-radius: 4px;
-
-    margin-left: 12px;
-
-    margin-top: 2px;
-
-    background: white;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 16px;
-
-    font-family: Arial, sans-serif;
-
-    direction: ltr;
-
-}
-
-
-/* متن گزینه */
-
-.option-text {
-
-    direction: rtl;
-
-    unicode-bidi: isolate;
-
-    text-align: right;
-
-    flex: 1;
-
-}
-
-
-/* =========================================================
-   گزینه انتخاب شده
-========================================================= */
-
-.option.selected {
-
-    background: #e5f0e7;
-
-    border: 2px solid #6d9674;
-}
-
-.option.selected .option-box {
-
-    border-color: #5d8264;
-
-    background: #5d8264;
-
-    color: white;
-}
-
-
-/* =========================================================
-   پاسخ صحیح
-========================================================= */
-
-.option.correct {
-
-    background: #e4f3e6;
-
-    border: 2px solid #72a579;
-
-    color: #285b2e;
-}
-
-
-/* =========================================================
-   پاسخ غلط
-========================================================= */
-
-.option.wrong {
-
-    background: #fbeaea;
-
-    border: 2px solid #d48a8a;
-
-    color: #8a2929;
-}
-
-
-/* =========================================================
-   دکمه‌ها
-========================================================= */
-
-button {
-
-    padding: 12px 20px;
-
-    margin: 8px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    font-size: 16px;
-
-    font-family: inherit;
-}
-
-
-#submit {
-
-    background: #1f4e79;
-
-    color: white;
-
-    min-width: 130px;
-}
-
-
-#submit:hover {
-    background: #163b5c;
-}
-
-
-#next {
-
-    background: #527d59;
-
-    color: white;
-
-    min-width: 130px;
-}
-
-
-#next:hover {
-    background: #416747;
-}
-
-
-.back-button {
-
-    background: #777;
-
-    color: white;
-
-    min-width: 130px;
-}
-
-
-/* =========================================================
-   نتیجه سؤال
-========================================================= */
-
-#result {
-
-    margin-top: 22px;
-
-    padding: 18px;
-
-    background: #f7faf8;
-
-    border-radius: 10px;
-
-    text-align: right;
-
-    line-height: 2;
-
-    border-right: 4px solid #1f4e79;
-}
-
-
-#answer {
-
-    font-size: 18px;
-
-    font-weight: 600;
-
-    margin-top: 0;
-}
-
-
-#explanation {
-
-    font-size: 15px;
-
-    font-weight: 300;
-
-    color: #455a64;
-
-    line-height: 2.1;
-}
-
-
-/* =========================================================
-   نتیجه نهایی
-========================================================= */
-
-#finalResult {
-
-    padding: 25px;
-
-    background: #f1f7f2;
-
-    border-radius: 12px;
-
-    line-height: 2;
-}
-
-
-#finalResult h2 {
-
-    color: #315f38;
-
-    font-weight: 500;
-}
-
-
-/* =========================================================
-   مخفی
-========================================================= */
-
-.hidden {
-    display: none !important;
-}
-
-
-/* =========================================================
-   نمایش قطعه انگلیسی
-========================================================= */
-
-.medical-term {
-
-    direction: ltr;
-
-    unicode-bidi: isolate;
-
-    display: inline-block;
-
-    font-family:
-        Arial,
-        sans-serif;
-}
-
-
-/* =========================================================
-   موبایل
-========================================================= */
-
-@media (max-width: 600px) {
-
-    .container {
-
-        width: 95%;
-
-        padding: 16px;
-
-        margin: 15px auto;
-    }
-
-
-    header h1 {
-        font-size: 24px;
-    }
-
-
-    #questionText {
-        font-size: 17px;
-
-        line-height: 2.15;
-    }
-
-
-    .option {
-
-        width: 100%;
-
-        font-size: 15px;
-
-        padding: 12px 10px;
-    }
-
-
-    .question-info {
-
-        font-size: 13px;
-    }
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آزمون نورولوژی</title>
+
+    <style>
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .question {
+            font-size: 20px;
+            line-height: 2;
+            margin-bottom: 25px;
+        }
+
+        .option {
+            display: block;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #f0f4f8;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #2563eb;
+            color: white;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+            line-height: 2;
+        }
+
+        .correct {
+            background: #dcfce7;
+        }
+
+        .wrong {
+            background: #fee2e2;
+        }
+    </style>
 </head>
-
 
 <body>
 
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
-<header>
-
-<h1>🧠 NeuroPrep</h1>
-
-<p>آمادگی آزمون نورولوژی</p>
-
-</header>
-
-
-
 <div class="container">
 
+    <h1>آزمون نورولوژی</h1>
 
-<!-- =========================================================
-     صفحه انتخاب فصل
-========================================================= -->
+    <hr>
 
-<div id="topics">
+    <div class="question">
+        <strong>سؤال ۱</strong>
 
-<h2>انتخاب فصل</h2>
+        <p>
+            کدام دارو در درمان تجربی مننژیت باکتریال در فرد بالغ
+            می‌تواند مورد استفاده قرار گیرد؟
+        </p>
+    </div>
 
-<p>
-فصل مورد نظر خود را انتخاب کنید
-</p>
+    <label class="option">
+        <input type="radio" name="answer" value="A">
+        A) Acyclovir
+    </label>
 
+    <label class="option">
+        <input type="radio" name="answer" value="B">
+        B) Ceftriaxone + Vancomycin
+    </label>
 
-<button class="topic"
-        onclick="startExam('stroke')">
+    <label class="option">
+        <input type="radio" name="answer" value="C">
+        C) Isoniazid
+    </label>
 
-🧠 سکته مغزی
+    <label class="option">
+        <input type="radio" name="answer" value="D">
+        D) Levodopa
+    </label>
 
-</button>
+    <br>
 
+    <button onclick="checkAnswer()">ثبت پاسخ</button>
 
-<button class="topic"
-        onclick="startExam('epilepsy')">
-
-⚡ صرع
-
-</button>
-
-
-<button class="topic"
-        onclick="startExam('infection')">
-
-🦠 عفونی نورولوژی
-
-</button>
-
-
-<button class="topic"
-        onclick="startExam('demyelination')">
-
-🧬 MS و بیماری‌های دمیلینه‌کننده
-
-</button>
-
+    <div id="result"></div>
 
 </div>
-
-
-
-<!-- =========================================================
-     صفحه آزمون
-========================================================= -->
-
-<div id="exam" class="hidden">
-
-
-<h2 id="topicTitle"></h2>
-
-
-<div class="question-info">
-
-<span id="questionNumber"></span>
-
-<span id="score"></span>
-
-</div>
-
-
-<div id="questionText"></div>
-
-
-<div id="options"></div>
-
-
-<button id="submit"
-        onclick="checkAnswer()">
-
-ثبت پاسخ
-
-</button>
-
-
-<button id="next"
-        class="hidden"
-        onclick="nextQuestion()">
-
-سؤال بعدی
-
-</button>
-
-
-<div id="result" class="hidden">
-
-<p id="answer"></p>
-
-<p id="explanation"></p>
-
-</div>
-
-
-<br>
-
-
-<button class="back-button"
-        onclick="backToTopics()">
-
-بازگشت به فصل‌ها
-
-</button>
-
-
-</div>
-
-
-
-<!-- =========================================================
-     نتیجه نهایی
-========================================================= -->
-
-<div id="finalResult"
-     class="hidden">
-
-<h2>🎉 پایان آزمون</h2>
-
-<p id="finalScore"></p>
-
-
-<button class="topic"
-        onclick="backToTopics()">
-
-انتخاب فصل جدید
-
-</button>
-
-</div>
-
-
-</div>
-
-
 
 <script>
 
+function checkAnswer() {
 
-/* =========================================================
-   تابع بسیار مهم برای نمایش صحیح فارسی + انگلیسی
-========================================================= */
+    const selected =
+        document.querySelector('input[name="answer"]:checked');
 
-function formatMedicalText(text) {
+    const result =
+        document.getElementById("result");
 
-    /*
-       کاراکترهای HTML را ابتدا ایمن می‌کنیم
-       تا متن سؤال بتواند بدون مشکل نمایش داده شود.
-    */
+    if (!selected) {
+        alert("لطفاً ابتدا یک گزینه را انتخاب کنید.");
+        return;
+    }
 
-    let safeText = text
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+    if (selected.value === "B") {
 
+        result.className = "correct";
 
-    /*
-       تشخیص کلمات انگلیسی،
-       اعداد و ترکیبات پزشکی
-    */
+        result.innerHTML = `
+            <strong>✅ پاسخ صحیح است.</strong>
+            <br><br>
 
-    safeText = safeText.replace(
+            پاسخ صحیح: B) Ceftriaxone + Vancomycin
 
-        /([A-Za-z]+(?:[A-Za-z0-9+\-./=()]*[A-Za-z0-9)])?)/g,
+            <br><br>
 
-        function(match) {
+            <strong>توضیح:</strong>
+            <br>
 
-            if (!match.trim()) {
-                return match;
-            }
+            در مننژیت باکتریال اکتسابی از جامعه در بالغین،
+            درمان تجربی معمولاً شامل یک سفالوسپورین نسل سوم
+            همراه با وانکومایسین است.
 
-            return '<span class="medical-term">'
-                 + match
-                 + '</span>';
-        }
+            <br><br>
 
-    );
+            <strong>نکته آزمونی:</strong>
+            <br>
 
+            در افراد مسن یا افراد دارای نقص ایمنی،
+            برای پوشش Listeria باید Ampicillin نیز در نظر گرفته شود.
+        `;
 
-    return safeText;
+    } else {
+
+        result.className = "wrong";
+
+        result.innerHTML = `
+            <strong>❌ پاسخ نادرست است.</strong>
+
+            <br><br>
+
+            پاسخ صحیح: B) Ceftriaxone + Vancomycin
+
+            <br><br>
+
+            <strong>توضیح:</strong>
+            <br>
+
+            درمان تجربی مننژیت باکتریال در بالغین
+            شامل پوشش مناسب پنوموکوک و مننگوکوک است.
+        `;
+    }
+
+    result.style.display = "block";
 }
 
+</script>
 
-
-/* =========================================================
-   بانک سؤالات
-========================================================= */
-
-const questionBank = {
-
-
-/* =========================================================
-   سکته مغزی
-========================================================= */
-
-stroke: [
-
-{
-question:
-"در بیمار مشکوک به سکته مغزی ایسکمیک حاد، مهم‌ترین بررسی تصویربرداری اولیه برای رد خونریزی داخل جمجمه کدام است؟",
-
-options: {
-
-A: "MRI با کنتراست",
-
-B: "CT اسکن بدون کنتراست",
-
-C: "MRV",
-
-D: "CT آنژیوگرافی"
-
-},
-
-correct: "B",
-
-explanation:
-"CT اسکن بدون کنتراست معمولاً بررسی اولیه برای رد خونریزی داخل جمجمه در سکته مغزی حاد است."
-},
-
-
-{
-question:
-"در بیمار مبتلا به سکته مغزی حاد، کدام مورد می‌تواند یک Mimic مهم برای سکته مغزی باشد؟",
-
-options: {
-
-A: "Hypoglycemia",
-
-B: "Hypercalcemia",
-
-C: "Hyperuricemia",
-
-D: "Hyperlipidemia"
-
-},
-
-correct: "A",
-
-explanation:
-"Hypoglycemia می‌تواند علائم نورولوژیک فوکال ایجاد کند و به‌عنوان Stroke mimic مطرح شود؛ بنابراین بررسی قند خون در ارزیابی اولیه اهمیت دارد."
-},
-
-
-{
-question:
-"کدام سکانس MRI در تشخیص زودرس سکته مغزی ایسکمیک بیشترین حساسیت را دارد؟",
-
-options: {
-
-A: "T1",
-
-B: "T2",
-
-C: "DWI",
-
-D: "SWI"
-
-},
-
-correct: "C",
-
-explanation:
-"DWI یا Diffusion Weighted Imaging در بسیاری از موارد می‌تواند ایسکمی حاد را بسیار زود نشان دهد. معمولاً کاهش سیگنال در ADC نیز همراه آن دیده می‌شود."
-}
-
-],
-
-
-
-/* =========================================================
-   صرع
-========================================================= */
-
-epilepsy: [
-
-{
-question:
-"کدام الگوی EEG بیشتر با Absence seizure کلاسیک مرتبط است؟",
-
-options: {
-
-A: "3-Hz generalized spike-and-wave",
-
-B: "Hypsarrhythmia",
-
-C: "Temporal sharp waves",
-
-D: "Burst suppression"
-
-},
-
-correct: "A",
-
-explanation:
-"در Absence seizure کلاسیک معمولاً الگوی generalized 3-Hz spike-and-wave دیده می‌شود."
-},
-
-
-{
-question:
-"کدام دارو معمولاً در درمان Generalized epilepsy گزینه مناسبی محسوب می‌شود؟",
-
-options: {
-
-A: "Valproate",
-
-B: "Carbamazepine در تمام انواع تشنج",
-
-C: "Gabapentin به‌عنوان انتخاب اول",
-
-D: "Vigabatrin در تمام انواع تشنج"
-
-},
-
-correct: "A",
-
-explanation:
-"Valproate در بسیاری از انواع Generalized epilepsy اثربخشی دارد؛ انتخاب دارو باید بر اساس نوع تشنج، سن، جنس و شرایط بیمار انجام شود."
-}
-
-],
-
-
-
-/* =========================================================
-   عفونی نورولوژی
-========================================================= */
-
-infection: [
-
-{
-question:
-"یکی از شایع‌ترین عوامل مننژیت باکتریال در بزرگسالان کدام است؟",
-
-options: {
-
-A: "Streptococcus pneumoniae",
-
-B: "E. coli",
-
-C: "Listeria monocytogenes",
-
-D: "Neisseria gonorrhoeae"
-
-},
-
-correct: "A",
-
-explanation:
-"Streptococcus pneumoniae از عوامل مهم و شایع مننژیت باکتریال در بزرگسالان است."
-},
-
-
-{
-question:
-"در بیمار مشکوک به مننژیت، کدام یافته می‌تواند نیاز به انجام تصویربرداری مغز قبل از Lumbar puncture را مطرح کند؟",
-
-options: {
-
-A: "Papilledema",
-
-B: "سردرد خفیف",
-
-C: "تب به‌تنهایی",
-
-D: "تهوع خفیف"
-
-},
-
-correct: "A",
-
-explanation:
-"وجود Papilledema می‌تواند مطرح‌کننده افزایش فشار داخل جمجمه باشد و در چنین شرایطی قبل از Lum
+</body>
+</html>
