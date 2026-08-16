@@ -10,7 +10,7 @@
 <style>
 
 /* =========================
-   تنظیمات اصلی
+   تنظیمات کلی
 ========================= */
 
 body {
@@ -38,7 +38,6 @@ h1 {
 h2 {
     text-align: center;
     font-weight: 500;
-    margin-bottom: 25px;
 }
 
 hr {
@@ -48,7 +47,7 @@ hr {
 
 
 /* =========================
-   متن انگلیسی
+   کلمات انگلیسی
 ========================= */
 
 .english {
@@ -60,7 +59,7 @@ hr {
 
 
 /* =========================
-   سرفصل‌ها
+   سرفصل ها
 ========================= */
 
 .topic {
@@ -81,16 +80,12 @@ hr {
 
     font-family: Tahoma, Arial, sans-serif;
     font-size: 16px;
-    font-weight: 400;
 
     line-height: 1.7;
-
-    transition: 0.2s;
 }
 
 .topic:hover {
     background: #e8f2ea;
-    border-color: #9eb9a4;
 }
 
 .topic-number {
@@ -98,16 +93,6 @@ hr {
     width: 35px;
     font-weight: bold;
     color: #527d59;
-}
-
-
-/* =========================
-   عنوان فصل
-========================= */
-
-.topic-header {
-    text-align: center;
-    margin-bottom: 25px;
 }
 
 
@@ -120,7 +105,6 @@ hr {
     line-height: 2.2;
     margin-bottom: 25px;
     text-align: right;
-    direction: rtl;
 }
 
 .question-source {
@@ -138,7 +122,7 @@ hr {
 
 
 /* =========================
-   گزینه‌ها
+   گزینه ها
 ========================= */
 
 .option {
@@ -154,8 +138,6 @@ hr {
     cursor: pointer;
 
     background: #f3f8f4;
-
-    transition: 0.2s;
 
     font-size: 16px;
     font-weight: 300;
@@ -188,23 +170,24 @@ hr {
 }
 
 
-/* =========================
-   گزینه صحیح و غلط
-========================= */
+/* پاسخ صحیح */
 
 .option.correct-option {
     background: #dcfce7;
-    border-color: #65a765;
+    border: 2px solid #4d9658;
 }
+
+
+/* پاسخ غلط */
 
 .option.wrong-option {
     background: #fee2e2;
-    border-color: #d46b6b;
+    border: 2px solid #d46b6b;
 }
 
 
 /* =========================
-   دکمه‌ها
+   دکمه ها
 ========================= */
 
 button {
@@ -232,12 +215,14 @@ button {
 .next-button {
     background: #527d59;
     color: white;
+
     margin-top: 15px;
 }
 
 .back-button {
     background: #777;
     color: white;
+
     margin-top: 15px;
 }
 
@@ -274,49 +259,56 @@ button {
 
 
 /* =========================
-   نکته آزمونی
+   نکات
 ========================= */
 
 .exam-note {
     background: #fffbea;
+
     padding: 12px;
+
     border-radius: 7px;
+
     margin-top: 15px;
 }
-
-
-/* =========================
-   تله آزمونی
-========================= */
 
 .exam-trap {
     background: #fff1f1;
+
     padding: 12px;
+
     border-radius: 7px;
+
     margin-top: 15px;
 }
 
 
 /* =========================
-   وضعیت سوال
+   شماره سوال
 ========================= */
 
 .progress {
     text-align: center;
+
     color: #666;
+
     font-size: 14px;
+
     margin-bottom: 20px;
 }
 
 
 /* =========================
-   فصل‌های آماده نشده
+   فصل های بدون سوال
 ========================= */
 
 .coming-soon {
     text-align: center;
+
     padding: 35px 10px;
+
     line-height: 2;
+
     color: #455a64;
 }
 
@@ -338,7 +330,6 @@ button {
 
     .topic {
         font-size: 15px;
-        padding: 13px 10px;
     }
 
     .question {
@@ -347,8 +338,8 @@ button {
 
     .option {
         font-size: 15px;
-        padding: 12px;
     }
+
 }
 
 </style>
@@ -364,7 +355,7 @@ button {
 
 <!-- =====================================================
      صفحه اصلی
-====================================================== -->
+===================================================== -->
 
 <div id="home">
 
@@ -374,7 +365,6 @@ button {
 
     <h2>انتخاب سرفصل</h2>
 
-
     <div id="topicsList"></div>
 
 </div>
@@ -383,15 +373,11 @@ button {
 
 <!-- =====================================================
      صفحه فصل
-====================================================== -->
+===================================================== -->
 
 <div id="chapterPage" style="display:none;">
 
-    <div class="topic-header">
-
-        <h2 id="chapterTitle"></h2>
-
-    </div>
+    <h2 id="chapterTitle"></h2>
 
     <div id="chapterContent"></div>
 
@@ -408,26 +394,18 @@ button {
 
 
 <!-- =====================================================
-     صفحه سوالات
-====================================================== -->
+     صفحه آزمون
+===================================================== -->
 
 <div id="quizPage" style="display:none;">
 
-    <div class="topic-header">
+    <h2>
+        <span class="english">
+            Cerebrovascular Diseases
+        </span>
+    </h2>
 
-        <h2>
-            <span class="english">
-                Cerebrovascular Diseases
-            </span>
-        </h2>
-
-    </div>
-
-
-    <div
-        id="questionArea">
-    </div>
-
+    <div id="questionArea"></div>
 
 </div>
 
@@ -439,9 +417,9 @@ button {
 <script>
 
 
-/* =========================================================
-   ۲۰ سرفصل اصلی برنامه
-========================================================= */
+/* =====================================================
+   ۲۰ سرفصل اصلی
+===================================================== */
 
 const topics = [
 
@@ -489,9 +467,574 @@ const topics = [
 
 
 
-/* =========================================================
-   ساخت ۲۰ سرفصل در صفحه اصلی
-========================================================= */
+/* =====================================================
+   بانک سوالات Cerebrovascular Diseases
+===================================================== */
+
+const cerebrovascularQuestions = [
+
+
+/* =====================================================
+   سوال ۱
+===================================================== */
+
+{
+    source: "تهران ۹۳",
+
+    question:
+    `بیمار خانم ۵۶ ساله با سابقه دیابت و هایپرتنشن
+    که از روز گذشته به طور ناگهانی دچار ضعف نیمه راست
+    بدن در حد دوپنجم در اندام فوقانی و تحتانی
+    به همراه کاهش حس سطحی همان سمت و اختلال میدان
+    بینایی به صورت همونیموس همی آنوپی سمت راست گشته است.
+    سطح و محتوای هوشیاری و تکلم نرمال است.
+    با توجه به علائم و یافته‌های فوق محتمل‌ترین
+    درگیری عروقی کدام است؟`,
+
+    options: [
+
+        `شاخه فوقانی شریان مغزی میانی
+        <span class="english">MCA</span>`,
+
+        `شریان مغزی خلفی
+        <span class="english">PCA</span>`,
+
+        `شریان کوروئیدال قدامی
+        <span class="english">Anterior Choroidal Artery</span>`,
+
+        `شاخه تحتانی شریان مغزی میانی
+        <span class="english">MCA</span>`
+
+    ],
+
+    correct: 2,
+
+    explanation:
+    `ترکیب همی‌پارزی، اختلال حسی و همی‌آنوبی
+    همونیموس در سمت مقابل، الگوی کلاسیک درگیری
+    <span class="english">Anterior Choroidal Artery</span>
+    است.`,
+
+    note:
+    `<span class="english">
+    Hemiparesis + Hemisensory loss + Homonymous hemianopia
+    </span>
+    را به نفع
+    <span class="english">Anterior Choroidal Artery</span>
+    به خاطر بسپارید.`,
+
+    trap:
+    `همی‌آنوبی به تنهایی می‌تواند شما را به سمت
+    <span class="english">PCA</span> هدایت کند،
+    اما همراهی آن با همی‌پارزی و اختلال حسی
+    سرنخ مهمی به نفع
+    <span class="english">Anterior Choroidal Artery</span>
+    است.`
+},
+
+
+
+/* =====================================================
+   سوال ۲
+===================================================== */
+
+{
+    source: "تهران ۹۳",
+
+    question:
+    `در سکته مغزی همراه با سرگیجه و کاهش شنوایی
+    یک طرفه احتمال درگیری کدام یک از شریان‌های
+    زیر بیشتر است؟`,
+
+    options: [
+
+        `<span class="english">PCA</span>`,
+
+        `<span class="english">
+        Anterior Inferior Cerebellar Artery
+        (AICA)
+        </span>`,
+
+        `<span class="english">
+        Posterior Inferior Cerebellar Artery
+        (PICA)
+        </span>`,
+
+        `<span class="english">
+        Vertebral Artery
+        </span>`
+
+    ],
+
+    correct: 1,
+
+    explanation:
+    `سرگیجه همراه با کاهش شنوایی یک‌طرفه،
+    به‌خصوص در زمینه سکته گردش خون خلفی،
+    سرنخ مهمی برای درگیری
+    <span class="english">AICA</span>
+    است.`,
+
+    note:
+    `<span class="english">
+    Vertigo + Ipsilateral Hearing Loss
+    </span>
+    را به نفع
+    <span class="english">AICA</span>
+    به خاطر بسپارید.`,
+
+    trap:
+    `درگیری <span class="english">PICA</span>
+    بیشتر با سندرم لترال مدولاری مطرح است،
+    در حالی که کاهش شنوایی یک‌طرفه سرنخ
+    مهم‌تری برای <span class="english">AICA</span>
+    محسوب می‌شود.`
+},
+
+
+
+/* =====================================================
+   سوال ۳
+===================================================== */
+
+{
+    source: "تهران ۹۳",
+
+    question:
+    `بیمار ۶۰ ساله دیابتی با علائم اختلال سطحی
+    و عمقی سمت راست بدن و صورت همراه با پارزی خفیف
+    در همین سمت مراجعه کرده است.
+    با توجه به علائم کلینیکی انسداد کدام شریان
+    زیر محتمل‌تر است؟`,
+
+    options: [
+
+        `<span class="english">Interpeduncular</span>`,
+
+        `<span class="english">Thalamoperforating</span>`,
+
+        `<span class="english">Thalamogeniculate</span>`,
+
+        `<span class="english">Anterior Choroidal</span>`
+
+    ],
+
+    correct: 2,
+
+    explanation:
+    `درگیری تالاموس می‌تواند باعث اختلال حس سطحی
+    و عمقی در صورت و بدن سمت مقابل شود.
+    در این سؤال پاسخ مورد انتظار
+    <span class="english">Thalamogeniculate</span>
+    است.`,
+
+    note:
+    `درگیری تالاموس را در بیمار دارای
+    <span class="english">Contralateral Hemisensory Loss</span>
+    در نظر داشته باشید.`,
+
+    trap:
+    `وجود پارزی خفیف ممکن است باعث شود
+    <span class="english">Anterior Choroidal</span>
+    به ذهن برسد؛ اما الگوی غالب حسی و درگیری
+    صورت و بدن، سؤال را به سمت تالاموس هدایت می‌کند.`
+},
+
+
+
+/* =====================================================
+   سوال ۴
+===================================================== */
+
+{
+    source: "تهران ۹۳",
+
+    question:
+    `کدام ژن با آمیلوئید آنژیوپاتی مرتبط است؟`,
+
+    options: [
+
+        `<span class="english">APOE2</span>`,
+
+        `<span class="english">APOE4</span>`,
+
+        `<span class="english">PARK7</span>`,
+
+        `<span class="english">PARK2</span>`
+
+    ],
+
+    /* پاسخ رسمی آزمون */
+    correct: 1,
+
+    explanation:
+    `طبق پاسخنامه آزمون تهران ۹۳،
+    پاسخ صحیح <span class="english">APOE4</span>
+    است. <span class="english">APOE4</span>
+    یکی از آلل‌های مهم مرتبط با
+    <span class="english">
+    Cerebral Amyloid Angiopathy
+    </span>
+    و رسوب آمیلوئید در عروق مغزی است.`,
+
+    note:
+    `<span class="english">APOE4</span>
+    را در ارتباط با
+    <span class="english">
+    Cerebral Amyloid Angiopathy
+    </span>
+    به خاطر بسپارید.`,
+
+    trap:
+    `<span class="english">APOE2</span>
+    نیز از نظر پاتولوژیک با بیماری ارتباطاتی دارد،
+    اما طبق کلید رسمی این سؤال،
+    پاسخ <span class="english">APOE4</span> است.`
+},
+
+
+
+/* =====================================================
+   سوال ۵
+===================================================== */
+
+{
+    source: "تهران ۹۳",
+
+    question:
+    `بیماری با علائم یک ساعته همی‌پارزی گذرا مراجعه می‌کند.
+    به نظر شما کدام یک از مناطق زیر منشاء ایسکمیک
+    کمتری می‌باشد؟`,
+
+    options: [
+
+        `آمبولی با منشاء قلبی`,
+
+        `آمبولی با منشاء آئورت`,
+
+        `آمبولی با منشاء کاروتید`,
+
+        `آمبولی با منشاء شریان مغز میانی`
+
+    ],
+
+    correct: 3,
+
+    explanation:
+    `در این سؤال، شریان مغزی میانی بیشتر به عنوان
+    محل درگیری و گیر افتادن آمبولی مطرح است
+    و در مقایسه با قلب، آئورت و کاروتید،
+    منشاء کلاسیک آمبولی محسوب نمی‌شود.`,
+
+    note:
+    `قلب، آئورت و شریان‌های بزرگ گردنی
+    از منابع مهم آمبولی شریانی هستند.`,
+
+    trap:
+    `منبع آمبولی را با محل گیر افتادن آمبولی
+    اشتباه نکنید. <span class="english">MCA</span>
+    معمولاً محل درگیری دیستال است.`
+},
+
+
+
+/* =====================================================
+   سوال ۶
+===================================================== */
+
+{
+    source: "تهران ۹۳",
+
+    question:
+    `خانم ۵۰ ساله دیابتی با گذشت ۶ ساعت و با تشخیص
+    استروک مراجعه می‌کند. در ارزیابی انسداد شریان
+    مغز میانی دیده می‌شود. کدام روش درمانی برای
+    نامبرده ارجح است؟`,
+
+    options: [
+
+        `تزریق ترومبولیتیک وریدی`,
+
+        `تزریق ترومبولیتیک شریانی`,
+
+        `تزریق ترومبولیتیک شریانی و استنت`,
+
+        `درمان با آسپیرین و پلاویکس`
+
+    ],
+
+    /* پاسخ رسمی آزمون */
+    correct: 3,
+
+    explanation:
+    `طبق پاسخنامه آزمون تهران ۹۳،
+    با توجه به گذشت ۶ ساعت از شروع علائم،
+    پاسخ صحیح گزینه D یعنی درمان با
+    آسپیرین و پلاویکس اعلام شده است.`,
+
+    note:
+    `در این بانک سؤال، برای سؤالات آزمونی قدیمی،
+    کلید رسمی همان آزمون ملاک پاسخ صحیح است.`,
+
+    trap:
+    `در تفسیر این سؤال باید بین پاسخ مورد انتظار
+    آزمون سال ۹۳ و رویکردهای امروزی درمان
+    سکته مغزی تفاوت قائل شد.`
+},
+
+
+
+/* =====================================================
+   سوال ۷
+===================================================== */
+
+{
+    source: "تهران ۹۳",
+
+    question:
+    `بیمار ۴۵ ساله با علائم همی‌پارزی سمت راست
+    با دیزآرتری همراه با درد گردن، پتوز و میوز
+    سمت چپ مراجعه نموده است. به نظر شما چه عامل
+    عروقی در این بیمار مطرح است؟`,
+
+    options: [
+
+        `<span class="english">
+        Fibromuscular Dysplasia
+        </span>`,
+
+        `<span class="english">
+        Giant Cell Arteritis
+        </span>`,
+
+        `<span class="english">
+        Takayasu Arteritis
+        </span>`,
+
+        `<span class="english">
+        Carotid Dissection
+        </span>`
+
+    ],
+
+    correct: 3,
+
+    explanation:
+    `درد گردن همراه با پتوز و میوز
+    و ایجاد <span class="english">Horner Syndrome</span>
+    در یک فرد نسبتاً جوان، سرنخ مهمی برای
+    <span class="english">Carotid Dissection</span>
+    است.`,
+
+    note:
+    `<span class="english">
+    Neck Pain + Partial Horner Syndrome
+    </span>
+    را به عنوان سرنخ مهم دیسکشن کاروتید
+    به خاطر بسپارید.`,
+
+    trap:
+    `درد گردن و <span class="english">Horner Syndrome</span>
+    را در بیمار جوان با سکته ایسکمیک نباید نادیده گرفت.`
+},
+
+
+
+/* =====================================================
+   سوال ۸
+===================================================== */
+
+{
+    source: "تهران ۹۳",
+
+    question:
+    `خانم ۲۸ ساله‌ای به علت درد و ضعف در اندام فوقانی
+    راست به دنبال کار کردن مراجعه کرده است و پالس
+    شریان براکیال کاهش یافته است. بر اساس بیشترین
+    تشخیص احتمالی کدام درمان را پیشنهاد می‌کنید؟`,
+
+    options: [
+
+        `آسپرین`,
+
+        `وارفارین`,
+
+        `پردنیزولون`,
+
+        `پنتوکسی‌فیلین`
+
+    ],
+
+    correct: 2,
+
+    explanation:
+    `با توجه به سن پایین، درگیری عروق اندام فوقانی
+    و کاهش نبض، اگر تشخیص مورد نظر
+    <span class="english">Takayasu Arteritis</span>
+    باشد، کورتیکواستروئید مانند پردنیزولون
+    درمان اصلی بیماری فعال است.`,
+
+    note:
+    `<span class="english">Takayasu Arteritis</span>
+    را در زنان جوان با درگیری عروق بزرگ
+    و کاهش یا عدم تقارن نبض‌ها در نظر داشته باشید.`,
+
+    trap:
+    `درمان ضدپلاکتی به تنهایی درمان بیماری
+    التهابی زمینه‌ای نیست؛ در بیماری فعال،
+    سرکوب التهاب اهمیت اصلی دارد.`
+},
+
+
+
+/* =====================================================
+   سوال ۹
+===================================================== */
+
+{
+    source: "تهران ۹۳",
+
+    question:
+    `در خونریزی مغزی ناشی از وارفارین همراه با
+    <span class="english">INR</span> بالا،
+    کدام داروی زیر سریع‌تر زمان
+    <span class="english">INR</span> را اصلاح می‌کند؟`,
+
+    options: [
+
+        `<span class="english">
+        Recombinant Activated Factor VII
+        </span>`,
+
+        `<span class="english">FFP</span>`,
+
+        `<span class="english">PCC</span>`,
+
+        `<span class="english">Vitamin K</span>`
+
+    ],
+
+    correct: 2,
+
+    explanation:
+    `<span class="english">PCC</span>
+    باعث جایگزینی سریع فاکتورهای انعقادی
+    وابسته به ویتامین K می‌شود و در خونریزی
+    شدید ناشی از وارفارین برای اصلاح سریع
+    انعقاد به کار می‌رود.`,
+
+    note:
+    `<span class="english">
+    Warfarin-associated ICH
+    → PCC + IV Vitamin K
+    </span>`,
+
+    trap:
+    `<span class="english">Vitamin K</span>
+    برای برگشت پایدار اثر وارفارین ضروری است،
+    اما اثر آن به سرعت <span class="english">PCC</span>
+    نیست.`
+},
+
+
+
+/* =====================================================
+   سوال ۱۰
+===================================================== */
+
+{
+    source: "تهران ۹۳",
+
+    question:
+    `بیمار خانم ۲۵ ساله با علائم آنسفالوپاتی،
+    <span class="english">Confusion</span>،
+    اختلال رفتاری و سردرد مراجعه کرده است.
+    در معاینات نورولوژیک علاوه بر موارد فوق،
+    تاری دید دوطرفه و آتاکسی نیز دارد.
+
+    در معاینه چشم‌پزشکی و آنژیوگرافی فلورسئین
+    علائم <span class="english">BRAO</span> با درگیری
+    قابل توجه <span class="english">Corpus Callosum</span>
+    که نمای <span class="english">Snowball Appearance</span>
+    را نشان می‌دهد.
+
+    با توجه به تشخیص احتمالی،
+    همه موارد زیر صحیح است غیر از؟`,
+
+    options: [
+
+        `یک <span class="english">
+        Immune-mediated Endotheliopathy
+        </span> می‌باشد.`,
+
+        `<span class="english">
+        IVIG
+        </span> تراپی می‌تواند در درمان آن کمک‌کننده باشد.`,
+
+        `کاهش شنوایی به طور شایعی ظاهر می‌شود.`,
+
+        `در بررسی <span class="english">CSF</span>
+        اغلب پلئوسیتوز با پروتئین نرمال دارد.`
+
+    ],
+
+    correct: 3,
+
+    explanation:
+    `شرح حال به شدت به نفع
+    <span class="english">Susac Syndrome</span>
+    است.
+
+    سه جزء کلاسیک این بیماری عبارت‌اند از:
+    <br>
+    <span class="english">
+    Encephalopathy
+    </span>
+    +
+    <span class="english">
+    Branch Retinal Artery Occlusions
+    </span>
+    +
+    <span class="english">
+    Sensorineural Hearing Loss
+    </span>
+
+    ضایعات <span class="english">Snowball</span>
+    در <span class="english">Corpus Callosum</span>
+    نیز بسیار تیپیک هستند.
+
+    بنابراین گزینه D نادرست است.`,
+
+    note:
+    `<span class="english">
+    Susac Syndrome =
+    Brain + Retina + Inner Ear
+    </span>`,
+
+    trap:
+    `وجود همزمان آنسفالوپاتی، انسداد شریان‌های شبکیه
+    و کاهش شنوایی را به عنوان سه‌گانه
+    <span class="english">Susac</span>
+    به خاطر بسپارید.`
+}
+
+];
+
+
+
+/* =====================================================
+   متغیرهای آزمون
+===================================================== */
+
+let currentQuestion = 0;
+
+let answered = false;
+
+
+
+/* =====================================================
+   ساخت سرفصل‌ها
+===================================================== */
 
 function createTopics() {
 
@@ -531,253 +1074,21 @@ function createTopics() {
 
 
 
-/* =========================================================
-   بانک سوالات Cerebrovascular Diseases
-========================================================= */
-
-const cerebrovascularQuestions = [
-
-
-    /* =========================
-       سوال ۱
-    ========================= */
-
-    {
-
-        source: "تهران ۹۳",
-
-        question:
-
-        `بیمار خانم ۵۶ ساله با سابقه دیابت و هایپرتنشن
-        که از روز گذشته به طور ناگهانی دچار ضعف نیمه راست
-        بدن در حد دوپنجم در اندام فوقانی و تحتانی
-        به همراه کاهش حس سطحی همان سمت و اختلال میدان
-        بینایی به صورت همونیموس همی آنوپی سمت راست گشته است.
-        سطح و محتوای هوشیاری و تکلم نرمال است.
-        با توجه به علائم و یافته‌های فوق محتمل‌ترین
-        درگیری عروقی کدام است؟`,
-
-        options: [
-
-            `شاخه فوقانی شریان مغزی میانی
-             <span class="english">MCA</span>`,
-
-            `شریان مغزی خلفی
-             <span class="english">PCA</span>`,
-
-            `شریان کوروئیدال قدامی
-             <span class="english">Anterior Choroidal Artery</span>`,
-
-            `شاخه تحتانی شریان مغزی میانی
-             <span class="english">MCA</span>`
-
-        ],
-
-        correct: 2,
-
-        explanation:
-
-        `ترکیب همی‌پارزی، اختلال حسی و
-        همی‌آنوبی همونیموس طرف مقابل،
-        الگوی مهم درگیری شریان کوروئیدال قدامی است.
-        این شریان بخش‌هایی از مسیرهای حرکتی،
-        حسی و بینایی را در مجاورت کپسول داخلی
-        و مسیر بینایی خون‌رسانی می‌کند.`,
-
-        note:
-
-        `ترکیب
-        <span class="english">
-        Hemiparesis + Hemisensory loss + Homonymous hemianopia
-        </span>
-        را به نفع
-        <span class="english">
-        Anterior Choroidal Artery
-        </span>
-        به خاطر بسپارید.`,
-
-        trap:
-
-        `وجود همی‌آنوبی به‌تنهایی می‌تواند شما را
-        به سمت <span class="english">PCA</span> ببرد؛
-        اما همراهی آن با همی‌پارزی و اختلال حسی واضح،
-        <span class="english">Anterior Choroidal Artery</span>
-        را مطرح می‌کند.`
-
-    },
-
-
-    /* =========================
-       سوال ۲
-    ========================= */
-
-    {
-
-        source: "تهران ۹۳",
-
-        question:
-
-        `در سکته مغزی همراه با سرگیجه و کاهش شنوایی
-        یک طرفه احتمال درگیری کدام یک از شریان‌های
-        زیر بیشتر است؟`,
-
-        options: [
-
-            `<span class="english">PCA</span>`,
-
-            `<span class="english">
-            Anterior Inferior Cerebellar Artery
-            (AICA)
-            </span>`,
-
-            `<span class="english">
-            Posterior Inferior Cerebellar Artery
-            (PICA)
-            </span>`,
-
-            `<span class="english">
-            Vertebral Artery
-            </span>`
-
-        ],
-
-        correct: 1,
-
-        explanation:
-
-        `سرگیجه همراه با کاهش شنوایی یک‌طرفه
-        در سکته ناحیه خلفی، سرنخ مهمی برای
-        درگیری <span class="english">AICA</span> است.
-        این شریان از طریق
-        <span class="english">Labyrinthine Artery</span>
-        خون‌رسانی گوش داخلی را تأمین می‌کند.`,
-
-        note:
-
-        `<span class="english">
-        Vertigo + Ipsilateral Hearing Loss
-        </span>
-        را به نفع
-        <span class="english">AICA</span>
-        به خاطر بسپارید.`,
-
-        trap:
-
-        `درگیری <span class="english">PICA</span>
-        بیشتر شما را به سمت
-        <span class="english">Lateral Medullary Syndrome</span>
-        هدایت می‌کند؛ کاهش شنوایی یک‌طرفه
-        سرنخ مهم‌تری برای <span class="english">AICA</span>
-        است.`
-
-    },
-
-
-    /* =========================
-       سوال ۳
-    ========================= */
-
-    {
-
-        source: "تهران ۹۳",
-
-        question:
-
-        `بیمار ۶۰ ساله دیابتی با علائم اختلال سطحی
-        و عمقی سمت راست بدن و صورت همراه با پارزی خفیف
-        در همین سمت مراجعه کرده است.
-        با توجه به علائم کلینیکی انسداد کدام شریان
-        زیر محتمل‌تر است؟`,
-
-        options: [
-
-            `<span class="english">
-            Interpeduncular
-            </span>`,
-
-            `<span class="english">
-            Thalamoperforating
-            </span>`,
-
-            `<span class="english">
-            Thalamogeniculate
-            </span>`,
-
-            `<span class="english">
-            Anterior Choroidal
-            </span>`
-
-        ],
-
-        correct: 2,
-
-        explanation:
-
-        `اختلال حسی صورت و بدن همراه با علائم
-        حرکتی خفیف می‌تواند با درگیری ساختارهای
-        تالاموس و مسیرهای مجاور آن همراه باشد.
-        در این سؤال، پاسخ مورد انتظار
-        <span class="english">Thalamogeniculate</span>
-        است.`,
-
-        note:
-
-        `درگیری تالاموس می‌تواند باعث
-        <span class="english">
-        Contralateral Hemisensory Loss
-        </span>
-        در صورت و بدن شود.`,
-
-        trap:
-
-        `درگیری
-        <span class="english">
-        Thalamoperforating Arteries
-        </span>
-        بیشتر با الگوهای
-        <span class="english">
-        Paramedian Thalamic
-        </span>
-        و در مواردی اختلال هوشیاری مطرح می‌شود.`
-
-    }
-
-];
-
-
-
-/* =========================================================
-   متغیرهای آزمون
-========================================================= */
-
-let currentQuestion = 0;
-
-let answered = false;
-
-
-
-/* =========================================================
-   نمایش سرفصل‌ها
-========================================================= */
+/* =====================================================
+   باز کردن فصل
+===================================================== */
 
 function openTopic(index) {
-
 
     document.getElementById("home")
         .style.display = "none";
 
-
     document.getElementById("chapterPage")
         .style.display = "none";
-
 
     document.getElementById("quizPage")
         .style.display = "none";
 
-
-    /* =========================
-       فصل Cerebrovascular
-    ========================= */
 
     if (index === 0) {
 
@@ -795,13 +1106,8 @@ function openTopic(index) {
     }
 
 
-    /* =========================
-       سایر فصل‌ها
-    ========================= */
-
     document.getElementById("chapterPage")
         .style.display = "block";
-
 
     document.getElementById("chapterTitle")
         .innerHTML =
@@ -810,16 +1116,13 @@ function openTopic(index) {
         topics[index] +
         '</span>';
 
-
     document.getElementById("chapterContent")
         .innerHTML = `
 
         <div class="coming-soon">
 
-            <div>
-                بانک سؤالات این فصل
-                در مرحله بعد اضافه خواهد شد.
-            </div>
+            بانک سؤالات این فصل
+            در مرحله بعد اضافه خواهد شد.
 
         </div>
 
@@ -829,23 +1132,19 @@ function openTopic(index) {
 
 
 
-/* =========================================================
+/* =====================================================
    نمایش سؤال
-========================================================= */
+===================================================== */
 
 function showQuestion() {
-
 
     const q =
         cerebrovascularQuestions[currentQuestion];
 
-
     answered = false;
-
 
     const area =
         document.getElementById("questionArea");
-
 
     let html = "";
 
@@ -881,10 +1180,6 @@ function showQuestion() {
 
     `;
 
-
-    /* =========================
-       گزینه‌ها
-    ========================= */
 
     q.options.forEach(function(option, index) {
 
@@ -945,23 +1240,20 @@ function showQuestion() {
 
 
 
-/* =========================================================
+/* =====================================================
    بررسی پاسخ
-========================================================= */
+===================================================== */
 
 function checkAnswer() {
-
 
     if (answered) {
         return;
     }
 
-
     const selected =
         document.querySelector(
             'input[name="answer"]:checked'
         );
-
 
     if (!selected) {
 
@@ -973,25 +1265,17 @@ function checkAnswer() {
 
     }
 
-
     answered = true;
 
 
     const selectedValue =
         Number(selected.value);
 
-
     const q =
         cerebrovascularQuestions[currentQuestion];
 
 
-    const result =
-        document.getElementById("result");
-
-
-    /* =========================
-       مشخص کردن گزینه صحیح
-    ========================= */
+    /* علامت گذاری پاسخ صحیح */
 
     const correctOption =
         document.getElementById(
@@ -1003,9 +1287,7 @@ function checkAnswer() {
     );
 
 
-    /* =========================
-       اگر پاسخ غلط بود
-    ========================= */
+    /* علامت گذاری پاسخ اشتباه */
 
     if (selectedValue !== q.correct) {
 
@@ -1021,16 +1303,14 @@ function checkAnswer() {
     }
 
 
-    /* =========================
-       پاسخ صحیح
-    ========================= */
+    const result =
+        document.getElementById("result");
+
 
     if (selectedValue === q.correct) {
 
-
         result.className =
             "result correct";
-
 
         result.innerHTML = `
 
@@ -1069,7 +1349,6 @@ function checkAnswer() {
 
             </div>
 
-
             <div class="exam-trap">
 
                 <strong>
@@ -1086,17 +1365,10 @@ function checkAnswer() {
 
     }
 
-
-    /* =========================
-       پاسخ غلط
-    ========================= */
-
     else {
-
 
         result.className =
             "result wrong";
-
 
         result.innerHTML = `
 
@@ -1135,7 +1407,6 @@ function checkAnswer() {
 
             </div>
 
-
             <div class="exam-trap">
 
                 <strong>
@@ -1169,7 +1440,6 @@ function checkAnswer() {
         cerebrovascularQuestions.length - 1
     ) {
 
-
         nextArea.innerHTML = `
 
             <button
@@ -1185,7 +1455,6 @@ function checkAnswer() {
     }
 
     else {
-
 
         nextArea.innerHTML = `
 
@@ -1205,12 +1474,11 @@ function checkAnswer() {
 
 
 
-/* =========================================================
+/* =====================================================
    سؤال بعدی
-========================================================= */
+===================================================== */
 
 function nextQuestion() {
-
 
     currentQuestion++;
 
@@ -1220,17 +1488,15 @@ function nextQuestion() {
 
 
 
-/* =========================================================
+/* =====================================================
    پایان آزمون
-========================================================= */
+===================================================== */
 
 function finishQuiz() {
 
-
     alert(
-        "این مجموعه سؤال به پایان رسید."
+        "این مجموعه ۱۰ سؤالی به پایان رسید."
     );
-
 
     goHome();
 
@@ -1238,24 +1504,20 @@ function finishQuiz() {
 
 
 
-/* =========================================================
+/* =====================================================
    بازگشت به صفحه اصلی
-========================================================= */
+===================================================== */
 
 function goHome() {
-
 
     document.getElementById("home")
         .style.display = "block";
 
-
     document.getElementById("chapterPage")
         .style.display = "none";
 
-
     document.getElementById("quizPage")
         .style.display = "none";
-
 
     currentQuestion = 0;
 
@@ -1265,15 +1527,13 @@ function goHome() {
 
 
 
-/* =========================================================
-   اجرای اولیه
-========================================================= */
+/* =====================================================
+   شروع برنامه
+===================================================== */
 
 createTopics();
 
 </script>
 
-
 </body>
-
 </html>
