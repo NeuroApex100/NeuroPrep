@@ -2,6 +2,7 @@
 <html lang="fa" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,16 +10,16 @@
 
 <style>
 
-/* =========================
-   تنظیمات کلی
-========================= */
+* {
+    box-sizing: border-box;
+}
 
 body {
     font-family: Tahoma, Arial, sans-serif;
     background: #f5f7fa;
     margin: 0;
     padding: 20px;
-    direction: rtl;
+    color: #222;
 }
 
 .container {
@@ -32,94 +33,87 @@ body {
 
 h1 {
     text-align: center;
-    font-weight: 500;
+    margin-bottom: 10px;
 }
 
 h2 {
-    text-align: center;
-    font-weight: 500;
+    margin-top: 10px;
 }
 
 hr {
-    border: 0;
+    border: none;
     border-top: 1px solid #ddd;
+    margin: 20px 0;
 }
 
+/* =========================
+   سرفصل ها
+========================= */
+
+.topics-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.topic {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #d8dee6;
+    border-radius: 9px;
+    background: #f8fafc;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: right;
+    transition: 0.2s;
+}
+
+.topic:hover {
+    background: #eef4f8;
+}
+
+.topic-icon {
+    display: inline-block;
+    width: 32px;
+    font-size: 19px;
+}
 
 /* =========================
-   کلمات انگلیسی
+   صفحه سوال
 ========================= */
+
+#examPage {
+    display: none;
+}
+
+.question-number {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.question-source {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 18px;
+}
+
+.question {
+    font-size: 19px;
+    line-height: 2.2;
+    margin-bottom: 25px;
+}
+
+/* جلوگیری از به هم ریختن کلمات انگلیسی */
 
 .english {
     direction: ltr;
     unicode-bidi: isolate;
     display: inline-block;
     font-family: Arial, sans-serif;
+    white-space: normal;
 }
-
-
-/* =========================
-   سرفصل ها
-========================= */
-
-.topic {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-
-    border: 1px solid #d8e3ea;
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    background: #f3f8f4;
-    color: #263238;
-
-    text-align: right;
-
-    font-family: Tahoma, Arial, sans-serif;
-    font-size: 16px;
-
-    line-height: 1.7;
-}
-
-.topic:hover {
-    background: #e8f2ea;
-}
-
-.topic-number {
-    display: inline-block;
-    width: 35px;
-    font-weight: bold;
-    color: #527d59;
-}
-
-
-/* =========================
-   سؤال
-========================= */
-
-.question {
-    font-size: 19px;
-    line-height: 2.2;
-    margin-bottom: 25px;
-    text-align: right;
-}
-
-.question-source {
-    font-size: 14px;
-    color: #666;
-    font-weight: normal;
-}
-
-.question-text {
-    direction: rtl;
-    unicode-bidi: plaintext;
-    text-align: right;
-    line-height: 2.2;
-}
-
 
 /* =========================
    گزینه ها
@@ -127,191 +121,121 @@ hr {
 
 .option {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    gap: 10px;
 
-    padding: 14px;
+    padding: 15px;
     margin: 10px 0;
 
-    border: 1px solid #d8e3da;
+    border: 1px solid #ddd;
     border-radius: 8px;
 
     cursor: pointer;
 
-    background: #f3f8f4;
-
-    font-size: 16px;
-    font-weight: 300;
+    background: #fafafa;
 
     line-height: 1.9;
 
-    direction: rtl;
+    transition: 0.2s;
 }
 
 .option:hover {
-    background: #eaf3ec;
+    background: #f0f4f8;
 }
 
 .option input {
-    width: 19px;
-    height: 19px;
-
-    margin-left: 12px;
-
-    cursor: pointer;
-
-    accent-color: #527d59;
+    margin-top: 7px;
+    transform: scale(1.15);
+    flex-shrink: 0;
 }
-
-.option-text {
-    direction: rtl;
-    unicode-bidi: plaintext;
-    text-align: right;
-    flex: 1;
-}
-
-
-/* پاسخ صحیح */
 
 .option.correct-option {
     background: #dcfce7;
-    border: 2px solid #4d9658;
+    border-color: #22c55e;
 }
-
-
-/* پاسخ غلط */
 
 .option.wrong-option {
     background: #fee2e2;
-    border: 2px solid #d46b6b;
+    border-color: #ef4444;
 }
-
 
 /* =========================
    دکمه ها
 ========================= */
 
-button {
-    padding: 12px 25px;
-
-    font-size: 16px;
-
-    border: none;
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    font-family: Tahoma, Arial, sans-serif;
+.button-row {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-.submit-button {
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#submitButton {
     background: #2563eb;
     color: white;
 }
 
-.submit-button:hover {
-    background: #1d4ed8;
-}
-
-.next-button {
-    background: #527d59;
+#nextButton {
+    background: #16a34a;
     color: white;
-
-    margin-top: 15px;
+    display: none;
 }
 
-.back-button {
-    background: #777;
+#backButton {
+    background: #64748b;
     color: white;
-
-    margin-top: 15px;
 }
-
 
 /* =========================
    نتیجه
 ========================= */
 
-.result {
+#result {
     margin-top: 25px;
-
     padding: 20px;
-
     border-radius: 8px;
-
     display: none;
-
-    line-height: 2.2;
-
-    text-align: right;
-
-    direction: rtl;
+    line-height: 2.1;
 }
 
-.correct {
+#result.correct {
     background: #dcfce7;
-    border-right: 5px solid #4d9658;
 }
 
-.wrong {
+#result.wrong {
     background: #fee2e2;
-    border-right: 5px solid #d46b6b;
 }
 
+.result-title {
+    font-size: 18px;
+    font-weight: bold;
+}
 
-/* =========================
-   نکات
-========================= */
+.explanation-box {
+    margin-top: 18px;
+}
 
-.exam-note {
-    background: #fffbea;
-
+.note-box {
+    margin-top: 18px;
     padding: 12px;
-
-    border-radius: 7px;
-
-    margin-top: 15px;
+    background: #f0fdf4;
+    border-radius: 8px;
 }
 
-.exam-trap {
-    background: #fff1f1;
-
+.trap-box {
+    margin-top: 18px;
     padding: 12px;
-
-    border-radius: 7px;
-
-    margin-top: 15px;
+    background: #fff7ed;
+    border-radius: 8px;
 }
-
-
-/* =========================
-   شماره سوال
-========================= */
-
-.progress {
-    text-align: center;
-
-    color: #666;
-
-    font-size: 14px;
-
-    margin-bottom: 20px;
-}
-
-
-/* =========================
-   فصل های بدون سوال
-========================= */
-
-.coming-soon {
-    text-align: center;
-
-    padding: 35px 10px;
-
-    line-height: 2;
-
-    color: #455a64;
-}
-
 
 /* =========================
    موبایل
@@ -325,11 +249,7 @@ button {
 
     .container {
         margin: 10px auto;
-        padding: 18px;
-    }
-
-    .topic {
-        font-size: 15px;
+        padding: 20px;
     }
 
     .question {
@@ -338,6 +258,10 @@ button {
 
     .option {
         font-size: 15px;
+    }
+
+    button {
+        width: 100%;
     }
 
 }
@@ -352,784 +276,333 @@ button {
 
 <div class="container">
 
-
-<!-- =====================================================
-     صفحه اصلی
-===================================================== -->
-
-<div id="home">
-
     <h1>آزمون نورولوژی</h1>
 
     <hr>
 
-    <h2>انتخاب سرفصل</h2>
 
-    <div id="topicsList"></div>
+    <!-- =========================
+         صفحه سرفصل ها
+    ========================== -->
 
-</div>
+    <div id="topicsPage">
 
-
-
-<!-- =====================================================
-     صفحه فصل
-===================================================== -->
-
-<div id="chapterPage" style="display:none;">
-
-    <h2 id="chapterTitle"></h2>
-
-    <div id="chapterContent"></div>
-
-    <button
-        class="back-button"
-        onclick="goHome()">
-
-        بازگشت به سرفصل‌ها
-
-    </button>
-
-</div>
+        <h2 class="topics-title">
+            انتخاب مبحث
+        </h2>
 
 
-
-<!-- =====================================================
-     صفحه آزمون
-===================================================== -->
-
-<div id="quizPage" style="display:none;">
-
-    <h2>
-        <span class="english">
+        <button class="topic" onclick="startTopic('Cerebrovascular Diseases')">
+            <span class="topic-icon">🧠</span>
             Cerebrovascular Diseases
-        </span>
-    </h2>
+            <br>
+            بیماری‌های عروق مغزی
+        </button>
 
-    <div id="questionArea"></div>
+
+        <button class="topic" onclick="startTopic('Epilepsy & Seizure')">
+            <span class="topic-icon">⚡</span>
+            Epilepsy & Seizure
+            <br>
+            صرع و تشنج
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Movement Disorders')">
+            <span class="topic-icon">🧩</span>
+            Movement Disorders
+            <br>
+            اختلالات حرکتی
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Multiple Sclerosis & Demyelinating Diseases')">
+            <span class="topic-icon">🧬</span>
+            Multiple Sclerosis & Demyelinating Diseases
+            <br>
+            ام‌اس و بیماری‌های دمیلینه‌کننده
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Neuromuscular Diseases')">
+            <span class="topic-icon">💪</span>
+            Neuromuscular Diseases
+            <br>
+            بیماری‌های نوروماسکولار
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Headache & Facial Pain')">
+            <span class="topic-icon">🤕</span>
+            Headache & Facial Pain
+            <br>
+            سردرد و دردهای صورت
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Dementia & Cognitive Disorders')">
+            <span class="topic-icon">🧠</span>
+            Dementia & Cognitive Disorders
+            <br>
+            دمانس و اختلالات شناختی
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Neuroinfectious Diseases')">
+            <span class="topic-icon">🦠</span>
+            Neuroinfectious Diseases
+            <br>
+            بیماری‌های عفونی نورولوژیک
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Neuroimmunology')">
+            <span class="topic-icon">🛡️</span>
+            Neuroimmunology
+            <br>
+            نورواِیمونولوژی
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Neuro-oncology')">
+            <span class="topic-icon">🎗️</span>
+            Neuro-oncology
+            <br>
+            نوروانکولوژی
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Neurogenetics & Metabolic Disorders')">
+            <span class="topic-icon">🧬</span>
+            Neurogenetics & Metabolic Disorders
+            <br>
+            نوروجنتیک و بیماری‌های متابولیک
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Spinal Cord Disorders')">
+            <span class="topic-icon">🦴</span>
+            Spinal Cord Disorders
+            <br>
+            بیماری‌های نخاع
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Neuro-ophthalmology')">
+            <span class="topic-icon">👁️</span>
+            Neuro-ophthalmology
+            <br>
+            نوروافتالمولوژی
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Neuro-otology')">
+            <span class="topic-icon">👂</span>
+            Neuro-otology
+            <br>
+            نورواتولوژی
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Pediatric Neurology')">
+            <span class="topic-icon">👶</span>
+            Pediatric Neurology
+            <br>
+            نورولوژی کودکان
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Neurocritical Care')">
+            <span class="topic-icon">🚑</span>
+            Neurocritical Care
+            <br>
+            مراقبت‌های ویژه نورولوژیک
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Neurotrauma')">
+            <span class="topic-icon">⚕️</span>
+            Neurotrauma
+            <br>
+            نوروتروما
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Autonomic & Sleep Disorders')">
+            <span class="topic-icon">😴</span>
+            Autonomic & Sleep Disorders
+            <br>
+            اختلالات اتونوم و خواب
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Neurodiagnostic Methods')">
+            <span class="topic-icon">🔬</span>
+            Neurodiagnostic Methods
+            <br>
+            روش‌های تشخیصی نورولوژی
+        </button>
+
+
+        <button class="topic" onclick="startTopic('Neuropharmacology & Principles of Treatment')">
+            <span class="topic-icon">💊</span>
+            Neuropharmacology & Principles of Treatment
+            <br>
+            نوروفارماکولوژی و اصول درمان
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         صفحه آزمون
+    ========================== -->
+
+    <div id="examPage">
+
+        <h2 id="topicTitle"></h2>
+
+        <hr>
+
+        <div id="questionNumber" class="question-number"></div>
+
+        <div id="questionSource" class="question-source"></div>
+
+        <div id="questionText" class="question"></div>
+
+        <div id="optionsContainer"></div>
+
+
+        <div class="button-row">
+
+            <button
+                id="submitButton"
+                onclick="checkAnswer()">
+                ثبت پاسخ
+            </button>
+
+
+            <button
+                id="nextButton"
+                onclick="nextQuestion()">
+                سؤال بعدی
+            </button>
+
+
+            <button
+                id="backButton"
+                onclick="backToTopics()">
+                بازگشت به سرفصل‌ها
+            </button>
+
+        </div>
+
+
+        <div id="result">
+
+            <div id="resultTitle" class="result-title"></div>
+
+            <div id="explanationBox" class="explanation-box"></div>
+
+            <div id="noteBox" class="note-box"></div>
+
+            <div id="trapBox" class="trap-box"></div>
+
+        </div>
+
+    </div>
 
 </div>
 
 
-</div>
+<!-- =====================================================
+     اتصال به بانک سوالات
+===================================================== -->
 
+<script src="questions.js"></script>
 
 
 <script>
 
-
 /* =====================================================
-   ۲۰ سرفصل اصلی
+   متغیرهای اصلی
 ===================================================== */
 
-const topics = [
+let currentTopic = "";
 
-    "Cerebrovascular Diseases",
+let currentQuestions = [];
 
-    "Epilepsy & Seizure",
-
-    "Movement Disorders",
-
-    "Multiple Sclerosis & Demyelinating Diseases",
-
-    "Neuromuscular Diseases",
-
-    "Headache & Facial Pain",
-
-    "Dementia & Cognitive Disorders",
-
-    "Neuroinfectious Diseases",
-
-    "Neuroimmunology",
-
-    "Neuro-oncology",
-
-    "Neurogenetics & Metabolic Disorders",
-
-    "Spinal Cord Disorders",
-
-    "Neuro-ophthalmology",
-
-    "Neuro-otology",
-
-    "Pediatric Neurology",
-
-    "Neurocritical Care",
-
-    "Neurotrauma",
-
-    "Autonomic & Sleep Disorders",
-
-    "Neurodiagnostic Methods",
-
-    "Neuropharmacology & Principles of Treatment"
-
-];
-
-
-
-/* =====================================================
-   بانک سوالات Cerebrovascular Diseases
-===================================================== */
-
-const cerebrovascularQuestions = [
-
-
-/* =====================================================
-   سوال ۱
-===================================================== */
-
-{
-    source: "تهران ۹۳",
-
-    question:
-    `بیمار خانم ۵۶ ساله با سابقه دیابت و هایپرتنشن
-    که از روز گذشته به طور ناگهانی دچار ضعف نیمه راست
-    بدن در حد دوپنجم در اندام فوقانی و تحتانی
-    به همراه کاهش حس سطحی همان سمت و اختلال میدان
-    بینایی به صورت همونیموس همی آنوپی سمت راست گشته است.
-    سطح و محتوای هوشیاری و تکلم نرمال است.
-    با توجه به علائم و یافته‌های فوق محتمل‌ترین
-    درگیری عروقی کدام است؟`,
-
-    options: [
-
-        `شاخه فوقانی شریان مغزی میانی
-        <span class="english">MCA</span>`,
-
-        `شریان مغزی خلفی
-        <span class="english">PCA</span>`,
-
-        `شریان کوروئیدال قدامی
-        <span class="english">Anterior Choroidal Artery</span>`,
-
-        `شاخه تحتانی شریان مغزی میانی
-        <span class="english">MCA</span>`
-
-    ],
-
-    correct: 2,
-
-    explanation:
-    `ترکیب همی‌پارزی، اختلال حسی و همی‌آنوبی
-    همونیموس در سمت مقابل، الگوی کلاسیک درگیری
-    <span class="english">Anterior Choroidal Artery</span>
-    است.`,
-
-    note:
-    `<span class="english">
-    Hemiparesis + Hemisensory loss + Homonymous hemianopia
-    </span>
-    را به نفع
-    <span class="english">Anterior Choroidal Artery</span>
-    به خاطر بسپارید.`,
-
-    trap:
-    `همی‌آنوبی به تنهایی می‌تواند شما را به سمت
-    <span class="english">PCA</span> هدایت کند،
-    اما همراهی آن با همی‌پارزی و اختلال حسی
-    سرنخ مهمی به نفع
-    <span class="english">Anterior Choroidal Artery</span>
-    است.`
-},
-
-
-
-/* =====================================================
-   سوال ۲
-===================================================== */
-
-{
-    source: "تهران ۹۳",
-
-    question:
-    `در سکته مغزی همراه با سرگیجه و کاهش شنوایی
-    یک طرفه احتمال درگیری کدام یک از شریان‌های
-    زیر بیشتر است؟`,
-
-    options: [
-
-        `<span class="english">PCA</span>`,
-
-        `<span class="english">
-        Anterior Inferior Cerebellar Artery
-        (AICA)
-        </span>`,
-
-        `<span class="english">
-        Posterior Inferior Cerebellar Artery
-        (PICA)
-        </span>`,
-
-        `<span class="english">
-        Vertebral Artery
-        </span>`
-
-    ],
-
-    correct: 1,
-
-    explanation:
-    `سرگیجه همراه با کاهش شنوایی یک‌طرفه،
-    به‌خصوص در زمینه سکته گردش خون خلفی،
-    سرنخ مهمی برای درگیری
-    <span class="english">AICA</span>
-    است.`,
-
-    note:
-    `<span class="english">
-    Vertigo + Ipsilateral Hearing Loss
-    </span>
-    را به نفع
-    <span class="english">AICA</span>
-    به خاطر بسپارید.`,
-
-    trap:
-    `درگیری <span class="english">PICA</span>
-    بیشتر با سندرم لترال مدولاری مطرح است،
-    در حالی که کاهش شنوایی یک‌طرفه سرنخ
-    مهم‌تری برای <span class="english">AICA</span>
-    محسوب می‌شود.`
-},
-
-
-
-/* =====================================================
-   سوال ۳
-===================================================== */
-
-{
-    source: "تهران ۹۳",
-
-    question:
-    `بیمار ۶۰ ساله دیابتی با علائم اختلال سطحی
-    و عمقی سمت راست بدن و صورت همراه با پارزی خفیف
-    در همین سمت مراجعه کرده است.
-    با توجه به علائم کلینیکی انسداد کدام شریان
-    زیر محتمل‌تر است؟`,
-
-    options: [
-
-        `<span class="english">Interpeduncular</span>`,
-
-        `<span class="english">Thalamoperforating</span>`,
-
-        `<span class="english">Thalamogeniculate</span>`,
-
-        `<span class="english">Anterior Choroidal</span>`
-
-    ],
-
-    correct: 2,
-
-    explanation:
-    `درگیری تالاموس می‌تواند باعث اختلال حس سطحی
-    و عمقی در صورت و بدن سمت مقابل شود.
-    در این سؤال پاسخ مورد انتظار
-    <span class="english">Thalamogeniculate</span>
-    است.`,
-
-    note:
-    `درگیری تالاموس را در بیمار دارای
-    <span class="english">Contralateral Hemisensory Loss</span>
-    در نظر داشته باشید.`,
-
-    trap:
-    `وجود پارزی خفیف ممکن است باعث شود
-    <span class="english">Anterior Choroidal</span>
-    به ذهن برسد؛ اما الگوی غالب حسی و درگیری
-    صورت و بدن، سؤال را به سمت تالاموس هدایت می‌کند.`
-},
-
-
-
-/* =====================================================
-   سوال ۴
-===================================================== */
-
-{
-    source: "تهران ۹۳",
-
-    question:
-    `کدام ژن با آمیلوئید آنژیوپاتی مرتبط است؟`,
-
-    options: [
-
-        `<span class="english">APOE2</span>`,
-
-        `<span class="english">APOE4</span>`,
-
-        `<span class="english">PARK7</span>`,
-
-        `<span class="english">PARK2</span>`
-
-    ],
-
-    /* پاسخ رسمی آزمون */
-    correct: 1,
-
-    explanation:
-    `طبق پاسخنامه آزمون تهران ۹۳،
-    پاسخ صحیح <span class="english">APOE4</span>
-    است. <span class="english">APOE4</span>
-    یکی از آلل‌های مهم مرتبط با
-    <span class="english">
-    Cerebral Amyloid Angiopathy
-    </span>
-    و رسوب آمیلوئید در عروق مغزی است.`,
-
-    note:
-    `<span class="english">APOE4</span>
-    را در ارتباط با
-    <span class="english">
-    Cerebral Amyloid Angiopathy
-    </span>
-    به خاطر بسپارید.`,
-
-    trap:
-    `<span class="english">APOE2</span>
-    نیز از نظر پاتولوژیک با بیماری ارتباطاتی دارد،
-    اما طبق کلید رسمی این سؤال،
-    پاسخ <span class="english">APOE4</span> است.`
-},
-
-
-
-/* =====================================================
-   سوال ۵
-===================================================== */
-
-{
-    source: "تهران ۹۳",
-
-    question:
-    `بیماری با علائم یک ساعته همی‌پارزی گذرا مراجعه می‌کند.
-    به نظر شما کدام یک از مناطق زیر منشاء ایسکمیک
-    کمتری می‌باشد؟`,
-
-    options: [
-
-        `آمبولی با منشاء قلبی`,
-
-        `آمبولی با منشاء آئورت`,
-
-        `آمبولی با منشاء کاروتید`,
-
-        `آمبولی با منشاء شریان مغز میانی`
-
-    ],
-
-    correct: 3,
-
-    explanation:
-    `در این سؤال، شریان مغزی میانی بیشتر به عنوان
-    محل درگیری و گیر افتادن آمبولی مطرح است
-    و در مقایسه با قلب، آئورت و کاروتید،
-    منشاء کلاسیک آمبولی محسوب نمی‌شود.`,
-
-    note:
-    `قلب، آئورت و شریان‌های بزرگ گردنی
-    از منابع مهم آمبولی شریانی هستند.`,
-
-    trap:
-    `منبع آمبولی را با محل گیر افتادن آمبولی
-    اشتباه نکنید. <span class="english">MCA</span>
-    معمولاً محل درگیری دیستال است.`
-},
-
-
-
-/* =====================================================
-   سوال ۶
-===================================================== */
-
-{
-    source: "تهران ۹۳",
-
-    question:
-    `خانم ۵۰ ساله دیابتی با گذشت ۶ ساعت و با تشخیص
-    استروک مراجعه می‌کند. در ارزیابی انسداد شریان
-    مغز میانی دیده می‌شود. کدام روش درمانی برای
-    نامبرده ارجح است؟`,
-
-    options: [
-
-        `تزریق ترومبولیتیک وریدی`,
-
-        `تزریق ترومبولیتیک شریانی`,
-
-        `تزریق ترومبولیتیک شریانی و استنت`,
-
-        `درمان با آسپیرین و پلاویکس`
-
-    ],
-
-    /* پاسخ رسمی آزمون */
-    correct: 3,
-
-    explanation:
-    `طبق پاسخنامه آزمون تهران ۹۳،
-    با توجه به گذشت ۶ ساعت از شروع علائم،
-    پاسخ صحیح گزینه D یعنی درمان با
-    آسپیرین و پلاویکس اعلام شده است.`,
-
-    note:
-    `در این بانک سؤال، برای سؤالات آزمونی قدیمی،
-    کلید رسمی همان آزمون ملاک پاسخ صحیح است.`,
-
-    trap:
-    `در تفسیر این سؤال باید بین پاسخ مورد انتظار
-    آزمون سال ۹۳ و رویکردهای امروزی درمان
-    سکته مغزی تفاوت قائل شد.`
-},
-
-
-
-/* =====================================================
-   سوال ۷
-===================================================== */
-
-{
-    source: "تهران ۹۳",
-
-    question:
-    `بیمار ۴۵ ساله با علائم همی‌پارزی سمت راست
-    با دیزآرتری همراه با درد گردن، پتوز و میوز
-    سمت چپ مراجعه نموده است. به نظر شما چه عامل
-    عروقی در این بیمار مطرح است؟`,
-
-    options: [
-
-        `<span class="english">
-        Fibromuscular Dysplasia
-        </span>`,
-
-        `<span class="english">
-        Giant Cell Arteritis
-        </span>`,
-
-        `<span class="english">
-        Takayasu Arteritis
-        </span>`,
-
-        `<span class="english">
-        Carotid Dissection
-        </span>`
-
-    ],
-
-    correct: 3,
-
-    explanation:
-    `درد گردن همراه با پتوز و میوز
-    و ایجاد <span class="english">Horner Syndrome</span>
-    در یک فرد نسبتاً جوان، سرنخ مهمی برای
-    <span class="english">Carotid Dissection</span>
-    است.`,
-
-    note:
-    `<span class="english">
-    Neck Pain + Partial Horner Syndrome
-    </span>
-    را به عنوان سرنخ مهم دیسکشن کاروتید
-    به خاطر بسپارید.`,
-
-    trap:
-    `درد گردن و <span class="english">Horner Syndrome</span>
-    را در بیمار جوان با سکته ایسکمیک نباید نادیده گرفت.`
-},
-
-
-
-/* =====================================================
-   سوال ۸
-===================================================== */
-
-{
-    source: "تهران ۹۳",
-
-    question:
-    `خانم ۲۸ ساله‌ای به علت درد و ضعف در اندام فوقانی
-    راست به دنبال کار کردن مراجعه کرده است و پالس
-    شریان براکیال کاهش یافته است. بر اساس بیشترین
-    تشخیص احتمالی کدام درمان را پیشنهاد می‌کنید؟`,
-
-    options: [
-
-        `آسپرین`,
-
-        `وارفارین`,
-
-        `پردنیزولون`,
-
-        `پنتوکسی‌فیلین`
-
-    ],
-
-    correct: 2,
-
-    explanation:
-    `با توجه به سن پایین، درگیری عروق اندام فوقانی
-    و کاهش نبض، اگر تشخیص مورد نظر
-    <span class="english">Takayasu Arteritis</span>
-    باشد، کورتیکواستروئید مانند پردنیزولون
-    درمان اصلی بیماری فعال است.`,
-
-    note:
-    `<span class="english">Takayasu Arteritis</span>
-    را در زنان جوان با درگیری عروق بزرگ
-    و کاهش یا عدم تقارن نبض‌ها در نظر داشته باشید.`,
-
-    trap:
-    `درمان ضدپلاکتی به تنهایی درمان بیماری
-    التهابی زمینه‌ای نیست؛ در بیماری فعال،
-    سرکوب التهاب اهمیت اصلی دارد.`
-},
-
-
-
-/* =====================================================
-   سوال ۹
-===================================================== */
-
-{
-    source: "تهران ۹۳",
-
-    question:
-    `در خونریزی مغزی ناشی از وارفارین همراه با
-    <span class="english">INR</span> بالا،
-    کدام داروی زیر سریع‌تر زمان
-    <span class="english">INR</span> را اصلاح می‌کند؟`,
-
-    options: [
-
-        `<span class="english">
-        Recombinant Activated Factor VII
-        </span>`,
-
-        `<span class="english">FFP</span>`,
-
-        `<span class="english">PCC</span>`,
-
-        `<span class="english">Vitamin K</span>`
-
-    ],
-
-    correct: 2,
-
-    explanation:
-    `<span class="english">PCC</span>
-    باعث جایگزینی سریع فاکتورهای انعقادی
-    وابسته به ویتامین K می‌شود و در خونریزی
-    شدید ناشی از وارفارین برای اصلاح سریع
-    انعقاد به کار می‌رود.`,
-
-    note:
-    `<span class="english">
-    Warfarin-associated ICH
-    → PCC + IV Vitamin K
-    </span>`,
-
-    trap:
-    `<span class="english">Vitamin K</span>
-    برای برگشت پایدار اثر وارفارین ضروری است،
-    اما اثر آن به سرعت <span class="english">PCC</span>
-    نیست.`
-},
-
-
-
-/* =====================================================
-   سوال ۱۰
-===================================================== */
-
-{
-    source: "تهران ۹۳",
-
-    question:
-    `بیمار خانم ۲۵ ساله با علائم آنسفالوپاتی،
-    <span class="english">Confusion</span>،
-    اختلال رفتاری و سردرد مراجعه کرده است.
-    در معاینات نورولوژیک علاوه بر موارد فوق،
-    تاری دید دوطرفه و آتاکسی نیز دارد.
-
-    در معاینه چشم‌پزشکی و آنژیوگرافی فلورسئین
-    علائم <span class="english">BRAO</span> با درگیری
-    قابل توجه <span class="english">Corpus Callosum</span>
-    که نمای <span class="english">Snowball Appearance</span>
-    را نشان می‌دهد.
-
-    با توجه به تشخیص احتمالی،
-    همه موارد زیر صحیح است غیر از؟`,
-
-    options: [
-
-        `یک <span class="english">
-        Immune-mediated Endotheliopathy
-        </span> می‌باشد.`,
-
-        `<span class="english">
-        IVIG
-        </span> تراپی می‌تواند در درمان آن کمک‌کننده باشد.`,
-
-        `کاهش شنوایی به طور شایعی ظاهر می‌شود.`,
-
-        `در بررسی <span class="english">CSF</span>
-        اغلب پلئوسیتوز با پروتئین نرمال دارد.`
-
-    ],
-
-    correct: 3,
-
-    explanation:
-    `شرح حال به شدت به نفع
-    <span class="english">Susac Syndrome</span>
-    است.
-
-    سه جزء کلاسیک این بیماری عبارت‌اند از:
-    <br>
-    <span class="english">
-    Encephalopathy
-    </span>
-    +
-    <span class="english">
-    Branch Retinal Artery Occlusions
-    </span>
-    +
-    <span class="english">
-    Sensorineural Hearing Loss
-    </span>
-
-    ضایعات <span class="english">Snowball</span>
-    در <span class="english">Corpus Callosum</span>
-    نیز بسیار تیپیک هستند.
-
-    بنابراین گزینه D نادرست است.`,
-
-    note:
-    `<span class="english">
-    Susac Syndrome =
-    Brain + Retina + Inner Ear
-    </span>`,
-
-    trap:
-    `وجود همزمان آنسفالوپاتی، انسداد شریان‌های شبکیه
-    و کاهش شنوایی را به عنوان سه‌گانه
-    <span class="english">Susac</span>
-    به خاطر بسپارید.`
-}
-
-];
-
-
-
-/* =====================================================
-   متغیرهای آزمون
-===================================================== */
-
-let currentQuestion = 0;
+let currentQuestionIndex = 0;
 
 let answered = false;
 
 
-
 /* =====================================================
-   ساخت سرفصل‌ها
+   شروع یک مبحث
 ===================================================== */
 
-function createTopics() {
+function startTopic(topic) {
 
-    const list =
-        document.getElementById("topicsList");
+    currentTopic = topic;
 
-    list.innerHTML = "";
+    currentQuestionIndex = 0;
 
-    topics.forEach(function(topic, index) {
-
-        const button =
-            document.createElement("button");
-
-        button.className = "topic";
-
-        button.innerHTML =
-
-            '<span class="topic-number">' +
-            (index + 1) +
-            '.</span>' +
-
-            '<span class="english">' +
-            topic +
-            '</span>';
-
-        button.onclick = function() {
-
-            openTopic(index);
-
-        };
-
-        list.appendChild(button);
-
-    });
-
-}
+    answered = false;
 
 
+    /*
+       در حال حاضر فقط بانک سوالات
+       Cerebrovascular Diseases
+       را داریم.
+    */
 
-/* =====================================================
-   باز کردن فصل
-===================================================== */
+    if (topic === "Cerebrovascular Diseases") {
 
-function openTopic(index) {
+        currentQuestions = cerebrovascularQuestions;
 
-    document.getElementById("home")
-        .style.display = "none";
+    }
 
-    document.getElementById("chapterPage")
-        .style.display = "none";
+    else {
 
-    document.getElementById("quizPage")
-        .style.display = "none";
-
-
-    if (index === 0) {
-
-        currentQuestion = 0;
-
-        answered = false;
-
-        document.getElementById("quizPage")
-            .style.display = "block";
-
-        showQuestion();
-
-        return;
+        currentQuestions = [];
 
     }
 
 
-    document.getElementById("chapterPage")
-        .style.display = "block";
+    document.getElementById("topicsPage").style.display = "none";
 
-    document.getElementById("chapterTitle")
-        .innerHTML =
+    document.getElementById("examPage").style.display = "block";
 
-        '<span class="english">' +
-        topics[index] +
-        '</span>';
 
-    document.getElementById("chapterContent")
-        .innerHTML = `
+    document.getElementById("topicTitle").textContent = topic;
 
-        <div class="coming-soon">
 
-            بانک سؤالات این فصل
-            در مرحله بعد اضافه خواهد شد.
+    if (currentQuestions.length === 0) {
 
-        </div>
+        document.getElementById("questionNumber").textContent = "";
 
-    `;
+        document.getElementById("questionSource").textContent = "";
+
+        document.getElementById("questionText").innerHTML =
+            "در حال حاضر سؤالی برای این مبحث وارد نشده است.";
+
+        document.getElementById("optionsContainer").innerHTML = "";
+
+        document.getElementById("submitButton").style.display = "none";
+
+        document.getElementById("nextButton").style.display = "none";
+
+        document.getElementById("result").style.display = "none";
+
+        return;
+    }
+
+
+    document.getElementById("submitButton").style.display = "inline-block";
+
+    showQuestion();
 
 }
-
 
 
 /* =====================================================
@@ -1138,106 +611,71 @@ function openTopic(index) {
 
 function showQuestion() {
 
-    const q =
-        cerebrovascularQuestions[currentQuestion];
-
     answered = false;
 
-    const area =
-        document.getElementById("questionArea");
 
-    let html = "";
-
-
-    html += `
-
-        <div class="progress">
-
-            سؤال ${currentQuestion + 1}
-            از
-            ${cerebrovascularQuestions.length}
-
-        </div>
+    const question =
+        currentQuestions[currentQuestionIndex];
 
 
-        <div class="question">
+    document.getElementById("questionNumber").textContent =
+        "سؤال " + (currentQuestionIndex + 1)
+        + " از " + currentQuestions.length;
 
-            <strong>
-                سؤال ${currentQuestion + 1}
-            </strong>
 
-            <span class="question-source">
-                (${q.source})
+    document.getElementById("questionSource").textContent =
+        question.source
+        ? "(" + question.source + ")"
+        : "";
+
+
+    document.getElementById("questionText").innerHTML =
+        question.question;
+
+
+    const optionsContainer =
+        document.getElementById("optionsContainer");
+
+
+    optionsContainer.innerHTML = "";
+
+
+    question.options.forEach(function(option, index) {
+
+        const label =
+            document.createElement("label");
+
+
+        label.className = "option";
+
+
+        label.innerHTML = `
+
+            <input
+                type="radio"
+                name="answer"
+                value="${index}">
+
+            <span>
+                ${String.fromCharCode(65 + index)})
+                ${option}
             </span>
 
-            <p class="question-text">
-
-                ${q.question}
-
-            </p>
-
-        </div>
-
-    `;
-
-
-    q.options.forEach(function(option, index) {
-
-        html += `
-
-            <label
-                class="option"
-                id="option-${index}">
-
-                <input
-                    type="radio"
-                    name="answer"
-                    value="${index}">
-
-                <span class="option-text">
-
-                    ${String.fromCharCode(65 + index)})
-                    ${option}
-
-                </span>
-
-            </label>
-
         `;
+
+
+        optionsContainer.appendChild(label);
 
     });
 
 
-    html += `
+    document.getElementById("result").style.display = "none";
 
-        <button
-            class="submit-button"
-            onclick="checkAnswer()">
+    document.getElementById("nextButton").style.display = "none";
 
-            ثبت پاسخ
-
-        </button>
-
-
-        <div
-            id="result"
-            class="result">
-        </div>
-
-
-        <div
-            id="nextArea"
-            style="text-align:center;">
-
-        </div>
-
-    `;
-
-
-    area.innerHTML = html;
+    document.getElementById("submitButton").style.display = "inline-block";
 
 }
-
 
 
 /* =====================================================
@@ -1250,228 +688,116 @@ function checkAnswer() {
         return;
     }
 
+
     const selected =
         document.querySelector(
             'input[name="answer"]:checked'
         );
 
+
     if (!selected) {
 
-        alert(
-            "لطفاً ابتدا یک گزینه را انتخاب کنید."
-        );
+        alert("لطفاً ابتدا یک گزینه را انتخاب کنید.");
 
         return;
-
     }
+
 
     answered = true;
 
 
-    const selectedValue =
+    const selectedIndex =
         Number(selected.value);
 
-    const q =
-        cerebrovascularQuestions[currentQuestion];
+
+    const question =
+        currentQuestions[currentQuestionIndex];
 
 
-    /* علامت گذاری پاسخ صحیح */
-
-    const correctOption =
-        document.getElementById(
-            "option-" + q.correct
-        );
-
-    correctOption.classList.add(
-        "correct-option"
-    );
+    const optionLabels =
+        document.querySelectorAll(".option");
 
 
-    /* علامت گذاری پاسخ اشتباه */
+    optionLabels.forEach(function(label, index) {
 
-    if (selectedValue !== q.correct) {
+        label.style.pointerEvents = "none";
 
-        const wrongOption =
-            document.getElementById(
-                "option-" + selectedValue
-            );
 
-        wrongOption.classList.add(
-            "wrong-option"
-        );
+        if (index === question.correct) {
 
-    }
+            label.classList.add("correct-option");
+
+        }
+
+
+        if (
+            index === selectedIndex &&
+            selectedIndex !== question.correct
+        ) {
+
+            label.classList.add("wrong-option");
+
+        }
+
+    });
 
 
     const result =
         document.getElementById("result");
 
 
-    if (selectedValue === q.correct) {
+    const resultTitle =
+        document.getElementById("resultTitle");
 
-        result.className =
-            "result correct";
 
-        result.innerHTML = `
+    if (selectedIndex === question.correct) {
 
-            <strong>
-                ✅ پاسخ صحیح است.
-            </strong>
+        result.className = "correct";
 
-            <br><br>
-
-            <strong>
-                پاسخ صحیح:
-            </strong>
-
-            ${String.fromCharCode(65 + q.correct)})
-            ${q.options[q.correct]}
-
-            <br><br>
-
-            <strong>
-                توضیح:
-            </strong>
-
-            <br>
-
-            ${q.explanation}
-
-            <div class="exam-note">
-
-                <strong>
-                    💡 نکته آزمونی:
-                </strong>
-
-                <br>
-
-                ${q.note}
-
-            </div>
-
-            <div class="exam-trap">
-
-                <strong>
-                    ⚠️ تله آزمونی:
-                </strong>
-
-                <br>
-
-                ${q.trap}
-
-            </div>
-
-        `;
+        resultTitle.innerHTML =
+            "✅ پاسخ صحیح است.";
 
     }
 
     else {
 
-        result.className =
-            "result wrong";
+        result.className = "wrong";
 
-        result.innerHTML = `
-
-            <strong>
-                ❌ پاسخ نادرست است.
-            </strong>
-
-            <br><br>
-
-            <strong>
-                پاسخ صحیح:
-            </strong>
-
-            ${String.fromCharCode(65 + q.correct)})
-            ${q.options[q.correct]}
-
-            <br><br>
-
-            <strong>
-                توضیح:
-            </strong>
-
-            <br>
-
-            ${q.explanation}
-
-            <div class="exam-note">
-
-                <strong>
-                    💡 نکته آزمونی:
-                </strong>
-
-                <br>
-
-                ${q.note}
-
-            </div>
-
-            <div class="exam-trap">
-
-                <strong>
-                    ⚠️ تله آزمونی:
-                </strong>
-
-                <br>
-
-                ${q.trap}
-
-            </div>
-
-        `;
+        resultTitle.innerHTML =
+            "❌ پاسخ نادرست است.";
 
     }
+
+
+    document.getElementById("explanationBox").innerHTML =
+        "<strong>توضیح:</strong><br>" +
+        (question.explanation || "");
+
+
+    document.getElementById("noteBox").innerHTML =
+        "<strong>نکته آزمونی:</strong><br>" +
+        (question.note || "");
+
+
+    document.getElementById("trapBox").innerHTML =
+        "<strong>تله آزمونی:</strong><br>" +
+        (question.trap || "");
 
 
     result.style.display = "block";
 
 
-    /* =========================
-       دکمه سؤال بعدی
-    ========================= */
-
-    const nextArea =
-        document.getElementById("nextArea");
+    document.getElementById("submitButton").style.display = "none";
 
 
-    if (
-        currentQuestion <
-        cerebrovascularQuestions.length - 1
-    ) {
+    if (currentQuestionIndex < currentQuestions.length - 1) {
 
-        nextArea.innerHTML = `
-
-            <button
-                class="next-button"
-                onclick="nextQuestion()">
-
-                سؤال بعدی
-
-            </button>
-
-        `;
-
-    }
-
-    else {
-
-        nextArea.innerHTML = `
-
-            <button
-                class="next-button"
-                onclick="finishQuiz()">
-
-                پایان آزمون
-
-            </button>
-
-        `;
+        document.getElementById("nextButton").style.display =
+            "inline-block";
 
     }
 
 }
-
 
 
 /* =====================================================
@@ -1480,58 +806,37 @@ function checkAnswer() {
 
 function nextQuestion() {
 
-    currentQuestion++;
+    if (
+        currentQuestionIndex <
+        currentQuestions.length - 1
+    ) {
 
-    showQuestion();
+        currentQuestionIndex++;
 
-}
+        showQuestion();
 
-
-
-/* =====================================================
-   پایان آزمون
-===================================================== */
-
-function finishQuiz() {
-
-    alert(
-        "این مجموعه ۱۰ سؤالی به پایان رسید."
-    );
-
-    goHome();
+    }
 
 }
 
 
-
 /* =====================================================
-   بازگشت به صفحه اصلی
+   بازگشت به سرفصل ها
 ===================================================== */
 
-function goHome() {
+function backToTopics() {
 
-    document.getElementById("home")
-        .style.display = "block";
+    document.getElementById("examPage").style.display = "none";
 
-    document.getElementById("chapterPage")
-        .style.display = "none";
+    document.getElementById("topicsPage").style.display = "block";
 
-    document.getElementById("quizPage")
-        .style.display = "none";
+    currentQuestions = [];
 
-    currentQuestion = 0;
+    currentQuestionIndex = 0;
 
-    answered = false;
+    document.getElementById("result").style.display = "none";
 
 }
-
-
-
-/* =====================================================
-   شروع برنامه
-===================================================== */
-
-createTopics();
 
 </script>
 
