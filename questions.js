@@ -1,480 +1,531 @@
 const cerebrovascularQuestions = [
 
-{
-    source: "تهران ۹۳",
-
-    question:
-    `بیمار خانم ۵۶ ساله با سابقه دیابت و هایپرتنشن
-    که از روز گذشته به طور ناگهانی دچار ضعف نیمه راست
-    بدن در حد دوپنجم در اندام فوقانی و تحتانی
-    به همراه کاهش حس سطحی همان سمت و اختلال میدان
-    بینایی به صورت همونیموس همی آنوپی سمت راست گشته است.
-    سطح و محتوای هوشیاری و تکلم نرمال است.
-    با توجه به علائم و یافته‌های فوق محتمل‌ترین
-    درگیری عروقی کدام است؟`,
-
-    options: [
-
-        `شاخه فوقانی شریان مغزی میانی
-        <span class="english">MCA</span>`,
-
-        `شریان مغزی خلفی
-        <span class="english">PCA</span>`,
-
-        `شریان کوروئیدال قدامی
-        <span class="english">Anterior Choroidal Artery</span>`,
+    {
+        source: "تهران ۹۳",
+
+        question: `
+        بیمار خانم ۵۶ ساله با سابقه دیابت و هایپرتنشن که از روز گذشته
+        به طور ناگهانی دچار ضعف نیمه راست بدن در حد دوپنجم در اندام
+        فوقانی و تحتانی به همراه کاهش حس سطحی همان سمت و اختلال میدان
+        بینایی به صورت همونیموس همی آنوپی سمت راست گشته است.
+        سطح و محتوای هوشیاری و تکلم نرمال است.
+        با توجه به علائم و یافته‌های فوق محتمل‌ترین درگیری عروقی کدام است؟
+        `,
+
+        options: [
+            `شاخه فوقانی شریان مغزی میانی
+            <span class="english">MCA</span>`,
+
+            `شریان مغزی خلفی
+            <span class="english">PCA</span>`,
+
+            `شریان کوروئیدال قدامی
+            <span class="english">Anterior Choroidal Artery</span>`,
+
+            `شاخه تحتانی شریان مغزی میانی
+            <span class="english">MCA</span>`
+        ],
+
+        correct: 2,
+
+        explanation: `
+        ترکیب همی‌پارزی، اختلال حسی و همی‌آنوبی همونیموس
+        در سمت مقابل، الگوی کلاسیک درگیری
+        <span class="english">Anterior Choroidal Artery</span>
+        است.
+        `,
+
+        note: `
+        <span class="english">
+        Hemiparesis + Hemisensory Loss + Homonymous Hemianopia
+        </span>
+        را به نفع
+        <span class="english">Anterior Choroidal Artery</span>
+        به خاطر بسپارید.
+        `,
+
+        trap: `
+        همی‌آنوبی به تنهایی می‌تواند شما را به سمت
+        <span class="english">PCA</span>
+        هدایت کند، اما همراهی آن با همی‌پارزی و اختلال حسی
+        سرنخ مهمی به نفع
+        <span class="english">Anterior Choroidal Artery</span>
+        است.
+        `,
+
+        reference: `
+        منابع استاندارد نورولوژی عروقی و آناتومی عروق مغزی
+        `
+    },
+
+
+    {
+        source: "تهران ۹۳",
+
+        question: `
+        در سکته مغزی همراه با سرگیجه و کاهش شنوایی یک طرفه
+        احتمال درگیری کدام یک از شریان‌های زیر بیشتر است؟
+        `,
+
+        options: [
+            `<span class="english">PCA</span>`,
+
+            `<span class="english">
+            Anterior Inferior Cerebellar Artery (AICA)
+            </span>`,
+
+            `<span class="english">
+            Posterior Inferior Cerebellar Artery (PICA)
+            </span>`,
+
+            `<span class="english">
+            Vertebral Artery
+            </span>`
+        ],
+
+        correct: 1,
+
+        explanation: `
+        سرگیجه همراه با کاهش شنوایی یک‌طرفه،
+        به‌خصوص در زمینه سکته گردش خون خلفی،
+        سرنخ مهمی برای درگیری
+        <span class="english">AICA</span>
+        است.
+        `,
+
+        note: `
+        <span class="english">
+        Vertigo + Ipsilateral Hearing Loss → AICA
+        </span>
+        `,
+
+        trap: `
+        درگیری <span class="english">PICA</span>
+        بیشتر با سندرم لترال مدولاری مطرح است،
+        در حالی که کاهش شنوایی یک‌طرفه سرنخ مهمی
+        برای <span class="english">AICA</span> محسوب می‌شود.
+        `,
 
-        `شاخه تحتانی شریان مغزی میانی
-        <span class="english">MCA</span>`
+        reference: `
+        منابع استاندارد نورولوژی عروقی و سندرم‌های گردش خون خلفی
+        `
+    },
 
-    ],
 
-    correct: 2,
+    {
+        source: "تهران ۹۳",
 
-    explanation:
-    `ترکیب همی‌پارزی، اختلال حسی و همی‌آنوبی
-    همونیموس در سمت مقابل، الگوی کلاسیک درگیری
-    <span class="english">Anterior Choroidal Artery</span>
-    است.`,
+        question: `
+        بیمار ۶۰ ساله دیابتی با علائم اختلال سطحی و عمقی
+        سمت راست بدن و صورت همراه با پارزی خفیف در همین سمت
+        مراجعه کرده است. با توجه به علائم کلینیکی انسداد
+        کدام شریان زیر محتمل‌تر است؟
+        `,
 
-    note:
-    `<span class="english">
-    Hemiparesis + Hemisensory loss + Homonymous hemianopia
-    </span>
-    را به نفع
-    <span class="english">Anterior Choroidal Artery</span>
-    به خاطر بسپارید.`,
+        options: [
+            `<span class="english">Interpeduncular</span>`,
 
-    trap:
-    `همی‌آنوبی به تنهایی می‌تواند شما را به سمت
-    <span class="english">PCA</span> هدایت کند،
-    اما همراهی آن با همی‌پارزی و اختلال حسی
-    سرنخ مهمی به نفع
-    <span class="english">Anterior Choroidal Artery</span>
-    است.`
-},
+            `<span class="english">Thalamoperforating</span>`,
 
+            `<span class="english">Thalamogeniculate</span>`,
 
-{
-    source: "تهران ۹۳",
+            `<span class="english">Anterior Choroidal</span>`
+        ],
 
-    question:
-    `در سکته مغزی همراه با سرگیجه و کاهش شنوایی
-    یک طرفه احتمال درگیری کدام یک از شریان‌های
-    زیر بیشتر است؟`,
+        correct: 2,
 
-    options: [
+        explanation: `
+        درگیری تالاموس می‌تواند باعث اختلال حس سطحی
+        و عمقی در صورت و بدن سمت مقابل شود.
+        در این سؤال پاسخ مورد انتظار
+        <span class="english">Thalamogeniculate</span>
+        است.
+        `,
 
-        `<span class="english">PCA</span>`,
+        note: `
+        درگیری تالاموس را در بیمار دارای
+        <span class="english">Contralateral Hemisensory Loss</span>
+        در نظر داشته باشید.
+        `,
 
-        `<span class="english">
-        Anterior Inferior Cerebellar Artery (AICA)
-        </span>`,
+        trap: `
+        وجود پارزی خفیف ممکن است باعث شود
+        <span class="english">Anterior Choroidal</span>
+        به ذهن برسد؛ اما الگوی غالب حسی و درگیری
+        صورت و بدن، سؤال را به سمت تالاموس هدایت می‌کند.
+        `,
 
-        `<span class="english">
-        Posterior Inferior Cerebellar Artery (PICA)
-        </span>`,
+        reference: `
+        منابع استاندارد آناتومی عروقی تالاموس و نورولوژی عروقی
+        `
+    },
 
-        `<span class="english">
-        Vertebral Artery
-        </span>`
 
-    ],
+    {
+        source: "تهران ۹۳",
 
-    correct: 1,
+        question: `
+        کدام ژن با آمیلوئید آنژیوپاتی مرتبط است؟
+        `,
 
-    explanation:
-    `سرگیجه همراه با کاهش شنوایی یک‌طرفه،
-    به‌خصوص در زمینه سکته گردش خون خلفی،
-    سرنخ مهمی برای درگیری
-    <span class="english">AICA</span>
-    است.`,
+        options: [
+            `<span class="english">APOE2</span>`,
 
-    note:
-    `<span class="english">
-    Vertigo + Ipsilateral Hearing Loss
-    </span>
-    را به نفع
-    <span class="english">AICA</span>
-    به خاطر بسپارید.`,
+            `<span class="english">APOE4</span>`,
 
-    trap:
-    `درگیری <span class="english">PICA</span>
-    بیشتر با سندرم لترال مدولاری مطرح است،
-    در حالی که کاهش شنوایی یک‌طرفه سرنخ
-    مهم‌تری برای <span class="english">AICA</span>
-    محسوب می‌شود.`
-},
+            `<span class="english">PARK7</span>`,
 
+            `<span class="english">PARK2</span>`
+        ],
 
-{
-    source: "تهران ۹۳",
+        correct: 1,
 
-    question:
-    `بیمار ۶۰ ساله دیابتی با علائم اختلال سطحی
-    و عمقی سمت راست بدن و صورت همراه با پارزی خفیف
-    در همین سمت مراجعه کرده است.
-    با توجه به علائم کلینیکی انسداد کدام شریان
-    زیر محتمل‌تر است؟`,
+        explanation: `
+        طبق پاسخنامه آزمون تهران ۹۳،
+        پاسخ صحیح <span class="english">APOE4</span> است.
 
-    options: [
+        <span class="english">APOE4</span> با افزایش خطر
+        <span class="english">Cerebral Amyloid Angiopathy</span>
+        و بیماری آلزایمر ارتباط دارد.
+        `,
 
-        `<span class="english">Interpeduncular</span>`,
+        note: `
+        <span class="english">
+        APOE4 → Cerebral Amyloid Angiopathy
+        </span>
+        `,
 
-        `<span class="english">Thalamoperforating</span>`,
+        trap: `
+        در این سؤال پاسخنامه رسمی آزمون ملاک قرار گرفته است.
+        `,
 
-        `<span class="english">Thalamogeniculate</span>`,
+        reference: `
+        منابع نورولوژی عروقی و مطالعات ژنتیکی
+        Cerebral Amyloid Angiopathy
+        `
+    },
 
-        `<span class="english">Anterior Choroidal</span>`
 
-    ],
+    {
+        source: "تهران ۹۳",
 
-    correct: 2,
+        question: `
+        بیماری با علائم یک ساعته همی‌پارزی گذرا مراجعه می‌کند.
+        به نظر شما کدام یک از مناطق زیر منشاء ایسکمیک کمتری می‌باشد؟
+        `,
 
-    explanation:
-    `درگیری تالاموس می‌تواند باعث اختلال حس سطحی
-    و عمقی در صورت و بدن سمت مقابل شود.
-    در این سؤال پاسخ مورد انتظار
-    <span class="english">Thalamogeniculate</span>
-    است.`,
+        options: [
+            `آمبولی با منشاء قلبی`,
 
-    note:
-    `درگیری تالاموس را در بیمار دارای
-    <span class="english">Contralateral Hemisensory Loss</span>
-    در نظر داشته باشید.`,
+            `آمبولی با منشاء آئورت`,
 
-    trap:
-    `وجود پارزی خفیف ممکن است باعث شود
-    <span class="english">Anterior Choroidal</span>
-    به ذهن برسد؛ اما الگوی غالب حسی و درگیری
-    صورت و بدن، سؤال را به سمت تالاموس هدایت می‌کند.`
-},
+            `آمبولی با منشاء کاروتید`,
 
+            `آمبولی با منشاء شریان مغز میانی`
+        ],
 
-{
-    source: "تهران ۹۳",
+        correct: 3,
 
-    question:
-    `کدام ژن با آمیلوئید آنژیوپاتی مرتبط است؟`,
+        explanation: `
+        در این سؤال، قلب، آئورت و شریان کاروتید
+        به عنوان منابع بالقوه آمبولی مطرح هستند،
+        در حالی که <span class="english">MCA</span>
+        بیشتر محل گیر افتادن آمبولی است تا منشاء آن.
+        `,
 
-    options: [
+        note: `
+        منبع آمبولی را با محل گیر افتادن آمبولی اشتباه نکنید.
+        `,
 
-        `<span class="english">APOE2</span>`,
+        trap: `
+        <span class="english">MCA</span>
+        معمولاً محل درگیری آمبولی در گردش قدامی است
+        و نه منبع اصلی آمبولی.
+        `,
 
-        `<span class="english">APOE4</span>`,
+        reference: `
+        منابع استاندارد سکته مغزی و مکانیسم‌های ایسکمی مغزی
+        `
+    },
 
-        `<span class="english">PARK7</span>`,
 
-        `<span class="english">PARK2</span>`
+    {
+        source: "تهران ۹۳",
 
-    ],
+        question: `
+        خانم ۵۰ ساله دیابتی با گذشت ۶ ساعت و با تشخیص استروک مراجعه می‌کند.
+        در ارزیابی انسداد شریان مغز میانی دیده می‌شود.
+        کدام روش درمانی برای نامبرده ارجح است؟
+        `,
 
-    correct: 1,
+        options: [
+            `تزریق ترومبولیتیک وریدی`,
 
-    explanation:
-    `طبق پاسخنامه آزمون تهران ۹۳،
-    پاسخ صحیح <span class="english">APOE4</span>
-    است. <span class="english">APOE4</span>
-    یکی از آلل‌های مهم مرتبط با
-    <span class="english">Cerebral Amyloid Angiopathy</span>
-    و رسوب آمیلوئید در عروق مغزی است.`,
+            `تزریق ترومبولیتیک شریانی`,
 
-    note:
-    `<span class="english">APOE4</span>
-    را در ارتباط با
-    <span class="english">Cerebral Amyloid Angiopathy</span>
-    به خاطر بسپارید.`,
+            `تزریق ترومبولیتیک شریانی و استنت`,
 
-    trap:
-    `<span class="english">APOE2</span>
-    نیز از نظر پاتولوژیک با بیماری ارتباطاتی دارد،
-    اما طبق کلید رسمی این سؤال،
-    پاسخ <span class="english">APOE4</span> است.`
-},
+            `درمان با آسپیرین و پلاویکس`
+        ],
 
+        correct: 3,
 
-{
-    source: "تهران ۹۳",
+        explanation: `
+        طبق پاسخنامه آزمون تهران ۹۳،
+        با توجه به گذشت ۶ ساعت از شروع علائم،
+        پاسخ صحیح گزینه D یعنی درمان با آسپیرین و پلاویکس
+        اعلام شده است.
+        `,
 
-    question:
-    `بیماری با علائم یک ساعته همی‌پارزی گذرا مراجعه می‌کند.
-    به نظر شما کدام یک از مناطق زیر منشاء ایسکمیک
-    کمتری می‌باشد؟`,
+        note: `
+        در این بانک سؤال، برای سؤالات آزمونی قدیمی،
+        کلید رسمی همان آزمون ملاک پاسخ صحیح است.
+        `,
 
-    options: [
+        trap: `
+        توجه کنید که پاسخ این سؤال مربوط به
+        پاسخنامه آزمون سال ۹۳ است و ممکن است با
+        رویکردهای امروزی درمان سکته مغزی متفاوت باشد.
+        `,
 
-        `آمبولی با منشاء قلبی`,
+        reference: `
+        پاسخنامه آزمون تهران ۹۳؛
+        برای مقایسه با رویکرد امروزی، گایدلاین‌های
+        AHA/ASA مورد استفاده قرار گیرند.
+        `
+    },
 
-        `آمبولی با منشاء آئورت`,
 
-        `آمبولی با منشاء کاروتید`,
+    {
+        source: "تهران ۹۳",
 
-        `آمبولی با منشاء شریان مغز میانی`
+        question: `
+        بیمار ۴۵ ساله با علائم همی‌پارزی سمت راست با دیزآرتری
+        همراه با درد گردن، پتوز و میوز سمت چپ مراجعه نموده است.
+        به نظر شما چه عامل عروقی در این بیمار مطرح است؟
+        `,
 
-    ],
+        options: [
+            `<span class="english">Fibromuscular Dysplasia</span>`,
 
-    correct: 3,
+            `<span class="english">Giant Cell Arteritis</span>`,
 
-    explanation:
-    `در این سؤال، شریان مغزی میانی بیشتر به عنوان
-    محل درگیری و گیر افتادن آمبولی مطرح است
-    و در مقایسه با قلب، آئورت و کاروتید،
-    منشاء کلاسیک آمبولی محسوب نمی‌شود.`,
+            `<span class="english">Takayasu Arteritis</span>`,
 
-    note:
-    `قلب، آئورت و شریان‌های بزرگ گردنی
-    از منابع مهم آمبولی شریانی هستند.`,
+            `<span class="english">Carotid Dissection</span>`
+        ],
 
-    trap:
-    `منبع آمبولی را با محل گیر افتادن آمبولی
-    اشتباه نکنید. <span class="english">MCA</span>
-    معمولاً محل درگیری دیستال است.`
-},
+        correct: 3,
 
+        explanation: `
+        درد گردن همراه با پتوز و میوز و ایجاد
+        <span class="english">Horner Syndrome</span>
+        در یک فرد نسبتاً جوان، سرنخ مهمی برای
+        <span class="english">Carotid Dissection</span>
+        است.
+        `,
 
-{
-    source: "تهران ۹۳",
+        note: `
+        <span class="english">
+        Neck Pain + Partial Horner Syndrome
+        </span>
+        را به عنوان سرنخ مهم دیسکشن کاروتید
+        به خاطر بسپارید.
+        `,
 
-    question:
-    `خانم ۵۰ ساله دیابتی با گذشت ۶ ساعت و با تشخیص
-    استروک مراجعه می‌کند. در ارزیابی انسداد شریان
-    مغز میانی دیده می‌شود. کدام روش درمانی برای
-    نامبرده ارجح است؟`,
+        trap: `
+        درد گردن و <span class="english">Horner Syndrome</span>
+        را در بیمار جوان با سکته ایسکمیک نباید نادیده گرفت.
+        `,
 
-    options: [
+        reference: `
+        منابع استاندارد نورولوژی عروقی و دیسکشن شریان کاروتید
+        `
+    },
 
-        `تزریق ترومبولیتیک وریدی`,
 
-        `تزریق ترومبولیتیک شریانی`,
+    {
+        source: "تهران ۹۳",
 
-        `تزریق ترومبولیتیک شریانی و استنت`,
+        question: `
+        خانم ۲۸ ساله‌ای به علت درد و ضعف در اندام فوقانی راست
+        به دنبال کار کردن مراجعه کرده است و پالس شریان براکیال
+        کاهش یافته است. بر اساس بیشترین تشخیص احتمالی
+        کدام درمان را پیشنهاد می‌کنید؟
+        `,
 
-        `درمان با آسپیرین و پلاویکس`
+        options: [
+            `آسپرین`,
 
-    ],
+            `وارفارین`,
 
-    correct: 3,
+            `پردنیزولون`,
 
-    explanation:
-    `طبق پاسخنامه آزمون تهران ۹۳،
-    با توجه به گذشت ۶ ساعت از شروع علائم،
-    پاسخ صحیح گزینه D یعنی درمان با
-    آسپیرین و پلاویکس اعلام شده است.`,
+            `پنتوکسی‌فیلین`
+        ],
 
-    note:
-    `در این بانک سؤال، برای سؤالات آزمونی قدیمی،
-    کلید رسمی همان آزمون ملاک پاسخ صحیح است.`,
+        correct: 2,
 
-    trap:
-    `در تفسیر این سؤال باید بین پاسخ مورد انتظار
-    آزمون سال ۹۳ و رویکردهای امروزی درمان
-    سکته مغزی تفاوت قائل شد.`
-},
+        explanation: `
+        با توجه به سن پایین، درگیری عروق اندام فوقانی
+        و کاهش نبض، اگر تشخیص مورد نظر
+        <span class="english">Takayasu Arteritis</span>
+        باشد، کورتیکواستروئید مانند پردنیزولون
+        درمان اصلی بیماری فعال است.
+        `,
 
+        note: `
+        <span class="english">
+        Takayasu Arteritis
+        </span>
+        را در زنان جوان با درگیری عروق بزرگ
+        و کاهش یا عدم تقارن نبض‌ها در نظر داشته باشید.
+        `,
 
-{
-    source: "تهران ۹۳",
+        trap: `
+        درمان ضدپلاکتی به تنهایی درمان بیماری التهابی
+        زمینه‌ای نیست؛ در بیماری فعال، سرکوب التهاب
+        اهمیت اصلی دارد.
+        `,
 
-    question:
-    `بیمار ۴۵ ساله با علائم همی‌پارزی سمت راست
-    با دیزآرتری همراه با درد گردن، پتوز و میوز
-    سمت چپ مراجعه نموده است. به نظر شما چه عامل
-    عروقی در این بیمار مطرح است؟`,
+        reference: `
+        منابع استاندارد واسکولیت‌های عروق بزرگ
+        `
+    },
 
-    options: [
 
-        `<span class="english">Fibromuscular Dysplasia</span>`,
+    {
+        source: "تهران ۹۳",
 
-        `<span class="english">Giant Cell Arteritis</span>`,
+        question: `
+        در خونریزی مغزی ناشی از وارفارین همراه با
+        <span class="english">INR</span> بالا،
+        کدام داروی زیر سریع‌تر زمان
+        <span class="english">INR</span> را اصلاح می‌کند؟
+        `,
 
-        `<span class="english">Takayasu Arteritis</span>`,
+        options: [
+            `<span class="english">Recombinant Activated Factor VII</span>`,
 
-        `<span class="english">Carotid Dissection</span>`
+            `<span class="english">FFP</span>`,
 
-    ],
+            `<span class="english">PCC</span>`,
 
-    correct: 3,
+            `<span class="english">Vitamin K</span>`
+        ],
 
-    explanation:
-    `درد گردن همراه با پتوز و میوز
-    و ایجاد <span class="english">Horner Syndrome</span>
-    در یک فرد نسبتاً جوان، سرنخ مهمی برای
-    <span class="english">Carotid Dissection</span>
-    است.`,
+        correct: 2,
 
-    note:
-    `<span class="english">
-    Neck Pain + Partial Horner Syndrome
-    </span>
-    را به عنوان سرنخ مهم دیسکشن کاروتید
-    به خاطر بسپارید.`,
+        explanation: `
+        <span class="english">PCC</span>
+        باعث جایگزینی سریع فاکتورهای انعقادی وابسته
+        به ویتامین K می‌شود و در خونریزی شدید ناشی
+        از وارفارین برای اصلاح سریع انعقاد به کار می‌رود.
+        `,
 
-    trap:
-    `درد گردن و <span class="english">Horner Syndrome</span>
-    را در بیمار جوان با سکته ایسکمیک نباید نادیده گرفت.`
-},
+        note: `
+        <span class="english">
+        Warfarin-associated ICH → PCC + IV Vitamin K
+        </span>
+        `,
 
+        trap: `
+        <span class="english">Vitamin K</span>
+        برای برگشت پایدار اثر وارفارین ضروری است،
+        اما اثر آن به سرعت <span class="english">PCC</span>
+        نیست.
+        `,
 
-{
-    source: "تهران ۹۳",
+        reference: `
+        گایدلاین‌های مدیریت خونریزی مرتبط با وارفارین
+        و منابع استاندارد نورولوژی عروقی
+        `
+    },
 
-    question:
-    `خانم ۲۸ ساله‌ای به علت درد و ضعف در اندام فوقانی
-    راست به دنبال کار کردن مراجعه کرده است و پالس
-    شریان براکیال کاهش یافته است. بر اساس بیشترین
-    تشخیص احتمالی کدام درمان را پیشنهاد می‌کنید؟`,
 
-    options: [
+    {
+        source: "تهران ۹۳",
 
-        `آسپرین`,
+        question: `
+        بیمار خانم ۲۵ ساله با علائم آنسفالوپاتی،
+        <span class="english">Confusion</span>،
+        اختلال رفتاری و سردرد مراجعه کرده است.
 
-        `وارفارین`,
+        در معاینات نورولوژیک علاوه بر موارد فوق،
+        تاری دید دوطرفه و آتاکسی نیز دارد.
 
-        `پردنیزولون`,
+        در معاینه چشم‌پزشکی و آنژیوگرافی فلورسئین
+        علائم <span class="english">BRAO</span>
+        با درگیری قابل توجه
+        <span class="english">Corpus Callosum</span>
+        که نمای <span class="english">Snowball Appearance</span>
+        را نشان می‌دهد.
 
-        `پنتوکسی‌فیلین`
+        با توجه به تشخیص احتمالی،
+        همه موارد زیر صحیح است غیر از؟
+        `,
 
-    ],
+        options: [
+            `یک <span class="english">Immune-mediated Endotheliopathy</span>
+            می‌باشد.`,
 
-    correct: 2,
+            `<span class="english">IVIG</span>
+            تراپی می‌تواند در درمان آن کمک‌کننده باشد.`,
 
-    explanation:
-    `با توجه به سن پایین، درگیری عروق اندام فوقانی
-    و کاهش نبض، اگر تشخیص مورد نظر
-    <span class="english">Takayasu Arteritis</span>
-    باشد، کورتیکواستروئید مانند پردنیزولون
-    درمان اصلی بیماری فعال است.`,
+            `کاهش شنوایی به طور شایعی ظاهر می‌شود.`,
 
-    note:
-    `<span class="english">Takayasu Arteritis</span>
-    را در زنان جوان با درگیری عروق بزرگ
-    و کاهش یا عدم تقارن نبض‌ها در نظر داشته باشید.`,
+            `در بررسی <span class="english">CSF</span>
+            اغلب پلئوسیتوز با پروتئین نرمال دارد.`
+        ],
 
-    trap:
-    `درمان ضدپلاکتی به تنهایی درمان بیماری
-    التهابی زمینه‌ای نیست؛ در بیماری فعال،
-    سرکوب التهاب اهمیت اصلی دارد.`
-},
+        correct: 3,
 
+        explanation: `
+        شرح حال به شدت به نفع
+        <span class="english">Susac Syndrome</span>
+        است.
 
-{
-    source: "تهران ۹۳",
+        سه جزء کلاسیک این بیماری عبارت‌اند از:
 
-    question:
-    `در خونریزی مغزی ناشی از وارفارین همراه با
-    <span class="english">INR</span> بالا،
-    کدام داروی زیر سریع‌تر زمان
-    <span class="english">INR</span> را اصلاح می‌کند؟`,
+        <br><br>
 
-    options: [
+        <span class="english">Encephalopathy</span>
+        +
 
-        `<span class="english">Recombinant Activated Factor VII</span>`,
+        <span class="english">Branch Retinal Artery Occlusions</span>
+        +
 
-        `<span class="english">FFP</span>`,
+        <span class="english">Sensorineural Hearing Loss</span>
 
-        `<span class="english">PCC</span>`,
+        <br><br>
 
-        `<span class="english">Vitamin K</span>`
+        ضایعات <span class="english">Snowball</span>
+        در <span class="english">Corpus Callosum</span>
+        نیز بسیار تیپیک هستند.
 
-    ],
+        بنابراین گزینه D نادرست است.
+        `,
 
-    correct: 2,
+        note: `
+        <span class="english">
+        Susac Syndrome = Brain + Retina + Inner Ear
+        </span>
+        `,
 
-    explanation:
-    `<span class="english">PCC</span>
-    باعث جایگزینی سریع فاکتورهای انعقادی
-    وابسته به ویتامین K می‌شود و در خونریزی
-    شدید ناشی از وارفارین برای اصلاح سریع
-    انعقاد به کار می‌رود.`,
+        trap: `
+        وجود همزمان آنسفالوپاتی، انسداد شریان‌های شبکیه
+        و کاهش شنوایی را به عنوان سه‌گانه
+        <span class="english">Susac</span>
+        به خاطر بسپارید.
+        `,
 
-    note:
-    `<span class="english">
-    Warfarin-associated ICH → PCC + IV Vitamin K
-    </span>`,
+        reference: `
+        منابع استاندارد Neuroimmunology و Susac Syndrome
+        `
+    },
 
-    trap:
-    `<span class="english">Vitamin K</span>
-    برای برگشت پایدار اثر وارفارین ضروری است،
-    اما اثر آن به سرعت <span class="english">PCC</span>
-    نیست.`
-},
 
-
-{
-    source: "تهران ۹۳",
-
-    question:
-    `بیمار خانم ۲۵ ساله با علائم آنسفالوپاتی،
-    <span class="english">Confusion</span>،
-    اختلال رفتاری و سردرد مراجعه کرده است.
-    در معاینات نورولوژیک علاوه بر موارد فوق،
-    تاری دید دوطرفه و آتاکسی نیز دارد.
-
-    در معاینه چشم‌پزشکی و آنژیوگرافی فلورسئین
-    علائم <span class="english">BRAO</span> با درگیری
-    قابل توجه <span class="english">Corpus Callosum</span>
-    که نمای <span class="english">Snowball Appearance</span>
-    را نشان می‌دهد.
-
-    با توجه به تشخیص احتمالی،
-    همه موارد زیر صحیح است غیر از؟`,
-
-    options: [
-
-        `یک <span class="english">Immune-mediated Endotheliopathy</span>
-        می‌باشد.`,
-
-        `<span class="english">IVIG</span>
-        تراپی می‌تواند در درمان آن کمک‌کننده باشد.`,
-
-        `کاهش شنوایی به طور شایعی ظاهر می‌شود.`,
-
-        `در بررسی <span class="english">CSF</span>
-        اغلب پلئوسیتوز با پروتئین نرمال دارد.`
-
-    ],
-
-    correct: 3,
-
-    explanation:
-    `شرح حال به شدت به نفع
-    <span class="english">Susac Syndrome</span>
-    است.
-
-    سه جزء کلاسیک این بیماری عبارت‌اند از:
-    <br>
-    <span class="english">
-    Encephalopathy
-    </span>
-    +
-    <span class="english">
-    Branch Retinal Artery Occlusions
-    </span>
-    +
-    <span class="english">
-    Sensorineural Hearing Loss
-    </span>
-
-    ضایعات <span class="english">Snowball</span>
-    در <span class="english">Corpus Callosum</span>
-    نیز بسیار تیپیک هستند.
-
-    بنابراین گزینه D نادرست است.`,
-
-    note:
-    `<span class="english">
-    Susac Syndrome = Brain + Retina + Inner Ear
-    </span>`,
-
-    trap:
-    `وجود همزمان آنسفالوپاتی، انسداد شریان‌های شبکیه
-    و کاهش شنوایی را به عنوان سه‌گانه
-    <span class="english">Susac</span>
-    به خاطر بسپارید.`
-}
-
-];
-  {
+    {
         source: "تهران ۹۳",
 
         question: `
@@ -516,28 +567,30 @@ const cerebrovascularQuestions = [
         <span class="english">NOTCH3</span>
         می‌باشد.
 
-        در <span class="english">MRI</span> معمولاً ضایعات متعدد
-        و همگرا در ماده سفید دیده می‌شوند و درگیری
+        در MRI، ضایعات ماده سفید به‌ویژه در
         <span class="english">Anterior Temporal Poles</span>
         و <span class="english">External Capsule</span>
-        از یافته‌های بسیار مهم است.
+        از یافته‌های شاخص هستند.
 
-        بنابراین عبارت مطرح‌شده در گزینه C صحیح نیست.
+        بنابراین عبارت گزینه C صحیح نیست.
         `,
 
         note: `
-        در <span class="english">CADASIL</span>،
-        درگیری <span class="english">Anterior Temporal Poles</span>
-        و <span class="english">External Capsule</span>
-        از سرنخ‌های مهم تصویربرداری هستند.
+        <span class="english">
+        CADASIL → Anterior Temporal Poles + External Capsule
+        </span>
         `,
 
         trap: `
-        نکته مهم این است که «شاخ تمپورال بطن‌های طرفی»
-        را با «قطب تمپورال قدامی» اشتباه نکنید.
-        یافته کلاسیک <span class="english">CADASIL</span>
-        درگیری <span class="english">Temporal Poles</span>
-        است.
+        <span class="english">Temporal Pole</span>
+        را با <span class="english">Temporal Horn</span>
+        اشتباه نکنید.
+        `,
+
+        reference: `
+        GeneReviews – CADASIL؛
+        MRI در CADASIL شامل درگیری anterior temporal lobes
+        و external capsules است.
         `
     },
 
@@ -581,24 +634,30 @@ const cerebrovascularQuestions = [
         شده و تنگی کاروتید داخلی چپ ۷۵٪ دارد.
 
         در بیمار دارای
-        <span class="english">Symptomatic Carotid Stenosis</span>
-        شدید، در صورتی که ریسک جراحی کمتر از ۶٪ باشد،
+        <span class="english">Symptomatic Severe Carotid Stenosis</span>،
+        انجام
         <span class="english">Carotid Endarterectomy</span>
-        توصیه می‌شود.
+        در صورت مناسب بودن ریسک جراحی توصیه می‌شود.
 
         بنابراین در این سؤال گزینه B صحیح است.
         `,
 
         note: `
-        در تنگی علامت‌دار کاروتید،
-        شدت تنگی و زمان از بروز علائم دو نکته بسیار مهم هستند.
+        <span class="english">
+        Symptomatic Carotid Stenosis ≥70% → CEA
+        </span>
         `,
 
         trap: `
-        توجه کنید که تنگی ۷۵٪ در این بیمار در سمت
-        علامت‌دار یعنی کاروتید چپ است؛ بنابراین سن بیمار
-        به تنهایی مانع <span class="english">Endarterectomy</span>
-        نیست.
+        تنگی ۷۵٪ در سمت چپ است و علائم بیمار نیز
+        با نیمکره چپ سازگار است؛ بنابراین این تنگی
+        «علامت‌دار» محسوب می‌شود.
+        `,
+
+        reference: `
+        AHA/ASA Guidelines for Extracranial Carotid Disease؛
+        در symptomatic carotid stenosis شدید،
+        Carotid Endarterectomy اندیکاسیون دارد.
         `
     },
 
@@ -629,27 +688,31 @@ const cerebrovascularQuestions = [
         correct: 2,
 
         explanation: `
-        درگیری ساقه مغز در
-        <span class="english">Cavernous Malformation</span>
-        ممکن است رخ دهد، اما اینکه حدود نیمی از تمام
-        کاورنوم‌ها در ساقه مغز قرار داشته باشند، صحیح نیست.
+        طبق پاسخنامه آزمون تهران ۹۳،
+        پاسخ صحیح گزینه C است.
 
-        بنابراین گزینه B پاسخ نادرست است.
+        <span class="english">Cavernous Malformation</span>
+        یک ناهنجاری عروقی متفاوت از
+        <span class="english">AVM</span>
+        است و MRI روش اصلی تشخیص آن محسوب می‌شود.
         `,
 
         note: `
-        <span class="english">MRI</span>
-        بهترین روش تصویربرداری برای تشخیص
-        <span class="english">Cavernous Malformation</span>
-        است و ضایعات معمولاً نمای کلاسیک
+        نمای کلاسیک cavernoma در MRI به صورت
         <span class="english">Popcorn / Mulberry</span>
-        دارند.
+        توصیف می‌شود.
         `,
 
         trap: `
-        در این سؤال بین «امکان درگیری ساقه مغز»
-        و «وجود حدود نیمی از ضایعات در ساقه مغز»
-        تفاوت وجود دارد.
+        مقایسه خطر خونریزی cavernoma و AVM
+        به محل ضایعه، سابقه خونریزی و سایر عوامل بستگی دارد؛
+        بنابراین عبارت گزینه C را در اینجا مطابق
+        پاسخنامه رسمی آزمون در نظر می‌گیریم.
+        `,
+
+        reference: `
+        پاسخنامه آزمون تهران ۹۳؛
+        منابع استاندارد Cerebrovascular Malformations
         `
     },
 
@@ -695,10 +758,14 @@ const cerebrovascularQuestions = [
 
         trap: `
         ضایعات <span class="english">Periventricular</span>
-        نیز در <span class="english">CADASIL</span>
-        شایع هستند، اما اختصاصی‌ترین یافته
-        درگیری <span class="english">Temporal Poles</span>
-        است.
+        نیز در CADASIL شایع هستند، اما
+        <span class="english">Temporal Poles</span>
+        از یافته‌های شاخص‌تر بیماری هستند.
+        `,
+
+        reference: `
+        GeneReviews – CADASIL؛
+        MRI involvement of anterior temporal lobes and external capsules.
         `
     },
 
@@ -725,21 +792,22 @@ const cerebrovascularQuestions = [
         correct: 3,
 
         explanation: `
-        <span class="english">Vertebral Artery Dissection</span>
-        می‌تواند با درد گردن و علائم ایسکمیک در گردش خون
-        خلفی تظاهر کند و در صورت درگیری
-        <span class="english">PICA</span>
-        می‌تواند منجر به
-        <span class="english">Wallenberg Syndrome</span>
-        شود.
-
-        <span class="english">Cortical Blindness</span>
-        بیشتر ناشی از درگیری قشر بینایی در لوب اکسیپیتال
-        و معمولاً در قلمرو
-        <span class="english">PCA</span>
+        طبق پاسخنامه رسمی موردنظر شما،
+        پاسخ صحیح گزینه D یعنی
+        <span class="english">AION</span>
         است.
 
-        بنابراین در این سؤال گزینه A پاسخ مورد نظر است.
+        <span class="english">Vertebral Artery Dissection</span>
+        می‌تواند با درد گردن و علائم ایسکمی
+        در گردش خون خلفی تظاهر کند و در صورت درگیری
+        ناحیه لترال مدولا، سندرم
+        <span class="english">Wallenberg</span>
+        ایجاد شود.
+
+        <span class="english">AION</span>
+        یعنی
+        <span class="english">Anterior Ischemic Optic Neuropathy</span>
+        تظاهر کلاسیک دیسکشن شریان ورتبرال نیست.
         `,
 
         note: `
@@ -749,8 +817,16 @@ const cerebrovascularQuestions = [
         `,
 
         trap: `
-        وجود علائم بینایی به تنهایی به معنی درگیری
-        ورتبرال نیست؛ محل ضایعه و قلمرو عروقی را باید
-        در نظر گرفت.
+        <span class="english">Cortical Blindness</span>
+        بیشتر با درگیری قشر بینایی لوب اکسیپیتال
+        و قلمرو <span class="english">PCA</span>
+        ارتباط دارد.
+        `,
+
+        reference: `
+        منابع استاندارد Vertebral Artery Dissection
+        و Posterior Circulation Stroke
         `
     }
+
+];
