@@ -474,3 +474,283 @@ const cerebrovascularQuestions = [
 }
 
 ];
+  {
+        source: "تهران ۹۳",
+
+        question: `
+        بیمار ۴۰ ساله با علائم دمانس به درمانگاه مراجعه کرده است.
+        وی سابقه حملات استروک در چند نوبت از دو سال قبل را دارد.
+        سابقه هایپرتنشن و دیابت ندارد و سیگاری نیز نبوده است.
+
+        در بررسی ژنتیک موتاسیون در ژن
+        <span class="english">NOTCH3</span>
+        روی کروموزوم ۱۹ دارد.
+
+        با توجه به تشخیص بیمار، همه موارد زیر در تصویر
+        <span class="english">MRI</span>
+        بیمار صحیح است به جز؟
+        `,
+
+        options: [
+            `<span class="english">
+            Multiple Confluent White Matter Lesions
+            </span>`,
+
+            `ضایعات کوچکتر در حوالی
+            <span class="english">Basal Ganglia</span>
+            می‌تواند دیده شود.`,
+
+            `وجود ضایعات پوستریور به شاخ تمپورال بطن‌های طرفی
+            اختصاصی است.`,
+
+            `ضایعات <span class="english">MRI</span>
+            می‌تواند آسیمتریک باشد.`
+        ],
+
+        correct: 2,
+
+        explanation: `
+        بیمار مبتلا به
+        <span class="english">CADASIL</span>
+        است که ناشی از جهش ژن
+        <span class="english">NOTCH3</span>
+        می‌باشد.
+
+        در <span class="english">MRI</span> معمولاً ضایعات متعدد
+        و همگرا در ماده سفید دیده می‌شوند و درگیری
+        <span class="english">Anterior Temporal Poles</span>
+        و <span class="english">External Capsule</span>
+        از یافته‌های بسیار مهم است.
+
+        بنابراین عبارت مطرح‌شده در گزینه C صحیح نیست.
+        `,
+
+        note: `
+        در <span class="english">CADASIL</span>،
+        درگیری <span class="english">Anterior Temporal Poles</span>
+        و <span class="english">External Capsule</span>
+        از سرنخ‌های مهم تصویربرداری هستند.
+        `,
+
+        trap: `
+        نکته مهم این است که «شاخ تمپورال بطن‌های طرفی»
+        را با «قطب تمپورال قدامی» اشتباه نکنید.
+        یافته کلاسیک <span class="english">CADASIL</span>
+        درگیری <span class="english">Temporal Poles</span>
+        است.
+        `
+    },
+
+
+    {
+        source: "تهران ۹۳",
+
+        question: `
+        آقای ۷۵ ساله با علائم آفازی و همی‌پارزی سمت راست
+        به صورت گذرا که در مدت ۱۵ دقیقه برگشت نموده است
+        مراجعه کرده است.
+
+        <span class="english">CT</span> اسکن مغز طبیعی است.
+
+        بنابر یافته‌های سونوگرافی و
+        <span class="english">CT Angiography</span>،
+        کاروتید داخلی راست ۶۰٪ و سمت چپ ۷۵٪ تنگی دارد.
+
+        کدام درمان را پیشنهاد می‌کنید؟
+        `,
+
+        options: [
+            `با توجه به سن، درمان دارویی با آسپرین توصیه می‌شود.`,
+
+            `با توجه به ریسک جراحی کمتر از ۳٪،
+            اندآرترکتومی کاروتید چپ انجام شود.`,
+
+            `درمان دارویی با وارفارین توصیه می‌شود.`,
+
+            `اقدام به آناستوموز شریان
+            <span class="english">Middle Cerebral</span>
+            به
+            <span class="english">Superficial Temporal</span>
+            شود.`
+        ],
+
+        correct: 1,
+
+        explanation: `
+        بیمار دچار یک حمله ایسکمیک گذرا در قلمرو کاروتید چپ
+        شده و تنگی کاروتید داخلی چپ ۷۵٪ دارد.
+
+        در بیمار دارای
+        <span class="english">Symptomatic Carotid Stenosis</span>
+        شدید، در صورتی که ریسک جراحی کمتر از ۶٪ باشد،
+        <span class="english">Carotid Endarterectomy</span>
+        توصیه می‌شود.
+
+        بنابراین در این سؤال گزینه B صحیح است.
+        `,
+
+        note: `
+        در تنگی علامت‌دار کاروتید،
+        شدت تنگی و زمان از بروز علائم دو نکته بسیار مهم هستند.
+        `,
+
+        trap: `
+        توجه کنید که تنگی ۷۵٪ در این بیمار در سمت
+        علامت‌دار یعنی کاروتید چپ است؛ بنابراین سن بیمار
+        به تنهایی مانع <span class="english">Endarterectomy</span>
+        نیست.
+        `
+    },
+
+
+    {
+        source: "تهران ۹۳",
+
+        question: `
+        در مورد <span class="english">Cavernous Malformation</span>
+        همه موارد زیر صحیح است بجز؟
+        `,
+
+        options: [
+            `شیوع آن از
+            <span class="english">AVM</span>
+            کمتر می‌باشد.`,
+
+            `در حدود نیمی از آنها در ساقه مغز وجود دارند.`,
+
+            `تمایل به خونریزی به طور واضحی کمتر از
+            <span class="english">AVM</span>
+            می‌باشد.`,
+
+            `<span class="english">MRI</span>
+            در تشخیص آن را تأیید می‌کند.`
+        ],
+
+        correct: 2,
+
+        explanation: `
+        درگیری ساقه مغز در
+        <span class="english">Cavernous Malformation</span>
+        ممکن است رخ دهد، اما اینکه حدود نیمی از تمام
+        کاورنوم‌ها در ساقه مغز قرار داشته باشند، صحیح نیست.
+
+        بنابراین گزینه B پاسخ نادرست است.
+        `,
+
+        note: `
+        <span class="english">MRI</span>
+        بهترین روش تصویربرداری برای تشخیص
+        <span class="english">Cavernous Malformation</span>
+        است و ضایعات معمولاً نمای کلاسیک
+        <span class="english">Popcorn / Mulberry</span>
+        دارند.
+        `,
+
+        trap: `
+        در این سؤال بین «امکان درگیری ساقه مغز»
+        و «وجود حدود نیمی از ضایعات در ساقه مغز»
+        تفاوت وجود دارد.
+        `
+    },
+
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        درگیری کدام یک از مناطق زیر در
+        <span class="english">MRI</span>
+        بیماران
+        <span class="english">CADASIL</span>
+        از همه کاراکترستیک‌تر است؟
+        `,
+
+        options: [
+            `<span class="english">Periventricular White Matter</span>`,
+
+            `<span class="english">Internal Capsule</span>`,
+
+            `<span class="english">Cerebellar Hemispheres</span>`,
+
+            `<span class="english">Temporal Poles</span>`
+        ],
+
+        correct: 3,
+
+        explanation: `
+        درگیری
+        <span class="english">Anterior Temporal Poles</span>
+        یکی از یافته‌های بسیار شاخص و کاراکترستیک
+        در <span class="english">CADASIL</span>
+        است.
+
+        بنابراین پاسخ صحیح گزینه D است.
+        `,
+
+        note: `
+        <span class="english">
+        CADASIL → Anterior Temporal Poles + External Capsule
+        </span>
+        `,
+
+        trap: `
+        ضایعات <span class="english">Periventricular</span>
+        نیز در <span class="english">CADASIL</span>
+        شایع هستند، اما اختصاصی‌ترین یافته
+        درگیری <span class="english">Temporal Poles</span>
+        است.
+        `
+    },
+
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        در
+        <span class="english">Vertebral Dissection</span>
+        همه موارد زیر دیده می‌شود به جز؟
+        `,
+
+        options: [
+            `<span class="english">Cortical Blindness</span>`,
+
+            `<span class="english">Wallenberg Syndrome</span>`,
+
+            `<span class="english">Neck Pain</span>`,
+
+            `<span class="english">AION</span>`
+        ],
+
+        correct: 3,
+
+        explanation: `
+        <span class="english">Vertebral Artery Dissection</span>
+        می‌تواند با درد گردن و علائم ایسکمیک در گردش خون
+        خلفی تظاهر کند و در صورت درگیری
+        <span class="english">PICA</span>
+        می‌تواند منجر به
+        <span class="english">Wallenberg Syndrome</span>
+        شود.
+
+        <span class="english">Cortical Blindness</span>
+        بیشتر ناشی از درگیری قشر بینایی در لوب اکسیپیتال
+        و معمولاً در قلمرو
+        <span class="english">PCA</span>
+        است.
+
+        بنابراین در این سؤال گزینه A پاسخ مورد نظر است.
+        `,
+
+        note: `
+        <span class="english">
+        Vertebral Dissection → Posterior Circulation Ischemia
+        </span>
+        `,
+
+        trap: `
+        وجود علائم بینایی به تنهایی به معنی درگیری
+        ورتبرال نیست؛ محل ضایعه و قلمرو عروقی را باید
+        در نظر گرفت.
+        `
+    }
