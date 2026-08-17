@@ -768,7 +768,567 @@ const cerebrovascularQuestions = [
         MRI involvement of anterior temporal lobes and external capsules.
         `
     },
+{
+        source: "دانشگاه ایران ۹۳",
 
+        question: `
+        تفاوت <span class="english">Carotid Dissection</span>
+        با تنگی آترواسکلروتیک در کدام یک از موارد زیر است؟
+        `,
+
+        options: [
+            `شدت تنگی`,
+
+            `علائم نورولوژیک`,
+
+            `تغییرات همودینامیک داخل مغز`,
+
+            `محل تنگی`
+        ],
+
+        correct: 3,
+
+        explanation: `
+        تفاوت مهم بین <span class="english">Carotid Dissection</span>
+        و تنگی آترواسکلروتیک، محل معمول درگیری است.
+
+        در دیسکشن کاروتید، به‌ویژه در شریان کاروتید داخلی،
+        درگیری معمولاً در قسمت دیستال‌تر از
+        <span class="english">Carotid Bulb</span>
+        دیده می‌شود؛ در حالی که آترواسکلروز اغلب در ناحیه
+        <span class="english">Carotid Bifurcation / Bulb</span>
+        ایجاد می‌شود.
+        `,
+
+        note: `
+        <span class="english">
+        Carotid Dissection → distal cervical ICA
+        </span>
+
+        در مقابل:
+
+        <span class="english">
+        Atherosclerosis → carotid bulb
+        </span>
+        `,
+
+        trap: `
+        شدت تنگی و علائم نورولوژیک به تنهایی
+        برای افتراق این دو بیماری کافی نیستند.
+        `,
+
+        reference: `
+        منابع استاندارد Cervical Artery Dissection و
+        نورولوژی عروقی؛ CTA و MRA از روش‌های تصویربرداری
+        اولیه برای بررسی دیسکشن هستند.
+        `
+    },
+
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        همه علائم زیر می‌تواند به دلیل سندرم
+        <span class="english">Top of Basilar</span>
+        باشد به جز؟
+        `,
+
+        options: [
+            `<span class="english">Monocular Blindness</span>`,
+
+            `<span class="english">Left Hemiparesis</span>`,
+
+            `<span class="english">Cortical Blindness</span>`,
+
+            `<span class="english">Acute Confusional State</span>`
+        ],
+
+        correct: 0,
+
+        explanation: `
+        سندرم <span class="english">Top of Basilar</span>
+        می‌تواند باعث درگیری دوطرفه یا یک‌طرفه
+        نواحی اکسیپیتال، تالاموس و مزانسفال شود.
+
+        بنابراین <span class="english">Cortical Blindness</span>،
+        همی‌پارزی و اختلالات هوشیاری و رفتاری
+        می‌توانند در این سندرم دیده شوند.
+
+        <span class="english">Monocular Blindness</span>
+        بیشتر نشان‌دهنده درگیری مسیر بینایی قدامی،
+        مانند شبکیه یا عصب بینایی، است و با
+        <span class="english">Top of Basilar</span>
+        سازگار نیست.
+        `,
+
+        note: `
+        <span class="english">
+        Top of Basilar → Occipital + Thalamus + Midbrain
+        </span>
+        `,
+
+        trap: `
+        <span class="english">Monocular</span>
+        را با
+        <span class="english">Cortical Blindness</span>
+        اشتباه نکنید.
+
+        کوری قشری معمولاً دوطرفه است و ناشی از درگیری
+        قشر بینایی اکسیپیتال می‌باشد.
+        `,
+
+        reference: `
+        منابع استاندارد Posterior Circulation Stroke و
+        Top of the Basilar Syndrome.
+        `
+    },
+
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        در مورد <span class="english">Carotid Bruit</span>
+        کدام یک از گزینه‌های زیر صحیح‌تر است؟
+        `,
+
+        options: [
+            `شدت بروئی با شدت تنگی در اولتراسوند
+            نسبت مستقیم دارد.`,
+
+            `بروئی صرفاً در سمت کاروتید تنگ یا مسدود
+            شنیده می‌شود.`,
+
+            `بروئی اکولر نشانه افزایش جریان در سمت درگیر است.`,
+
+            `بروئی کاروتید ممکن است به دلیل تنگی
+            کاروتید خارجی باشد.`
+        ],
+
+        correct: 3,
+
+        explanation: `
+        <span class="english">Carotid Bruit</span>
+        ناشی از جریان آشفته خون است و می‌تواند
+        در تنگی شریان کاروتید خارجی نیز ایجاد شود.
+
+        شدت بروئی الزاماً با شدت تنگی رابطه مستقیم ندارد؛
+        در تنگی بسیار شدید یا انسداد کامل ممکن است
+        بروئی کاهش یافته یا حتی شنیده نشود.
+        `,
+
+        note: `
+        <span class="english">
+        Severe stenosis ≠ necessarily louder bruit
+        </span>
+        `,
+
+        trap: `
+        تصور «هرچه تنگی بیشتر، بروئی بلندتر»
+        یک تله کلاسیک است.
+
+        در انسداد کامل ممکن است جریان کافی برای ایجاد
+        بروئی وجود نداشته باشد.
+        `,
+
+        reference: `
+        منابع استاندارد Carotid Artery Disease و
+        معاینه عروقی؛ bruit شدت تنگی را به‌طور قابل اعتماد
+        تعیین نمی‌کند.
+        `
+    },
+
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        در تنگی بدون علامت کاروتید،
+        حداقل تنگی که اندیکاسیون
+        <span class="english">Endarterectomy</span>
+        دارد چقدر است؟
+        `,
+
+        options: [
+            `50%`,
+
+            `80%`,
+
+            `99%`,
+
+            `70%`
+        ],
+
+        correct: 3,
+
+        explanation: `
+        طبق پاسخنامه آزمون، در تنگی بدون علامت کاروتید،
+        آستانه مورد نظر برای انجام
+        <span class="english">Carotid Endarterectomy</span>
+        برابر 70 درصد است.
+
+        البته در عمل امروزی تصمیم به CEA در بیمار
+        بدون علامت فقط بر اساس درصد تنگی نیست و
+        ریسک جراحی، طول عمر مورد انتظار و ویژگی‌های
+        پلاک نیز اهمیت دارند.
+        `,
+
+        note: `
+        <span class="english">
+        Asymptomatic Carotid Stenosis → consider CEA at severe stenosis
+        </span>
+        `,
+
+        trap: `
+        عدد 70 درصد را به‌صورت یک قانون مطلق برای
+        همه بیماران امروزی در نظر نگیرید؛
+        انتخاب بیمار مناسب اهمیت زیادی دارد.
+        `,
+
+        reference: `
+        گایدلاین‌های بیماری آترواسکلروتیک کاروتید و
+        توصیه‌های مربوط به Asymptomatic Carotid Stenosis.
+        `
+    },
+
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        در کدام یک از موارد زیر استفاده از آنتی‌کواگولان
+        (<span class="english">Warfarin</span>)
+        تأثیر بیشتری دارد؟
+        `,
+
+        options: [
+            `<span class="english">Recurrent TIA</span>`,
+
+            `پلاک قوس آئورت`,
+
+            `<span class="english">PFO</span>`,
+
+            `<span class="english">Transient Atrial Fibrillation</span>`
+        ],
+
+        correct: 3,
+
+        explanation: `
+        وجود <span class="english">Atrial Fibrillation</span>
+        یک منبع مهم آمبولی قلبی است و درمان ضدانعقادی
+        برای کاهش خطر سکته مغزی در بیماران مناسب،
+        اساس درمان پیشگیری از سکته مرتبط با AF است.
+
+        بنابراین طبق پاسخنامه آزمون، گزینه D صحیح است.
+        `,
+
+        note: `
+        <span class="english">
+        Atrial Fibrillation → Cardioembolic Stroke Risk
+        → Anticoagulation
+        </span>
+        `,
+
+        trap: `
+        <span class="english">PFO</span>
+        به‌تنهایی به معنی نیاز قطعی به وارفارین نیست.
+        `,
+
+        reference: `
+        منابع استاندارد پیشگیری ثانویه از سکته و
+        Atrial Fibrillation؛ در رویکرد امروزی برای بسیاری
+        از بیماران واجد شرایط، DOACها بر Warfarin ترجیح داده می‌شوند.
+        `
+    },
+
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        آقای ۲۵ ساله با سرگیجه حاد مراجعه کرده است.
+        در معاینه نیستاگموس
+        <span class="english">Bidirectional</span>
+        دارد.
+
+        چشم چپ نسبت به چشم راست میوزیس دارد.
+        سرگیجه با هر حرکتی بدتر می‌شود.
+
+        کدام اقدام زیر مناسب‌تر است؟
+        `,
+
+        options: [
+            `بستری و <span class="english">LP</span>`,
+
+            `<span class="english">Electronystagmography</span>`,
+
+            `ادیومتری سرپایی`,
+
+            `داپلر عروق گردن`
+        ],
+
+        correct: 3,
+
+        explanation: `
+        وجود سرگیجه حاد همراه با
+        <span class="english">Bidirectional Nystagmus</span>
+        و یافته‌های نورولوژیک، احتمال یک علت مرکزی
+        و به‌ویژه درگیری عروق خلفی را مطرح می‌کند.
+
+        طبق پاسخنامه آزمون، با احتمال
+        <span class="english">Vertebral Artery Dissection</span>،
+        انجام بررسی عروقی مناسب است.
+        `,
+
+        note: `
+        سرگیجه حاد + یافته‌های چشمی غیرمعمول
+        را صرفاً به بیماری گوش داخلی نسبت ندهید.
+        `,
+
+        trap: `
+        <span class="english">Bidirectional Nystagmus</span>
+        یک red flag برای علت مرکزی است.
+        `,
+
+        reference: `
+        منابع استاندارد Vertigo، Posterior Circulation Stroke
+        و Vertebral Artery Dissection.
+        `
+    },
+
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        کدام یک از یافته‌های زیر در
+        <span class="english">Imaging</span>
+        دیسکشن کاروتید داخلی شیوع کمتری دارد؟
+        `,
+
+        options: [
+            `<span class="english">Double Lumen</span>`,
+
+            `<span class="english">Wall Hematoma</span>`,
+
+            `<span class="english">String Sign</span>`,
+
+            `<span class="english">Tapering Occlusion</span>`
+        ],
+
+        correct: 0,
+
+        explanation: `
+        <span class="english">Double Lumen</span>
+        یک یافته کلاسیک و نسبتاً اختصاصی برای
+        دیسکشن است، اما در مقایسه با یافته‌هایی مانند
+        <span class="english">Tapering Stenosis/Occlusion</span>
+        و <span class="english">Mural Hematoma</span>
+        کمتر دیده می‌شود.
+
+        بنابراین پاسخ پیشنهادی علمی برای این سؤال
+        گزینه A است.
+        `,
+
+        note: `
+        یافته‌های مهم دیسکشن:
+
+        <span class="english">
+        Mural Hematoma
+        + Tapering Stenosis
+        + Intimal Flap
+        + Double Lumen
+        </span>
+        `,
+
+        trap: `
+        وجود نداشتن <span class="english">Double Lumen</span>
+        دیسکشن را رد نمی‌کند؛ این علامت ممکن است
+        در همه بیماران قابل مشاهده نباشد.
+        `,
+
+        reference: `
+        منابع تصویربرداری Cervical Artery Dissection؛
+        CTA و MRI/MRA با fat suppression از روش‌های اصلی تشخیص هستند.
+        `
+    },
+
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        در بیمار با سکته مغزی میانی،
+        همه فاکتورهای زیر به نفع
+        <span class="english">Hemicraniectomy</span>
+        می‌باشد به جز؟
+        `,
+
+        options: [
+            `سن کمتر از ۶۰ سال.`,
+
+            `زمان کمتر از ۴۸ ساعت از شروع سکته.`,
+
+            `درگیری نیمکره غالب.`,
+
+            `وجود هرنی و فشار شدید به <span class="english">Midbrain</span>.`
+        ],
+
+        correct: 3,
+
+        explanation: `
+        طبق پاسخنامه آزمون، گزینه D پاسخ صحیح است.
+
+        در سکته وسیع بدخیم
+        <span class="english">MCA</span>،
+        سن کمتر از ۶۰ سال و شروع مداخله در ۴۸ ساعت اول
+        از عوامل مهم در مطالعات کلاسیک
+        <span class="english">Decompressive Hemicraniectomy</span>
+        بوده‌اند.
+
+        درگیری نیمکره غالب نیز به‌تنهایی
+        مانع انجام جراحی نیست.
+        `,
+
+        note: `
+        <span class="english">
+        Malignant MCA Infarction → Early Decompression
+        </span>
+        `,
+
+        trap: `
+        منتظر ایجاد هرنی شدید نباید ماند؛
+        هدف جراحی پیشگیری از مرگ ناشی از
+        mass effect و brain swelling است.
+        `,
+
+        reference: `
+        AHA/ASA و گایدلاین‌های Decompressive Craniectomy
+        در Malignant MCA Infarction.
+        `
+    },
+
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        خانم ۳۵ ساله‌ای که سابقه میگرن داشته است،
+        از سه روز قبل به دنبال سرماخوردگی و مصرف
+        سودوافدرین، سه بار دچار سردرد شده است که
+        هر بار <span class="english">Thunderclap</span>
+        بوده و در کمتر از یک دقیقه به حداکثر رسیده است.
+
+        <span class="english">MRI</span>
+        مغز بیمار نرمال است.
+
+        کدام اقدام مناسب‌تر است؟
+        `,
+
+        options: [
+            `<span class="english">EEG</span>`,
+
+            `<span class="english">MRI</span> با تزریق`,
+
+            `<span class="english">MR Angiography</span>`,
+
+            `<span class="english">MR Venography</span>`
+        ],
+
+        correct: 2,
+
+        explanation: `
+        سردردهای مکرر
+        <span class="english">Thunderclap</span>
+        طی چند روز، به‌ویژه همراه با مصرف
+        داروهای سمپاتومیمتیک مانند
+        <span class="english">Pseudoephedrine</span>،
+        احتمال
+        <span class="english">Reversible Cerebral Vasoconstriction Syndrome (RCVS)</span>
+        را مطرح می‌کند.
+
+        بنابراین بررسی عروق مغزی با
+        <span class="english">MRA</span>
+        اقدام مناسب است.
+        `,
+
+        note: `
+        <span class="english">
+        Recurrent Thunderclap Headache → Think RCVS
+        </span>
+        `,
+
+        trap: `
+        داشتن سابقه میگرن نباید باعث شود
+        سردرد Thunderclap را به میگرن نسبت دهیم.
+
+        <span class="english">
+        Thunderclap Headache = Secondary Cause Until Excluded
+        </span>
+        `,
+
+        reference: `
+        منابع RCVS و Headache؛
+        RCVS با recurrent thunderclap headache و
+        محرک‌هایی مانند داروهای سمپاتومیمتیک ارتباط دارد.
+        `
+    },
+
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        همه یافته‌های زیر در تنگی شدید شریانی در
+        <span class="english">TCD</span>
+        در محل تنگی دیده می‌شود به جز؟
+        `,
+
+        options: [
+            `افزایش سرعت دیاستولیک`,
+
+            `افزایش سرعت سیستولیک`,
+
+            `جریان <span class="english">Bidirectional</span>`,
+
+            `<span class="english">Spectral Turbulence</span>`
+        ],
+
+        correct: 2,
+
+        explanation: `
+        در تنگی شدید شریان، در محل تنگی معمولاً
+        افزایش سرعت جریان، به‌خصوص افزایش
+        <span class="english">Peak Systolic Velocity</span>
+        و نیز افزایش سرعت دیاستولیک و
+        <span class="english">Spectral Broadening/Turbulence</span>
+        دیده می‌شود.
+
+        طبق پاسخنامه آزمون، جریان
+        <span class="english">Bidirectional</span>
+        پاسخ نادرست و گزینه C است.
+        `,
+
+        note: `
+        <span class="english">
+        Severe Stenosis → Increased Velocity + Spectral Broadening
+        </span>
+        `,
+
+        trap: `
+        <span class="english">Bidirectional Flow</span>
+        یک یافته معمول برای خود محل تنگی نیست
+        و در شرایط خاص همودینامیک یا نزدیک به انسداد
+        می‌تواند مطرح شود.
+        `,
+
+        reference: `
+        منابع استاندارد Transcranial Doppler و
+        Cerebrovascular Hemodynamics.
+        `
+    }
+];
 
     {
         source: "دانشگاه ایران ۹۳",
