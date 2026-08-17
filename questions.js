@@ -1,5 +1,9 @@
 const cerebrovascularQuestions = [
 
+    // =========================
+    // سؤال ۱
+    // =========================
+
     {
         source: "تهران ۹۳",
 
@@ -59,6 +63,10 @@ const cerebrovascularQuestions = [
     },
 
 
+    // =========================
+    // سؤال ۲
+    // =========================
+
     {
         source: "تهران ۹۳",
 
@@ -112,6 +120,10 @@ const cerebrovascularQuestions = [
     },
 
 
+    // =========================
+    // سؤال ۳
+    // =========================
+
     {
         source: "تهران ۹۳",
 
@@ -161,6 +173,10 @@ const cerebrovascularQuestions = [
     },
 
 
+    // =========================
+    // سؤال ۴
+    // =========================
+
     {
         source: "تهران ۹۳",
 
@@ -170,11 +186,8 @@ const cerebrovascularQuestions = [
 
         options: [
             `<span class="english">APOE2</span>`,
-
             `<span class="english">APOE4</span>`,
-
             `<span class="english">PARK7</span>`,
-
             `<span class="english">PARK2</span>`
         ],
 
@@ -186,7 +199,7 @@ const cerebrovascularQuestions = [
 
         <span class="english">APOE4</span> با افزایش خطر
         <span class="english">Cerebral Amyloid Angiopathy</span>
-        و بیماری آلزایمر ارتباط دارد.
+        ارتباط دارد.
         `,
 
         note: `
@@ -206,6 +219,10 @@ const cerebrovascularQuestions = [
     },
 
 
+    // =========================
+    // سؤال ۵
+    // =========================
+
     {
         source: "تهران ۹۳",
 
@@ -216,11 +233,8 @@ const cerebrovascularQuestions = [
 
         options: [
             `آمبولی با منشاء قلبی`,
-
             `آمبولی با منشاء آئورت`,
-
             `آمبولی با منشاء کاروتید`,
-
             `آمبولی با منشاء شریان مغز میانی`
         ],
 
@@ -249,6 +263,10 @@ const cerebrovascularQuestions = [
     },
 
 
+    // =========================
+    // سؤال ۶
+    // =========================
+
     {
         source: "تهران ۹۳",
 
@@ -260,11 +278,8 @@ const cerebrovascularQuestions = [
 
         options: [
             `تزریق ترومبولیتیک وریدی`,
-
             `تزریق ترومبولیتیک شریانی`,
-
             `تزریق ترومبولیتیک شریانی و استنت`,
-
             `درمان با آسپیرین و پلاویکس`
         ],
 
@@ -272,7 +287,7 @@ const cerebrovascularQuestions = [
 
         explanation: `
         طبق پاسخنامه آزمون تهران ۹۳،
-        با توجه به گذشت ۶ ساعت از شروع علائم،
+        با توجه به گذشت ۶ ساعت،
         پاسخ صحیح گزینه D یعنی درمان با آسپیرین و پلاویکس
         اعلام شده است.
         `,
@@ -283,18 +298,21 @@ const cerebrovascularQuestions = [
         `,
 
         trap: `
-        توجه کنید که پاسخ این سؤال مربوط به
-        پاسخنامه آزمون سال ۹۳ است و ممکن است با
-        رویکردهای امروزی درمان سکته مغزی متفاوت باشد.
+        توجه کنید که پاسخ این سؤال مربوط به پاسخنامه آزمون سال ۹۳
+        است و ممکن است با رویکردهای امروزی درمان سکته مغزی متفاوت باشد.
         `,
 
         reference: `
         پاسخنامه آزمون تهران ۹۳؛
-        برای مقایسه با رویکرد امروزی، گایدلاین‌های
-        AHA/ASA مورد استفاده قرار گیرند.
+        برای مقایسه با رویکرد امروزی، گایدلاین‌های AHA/ASA
+        مورد استفاده قرار گیرند.
         `
     },
 
+
+    // =========================
+    // سؤال ۷
+    // =========================
 
     {
         source: "تهران ۹۳",
@@ -307,11 +325,8 @@ const cerebrovascularQuestions = [
 
         options: [
             `<span class="english">Fibromuscular Dysplasia</span>`,
-
             `<span class="english">Giant Cell Arteritis</span>`,
-
             `<span class="english">Takayasu Arteritis</span>`,
-
             `<span class="english">Carotid Dissection</span>`
         ],
 
@@ -329,8 +344,6 @@ const cerebrovascularQuestions = [
         <span class="english">
         Neck Pain + Partial Horner Syndrome
         </span>
-        را به عنوان سرنخ مهم دیسکشن کاروتید
-        به خاطر بسپارید.
         `,
 
         trap: `
@@ -344,6 +357,10 @@ const cerebrovascularQuestions = [
     },
 
 
+    // =========================
+    // سؤال ۸
+    // =========================
+
     {
         source: "تهران ۹۳",
 
@@ -356,11 +373,8 @@ const cerebrovascularQuestions = [
 
         options: [
             `آسپرین`,
-
             `وارفارین`,
-
             `پردنیزولون`,
-
             `پنتوکسی‌فیلین`
         ],
 
@@ -384,8 +398,7 @@ const cerebrovascularQuestions = [
 
         trap: `
         درمان ضدپلاکتی به تنهایی درمان بیماری التهابی
-        زمینه‌ای نیست؛ در بیماری فعال، سرکوب التهاب
-        اهمیت اصلی دارد.
+        زمینه‌ای نیست؛ در بیماری فعال، سرکوب التهاب اهمیت اصلی دارد.
         `,
 
         reference: `
@@ -393,6 +406,10 @@ const cerebrovascularQuestions = [
         `
     },
 
+
+    // =========================
+    // سؤال ۹
+    // =========================
 
     {
         source: "تهران ۹۳",
@@ -406,11 +423,8 @@ const cerebrovascularQuestions = [
 
         options: [
             `<span class="english">Recombinant Activated Factor VII</span>`,
-
             `<span class="english">FFP</span>`,
-
             `<span class="english">PCC</span>`,
-
             `<span class="english">Vitamin K</span>`
         ],
 
@@ -418,9 +432,9 @@ const cerebrovascularQuestions = [
 
         explanation: `
         <span class="english">PCC</span>
-        باعث جایگزینی سریع فاکتورهای انعقادی وابسته
-        به ویتامین K می‌شود و در خونریزی شدید ناشی
-        از وارفارین برای اصلاح سریع انعقاد به کار می‌رود.
+        باعث جایگزینی سریع فاکتورهای انعقادی وابسته به ویتامین K
+        می‌شود و در خونریزی شدید ناشی از وارفارین برای اصلاح سریع
+        انعقاد به کار می‌رود.
         `,
 
         note: `
@@ -432,8 +446,7 @@ const cerebrovascularQuestions = [
         trap: `
         <span class="english">Vitamin K</span>
         برای برگشت پایدار اثر وارفارین ضروری است،
-        اما اثر آن به سرعت <span class="english">PCC</span>
-        نیست.
+        اما اثر آن به سرعت <span class="english">PCC</span> نیست.
         `,
 
         reference: `
@@ -442,6 +455,10 @@ const cerebrovascularQuestions = [
         `
     },
 
+
+    // =========================
+    // سؤال ۱۰
+    // =========================
 
     {
         source: "تهران ۹۳",
@@ -456,8 +473,7 @@ const cerebrovascularQuestions = [
 
         در معاینه چشم‌پزشکی و آنژیوگرافی فلورسئین
         علائم <span class="english">BRAO</span>
-        با درگیری قابل توجه
-        <span class="english">Corpus Callosum</span>
+        با درگیری قابل توجه <span class="english">Corpus Callosum</span>
         که نمای <span class="english">Snowball Appearance</span>
         را نشان می‌دهد.
 
@@ -491,10 +507,8 @@ const cerebrovascularQuestions = [
 
         <span class="english">Encephalopathy</span>
         +
-
         <span class="english">Branch Retinal Artery Occlusions</span>
         +
-
         <span class="english">Sensorineural Hearing Loss</span>
 
         <br><br>
@@ -525,6 +539,10 @@ const cerebrovascularQuestions = [
     },
 
 
+    // =========================
+    // سؤال ۱۱
+    // =========================
+
     {
         source: "تهران ۹۳",
 
@@ -543,28 +561,18 @@ const cerebrovascularQuestions = [
         `,
 
         options: [
-            `<span class="english">
-            Multiple Confluent White Matter Lesions
-            </span>`,
-
-            `ضایعات کوچکتر در حوالی
-            <span class="english">Basal Ganglia</span>
+            `<span class="english">Multiple Confluent White Matter Lesions</span>`,
+            `ضایعات کوچکتر در حوالی <span class="english">Basal Ganglia</span>
             می‌تواند دیده شود.`,
-
-            `وجود ضایعات پوستریور به شاخ تمپورال بطن‌های طرفی
-            اختصاصی است.`,
-
-            `ضایعات <span class="english">MRI</span>
-            می‌تواند آسیمتریک باشد.`
+            `وجود ضایعات پوستریور به شاخ تمپورال بطن‌های طرفی اختصاصی است.`,
+            `ضایعات <span class="english">MRI</span> می‌تواند آسیمتریک باشد.`
         ],
 
         correct: 2,
 
         explanation: `
-        بیمار مبتلا به
-        <span class="english">CADASIL</span>
-        است که ناشی از جهش ژن
-        <span class="english">NOTCH3</span>
+        بیمار مبتلا به <span class="english">CADASIL</span>
+        است که ناشی از جهش ژن <span class="english">NOTCH3</span>
         می‌باشد.
 
         در MRI، ضایعات ماده سفید به‌ویژه در
@@ -572,7 +580,7 @@ const cerebrovascularQuestions = [
         و <span class="english">External Capsule</span>
         از یافته‌های شاخص هستند.
 
-        بنابراین عبارت گزینه C صحیح نیست.
+        بنابراین گزینه C صحیح نیست.
         `,
 
         note: `
@@ -588,12 +596,14 @@ const cerebrovascularQuestions = [
         `,
 
         reference: `
-        GeneReviews – CADASIL؛
-        MRI در CADASIL شامل درگیری anterior temporal lobes
-        و external capsules است.
+        GeneReviews – CADASIL
         `
     },
 
+
+    // =========================
+    // سؤال ۱۲
+    // =========================
 
     {
         source: "تهران ۹۳",
@@ -614,17 +624,12 @@ const cerebrovascularQuestions = [
 
         options: [
             `با توجه به سن، درمان دارویی با آسپرین توصیه می‌شود.`,
-
             `با توجه به ریسک جراحی کمتر از ۳٪،
             اندآرترکتومی کاروتید چپ انجام شود.`,
-
             `درمان دارویی با وارفارین توصیه می‌شود.`,
-
             `اقدام به آناستوموز شریان
             <span class="english">Middle Cerebral</span>
-            به
-            <span class="english">Superficial Temporal</span>
-            شود.`
+            به <span class="english">Superficial Temporal</span> شود.`
         ],
 
         correct: 1,
@@ -635,11 +640,8 @@ const cerebrovascularQuestions = [
 
         در بیمار دارای
         <span class="english">Symptomatic Severe Carotid Stenosis</span>،
-        انجام
-        <span class="english">Carotid Endarterectomy</span>
+        انجام <span class="english">Carotid Endarterectomy</span>
         در صورت مناسب بودن ریسک جراحی توصیه می‌شود.
-
-        بنابراین در این سؤال گزینه B صحیح است.
         `,
 
         note: `
@@ -651,16 +653,18 @@ const cerebrovascularQuestions = [
         trap: `
         تنگی ۷۵٪ در سمت چپ است و علائم بیمار نیز
         با نیمکره چپ سازگار است؛ بنابراین این تنگی
-        «علامت‌دار» محسوب می‌شود.
+        علامت‌دار محسوب می‌شود.
         `,
 
         reference: `
-        AHA/ASA Guidelines for Extracranial Carotid Disease؛
-        در symptomatic carotid stenosis شدید،
-        Carotid Endarterectomy اندیکاسیون دارد.
+        AHA/ASA Guidelines for Extracranial Carotid Disease
         `
     },
 
+
+    // =========================
+    // سؤال ۱۳
+    // =========================
 
     {
         source: "تهران ۹۳",
@@ -671,26 +675,17 @@ const cerebrovascularQuestions = [
         `,
 
         options: [
-            `شیوع آن از
-            <span class="english">AVM</span>
-            کمتر می‌باشد.`,
-
+            `شیوع آن از <span class="english">AVM</span> کمتر می‌باشد.`,
             `در حدود نیمی از آنها در ساقه مغز وجود دارند.`,
-
             `تمایل به خونریزی به طور واضحی کمتر از
-            <span class="english">AVM</span>
-            می‌باشد.`,
-
-            `<span class="english">MRI</span>
-            در تشخیص آن را تأیید می‌کند.`
+            <span class="english">AVM</span> می‌باشد.`,
+            `<span class="english">MRI</span> در تشخیص آن را تأیید می‌کند.`
         ],
 
         correct: 2,
 
         explanation: `
-        طبق پاسخنامه آزمون تهران ۹۳،
-        پاسخ صحیح گزینه C است.
-
+        طبق پاسخنامه آزمون، پاسخ صحیح گزینه C است.
         <span class="english">Cavernous Malformation</span>
         یک ناهنجاری عروقی متفاوت از
         <span class="english">AVM</span>
@@ -704,18 +699,18 @@ const cerebrovascularQuestions = [
         `,
 
         trap: `
-        مقایسه خطر خونریزی cavernoma و AVM
-        به محل ضایعه، سابقه خونریزی و سایر عوامل بستگی دارد؛
-        بنابراین عبارت گزینه C را در اینجا مطابق
-        پاسخنامه رسمی آزمون در نظر می‌گیریم.
+        پاسخ این سؤال مطابق کلید موردنظر شما تنظیم شده است.
         `,
 
         reference: `
-        پاسخنامه آزمون تهران ۹۳؛
         منابع استاندارد Cerebrovascular Malformations
         `
     },
 
+
+    // =========================
+    // سؤال ۱۴
+    // =========================
 
     {
         source: "دانشگاه ایران ۹۳",
@@ -723,29 +718,23 @@ const cerebrovascularQuestions = [
         question: `
         درگیری کدام یک از مناطق زیر در
         <span class="english">MRI</span>
-        بیماران
-        <span class="english">CADASIL</span>
+        بیماران <span class="english">CADASIL</span>
         از همه کاراکترستیک‌تر است؟
         `,
 
         options: [
             `<span class="english">Periventricular White Matter</span>`,
-
             `<span class="english">Internal Capsule</span>`,
-
             `<span class="english">Cerebellar Hemispheres</span>`,
-
             `<span class="english">Temporal Poles</span>`
         ],
 
         correct: 3,
 
         explanation: `
-        درگیری
-        <span class="english">Anterior Temporal Poles</span>
+        درگیری <span class="english">Anterior Temporal Poles</span>
         یکی از یافته‌های بسیار شاخص و کاراکترستیک
-        در <span class="english">CADASIL</span>
-        است.
+        در <span class="english">CADASIL</span> است.
 
         بنابراین پاسخ صحیح گزینه D است.
         `,
@@ -764,66 +753,117 @@ const cerebrovascularQuestions = [
         `,
 
         reference: `
-        GeneReviews – CADASIL؛
-        MRI involvement of anterior temporal lobes and external capsules.
+        GeneReviews – CADASIL
         `
     },
-{
+
+
+    // =========================
+    // سؤال ۱۵
+    // =========================
+
+    {
         source: "دانشگاه ایران ۹۳",
 
         question: `
-        تفاوت <span class="english">Carotid Dissection</span>
-        با تنگی آترواسکلروتیک در کدام یک از موارد زیر است؟
+        در <span class="english">Vertebral Dissection</span>
+        همه موارد زیر دیده می‌شود به جز؟
+        `,
+
+        options: [
+            `<span class="english">Cortical Blindness</span>`,
+            `<span class="english">Wallenberg Syndrome</span>`,
+            `<span class="english">Neck Pain</span>`,
+            `<span class="english">AION</span>`
+        ],
+
+        correct: 3,
+
+        explanation: `
+        طبق پاسخنامه موردنظر شما،
+        پاسخ صحیح گزینه D یعنی
+        <span class="english">AION</span> است.
+
+        <span class="english">Vertebral Artery Dissection</span>
+        می‌تواند با درد گردن و علائم ایسکمی در گردش خون خلفی
+        تظاهر کند و در صورت درگیری ناحیه لترال مدولا،
+        سندرم <span class="english">Wallenberg</span> ایجاد شود.
+
+        <span class="english">AION</span>
+        تظاهر کلاسیک دیسکشن شریان ورتبرال نیست.
+        `,
+
+        note: `
+        <span class="english">
+        Vertebral Dissection → Posterior Circulation Ischemia
+        </span>
+        `,
+
+        trap: `
+        <span class="english">AION</span>
+        را به عنوان تظاهر کلاسیک دیسکشن ورتبرال در نظر نگیرید.
+        `,
+
+        reference: `
+        منابع استاندارد Vertebral Artery Dissection
+        و Posterior Circulation Stroke
+        `
+    },
+
+
+    // =========================
+    // سؤال ۱۶
+    // =========================
+
+    {
+        source: "دانشگاه ایران ۹۳",
+
+        question: `
+        تفاوت دیسکشن کاروتید با تنگی آترواسکلروتیک
+        در کدام یک از موارد زیر است؟
         `,
 
         options: [
             `شدت تنگی`,
-
             `علائم نورولوژیک`,
-
             `تغییرات همودینامیک داخل مغز`,
-
             `محل تنگی`
         ],
 
         correct: 3,
 
         explanation: `
-        تفاوت مهم بین <span class="english">Carotid Dissection</span>
-        و تنگی آترواسکلروتیک، محل معمول درگیری است.
+        تفاوت مهم دیسکشن کاروتید با تنگی آترواسکلروتیک
+        در محل و شکل درگیری عروقی است.
 
-        در دیسکشن کاروتید، به‌ویژه در شریان کاروتید داخلی،
-        درگیری معمولاً در قسمت دیستال‌تر از
-        <span class="english">Carotid Bulb</span>
-        دیده می‌شود؛ در حالی که آترواسکلروز اغلب در ناحیه
-        <span class="english">Carotid Bifurcation / Bulb</span>
-        ایجاد می‌شود.
+        دیسکشن معمولاً در بخش‌های متفاوتی از شریان
+        نسبت به پلاک آترواسکلروتیک ایجاد می‌شود
+        و می‌تواند با هماتوم دیواره و تنگی طولانی همراه باشد.
+
+        بنابراین پاسخ صحیح گزینه D است.
         `,
 
         note: `
         <span class="english">
-        Carotid Dissection → distal cervical ICA
-        </span>
-
-        در مقابل:
-
-        <span class="english">
-        Atherosclerosis → carotid bulb
+        Carotid Dissection → Different Location + Mural Hematoma
         </span>
         `,
 
         trap: `
-        شدت تنگی و علائم نورولوژیک به تنهایی
-        برای افتراق این دو بیماری کافی نیستند.
+        شدت تنگی به تنهایی نمی‌تواند دیسکشن را
+        از آترواسکلروز متمایز کند.
         `,
 
         reference: `
-        منابع استاندارد Cervical Artery Dissection و
-        نورولوژی عروقی؛ CTA و MRA از روش‌های تصویربرداری
-        اولیه برای بررسی دیسکشن هستند.
+        منابع استاندارد Carotid Artery Dissection
+        و Cerebrovascular Disease
         `
     },
 
+
+    // =========================
+    // سؤال ۱۷
+    // =========================
 
     {
         source: "دانشگاه ایران ۹۳",
@@ -836,11 +876,8 @@ const cerebrovascularQuestions = [
 
         options: [
             `<span class="english">Monocular Blindness</span>`,
-
             `<span class="english">Left Hemiparesis</span>`,
-
             `<span class="english">Cortical Blindness</span>`,
-
             `<span class="english">Acute Confusional State</span>`
         ],
 
@@ -848,200 +885,192 @@ const cerebrovascularQuestions = [
 
         explanation: `
         سندرم <span class="english">Top of Basilar</span>
-        می‌تواند باعث درگیری دوطرفه یا یک‌طرفه
-        نواحی اکسیپیتال، تالاموس و مزانسفال شود.
-
-        بنابراین <span class="english">Cortical Blindness</span>،
-        همی‌پارزی و اختلالات هوشیاری و رفتاری
-        می‌توانند در این سندرم دیده شوند.
+        می‌تواند ساختارهای تالاموس، مغز میانی و
+        مسیرهای بینایی را درگیر کند و باعث اختلالات
+        هوشیاری، حرکتی و بینایی شود.
 
         <span class="english">Monocular Blindness</span>
-        بیشتر نشان‌دهنده درگیری مسیر بینایی قدامی،
-        مانند شبکیه یا عصب بینایی، است و با
-        <span class="english">Top of Basilar</span>
-        سازگار نیست.
+        بیشتر به درگیری مسیر بینایی پیش از کیاسما
+        مانند شبکیه یا عصب بینایی مربوط است.
+
+        بنابراین پاسخ صحیح گزینه A است.
         `,
 
         note: `
         <span class="english">
-        Top of Basilar → Occipital + Thalamus + Midbrain
+        Top of Basilar → Midbrain + Thalamus + Occipital Visual Pathways
         </span>
         `,
 
         trap: `
         <span class="english">Monocular</span>
-        را با
-        <span class="english">Cortical Blindness</span>
-        اشتباه نکنید.
-
-        کوری قشری معمولاً دوطرفه است و ناشی از درگیری
-        قشر بینایی اکسیپیتال می‌باشد.
+        را با <span class="english">Cortical Blindness</span>
+        اشتباه نکنید؛ نابینایی قشری معمولاً دوطرفه است.
         `,
 
         reference: `
-        منابع استاندارد Posterior Circulation Stroke و
-        Top of the Basilar Syndrome.
+        منابع استاندارد Posterior Circulation Stroke
+        و Top of Basilar Syndrome
         `
     },
 
+
+    // =========================
+    // سؤال ۱۸
+    // =========================
 
     {
         source: "دانشگاه ایران ۹۳",
 
         question: `
-        در مورد <span class="english">Carotid Bruit</span>
-        کدام یک از گزینه‌های زیر صحیح‌تر است؟
+        در مورد کاروتید بروئی کدام یک از گزینه‌های زیر
+        صحیح‌تر است؟
         `,
 
         options: [
-            `شدت بروئی با شدت تنگی در اولتراسوند
+            `شدت بروئی با شدت تنگی در اولتراسوند،
             نسبت مستقیم دارد.`,
 
-            `بروئی صرفاً در سمت کاروتید تنگ یا مسدود
-            شنیده می‌شود.`,
+            `بروئی صرفاً در سمت کاروتید تنگ یا مسدود شنیده می‌شود.`,
 
             `بروئی اکولر نشانه افزایش جریان در سمت درگیر است.`,
 
-            `بروئی کاروتید ممکن است به دلیل تنگی
-            کاروتید خارجی باشد.`
+            `بروئی کاروتید ممکن است به دلیل تنگی کاروتید خارجی باشد.`
         ],
 
         correct: 3,
 
         explanation: `
         <span class="english">Carotid Bruit</span>
-        ناشی از جریان آشفته خون است و می‌تواند
-        در تنگی شریان کاروتید خارجی نیز ایجاد شود.
+        الزاماً شدت تنگی را نشان نمی‌دهد و می‌تواند
+        در شرایط مختلف عروقی شنیده شود.
 
-        شدت بروئی الزاماً با شدت تنگی رابطه مستقیم ندارد؛
-        در تنگی بسیار شدید یا انسداد کامل ممکن است
-        بروئی کاهش یافته یا حتی شنیده نشود.
+        همچنین ممکن است در اثر تنگی
+        <span class="english">External Carotid Artery</span>
+        ایجاد شود.
+
+        بنابراین پاسخ صحیح گزینه D است.
         `,
 
         note: `
         <span class="english">
-        Severe stenosis ≠ necessarily louder bruit
+        Carotid Bruit ≠ Reliable Measure of Stenosis Severity
         </span>
         `,
 
         trap: `
-        تصور «هرچه تنگی بیشتر، بروئی بلندتر»
-        یک تله کلاسیک است.
-
-        در انسداد کامل ممکن است جریان کافی برای ایجاد
-        بروئی وجود نداشته باشد.
+        در انسداد کامل کاروتید ممکن است دیگر جریان کافی
+        برای ایجاد بروئی وجود نداشته باشد؛ بنابراین
+        نبود بروئی، انسداد را رد نمی‌کند.
         `,
 
         reference: `
-        منابع استاندارد Carotid Artery Disease و
-        معاینه عروقی؛ bruit شدت تنگی را به‌طور قابل اعتماد
-        تعیین نمی‌کند.
+        منابع استاندارد Carotid Stenosis و Vascular Examination
         `
     },
 
+
+    // =========================
+    // سؤال ۱۹
+    // =========================
 
     {
         source: "دانشگاه ایران ۹۳",
 
         question: `
         در تنگی بدون علامت کاروتید،
-        حداقل تنگی که اندیکاسیون
-        <span class="english">Endarterectomy</span>
-        دارد چقدر است؟
+        حداقل تنگی که اندیکاسیون اندآرترکتومی دارد چقدر است؟
         `,
 
         options: [
-            `50%`,
-
-            `80%`,
-
-            `99%`,
-
-            `70%`
+            `<span class="english">50%</span>`,
+            `<span class="english">80%</span>`,
+            `<span class="english">99%</span>`,
+            `<span class="english">70%</span>`
         ],
 
         correct: 3,
 
         explanation: `
-        طبق پاسخنامه آزمون، در تنگی بدون علامت کاروتید،
-        آستانه مورد نظر برای انجام
-        <span class="english">Carotid Endarterectomy</span>
-        برابر 70 درصد است.
+        طبق پاسخنامه این آزمون،
+        حداقل تنگی موردنظر برای اندآرترکتومی در
+        <span class="english">Asymptomatic Carotid Stenosis</span>
+        برابر ۷۰٪ در نظر گرفته شده است.
 
-        البته در عمل امروزی تصمیم به CEA در بیمار
-        بدون علامت فقط بر اساس درصد تنگی نیست و
-        ریسک جراحی، طول عمر مورد انتظار و ویژگی‌های
-        پلاک نیز اهمیت دارند.
+        بنابراین پاسخ گزینه D است.
         `,
 
         note: `
         <span class="english">
-        Asymptomatic Carotid Stenosis → consider CEA at severe stenosis
+        Asymptomatic Carotid Stenosis → ≥70%
         </span>
         `,
 
         trap: `
-        عدد 70 درصد را به‌صورت یک قانون مطلق برای
-        همه بیماران امروزی در نظر نگیرید؛
-        انتخاب بیمار مناسب اهمیت زیادی دارد.
+        معیارهای امروزی انتخاب بیمار برای
+        <span class="english">CEA</span>
+        علاوه بر درصد تنگی، به سن، امید به زندگی،
+        ریسک جراحی و درمان طبی بهینه نیز وابسته هستند.
         `,
 
         reference: `
-        گایدلاین‌های بیماری آترواسکلروتیک کاروتید و
-        توصیه‌های مربوط به Asymptomatic Carotid Stenosis.
+        پاسخنامه دانشگاه ایران ۹۳؛
+        منابع استاندارد Carotid Endarterectomy
         `
     },
 
+
+    // =========================
+    // سؤال ۲۰
+    // =========================
 
     {
         source: "دانشگاه ایران ۹۳",
 
         question: `
         در کدام یک از موارد زیر استفاده از آنتی‌کواگولان
-        (<span class="english">Warfarin</span>)
-        تأثیر بیشتری دارد؟
+        (وارفارین) تأثیر بیشتری دارد؟
         `,
 
         options: [
             `<span class="english">Recurrent TIA</span>`,
-
             `پلاک قوس آئورت`,
-
             `<span class="english">PFO</span>`,
-
-            `<span class="english">Transient Atrial Fibrillation</span>`
+            `<span class="english">Transient AF</span>`
         ],
 
         correct: 3,
 
         explanation: `
-        وجود <span class="english">Atrial Fibrillation</span>
-        یک منبع مهم آمبولی قلبی است و درمان ضدانعقادی
-        برای کاهش خطر سکته مغزی در بیماران مناسب،
-        اساس درمان پیشگیری از سکته مرتبط با AF است.
+        در این سؤال، وجود
+        <span class="english">Atrial Fibrillation</span>
+        به عنوان یک منبع قلبی آمبولی، اندیکاسیون مهم
+        برای درمان ضدانعقادی محسوب می‌شود.
 
-        بنابراین طبق پاسخنامه آزمون، گزینه D صحیح است.
+        بنابراین پاسخ موردنظر گزینه D است.
         `,
 
         note: `
         <span class="english">
-        Atrial Fibrillation → Cardioembolic Stroke Risk
-        → Anticoagulation
+        AF → Cardioembolic Stroke Risk → Anticoagulation
         </span>
         `,
 
         trap: `
         <span class="english">PFO</span>
-        به‌تنهایی به معنی نیاز قطعی به وارفارین نیست.
+        به‌تنهایی معمولاً معادل اندیکاسیون قطعی
+        برای وارفارین نیست.
         `,
 
         reference: `
-        منابع استاندارد پیشگیری ثانویه از سکته و
-        Atrial Fibrillation؛ در رویکرد امروزی برای بسیاری
-        از بیماران واجد شرایط، DOACها بر Warfarin ترجیح داده می‌شوند.
+        منابع استاندارد Cardioembolic Stroke Prevention
         `
     },
 
+
+    // =========================
+    // سؤال ۲۱
+    // =========================
 
     {
         source: "دانشگاه ایران ۹۳",
@@ -1060,43 +1089,45 @@ const cerebrovascularQuestions = [
 
         options: [
             `بستری و <span class="english">LP</span>`,
-
             `<span class="english">Electronystagmography</span>`,
-
             `ادیومتری سرپایی`,
-
             `داپلر عروق گردن`
         ],
 
         correct: 3,
 
         explanation: `
-        وجود سرگیجه حاد همراه با
-        <span class="english">Bidirectional Nystagmus</span>
-        و یافته‌های نورولوژیک، احتمال یک علت مرکزی
-        و به‌ویژه درگیری عروق خلفی را مطرح می‌کند.
+        در یک بیمار جوان با سرگیجه حاد،
+        نیستاگموس دوطرفه و وجود یافته‌های عصبی همراه،
+        باید به یک علت عروقی در گردش خون خلفی،
+        از جمله <span class="english">Vertebral Artery Dissection</span>
+        فکر کرد.
 
-        طبق پاسخنامه آزمون، با احتمال
-        <span class="english">Vertebral Artery Dissection</span>،
-        انجام بررسی عروقی مناسب است.
+        طبق کلید موردنظر شما، پاسخ گزینه D است.
         `,
 
         note: `
-        سرگیجه حاد + یافته‌های چشمی غیرمعمول
-        را صرفاً به بیماری گوش داخلی نسبت ندهید.
+        <span class="english">
+        Young Patient + Acute Vertigo + Neurologic Signs
+        → Consider Vertebral Dissection
+        </span>
         `,
 
         trap: `
-        <span class="english">Bidirectional Nystagmus</span>
-        یک red flag برای علت مرکزی است.
+        سرگیجه همراه با یافته عصبی را نباید صرفاً
+        به بیماری گوش داخلی نسبت داد.
         `,
 
         reference: `
-        منابع استاندارد Vertigo، Posterior Circulation Stroke
-        و Vertebral Artery Dissection.
+        منابع استاندارد Vertebral Artery Dissection
+        و Posterior Circulation Ischemia
         `
     },
 
+
+    // =========================
+    // سؤال ۲۲
+    // =========================
 
     {
         source: "دانشگاه ایران ۹۳",
@@ -1109,60 +1140,58 @@ const cerebrovascularQuestions = [
 
         options: [
             `<span class="english">Double Lumen</span>`,
-
             `<span class="english">Wall Hematoma</span>`,
-
             `<span class="english">String Sign</span>`,
-
             `<span class="english">Tapering Occlusion</span>`
         ],
 
         correct: 0,
 
         explanation: `
-        <span class="english">Double Lumen</span>
-        یک یافته کلاسیک و نسبتاً اختصاصی برای
-        دیسکشن است، اما در مقایسه با یافته‌هایی مانند
-        <span class="english">Tapering Stenosis/Occlusion</span>
-        و <span class="english">Mural Hematoma</span>
-        کمتر دیده می‌شود.
+        در دیسکشن کاروتید،
+        یافته‌هایی مانند
+        <span class="english">Mural Hematoma</span>،
+        <span class="english">Tapering Stenosis/Occlusion</span>،
+        <span class="english">Intimal Flap</span>
+        و <span class="english">Double Lumen</span>
+        ممکن است دیده شوند.
 
-        بنابراین پاسخ پیشنهادی علمی برای این سؤال
-        گزینه A است.
+        <span class="english">Double Lumen</span>
+        اگرچه یک یافته کلاسیک و نسبتاً اختصاصی برای دیسکشن است،
+        اما نسبت به برخی یافته‌های غیرمستقیم شیوع کمتری دارد.
+
+        بنابراین پاسخ صحیح گزینه A است.
         `,
 
         note: `
-        یافته‌های مهم دیسکشن:
-
         <span class="english">
-        Mural Hematoma
-        + Tapering Stenosis
-        + Intimal Flap
-        + Double Lumen
+        Double Lumen + Intimal Flap
         </span>
+        از یافته‌های اختصاصی دیسکشن هستند.
         `,
 
         trap: `
-        وجود نداشتن <span class="english">Double Lumen</span>
-        دیسکشن را رد نمی‌کند؛ این علامت ممکن است
-        در همه بیماران قابل مشاهده نباشد.
+        عدم مشاهده <span class="english">Double Lumen</span>
+        دیسکشن را رد نمی‌کند.
         `,
 
         reference: `
-        منابع تصویربرداری Cervical Artery Dissection؛
-        CTA و MRI/MRA با fat suppression از روش‌های اصلی تشخیص هستند.
+        Adams and Victor's Principles of Neurology؛
+        منابع استاندارد تصویربرداری Cervical Artery Dissection
         `
     },
 
+
+    // =========================
+    // سؤال ۲۳
+    // =========================
 
     {
         source: "دانشگاه ایران ۹۳",
 
         question: `
-        در بیمار با سکته مغزی میانی،
-        همه فاکتورهای زیر به نفع
-        <span class="english">Hemicraniectomy</span>
-        می‌باشد به جز؟
+        در بیمار با سکته مغز میانی همه فاکتورهای زیر
+        به نفع همی‌کرانیوکتومی می‌باشد به جز؟
         `,
 
         options: [
@@ -1170,55 +1199,54 @@ const cerebrovascularQuestions = [
 
             `زمان کمتر از ۴۸ ساعت از شروع سکته.`,
 
-            `درگیری نیمکره غالب.`,
+            `درگیری نیمکره مغلوب.`,
 
-            `وجود هرنی و فشار شدید به <span class="english">Midbrain</span>.`
+            `وجود هرنی و فشار شدید به میدبرین.`
         ],
 
         correct: 3,
 
         explanation: `
-        طبق پاسخنامه آزمون، گزینه D پاسخ صحیح است.
+        همی‌کرانیوکتومی دکمپرسیو در
+        <span class="english">Malignant MCA Infarction</span>
+        می‌تواند در بیماران منتخب، به‌ویژه افراد جوان‌تر
+        و در ساعات اولیه بیماری، مفید باشد.
 
-        در سکته وسیع بدخیم
-        <span class="english">MCA</span>،
-        سن کمتر از ۶۰ سال و شروع مداخله در ۴۸ ساعت اول
-        از عوامل مهم در مطالعات کلاسیک
-        <span class="english">Decompressive Hemicraniectomy</span>
-        بوده‌اند.
-
-        درگیری نیمکره غالب نیز به‌تنهایی
-        مانع انجام جراحی نیست.
+        طبق پاسخنامه موردنظر شما، گزینه D پاسخ صحیح است.
         `,
 
         note: `
         <span class="english">
-        Malignant MCA Infarction → Early Decompression
+        Malignant MCA Infarction → Early Decompressive Hemicraniectomy
         </span>
         `,
 
         trap: `
-        منتظر ایجاد هرنی شدید نباید ماند؛
-        هدف جراحی پیشگیری از مرگ ناشی از
-        mass effect و brain swelling است.
+        وجود هرنی شدید و فشار شدید بر ساختارهای حیاتی
+        نشان‌دهنده مرحله پیشرفته آسیب است و نباید به عنوان
+        یک فاکتور مطلوب برای تصمیم‌گیری اولیه تلقی شود.
         `,
 
         reference: `
-        AHA/ASA و گایدلاین‌های Decompressive Craniectomy
-        در Malignant MCA Infarction.
+        منابع استاندارد Malignant MCA Infarction
+        و Decompressive Hemicraniectomy
         `
     },
 
+
+    // =========================
+    // سؤال ۲۴
+    // =========================
 
     {
         source: "دانشگاه ایران ۹۳",
 
         question: `
         خانم ۳۵ ساله‌ای که سابقه میگرن داشته است،
-        از سه روز قبل به دنبال سرماخوردگی و مصرف
-        سودوافدرین، سه بار دچار سردرد شده است که
-        هر بار <span class="english">Thunderclap</span>
-        بوده و در کمتر از یک دقیقه به حداکثر رسیده است.
+        از سه روز قبل به دنبال سرماخوردگی و مصرف سودوافدرین،
+        سه بار دچار سردرد شده است که هر بار
+        <span class="english">Thunderclap</span>
+        بوده است و در کمتر از یک دقیقه به حداکثر رسیده است.
 
         <span class="english">MRI</span>
         مغز بیمار نرمال است.
@@ -1228,29 +1256,24 @@ const cerebrovascularQuestions = [
 
         options: [
             `<span class="english">EEG</span>`,
-
-            `<span class="english">MRI</span> با تزریق`,
-
+            `<span class="english">MRI with Contrast</span>`,
             `<span class="english">MR Angiography</span>`,
-
             `<span class="english">MR Venography</span>`
         ],
 
         correct: 2,
 
         explanation: `
-        سردردهای مکرر
-        <span class="english">Thunderclap</span>
-        طی چند روز، به‌ویژه همراه با مصرف
-        داروهای سمپاتومیمتیک مانند
-        <span class="english">Pseudoephedrine</span>،
-        احتمال
-        <span class="english">Reversible Cerebral Vasoconstriction Syndrome (RCVS)</span>
+        سردردهای مکرر از نوع
+        <span class="english">Thunderclap Headache</span>
+        به‌خصوص پس از مصرف داروهای سمپاتومیمتیک مانند
+        سودوافدرین، احتمال
+        <span class="english">Reversible Cerebral Vasoconstriction Syndrome</span>
         را مطرح می‌کند.
 
-        بنابراین بررسی عروق مغزی با
-        <span class="english">MRA</span>
-        اقدام مناسب است.
+        طبق پاسخنامه موردنظر شما،
+        انجام <span class="english">MR Angiography</span>
+        مناسب‌ترین اقدام است.
         `,
 
         note: `
@@ -1260,21 +1283,21 @@ const cerebrovascularQuestions = [
         `,
 
         trap: `
-        داشتن سابقه میگرن نباید باعث شود
-        سردرد Thunderclap را به میگرن نسبت دهیم.
-
-        <span class="english">
-        Thunderclap Headache = Secondary Cause Until Excluded
-        </span>
+        سابقه میگرن نباید باعث شود
+        <span class="english">Thunderclap Headache</span>
+        را به‌سادگی به میگرن نسبت دهیم.
         `,
 
         reference: `
-        منابع RCVS و Headache؛
-        RCVS با recurrent thunderclap headache و
-        محرک‌هایی مانند داروهای سمپاتومیمتیک ارتباط دارد.
+        منابع استاندارد Thunderclap Headache و
+        Reversible Cerebral Vasoconstriction Syndrome
         `
     },
 
+
+    // =========================
+    // سؤال ۲۵
+    // =========================
 
     {
         source: "دانشگاه ایران ۹۳",
@@ -1298,16 +1321,14 @@ const cerebrovascularQuestions = [
         correct: 2,
 
         explanation: `
-        در تنگی شدید شریان، در محل تنگی معمولاً
-        افزایش سرعت جریان، به‌خصوص افزایش
-        <span class="english">Peak Systolic Velocity</span>
-        و نیز افزایش سرعت دیاستولیک و
+        در تنگی شدید شریانی،
+        افزایش سرعت جریان و
         <span class="english">Spectral Broadening/Turbulence</span>
-        دیده می‌شود.
+        می‌تواند در محل تنگی مشاهده شود.
 
-        طبق پاسخنامه آزمون، جریان
-        <span class="english">Bidirectional</span>
-        پاسخ نادرست و گزینه C است.
+        طبق پاسخنامه موردنظر شما،
+        جریان <span class="english">Bidirectional</span>
+        پاسخ صحیح است.
         `,
 
         note: `
@@ -1317,75 +1338,15 @@ const cerebrovascularQuestions = [
         `,
 
         trap: `
-        <span class="english">Bidirectional Flow</span>
-        یک یافته معمول برای خود محل تنگی نیست
-        و در شرایط خاص همودینامیک یا نزدیک به انسداد
-        می‌تواند مطرح شود.
+        افزایش سرعت سیستولیک و دیاستولیک و
+        <span class="english">Spectral Turbulence</span>
+        را از یافته‌های مهم تنگی قابل توجه در
+        <span class="english">TCD</span>
+        در نظر بگیرید.
         `,
 
         reference: `
-        منابع استاندارد Transcranial Doppler و
-        Cerebrovascular Hemodynamics.
-        `
-    }
-];
-
-    {
-        source: "دانشگاه ایران ۹۳",
-
-        question: `
-        در
-        <span class="english">Vertebral Dissection</span>
-        همه موارد زیر دیده می‌شود به جز؟
-        `,
-
-        options: [
-            `<span class="english">Cortical Blindness</span>`,
-
-            `<span class="english">Wallenberg Syndrome</span>`,
-
-            `<span class="english">Neck Pain</span>`,
-
-            `<span class="english">AION</span>`
-        ],
-
-        correct: 3,
-
-        explanation: `
-        طبق پاسخنامه رسمی موردنظر شما،
-        پاسخ صحیح گزینه D یعنی
-        <span class="english">AION</span>
-        است.
-
-        <span class="english">Vertebral Artery Dissection</span>
-        می‌تواند با درد گردن و علائم ایسکمی
-        در گردش خون خلفی تظاهر کند و در صورت درگیری
-        ناحیه لترال مدولا، سندرم
-        <span class="english">Wallenberg</span>
-        ایجاد شود.
-
-        <span class="english">AION</span>
-        یعنی
-        <span class="english">Anterior Ischemic Optic Neuropathy</span>
-        تظاهر کلاسیک دیسکشن شریان ورتبرال نیست.
-        `,
-
-        note: `
-        <span class="english">
-        Vertebral Dissection → Posterior Circulation Ischemia
-        </span>
-        `,
-
-        trap: `
-        <span class="english">Cortical Blindness</span>
-        بیشتر با درگیری قشر بینایی لوب اکسیپیتال
-        و قلمرو <span class="english">PCA</span>
-        ارتباط دارد.
-        `,
-
-        reference: `
-        منابع استاندارد Vertebral Artery Dissection
-        و Posterior Circulation Stroke
+        منابع استاندارد Transcranial Doppler و Cerebrovascular Hemodynamics
         `
     }
 
