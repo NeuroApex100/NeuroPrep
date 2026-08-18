@@ -1345,29 +1345,28 @@ const cerebrovascularQuestions = [
         در نظر بگیرید.
         `,
 
-        reference: `
+                   reference: `
         منابع استاندارد Transcranial Doppler و Cerebrovascular Hemodynamics
         `
-    }
+    },
 
-];
-cerebrovascularQuestions.push(
 
+    // =========================
     // سؤال ۲۶
+    // =========================
+
     {
         source: "دانشگاه بهشتی ۹۳",
 
         question: `
-        در اپی‌لپسی
-        <span class="english">Post-Stroke</span>
+        در اپی لپسی <span class="english">Post-Stroke</span>
         کدام عبارت صحیح است؟
         `,
 
         options: [
             `تا آخر عمر فرد باید داروی ضد صرع بگیرد.`,
 
-            `بعد از یک سال درمان باید
-            <span class="english">EEG</span>
+            `بعد از یک سال درمان باید <span class="english">EEG</span>
             انجام داد و اگر غیرطبیعی بود درمان ادامه یابد.`,
 
             `نتایج <span class="english">EEG</span>
@@ -1379,26 +1378,30 @@ cerebrovascularQuestions.push(
         correct: 1,
 
         explanation: `
-        طبق پاسخنامه دانشگاه بهشتی ۹۳، پاسخ صحیح گزینه B است.
+        در صورت بروز تشنج پس از سکته مغزی،
+        طبق رویکرد موردنظر این سؤال،
+        درمان ضدصرع به صورت تک‌دارویی برای حدود یک سال
+        ادامه می‌یابد و پس از آن <span class="english">EEG</span>
+        انجام می‌شود.
 
-        در اپی‌لپسی پس از سکته مغزی، درمان ضدتشنج
-        می‌تواند برای یک دوره ادامه پیدا کند و پس از آن
-        ارزیابی مجدد با <span class="english">EEG</span>
-        در تصمیم‌گیری برای ادامه درمان کمک‌کننده است.
+        در صورت وجود امواج فوکال یا فعالیت
+        <span class="english">Epileptiform</span>،
+        ادامه درمان ضدصرع مطرح است.
 
-        وجود فعالیت اپی‌لپتیک یا امواج فوکال غیرطبیعی
-        می‌تواند به نفع ادامه درمان باشد.
+        بنابراین پاسخ صحیح گزینه B است.
         `,
 
         note: `
         <span class="english">
-        Post-Stroke Epilepsy → AED + EEG Follow-up
+        Post-Stroke Seizure → Antiseizure Treatment → EEG after 1 year
         </span>
         `,
 
         trap: `
-        عبارت «تا آخر عمر» یک حکم مطلق است و برای همه بیماران
-        قابل تعمیم نیست.
+        درمان ضدصرع لزوماً به معنی درمان مادام‌العمر نیست
+        و تصمیم برای ادامه درمان می‌تواند بر اساس
+        خطر عود و یافته‌های <span class="english">EEG</span>
+        انجام شود.
         `,
 
         reference: `
@@ -1408,7 +1411,10 @@ cerebrovascularQuestions.push(
     },
 
 
+    // =========================
     // سؤال ۲۷
+    // =========================
+
     {
         source: "دانشگاه بهشتی ۹۳",
 
@@ -1424,19 +1430,19 @@ cerebrovascularQuestions.push(
 
             `هیدروسفالی`,
 
-            `تشنج`
+            `<span class="english">Seizure</span>`
         ],
 
         correct: 0,
 
         explanation: `
-        طبق پاسخنامه دانشگاه بهشتی ۹۳،
-        پاسخ صحیح گزینه A یعنی
-        <span class="english">Rebleeding</span> است.
-
-        خونریزی مجدد یکی از عوارض مهم
+        طبق پاسخنامه موردنظر شما،
+        <span class="english">Rebleeding</span>
+        شایع‌ترین عارضه مورد سؤال در
         <span class="english">Subarachnoid Hemorrhage</span>
-        است و در منابع کلاسیک حدود ۳۰ درصد موارد گزارش شده است.
+        است و در حدود ۳۰ درصد بیماران ممکن است رخ دهد.
+
+        بنابراین پاسخ صحیح گزینه A است.
         `,
 
         note: `
@@ -1447,9 +1453,10 @@ cerebrovascularQuestions.push(
 
         trap: `
         <span class="english">Vasospasm</span>
-        نیز از عوارض مهم SAH است، اما در این سؤال
-        پاسخنامه آزمون، <span class="english">Rebleeding</span>
-        را به عنوان پاسخ صحیح اعلام کرده است.
+        و هیدروسفالی نیز از عوارض مهم
+        <span class="english">SAH</span> هستند،
+        اما طبق کلید این سؤال، پاسخ
+        <span class="english">Rebleeding</span> است.
         `,
 
         reference: `
@@ -1459,7 +1466,10 @@ cerebrovascularQuestions.push(
     },
 
 
+    // =========================
     // سؤال ۲۸
+    // =========================
+
     {
         source: "دانشگاه بهشتی ۹۳",
 
@@ -1470,8 +1480,8 @@ cerebrovascularQuestions.push(
         `,
 
         options: [
-            `علائم شامل همی‌پلژی و همی‌هیپوستزی و
-            همونیموس همی‌آنوبی مقابل ناشی از درگیری
+            `علائم شامل همی‌پلژی و همی‌هایپوستزی و
+            همونیموس همی‌آنوپی مقابل ناشی از درگیری
             بازوی قدامی کپسول داخلی است.`,
 
             `شریان کوروئیدال قدامی از کاروتید داخلی
@@ -1489,351 +1499,52 @@ cerebrovascularQuestions.push(
         correct: 0,
 
         explanation: `
-        پاسخ صحیح گزینه A است.
-
         سندرم
         <span class="english">Anterior Choroidal Artery</span>
-        به طور کلاسیک با همی‌پلژی، همی‌هیپوستزی
-        و همونیموس همی‌آنوبی در سمت مقابل همراه است.
+        به طور کلاسیک با سه‌گانه
+        <span class="english">
+        Hemiplegia + Hemihypesthesia + Homonymous Hemianopia
+        </span>
+        شناخته می‌شود.
 
-        درگیری راه‌های حرکتی و حسی در
+        اما در این سؤال، عبارت مربوط به
+        درگیری <span class="english">Anterior Limb</span>
+        کپسول داخلی صحیح نیست؛ ساختارهای مهمی مانند
         <span class="english">Posterior Limb of Internal Capsule</span>
-        اهمیت دارد؛ بنابراین عبارت مربوط به
-        «بازوی قدامی کپسول داخلی» نادرست است.
+        و مسیرهای بینایی در قلمرو این شریان قرار دارند.
+
+        بنابراین پاسخ گزینه A است.
         `,
 
         note: `
         <span class="english">
-        Anterior Choroidal Syndrome =
-        Hemiplegia + Hemisensory Loss + Homonymous Hemianopia
+        Anterior Choroidal Artery Syndrome →
+        Hemiplegia + Hemihypesthesia + Homonymous Hemianopia
         </span>
         `,
 
         trap: `
-        <span class="english">Anterior Limb</span>
-        و
-        <span class="english">Posterior Limb</span>
-        کپسول داخلی را با یکدیگر اشتباه نکنید.
-        `,
-
-        reference: `
-        منابع استاندارد Neuroanatomy و Cerebrovascular Disease؛
-        پاسخنامه دانشگاه بهشتی ۹۳
-        `
-    },
-
-
-    // سؤال ۲۹
-    {
-        source: "دانشگاه بهشتی ۹۳",
-
-        question: `
-        بیماری ۵۰ ساله با دوبینی گذرا و ناگهانی همراه با
-        بی‌حسی سمت چپ بدن مراجعه کرده است.
-
-        در زمان معاینه دوبینی از بین رفته بود.
-
-        معاینه فیزیکی نشان می‌دهد که در سمت راست
-        افتادگی نسبی پلک و کوچک بودن مردمک راست
-        نسبت به چپ دارد.
-
-        مردمک نسبت به نور واکنش مناسب نشان می‌دهد
-        و حرکات چشم طبیعی است.
-
-        بیمار در طرف راست آتاکسی خفیفی دارد و
-        هیچ‌گونه ضعف عضلانی دیده نمی‌شود.
-
-        ضایعه از نظر آناتومیکی کجاست؟
-        `,
-
-        options: [
-            `<span class="english">Basal Right Side of Midbrain</span>`,
-
-            `<span class="english">Basal Right Side of Pons</span>`,
-
-            `<span class="english">Dorsolateral Right Side of Medulla</span>`,
-
-            `<span class="english">Dorsolateral Right Side of Midbrain</span>`
-        ],
-
-        correct: 2,
-
-        explanation: `
-        پاسخ صحیح گزینه C است.
-
-        ترکیب علائم بیمار به نفع
-        <span class="english">Wallenberg Syndrome</span>
-        و درگیری بخش
-        <span class="english">Dorsolateral Medulla</span>
-        است.
-
-        بنابراین محل ضایعه در سمت راست،
-        بخش دورسولترال مدولا است.
-        `,
-
-        note: `
         <span class="english">
-        Wallenberg Syndrome → Dorsolateral Medulla
+        Anterior Limb
         </span>
-        `,
-
-        trap: `
-        وجود پتوز و میوز ممکن است ذهن را به سمت
-        مغز میانی ببرد، اما الگوی کلی علائم
-        با ضایعه دورسولترال مدولا سازگار است.
-        `,
-
-        reference: `
-        منابع استاندارد Brainstem Neuroanatomy و
-        Wallenberg Syndrome؛
-        پاسخنامه دانشگاه بهشتی ۹۳
-        `
-    },
-
-
-    // سؤال ۳۰
-    {
-        source: "دانشگاه بهشتی ۹۳",
-
-        question: `
-        کدام یک از موارد زیر در بیماری
-        <span class="english">Susac Syndrome</span>
-        دیده می‌شود؟
-        `,
-
-        options: [
-            `آنژیوگرافی مغز غیرطبیعی است.`,
-
-            `ضایعات
-            <span class="english">Enhance</span>
-            نمی‌شود.`,
-
-            `<span class="english">
-            Leptomeningeal Enhancement
-            </span>
-            دیده می‌شود.`,
-
-            `<span class="english">
-            Corpus Callosum
-            </span>
-            به ندرت درگیر می‌شود.`
-        ],
-
-        correct: 2,
-
-        explanation: `
-        پاسخ صحیح گزینه C است.
-
-        در
-        <span class="english">Susac Syndrome</span>
-        ممکن است
-        <span class="english">Leptomeningeal Enhancement</span>
-        دیده شود.
-
-        همچنین درگیری
-        <span class="english">Corpus Callosum</span>
-        از یافته‌های مهم و تیپیک بیماری است.
-        `,
-
-        note: `
-        <span class="english">
-        Susac Syndrome =
-        Encephalopathy + BRAO + Sensorineural Hearing Loss
-        </span>
-        `,
-
-        trap: `
-        درگیری
-        <span class="english">Corpus Callosum</span>
-        در سوساک شایع است و ضایعات
-        <span class="english">Snowball</span>
-        از یافته‌های شناخته‌شده MRI هستند.
-        `,
-
-        reference: `
-        منابع استاندارد Neuroimmunology و Susac Syndrome؛
-        پاسخنامه دانشگاه بهشتی ۹۳`
-    }
-
-];
-    },
-
-    // سؤال ۲۶
-    {
-        source: "دانشگاه بهشتی ۹۳",
-
-        question: `
-        در اپی‌لپسی
-        <span class="english">Post-Stroke</span>
-        کدام عبارت صحیح است؟
-        `,
-
-        options: [
-            `تا آخر عمر فرد باید داروی ضد صرع بگیرد.`,
-
-            `بعد از یک سال درمان باید
-            <span class="english">EEG</span>
-            انجام داد و اگر غیرطبیعی بود درمان ادامه یابد.`,
-
-            `نتایج
-            <span class="english">EEG</span>
-            برای ادامه درمان ارزشی ندارد.`,
-
-            `احتیاج به درمان ندارد.`
-        ],
-
-        correct: 2,
-
-        explanation: `
-        در بیماران مبتلا به
-        <span class="english">Post-Stroke Epilepsy</span>،
-        تصمیم‌گیری درباره ادامه یا قطع داروی ضدتشنج
-        صرفاً بر اساس نتیجه
-        <span class="english">EEG</span>
-        انجام نمی‌شود.
-
-        بنابراین در چارچوب این سؤال، گزینه C پاسخ صحیح
-        در نظر گرفته می‌شود.
-        `,
-
-        note: `
-        <span class="english">
-        Post-Stroke Epilepsy
-        </span>
-        را از یک تشنج حاد علامتی در فاز حاد سکته
-        افتراق دهید.
-        `,
-
-        trap: `
-        نتیجه
-        <span class="english">EEG</span>
-        به تنهایی معیار قطعی برای تصمیم‌گیری درباره
-        ادامه یا قطع درمان نیست.
-        `,
-
-        reference: `
-        منابع استاندارد Epilepsy و Post-Stroke Seizures
-        `
-    },
-
-
-    // سؤال ۲۷
-    {
-        source: "دانشگاه بهشتی ۹۳",
-
-        question: `
-        کدام یک از عوارض زیر در بیمار مبتلا به
-        خونریزی ساب‌آراکنوئید بیشتر دیده می‌شود؟
-        `,
-
-        options: [
-            `<span class="english">Rebleeding</span>`,
-
-            `<span class="english">Vasospasm</span>`,
-
-            `هیدروسفالی`,
-
-            `تشنج`
-        ],
-
-        correct: 1,
-
-        explanation: `
-        <span class="english">Vasospasm</span>
-        یکی از مهم‌ترین عوارض خونریزی
-        <span class="english">Subarachnoid Hemorrhage</span>
-        است و معمولاً چند روز پس از خونریزی اولیه
-        رخ می‌دهد و می‌تواند موجب
-        <span class="english">Delayed Cerebral Ischemia</span>
-        شود.
-        `,
-
-        note: `
-        <span class="english">
-        SAH → Vasospasm → Delayed Cerebral Ischemia
-        </span>
-        `,
-
-        trap: `
-        <span class="english">Rebleeding</span>
-        نیز عارضه بسیار مهم و خطرناکی است،
-        اما در این سؤال پاسخ مورد انتظار
-        <span class="english">Vasospasm</span>
-        است.
-        `,
-
-        reference: `
-        منابع استاندارد Subarachnoid Hemorrhage و
-        Cerebrovascular Disease
-        `
-    },
-
-
-    // سؤال ۲۸
-    {
-        source: "دانشگاه بهشتی ۹۳",
-
-        question: `
-        در سندروم استروک مرتبط با شریان
-        <span class="english">Anterior Choroidal</span>
-        کدام مورد صحیح نیست؟
-        `,
-
-        options: [
-            `علائم شامل همی‌پلژی، همی‌هیپوستزی و
-            همونیموس همی‌آنوبی مقابل ناشی از درگیری
-            بازوی قدامی کپسول داخلی است.`,
-
-            `شریان کوروئیدال قدامی از کاروتید داخلی
-            درست بالای شریان
-            <span class="english">Posterior Communicating</span>
-            منشا می‌گیرد.`,
-
-            `این شریان خون‌رسانی به
-            <span class="english">Choroid Plexus</span>
-            را انجام می‌دهد.`,
-
-            `آناستوموز با شریان کوروئیدال خلفی دارد.`
-        ],
-
-        correct: 0,
-
-        explanation: `
-        گزینه A نادرست است.
-
-        سندرم کلاسیک
-        <span class="english">Anterior Choroidal Artery</span>
-        شامل سه‌گانه همی‌پلژی، همی‌هیپوستزی و
-        همونیموس همی‌آنوبی در سمت مقابل است.
-
-        اما درگیری حرکتی اصلی به علت آسیب
-        <span class="english">Posterior Limb of Internal Capsule</span>
-        است، نه بازوی قدامی کپسول داخلی.
-        `,
-
-        note: `
-        <span class="english">
-        Anterior Choroidal Artery Syndrome
-        =
-        Hemiplegia + Hemisensory Loss + Homonymous Hemianopia
-        </span>
-        `,
-
-        trap: `
-        در این سؤال عبارت
-        <span class="english">Anterior Limb</span>
         را با
-        <span class="english">Posterior Limb</span>
-        اشتباه نکنید.
+        <span class="english">
+        Posterior Limb
+        </span>
+        کپسول داخلی اشتباه نکنید.
         `,
 
         reference: `
-        منابع استاندارد Neuroanatomy و Cerebrovascular Disease
+        پاسخنامه دانشگاه بهشتی ۹۳؛
+        منابع استاندارد Cerebrovascular Anatomy
         `
     },
 
 
+    // =========================
     // سؤال ۲۹
+    // =========================
+
     {
         source: "دانشگاه بهشتی ۹۳",
 
@@ -1844,132 +1555,22 @@ cerebrovascularQuestions.push(
         در زمان معاینه دوبینی از بین رفته بود.
 
         معاینه فیزیکی نشان می‌دهد که در سمت راست
-        افتادگی نسبی پلک و کوچک بودن مردمک راست نسبت
-        به چپ دارد.
+        افتادگی نسبی پلک و کوچک بودن مردمک راست نسبت به چپ دارد.
 
         مردمک نسبت به نور واکنش مناسب نشان می‌دهد
         و حرکات چشم طبیعی است.
 
-        بیمار در طرف راست آتاکسی خفیفی دارد و
-        هیچ‌گونه ضعف عضلانی دیده نمی‌شود.
+        بیمار در طرف راست آتاکسی خفیفی دارد
+        و هیچگونه ضعف عضلانی دیده نمی‌شود.
 
         ضایعه از نظر آناتومیکی کجاست؟
         `,
 
         options: [
-            `<span class="english">
-            Basal Right Side of Midbrain
-            </span>`,
+            `<span class="english">Basal right side of midbrain</span>`,
 
-            `<span class="english">
-            Basal Right Side of Pons
-            </span>`,
+            `<span class="english">Basal right side of pons</span>`,
 
-            `<span class="english">
-            Dorsolateral Right Side of Medulla
-            </span>`,
+            `<span class="english">Dorsolateral right side of medulla</span>`,
 
-            `<span class="english">
-            Dorsolateral Right Side of Midbrain
-            </span>`
-        ],
-
-        correct: 3,
-
-        explanation: `
-        وجود
-        <span class="english">Ipsilateral Horner Syndrome</span>
-        یعنی میوز و پتوز نسبی در سمت راست،
-        همراه با آتاکسی همان سمت و اختلال حسی
-        سمت مقابل، به نفع ضایعه در
-        <span class="english">Dorsolateral Midbrain</span>
-        است.
-
-        بنابراین گزینه D صحیح است.
-        `,
-
-        note: `
-        <span class="english">
-        Ipsilateral Ataxia + Contralateral Sensory Loss
-        + Ipsilateral Horner Syndrome
-        → Dorsolateral Midbrain
-        </span>
-        `,
-
-        trap: `
-        وجود پتوز و میوز می‌تواند شما را به سمت
-        ضایعات ساقه مغز هدایت کند؛ برای تعیین محل،
-        ترکیب علائم طرفی حسی و آتاکسی اهمیت دارد.
-        `,
-
-        reference: `
-        منابع استاندارد Brainstem Neuroanatomy و
-        Clinical Neurology
-        `
-    },
-
-
-    // سؤال ۳۰
-    {
-        source: "دانشگاه بهشتی ۹۳",
-
-        question: `
-        کدام یک از موارد زیر در بیماری
-        <span class="english">Susac Syndrome</span>
-        دیده می‌شود؟
-        `,
-
-        options: [
-            `آنژیوگرافی مغز غیرطبیعی است.`,
-
-            `ضایعات
-            <span class="english">Enhance</span>
-            نمی‌شود.`,
-
-            `<span class="english">
-            Leptomeningeal Enhancement
-            </span>
-            دیده می‌شود.`,
-
-            `<span class="english">
-            Corpus Callosum
-            </span>
-            به ندرت درگیر می‌شود.`
-        ],
-
-        correct: 2,
-
-        explanation: `
-        در
-        <span class="english">Susac Syndrome</span>
-        ممکن است
-        <span class="english">Leptomeningeal Enhancement</span>
-        دیده شود.
-
-        همچنین درگیری
-        <span class="english">Corpus Callosum</span>
-        از یافته‌های بسیار مهم و تیپیک بیماری است.
-        `,
-
-        note: `
-        <span class="english">
-        Susac Syndrome =
-        Encephalopathy + BRAO + Sensorineural Hearing Loss
-        </span>
-        `,
-
-        trap: `
-        درگیری
-        <span class="english">Corpus Callosum</span>
-        در سوساک شایع است و ضایعات
-        <span class="english">Snowball</span>
-        در آن از یافته‌های شناخته‌شده MRI هستند.
-        `,
-
-        reference: `
-        منابع استاندارد Neuroimmunology و
-        Susac Syndrome
-        `
-    }
-
-];
+            `<span class="english
