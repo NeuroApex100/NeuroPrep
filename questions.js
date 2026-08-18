@@ -1350,8 +1350,7 @@ const cerebrovascularQuestions = [
         `
     },
     {
-        
-    // سؤال ۲۶
+          // سؤال ۲۶
     {
         source: "دانشگاه بهشتی ۹۳",
 
