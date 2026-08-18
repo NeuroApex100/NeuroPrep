@@ -431,10 +431,9 @@ const cerebrovascularQuestions = [
         correct: 2,
 
         explanation: `
-        <span class="english">PCC</span>
-        باعث جایگزینی سریع فاکتورهای انعقادی وابسته به ویتامین K
-        می‌شود و در خونریزی شدید ناشی از وارفارین برای اصلاح سریع
-        انعقاد به کار می‌رود.
+        <span class="english">PCC</span> باعث جایگزینی سریع فاکتورهای
+        انعقادی وابسته به ویتامین K می‌شود و در خونریزی شدید
+        ناشی از وارفارین برای اصلاح سریع انعقاد به کار می‌رود.
         `,
 
         note: `
@@ -556,8 +555,7 @@ const cerebrovascularQuestions = [
         روی کروموزوم ۱۹ دارد.
 
         با توجه به تشخیص بیمار، همه موارد زیر در تصویر
-        <span class="english">MRI</span>
-        بیمار صحیح است به جز؟
+        <span class="english">MRI</span> بیمار صحیح است به جز؟
         `,
 
         options: [
@@ -1310,11 +1308,8 @@ const cerebrovascularQuestions = [
 
         options: [
             `افزایش سرعت دیاستولیک`,
-
             `افزایش سرعت سیستولیک`,
-
             `جریان <span class="english">Bidirectional</span>`,
-
             `<span class="english">Spectral Turbulence</span>`
         ],
 
@@ -1345,21 +1340,21 @@ const cerebrovascularQuestions = [
         در نظر بگیرید.
         `,
 
-                   reference: `
+        reference: `
         منابع استاندارد Transcranial Doppler و Cerebrovascular Hemodynamics
         `
     },
 
 
-    // =========================
+    // =====================================================
     // سؤال ۲۶
-    // =========================
+    // =====================================================
 
     {
         source: "دانشگاه بهشتی ۹۳",
 
         question: `
-        در اپی لپسی <span class="english">Post-Stroke</span>
+        در اپی‌لپسی <span class="english">Post-Stroke</span>
         کدام عبارت صحیح است؟
         `,
 
@@ -1375,45 +1370,42 @@ const cerebrovascularQuestions = [
             `احتیاج به درمان ندارد.`
         ],
 
-        correct: 1,
+        correct: 2,
 
         explanation: `
-        در صورت بروز تشنج پس از سکته مغزی،
-        طبق رویکرد موردنظر این سؤال،
-        درمان ضدصرع به صورت تک‌دارویی برای حدود یک سال
-        ادامه می‌یابد و پس از آن <span class="english">EEG</span>
-        انجام می‌شود.
+        در اپی‌لپسی پس از سکته مغزی،
+        نتیجه <span class="english">EEG</span>
+        به تنهایی معیار قطعی برای تصمیم‌گیری درباره
+        ادامه یا قطع درمان ضدصرع نیست.
 
-        در صورت وجود امواج فوکال یا فعالیت
-        <span class="english">Epileptiform</span>،
-        ادامه درمان ضدصرع مطرح است.
+        تصمیم‌گیری بر اساس نوع تشنج، زمان وقوع آن،
+        خطر عود، ضایعه ساختاری مغز و شرایط بالینی بیمار انجام می‌شود.
 
-        بنابراین پاسخ صحیح گزینه B است.
+        طبق کلید آزمون دانشگاه بهشتی ۹۳،
+        پاسخ صحیح گزینه C است.
         `,
 
         note: `
         <span class="english">
-        Post-Stroke Seizure → Antiseizure Treatment → EEG after 1 year
+        Post-Stroke Epilepsy → EEG alone does not determine treatment duration
         </span>
         `,
 
         trap: `
-        درمان ضدصرع لزوماً به معنی درمان مادام‌العمر نیست
-        و تصمیم برای ادامه درمان می‌تواند بر اساس
-        خطر عود و یافته‌های <span class="english">EEG</span>
-        انجام شود.
+        وجود یک سکته مغزی به این معنی نیست که بیمار
+        الزاماً باید تا پایان عمر داروی ضدصرع مصرف کند.
         `,
 
         reference: `
         پاسخنامه دانشگاه بهشتی ۹۳؛
-        منابع استاندارد Post-Stroke Epilepsy
+        منابع استاندارد Post-Stroke Seizures و Epilepsy
         `
     },
 
 
-    // =========================
+    // =====================================================
     // سؤال ۲۷
-    // =========================
+    // =====================================================
 
     {
         source: "دانشگاه بهشتی ۹۳",
@@ -1425,50 +1417,47 @@ const cerebrovascularQuestions = [
 
         options: [
             `<span class="english">Rebleeding</span>`,
-
             `<span class="english">Vasospasm</span>`,
-
             `هیدروسفالی`,
-
-            `<span class="english">Seizure</span>`
+            `تشنج`
         ],
 
         correct: 0,
 
         explanation: `
-        طبق پاسخنامه موردنظر شما،
+        در خونریزی ساب‌آراکنوئید ناشی از آنوریسم،
         <span class="english">Rebleeding</span>
-        شایع‌ترین عارضه مورد سؤال در
-        <span class="english">Subarachnoid Hemorrhage</span>
-        است و در حدود ۳۰ درصد بیماران ممکن است رخ دهد.
+        یکی از مهم‌ترین و شایع‌ترین عوارض زودرس است
+        و بیشترین خطر آن در ساعات و روزهای ابتدایی پس از خونریزی وجود دارد.
 
-        بنابراین پاسخ صحیح گزینه A است.
+        بنابراین طبق کلید آزمون،
+        پاسخ صحیح گزینه A یعنی
+        <span class="english">Rebleeding</span>
+        است.
         `,
 
         note: `
         <span class="english">
-        SAH → Rebleeding
+        SAH → Major Early Complication = Rebleeding
         </span>
         `,
 
         trap: `
         <span class="english">Vasospasm</span>
-        و هیدروسفالی نیز از عوارض مهم
-        <span class="english">SAH</span> هستند،
-        اما طبق کلید این سؤال، پاسخ
-        <span class="english">Rebleeding</span> است.
+        نیز از عوارض بسیار مهم SAH است، اما معمولاً چند روز
+        پس از خونریزی بیشتر مطرح می‌شود.
         `,
 
         reference: `
         پاسخنامه دانشگاه بهشتی ۹۳؛
-        منابع استاندارد Subarachnoid Hemorrhage
+        منابع استاندارد Aneurysmal Subarachnoid Hemorrhage
         `
     },
 
 
-    // =========================
+    // =====================================================
     // سؤال ۲۸
-    // =========================
+    // =====================================================
 
     {
         source: "دانشگاه بهشتی ۹۳",
@@ -1485,13 +1474,10 @@ const cerebrovascularQuestions = [
             بازوی قدامی کپسول داخلی است.`,
 
             `شریان کوروئیدال قدامی از کاروتید داخلی
-            درست بالای شریان
-            <span class="english">Posterior Communicating</span>
-            منشا می‌گیرد.`,
+            درست بالای شریان <span class="english">Posterior Communicating</span>
+            منشأ می‌گیرد.`,
 
-            `این شریان خون‌رسانی به
-            <span class="english">Choroid Plexus</span>
-            را انجام می‌دهد.`,
+            `این شریان خون‌رسانی به کوروئید پلکسوس را انجام می‌دهد.`,
 
             `آناستوموز با شریان کوروئیدال خلفی دارد.`
         ],
@@ -1499,51 +1485,43 @@ const cerebrovascularQuestions = [
         correct: 0,
 
         explanation: `
-        سندرم
+        سندرم کلاسیک
         <span class="english">Anterior Choroidal Artery</span>
-        به طور کلاسیک با سه‌گانه
-        <span class="english">
-        Hemiplegia + Hemihypesthesia + Homonymous Hemianopia
-        </span>
-        شناخته می‌شود.
+        شامل سه‌گانه همی‌پلژی، همی‌هیپوستزی و
+        همونیموس همی‌آنوپی سمت مقابل است.
 
-        اما در این سؤال، عبارت مربوط به
-        درگیری <span class="english">Anterior Limb</span>
-        کپسول داخلی صحیح نیست؛ ساختارهای مهمی مانند
-        <span class="english">Posterior Limb of Internal Capsule</span>
-        و مسیرهای بینایی در قلمرو این شریان قرار دارند.
+        نکته مهم این است که مسیرهای اصلی مسئول این علائم
+        در قسمت خلفی کپسول داخلی و ساختارهای مرتبط قرار دارند،
+        نه بازوی قدامی کپسول داخلی.
 
-        بنابراین پاسخ گزینه A است.
+        بنابراین گزینه A که در آن
+        «بازوی قدامی کپسول داخلی» ذکر شده،
+        صحیح نیست.
         `,
 
         note: `
         <span class="english">
-        Anterior Choroidal Artery Syndrome →
-        Hemiplegia + Hemihypesthesia + Homonymous Hemianopia
+        Anterior Choroidal Syndrome =
+        Hemiplegia + Hemisensory Loss + Homonymous Hemianopia
         </span>
         `,
 
         trap: `
-        <span class="english">
-        Anterior Limb
-        </span>
-        را با
-        <span class="english">
-        Posterior Limb
-        </span>
-        کپسول داخلی اشتباه نکنید.
+        در این سؤال، محل درگیری کپسول داخلی را با
+        <span class="english">Anterior Limb</span>
+        اشتباه نکنید.
         `,
 
         reference: `
         پاسخنامه دانشگاه بهشتی ۹۳؛
-        منابع استاندارد Cerebrovascular Anatomy
+        منابع استاندارد Anterior Choroidal Artery Syndrome
         `
     },
 
 
-    // =========================
+    // =====================================================
     // سؤال ۲۹
-    // =========================
+    // =====================================================
 
     {
         source: "دانشگاه بهشتی ۹۳",
@@ -1573,4 +1551,101 @@ const cerebrovascularQuestions = [
 
             `<span class="english">Dorsolateral right side of medulla</span>`,
 
-            `<span class="english
+            `<span class="english">Dorsolateral right side of midbrain</span>`
+        ],
+
+        correct: 3,
+
+        explanation: `
+        ترکیب
+        <span class="english">Ipsilateral Partial Horner Syndrome</span>
+        همراه با آتاکسی سمت راست و علائم حسی سمت مقابل،
+        ضایعه‌ای در قسمت دورسولترال مغز میانی راست را مطرح می‌کند.
+
+        وجود پتوز و میوز سمت راست نشان‌دهنده درگیری
+        مسیر سمپاتیک در همان سمت است.
+
+        بنابراین طبق کلید آزمون،
+        پاسخ صحیح گزینه D یعنی
+        <span class="english">Dorsolateral Right Side of Midbrain</span>
+        است.
+        `,
+
+        note: `
+        <span class="english">
+        Ipsilateral Horner + Contralateral Sensory Symptoms
+        + Ipsilateral Ataxia → Midbrain Lesion
+        </span>
+        `,
+
+        trap: `
+        محل ضایعه را بر اساس ترکیب علائم تعیین کنید؛
+        وجود آتاکسی به تنهایی برای تشخیص محل کافی نیست.
+        `,
+
+        reference: `
+        پاسخنامه دانشگاه بهشتی ۹۳؛
+        منابع استاندارد Brainstem Vascular Syndromes
+        `
+    },
+
+
+    // =====================================================
+    // سؤال ۳۰
+    // =====================================================
+
+    {
+        source: "دانشگاه بهشتی ۹۳",
+
+        question: `
+        کدام یک از موارد زیر در بیماری
+        <span class="english">Susac Syndrome</span>
+        دیده می‌شود؟
+        `,
+
+        options: [
+            `آنژیوگرافی مغز غیرطبیعی است.`,
+
+            `ضایعات <span class="english">Enhance</span> نمی‌شود.`,
+
+            `<span class="english">Leptomeningeal Enhancement</span>
+            دیده می‌شود.`,
+
+            `<span class="english">Corpus Callosum</span>
+            ندرتاً درگیر می‌شود.`
+        ],
+
+        correct: 2,
+
+        explanation: `
+        در <span class="english">Susac Syndrome</span>
+        درگیری مغز، شبکیه و گوش داخلی دیده می‌شود.
+
+        در MRI ممکن است
+        <span class="english">Leptomeningeal Enhancement</span>
+        مشاهده شود و ضایعات تیپیک
+        <span class="english">Corpus Callosum</span>
+        نیز از یافته‌های مهم بیماری هستند.
+
+        بنابراین طبق کلید آزمون،
+        پاسخ صحیح گزینه C است.
+        `,
+
+        note: `
+        <span class="english">
+        Susac Syndrome → Brain + Retina + Inner Ear
+        </span>
+        `,
+
+        trap: `
+        درگیری <span class="english">Corpus Callosum</span>
+        در Susac شایع و مهم است و نباید آن را یافته‌ای نادر تلقی کرد.
+        `,
+
+        reference: `
+        پاسخنامه دانشگاه بهشتی ۹۳؛
+        منابع استاندارد Susac Syndrome و Neuroimmunology
+        `
+    }
+
+];
