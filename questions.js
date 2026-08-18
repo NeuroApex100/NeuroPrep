@@ -1652,9 +1652,11 @@ cerebrovascularQuestions.push(
 
         reference: `
         منابع استاندارد Neuroimmunology و Susac Syndrome؛
-        پاسخنامه دانشگاه بهشتی ۹۳
-        `
-      },
+        پاسخنامه دانشگاه بهشتی ۹۳`
+    }
+
+];
+    },
 
     // سؤال ۲۶
     {
