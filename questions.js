@@ -1350,7 +1350,10 @@ const cerebrovascularQuestions = [
         `
     },
     {
-          // سؤال ۲۶
+ 
+cerebrovascularQuestions.push(
+
+    // سؤال ۲۶
     {
         source: "دانشگاه بهشتی ۹۳",
 
@@ -1367,8 +1370,7 @@ const cerebrovascularQuestions = [
             <span class="english">EEG</span>
             انجام داد و اگر غیرطبیعی بود درمان ادامه یابد.`,
 
-            `نتایج
-            <span class="english">EEG</span>
+            `نتایج <span class="english">EEG</span>
             برای ادامه درمان ارزشی ندارد.`,
 
             `احتیاج به درمان ندارد.`
@@ -1377,13 +1379,11 @@ const cerebrovascularQuestions = [
         correct: 1,
 
         explanation: `
-        طبق پاسخنامه آزمون دانشگاه بهشتی ۹۳،
-        پاسخ صحیح گزینه B است.
+        طبق پاسخنامه دانشگاه بهشتی ۹۳، پاسخ صحیح گزینه B است.
 
-        در بیماری که پس از سکته مغزی دچار تشنج شده است،
-        درمان ضدتشنج می‌تواند به صورت تک‌دارویی ادامه یابد
-        و پس از یک دوره درمان، ارزیابی مجدد با
-        <span class="english">EEG</span>
+        در اپی‌لپسی پس از سکته مغزی، درمان ضدتشنج
+        می‌تواند برای یک دوره ادامه پیدا کند و پس از آن
+        ارزیابی مجدد با <span class="english">EEG</span>
         در تصمیم‌گیری برای ادامه درمان کمک‌کننده است.
 
         وجود فعالیت اپی‌لپتیک یا امواج فوکال غیرطبیعی
@@ -1392,12 +1392,12 @@ const cerebrovascularQuestions = [
 
         note: `
         <span class="english">
-        Post-Stroke Epilepsy → AED treatment + EEG follow-up
+        Post-Stroke Epilepsy → AED + EEG Follow-up
         </span>
         `,
 
         trap: `
-        عبارت «تا آخر عمر» یک حکم مطلق است و در همه بیماران
+        عبارت «تا آخر عمر» یک حکم مطلق است و برای همه بیماران
         قابل تعمیم نیست.
         `,
 
@@ -1432,34 +1432,24 @@ const cerebrovascularQuestions = [
         explanation: `
         طبق پاسخنامه دانشگاه بهشتی ۹۳،
         پاسخ صحیح گزینه A یعنی
-        <span class="english">Rebleeding</span>
-        است.
+        <span class="english">Rebleeding</span> است.
 
         خونریزی مجدد یکی از عوارض مهم
         <span class="english">Subarachnoid Hemorrhage</span>
-        است و در منابع کلاسیک حدود ۳۰ درصد موارد
-        گزارش شده است.
-
-        این عارضه اهمیت بالینی زیادی دارد و با افزایش
-        قابل توجه موربیدیتی و مورتالیتی همراه است.
+        است و در منابع کلاسیک حدود ۳۰ درصد موارد گزارش شده است.
         `,
 
         note: `
         <span class="english">
         SAH → Rebleeding
         </span>
-
-        خونریزی مجدد را به عنوان یکی از مهم‌ترین
-        عوارض زودرس <span class="english">SAH</span>
-        به خاطر بسپارید.
         `,
 
         trap: `
         <span class="english">Vasospasm</span>
         نیز از عوارض مهم SAH است، اما در این سؤال
-        بر اساس پاسخنامه آزمون، پاسخ صحیح
-        <span class="english">Rebleeding</span>
-        است.
+        پاسخنامه آزمون، <span class="english">Rebleeding</span>
+        را به عنوان پاسخ صحیح اعلام کرده است.
         `,
 
         reference: `
@@ -1503,20 +1493,13 @@ const cerebrovascularQuestions = [
 
         سندرم
         <span class="english">Anterior Choroidal Artery</span>
-        به طور کلاسیک با سه علامت مهم شناخته می‌شود:
-
-        <br><br>
-
-        همی‌پلژی،
-        همی‌هیپوستزی و
-        همونیموس همی‌آنوبی در سمت مقابل.
-
-        <br><br>
+        به طور کلاسیک با همی‌پلژی، همی‌هیپوستزی
+        و همونیموس همی‌آنوبی در سمت مقابل همراه است.
 
         درگیری راه‌های حرکتی و حسی در
         <span class="english">Posterior Limb of Internal Capsule</span>
-        اهمیت دارد؛ بنابراین عبارت موجود در گزینه A
-        که درگیری را به بازوی قدامی نسبت می‌دهد، نادرست است.
+        اهمیت دارد؛ بنابراین عبارت مربوط به
+        «بازوی قدامی کپسول داخلی» نادرست است.
         `,
 
         note: `
@@ -1527,19 +1510,14 @@ const cerebrovascularQuestions = [
         `,
 
         trap: `
-        <span class="english">
-        Anterior Limb
-        </span>
+        <span class="english">Anterior Limb</span>
         و
-        <span class="english">
-        Posterior Limb
-        </span>
+        <span class="english">Posterior Limb</span>
         کپسول داخلی را با یکدیگر اشتباه نکنید.
         `,
 
         reference: `
-        منابع استاندارد Neuroanatomy و
-        Cerebrovascular Disease؛
+        منابع استاندارد Neuroanatomy و Cerebrovascular Disease؛
         پاسخنامه دانشگاه بهشتی ۹۳
         `
     },
@@ -1569,21 +1547,13 @@ const cerebrovascularQuestions = [
         `,
 
         options: [
-            `<span class="english">
-            Basal Right Side of Midbrain
-            </span>`,
+            `<span class="english">Basal Right Side of Midbrain</span>`,
 
-            `<span class="english">
-            Basal Right Side of Pons
-            </span>`,
+            `<span class="english">Basal Right Side of Pons</span>`,
 
-            `<span class="english">
-            Dorsolateral Right Side of Medulla
-            </span>`,
+            `<span class="english">Dorsolateral Right Side of Medulla</span>`,
 
-            `<span class="english">
-            Dorsolateral Right Side of Midbrain
-            </span>`
+            `<span class="english">Dorsolateral Right Side of Midbrain</span>`
         ],
 
         correct: 2,
@@ -1597,11 +1567,6 @@ const cerebrovascularQuestions = [
         <span class="english">Dorsolateral Medulla</span>
         است.
 
-        وجود علائم گردش خون خلفی همراه با
-        <span class="english">Horner Syndrome</span>
-        و اختلال حسی متقاطع می‌تواند نشان‌دهنده
-        درگیری لترال مدولا باشد.
-
         بنابراین محل ضایعه در سمت راست،
         بخش دورسولترال مدولا است.
         `,
@@ -1613,9 +1578,9 @@ const cerebrovascularQuestions = [
         `,
 
         trap: `
-        وجود میوز و پتوز نسبی می‌تواند باعث شود
-        به ضایعه مغز میانی فکر کنیم؛ اما ترکیب علائم
-        و الگوی سندرم، ضایعه دورسولترال مدولا را مطرح می‌کند.
+        وجود پتوز و میوز ممکن است ذهن را به سمت
+        مغز میانی ببرد، اما الگوی کلی علائم
+        با ضایعه دورسولترال مدولا سازگار است.
         `,
 
         reference: `
@@ -1680,16 +1645,16 @@ const cerebrovascularQuestions = [
         trap: `
         درگیری
         <span class="english">Corpus Callosum</span>
-        در سوساک شایع است و ضایعات موسوم به
-        <span class="english">Snowball Lesions</span>
+        در سوساک شایع است و ضایعات
+        <span class="english">Snowball</span>
         از یافته‌های شناخته‌شده MRI هستند.
         `,
 
         reference: `
-        منابع استاندارد Neuroimmunology و
-        Susac Syndrome؛
+        منابع استاندارد Neuroimmunology و Susac Syndrome؛
         پاسخنامه دانشگاه بهشتی ۹۳
         `
     }
 
-];
+);
+ 
