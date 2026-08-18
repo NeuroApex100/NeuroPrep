@@ -1350,7 +1350,7 @@ const cerebrovascularQuestions = [
         `
     },
     {
- 
+ );
 cerebrovascularQuestions.push(
 
     // سؤال ۲۶
