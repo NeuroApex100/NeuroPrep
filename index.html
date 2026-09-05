@@ -1,749 +1,2109 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+      content="#3f7650">
 
 <title>Neurology Exam</title>
 
+
 <style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 * {
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Tahoma, Arial, sans-serif;
-    background: #eef8f0;
-    color: #26332a;
+html {
+    scroll-behavior: smooth;
 }
+
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf8f0,
+            #f7fbf8
+        );
+
+    color: #26352b;
+
+    line-height: 1.8;
+}
+
+
+button,
+input {
+
+    font-family: inherit;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
 
 .container {
+
     width: 94%;
-    max-width: 1100px;
-    margin: 20px auto;
+
+    max-width: 1150px;
+
+    margin:
+        20px auto 40px auto;
+
 }
 
-/* ================= HEADER ================= */
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 .header {
-    background: white;
-    border-radius: 18px;
-    padding: 22px;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    padding: 24px 20px;
+
     text-align: center;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
+
+    box-shadow:
+        0 4px 18px
+        rgba(0,0,0,0.07);
+
+    margin-bottom: 22px;
+
+    border-top:
+        5px solid #4d865c;
+
 }
+
 
 .header h1 {
-    margin: 0 0 8px 0;
-    font-size: 28px;
-    color: #23613a;
+
+    margin: 0 0 5px 0;
+
+    color: #285f3b;
+
+    font-size: 29px;
+
     font-weight: 500;
+
 }
+
 
 .header p {
+
     margin: 0;
-    color: #68736b;
+
+    color: #718077;
+
     font-size: 14px;
+
 }
 
-/* ================= CHAPTERS ================= */
 
-#chaptersPage h2 {
+.header-subtitle {
+
+    margin-top: 10px;
+
+    font-size: 13px;
+
+    color: #6c7d71;
+
+}
+
+
+/* =========================================================
+   PAGE TITLES
+========================================================= */
+
+.page-title {
+
     text-align: center;
-    color: #315c3d;
+
+    color: #315e3e;
+
     font-weight: 500;
-    margin: 20px 0;
+
+    font-size: 21px;
+
+    margin:
+        20px 0 18px 0;
+
 }
+
+
+.page-description {
+
+    text-align: center;
+
+    color: #6e7c72;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================================================
+   CHAPTERS
+========================================================= */
 
 .topics {
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(250px, 1fr)
+        );
+
     gap: 15px;
+
 }
+
 
 .topic {
-    background: white;
-    border-radius: 15px;
+
+    background: #ffffff;
+
+    border-radius: 17px;
+
     padding: 17px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,0.06);
+
+    border:
+        1px solid #e5eee7;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+
 }
+
+
+.topic:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 7px 18px
+        rgba(0,0,0,0.10);
+
+}
+
 
 .topic-main {
+
     cursor: pointer;
+
 }
+
 
 .topic-icon {
-    font-size: 28px;
-    margin-bottom: 7px;
+
+    font-size: 29px;
+
+    margin-bottom: 5px;
+
 }
+
 
 .topic-title {
+
     font-size: 16px;
-    color: #244f32;
+
     font-weight: 500;
-    margin-bottom: 6px;
+
+    color: #285a38;
+
+    margin-bottom: 5px;
+
 }
+
+
+.topic-description {
+
+    color: #728076;
+
+    font-size: 12px;
+
+    min-height: 22px;
+
+}
+
 
 .topic-count {
-    font-size: 13px;
-    color: #56805f;
+
+    display: inline-block;
+
+    margin-top: 6px;
+
+    padding: 3px 9px;
+
+    background: #edf7ef;
+
+    color: #477453;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
 }
+
 
 .topic-count.empty {
-    color: #999;
+
+    background: #f3f4f3;
+
+    color: #9a9f9b;
+
 }
+
+
+/* CHAPTER STATUS */
 
 .topic-status {
-    margin-top: 12px;
+
+    margin-top: 13px;
+
     padding-top: 10px;
-    border-top: 1px solid #e3ebe5;
-    font-size: 13px;
-    line-height: 1.8;
+
+    border-top:
+        1px solid #e5ece7;
+
+    color: #607167;
+
+    font-size: 12px;
+
+    line-height: 1.9;
+
 }
+
 
 .topic-actions {
+
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 7px;
+
     margin-top: 10px;
+
 }
+
 
 .chapter-btn {
+
     border: none;
-    border-radius: 8px;
-    padding: 8px 11px;
-    cursor: pointer;
-    font-family: inherit;
+
+    border-radius: 9px;
+
+    padding:
+        8px 11px;
+
     font-size: 12px;
+
+    transition: 0.2s;
+
 }
+
+
+.chapter-btn:hover {
+
+    transform:
+        translateY(-1px);
+
+}
+
 
 .start-btn {
-    background: #e6f3e9;
+
+    background: #e5f2e8;
+
     color: #28613a;
+
 }
+
 
 .continue-btn {
-    background: #dcefe1;
-    color: #205c34;
+
+    background: #d9eee0;
+
+    color: #205a34;
+
 }
+
 
 .review-btn {
-    background: #fff2d7;
-    color: #805f18;
+
+    background: #fff2d5;
+
+    color: #765817;
+
 }
+
+
+.flash-btn {
+
+    background: #e8eef9;
+
+    color: #3f577e;
+
+}
+
 
 .reset-btn {
+
     background: #f5e8e8;
-    color: #8b4444;
+
+    color: #8a4545;
+
 }
 
-/* ================= EXAM ================= */
+
+/* =========================================================
+   EXAM PAGE
+========================================================= */
 
 #examPage {
+
     display: none;
+
 }
+
 
 .exam-top {
-    background: white;
-    border-radius: 16px;
-    padding: 15px 18px;
-    margin-bottom: 14px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+
+    background: #ffffff;
+
+    border-radius: 17px;
+
+    padding:
+        15px 18px;
+
+    margin-bottom: 15px;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,0.06);
+
 }
+
 
 .exam-info {
+
     display: flex;
-    justify-content: space-between;
+
+    justify-content:
+        space-between;
+
     align-items: center;
+
     gap: 10px;
+
     flex-wrap: wrap;
+
 }
+
 
 .exam-title {
+
     color: #285d39;
+
     font-size: 17px;
+
     font-weight: 500;
+
 }
+
 
 .progress {
-    color: #68736b;
-    font-size: 14px;
+
+    color: #68766d;
+
+    font-size: 13px;
+
 }
 
-/* ================= QUESTION ================= */
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 7px;
+
+    background: #edf1ee;
+
+    border-radius: 20px;
+
+    margin-top: 12px;
+
+    overflow: hidden;
+
+}
+
+
+.progress-fill {
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #5b9369;
+
+    border-radius: 20px;
+
+    transition:
+        width 0.3s;
+
+}
+
+
+/* =========================================================
+   QUESTION CARD
+========================================================= */
 
 .question-card {
-    background: white;
-    border-radius: 18px;
-    padding: 22px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 4px 16px
+        rgba(0,0,0,0.07);
+
 }
+
 
 .question-number {
-    color: #4e7a58;
-    font-size: 14px;
-    margin-bottom: 11px;
+
+    color: #548060;
+
+    font-size: 13px;
+
+    margin-bottom: 9px;
+
 }
+
+
+.question-mode {
+
+    display: inline-block;
+
+    background: #edf6ef;
+
+    color: #477354;
+
+    border-radius: 20px;
+
+    padding:
+        3px 10px;
+
+    font-size: 11px;
+
+    margin-bottom: 12px;
+
+}
+
 
 .question-text {
+
     font-size: 18px;
+
     line-height: 2;
+
     font-weight: 500;
-    color: #25362a;
-    margin-bottom: 19px;
+
+    color: #25352b;
+
+    margin-bottom: 21px;
+
 }
 
-/* ================= OPTIONS ================= */
+
+/* =========================================================
+   OPTIONS
+========================================================= */
 
 .options {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 10px;
+
 }
+
 
 .option {
+
     display: flex;
+
     align-items: flex-start;
+
     gap: 10px;
+
     padding: 13px;
-    border: 1px solid #d9e5dc;
+
+    border:
+        1px solid #d9e5dc;
+
     border-radius: 12px;
+
     background: #f8fcf9;
+
     cursor: pointer;
-    transition: 0.2s;
+
+    transition:
+        background 0.2s,
+        border 0.2s,
+        transform 0.15s;
+
 }
+
 
 .option:hover {
+
     background: #f0f8f2;
+
+    transform:
+        translateX(-2px);
+
 }
+
 
 .option input {
-    margin-top: 5px;
+
     width: 18px;
+
     height: 18px;
-    cursor: pointer;
+
+    margin-top: 5px;
+
     flex-shrink: 0;
+
 }
+
 
 .option-text {
-    line-height: 1.8;
-    font-size: 15px;
+
     flex: 1;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
 }
+
 
 .option-mark {
-    display: none;
+
+    min-width: 24px;
+
+    text-align: center;
+
     font-size: 20px;
+
     font-weight: bold;
-    margin-right: auto;
+
 }
+
 
 .option.correct-option {
-    background: #e6f6e9;
-    border-color: #58a568;
+
+    background: #e7f6ea;
+
+    border-color: #63a86e;
+
 }
+
 
 .option.wrong-option {
+
     background: #fff0f0;
-    border-color: #d86666;
+
+    border-color: #d76b6b;
+
 }
 
-.option.correct-option .option-mark {
-    display: block;
+
+.option.correct-option
+.option-text {
+
     color: #26733a;
+
 }
 
-.option.wrong-option .option-mark {
-    display: block;
-    color: #a52f2f;
+
+.option.wrong-option
+.option-text {
+
+    color: #a42f2f;
+
 }
 
-/* ================= RESULT ================= */
+
+/* =========================================================
+   RESULT
+========================================================= */
 
 .result {
+
     display: none;
-    margin-top: 16px;
-    padding: 15px;
+
+    margin-top: 17px;
+
+    padding: 14px 16px;
+
     border-radius: 12px;
-    font-size: 15px;
+
     line-height: 1.9;
+
 }
+
 
 .result.correct {
+
     display: block;
+
     background: #e7f7ea;
-    color: #26733a;
-    border: 1px solid #9ed0a6;
+
+    border:
+        1px solid #9ed1a7;
+
+    color: #28733b;
+
 }
+
 
 .result.wrong {
+
     display: block;
+
     background: #fff0f0;
-    color: #a52f2f;
-    border: 1px solid #e1aaaa;
+
+    border:
+        1px solid #e0aaaa;
+
+    color: #a32f2f;
+
 }
+
 
 .result-title {
+
     font-size: 17px;
+
     font-weight: bold;
-    margin-bottom: 6px;
+
+    margin-bottom: 4px;
+
 }
 
-/* =====================================================
+
+/* =========================================================
    EDUCATIONAL ANALYSIS
-===================================================== */
+========================================================= */
 
-.analysis {
+.analysis-container {
+
     margin-top: 18px;
-    display: none;
+
 }
+
 
 .analysis-box {
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 11px;
+
+    margin-top: 12px;
+
+    padding: 15px 16px;
+
+    border-radius: 12px;
+
     line-height: 2;
+
     font-size: 14px;
+
 }
+
 
 .analysis-title {
-    font-size: 16px;
+
     font-weight: bold;
-    margin-bottom: 6px;
+
+    font-size: 15px;
+
+    margin-bottom: 5px;
+
 }
+
+
+/* Diagnosis */
 
 .diagnosis-box {
-    background: #edf7f0;
-    border-right: 4px solid #4f8b5d;
+
+    background: #eef7f0;
+
+    border-right:
+        4px solid #5c9369;
+
 }
+
+
+/* Differential */
 
 .differential-box {
-    background: #f3f6fa;
-    border-right: 4px solid #7188a1;
+
+    background: #f1f5fb;
+
+    border-right:
+        4px solid #7189ad;
+
 }
+
+
+/* Correct answer */
 
 .correct-reason-box {
-    background: #eaf7ec;
-    border-right: 4px solid #4d995c;
+
+    background: #eaf7ed;
+
+    border-right:
+        4px solid #4c9a5d;
+
 }
 
-.option-reasons-box {
-    background: #fff8ef;
-    border-right: 4px solid #d4a24c;
-}
 
-.test-tip-box {
-    background: #f1f7f3;
-    border-right: 4px solid #6a9c76;
-}
+/* Wrong answers */
 
-.exam-trap-box {
+.wrong-reasons-box {
+
     background: #fff3f3;
-    border-right: 4px solid #c96565;
+
+    border-right:
+        4px solid #c96969;
+
 }
 
-.analysis-list {
-    margin: 5px 0 0 0;
-    padding-right: 20px;
+
+.wrong-option-reason {
+
+    padding:
+        8px 0;
+
+    border-bottom:
+        1px solid #f0dcdc;
+
 }
 
-.analysis-list li {
-    margin-bottom: 5px;
+
+.wrong-option-reason:last-child {
+
+    border-bottom: none;
+
 }
 
-/* ================= OLD EXPLANATION ================= */
 
-.explanation {
-    margin-top: 15px;
-    padding: 15px;
-    background: #f3f8f4;
-    border-right: 4px solid #6c9d76;
-    border-radius: 10px;
-    line-height: 2;
-    font-size: 14px;
-}
+/* Exam tip */
 
-.note {
-    margin-top: 10px;
-    padding: 13px;
+.exam-tip-box {
+
     background: #fffbea;
-    border-right: 4px solid #d5b95b;
-    border-radius: 10px;
-    line-height: 2;
-    font-size: 13px;
+
+    border-right:
+        4px solid #d4b85c;
+
 }
 
-/* ================= STATUS ================= */
+
+/* Trap */
+
+.trap-box {
+
+    background: #fff3e8;
+
+    border-right:
+        4px solid #d38b51;
+
+}
+
+
+/* Flashcard */
+
+.flashcard-box {
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef3fb,
+            #f8faff
+        );
+
+    border:
+        1px solid #d6deee;
+
+    text-align: center;
+
+}
+
+
+.flashcard-question {
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+
+}
+
+
+.flashcard-answer {
+
+    display: none;
+
+    margin-top: 12px;
+
+    padding: 12px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    line-height: 2;
+
+}
+
+
+/* =========================================================
+   EXAM STATUS
+========================================================= */
 
 .exam-status {
-    margin-top: 12px;
-    padding: 10px 13px;
+
+    margin-top: 15px;
+
+    padding:
+        9px 13px;
+
     background: #f3f8f4;
+
     border-radius: 9px;
-    color: #52705a;
-    font-size: 13px;
-    line-height: 1.8;
+
+    color: #587060;
+
+    font-size: 12px;
+
 }
 
-/* ================= BUTTONS ================= */
+
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .buttons {
+
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
     gap: 9px;
+
     margin-top: 21px;
+
 }
+
 
 .btn {
+
     border: none;
-    border-radius: 10px;
-    padding: 13px 10px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 14px;
+
+    border-radius: 11px;
+
+    padding:
+        13px 10px;
+
+    font-size: 13px;
+
     transition: 0.2s;
+
 }
+
 
 .btn:hover {
-    transform: translateY(-1px);
+
+    transform:
+        translateY(-1px);
+
 }
 
-.btn-check {
-    background: #4d8b5b;
-    color: white;
-}
-
-.btn-next {
-    background: #3e6d4b;
-    color: white;
-}
-
-.btn-back {
-    background: #e7eee9;
-    color: #36533e;
-}
-
-.btn-end {
-    background: #f5e5e5;
-    color: #8a4141;
-}
-
-.btn-review {
-    background: #fff0cf;
-    color: #785817;
-}
 
 .btn:disabled {
+
     opacity: 0.45;
+
     cursor: not-allowed;
+
     transform: none;
+
 }
 
-/* ================= SCORE ================= */
+
+.btn-check {
+
+    background: #4d8b5b;
+
+    color: white;
+
+}
+
+
+.btn-next {
+
+    background: #3d704d;
+
+    color: white;
+
+}
+
+
+.btn-back {
+
+    background: #e7eee9;
+
+    color: #36533e;
+
+}
+
+
+.btn-end {
+
+    background: #f5e5e5;
+
+    color: #8a4141;
+
+}
+
+
+.btn-review {
+
+    background: #fff0cf;
+
+    color: #785817;
+
+}
+
+
+.btn-flash {
+
+    background: #e8eef9;
+
+    color: #3f577e;
+
+}
+
+
+.secondary-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 12px;
+
+}
+
+
+/* =========================================================
+   SCORE
+========================================================= */
 
 .score-box {
+
     display: none;
+
     background: white;
-    border-radius: 18px;
-    padding: 28px;
+
+    border-radius: 20px;
+
+    padding: 30px 20px;
+
     text-align: center;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+
+    box-shadow:
+        0 4px 16px
+        rgba(0,0,0,0.07);
+
 }
+
 
 .score-box h2 {
+
     color: #2e6540;
+
     font-weight: 500;
+
 }
+
 
 .final-score {
+
     font-size: 34px;
+
     color: #39754a;
-    margin: 20px;
+
+    margin:
+        18px 0;
+
 }
+
 
 .final-details {
-    margin: 15px auto;
-    max-width: 500px;
-    padding: 15px;
+
+    max-width: 550px;
+
+    margin:
+        15px auto;
+
+    padding: 16px;
+
     background: #f3f8f4;
+
     border-radius: 12px;
+
     line-height: 2;
+
 }
 
-/* ================= MOBILE ================= */
+
+.final-message {
+
+    color: #607067;
+
+}
+
+
+/* =========================================================
+   FLASHCARD PAGE
+========================================================= */
+
+#flashcardPage {
+
+    display: none;
+
+}
+
+
+.flashcard-main {
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 28px 22px;
+
+    box-shadow:
+        0 4px 16px
+        rgba(0,0,0,0.07);
+
+    text-align: center;
+
+}
+
+
+.flashcard-main h2 {
+
+    color: #315f40;
+
+    font-weight: 500;
+
+}
+
+
+.flashcard-large {
+
+    min-height: 250px;
+
+    margin-top: 20px;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3f8ff,
+            #ffffff
+        );
+
+    border:
+        1px solid #dbe4f2;
+
+    border-radius: 17px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.flashcard-large-question {
+
+    font-size: 19px;
+
+    line-height: 2;
+
+    font-weight: 500;
+
+}
+
+
+.flashcard-large-answer {
+
+    display: none;
+
+    margin-top: 20px;
+
+    padding: 16px;
+
+    background: #eef7f0;
+
+    border-radius: 12px;
+
+    width: 100%;
+
+    line-height: 2;
+
+}
+
+
+.flashcard-controls {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+}
+
+
+/* =========================================================
+   EMPTY / MESSAGE
+========================================================= */
+
+.empty-message {
+
+    text-align: center;
+
+    padding: 25px;
+
+    color: #8a938d;
+
+    background: white;
+
+    border-radius: 15px;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 1000;
+
+    left: 0;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        rgba(20,40,27,0.48);
+
+    padding: 20px;
+
+    overflow-y: auto;
+
+}
+
+
+.modal-content {
+
+    background: white;
+
+    max-width: 650px;
+
+    margin:
+        50px auto;
+
+    border-radius: 18px;
+
+    padding: 23px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,0.20);
+
+}
+
+
+.modal-title {
+
+    color: #315f40;
+
+    font-size: 18px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.close-modal {
+
+    float: left;
+
+    border: none;
+
+    background: #f3e7e7;
+
+    color: #8b4444;
+
+    border-radius: 8px;
+
+    padding: 6px 10px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 700px) {
 
     .container {
+
         width: 96%;
-        margin: 10px auto;
+
+        margin-top: 10px;
+
     }
+
+
+    .header {
+
+        padding: 19px 14px;
+
+    }
+
 
     .header h1 {
+
         font-size: 24px;
+
     }
+
 
     .question-card {
-        padding: 16px;
+
+        padding: 17px;
+
     }
+
 
     .question-text {
+
         font-size: 16px;
+
     }
+
 
     .buttons {
-        grid-template-columns: 1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
+
     }
 
+
     .btn {
+
         width: 100%;
+
+    }
+
+
+    .analysis-box {
+
+        font-size: 13px;
+
     }
 
 }
 
+
 @media (max-width: 450px) {
 
     .buttons {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .topic-actions {
+
+        flex-direction: column;
+
+    }
+
+
+    .chapter-btn {
+
+        width: 100%;
+
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<div class="container">
 
-<div class="header">
-    <h1>Neurology Exam</h1>
-    <p>سامانه تمرین و آزمون نورولوژی</p>
-</div>
+<div class="container">
 
 
 <!-- =====================================================
-     CHAPTERS
+     HEADER
+===================================================== -->
+
+<div class="header">
+
+    <h1>Neurology Exam</h1>
+
+    <p>
+        سامانه جامع تمرین و آزمون نورولوژی
+    </p>
+
+    <div class="header-subtitle">
+
+        مطالعه فصل‌به‌فصل،
+        آزمون،
+        مرور سؤالات غلط و
+        یادگیری نکات آزمونی
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CHAPTERS PAGE
 ===================================================== -->
 
 <div id="chaptersPage">
 
-<h2>فصول نورولوژی</h2>
+    <div class="page-title">
+        فصول نورولوژی
+    </div>
 
-<div class="topics">
+    <div class="page-description">
 
-<!-- 1 -->
+        فصل مورد نظر را انتخاب کنید.
+        پیشرفت آزمون‌ها به صورت خودکار ذخیره می‌شود.
+
+    </div>
+
+
+    <div class="topics">
+
+
+<!-- =====================================================
+     1. CEREBROVASCULAR
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Cerebrovascular Diseases')">
+
         <div class="topic-icon">🧠</div>
-        <div class="topic-title">بیماری‌های عروق مغزی</div>
-        <div class="topic-count">بانک سؤال موجود</div>
+
+        <div class="topic-title">
+            بیماری‌های عروق مغزی
+        </div>
+
+        <div class="topic-description">
+            Stroke، TIA، ICH، SAH، CVT و مداخلات عروقی
+        </div>
+
+        <span class="topic-count">
+            بانک سؤال موجود
+        </span>
+
     </div>
-    <div class="topic-status" id="status-Cerebrovascular"></div>
-    <div class="topic-actions" id="actions-Cerebrovascular"></div>
+
+    <div class="topic-status"
+         id="status-Cerebrovascular">
+    </div>
+
+    <div class="topic-actions"
+         id="actions-Cerebrovascular">
+    </div>
+
 </div>
 
-<!-- 2 -->
+
+
+<!-- =====================================================
+     2. EPILEPSY
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Epilepsy & Seizure')">
+
         <div class="topic-icon">⚡</div>
-        <div class="topic-title">صرع و تشنج</div>
-        <div class="topic-count">بانک سؤال موجود</div>
+
+        <div class="topic-title">
+            صرع و تشنج
+        </div>
+
+        <div class="topic-description">
+            تشخیص، طبقه‌بندی، EEG و درمان صرع
+        </div>
+
+        <span class="topic-count empty">
+            بانک سؤال در حال تکمیل
+        </span>
+
     </div>
-    <div class="topic-status" id="status-Epilepsy"></div>
-    <div class="topic-actions" id="actions-Epilepsy"></div>
+
+    <div class="topic-status"
+         id="status-Epilepsy">
+    </div>
+
+    <div class="topic-actions"
+         id="actions-Epilepsy">
+    </div>
+
 </div>
 
-<!-- 3 -->
+
+
+<!-- =====================================================
+     3. MOVEMENT
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Movement Disorders')">
+
         <div class="topic-icon">🚶</div>
-        <div class="topic-title">اختلالات حرکتی</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            اختلالات حرکتی
+        </div>
+
+        <div class="topic-description">
+            Parkinson، Tremor، Dystonia، Chorea و Tic
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
+    <div class="topic-status"
+         id="status-Movement">
+    </div>
+
+    <div class="topic-actions"
+         id="actions-Movement">
+    </div>
+
 </div>
 
-<!-- 4 -->
+
+
+<!-- =====================================================
+     4. MS / DEMYELINATION
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Multiple Sclerosis & Demyelinating Diseases')">
+
         <div class="topic-icon">🧬</div>
-        <div class="topic-title">MS و بیماری‌های دمیلینه‌کننده</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            MS و بیماری‌های دمیلینه‌کننده
+        </div>
+
+        <div class="topic-description">
+            MS، NMOSD، MOGAD و سایر دمیلیناسیون‌ها
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 5 -->
+
+
+<!-- =====================================================
+     5. NEUROMUSCULAR
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Neuromuscular Diseases')">
+
         <div class="topic-icon">💪</div>
-        <div class="topic-title">بیماری‌های نوروماسکولار</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            بیماری‌های نوروماسکولار
+        </div>
+
+        <div class="topic-description">
+            GBS، CIDP، MG، ALS و بیماری‌های عضله
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 6 -->
+
+
+<!-- =====================================================
+     6. HEADACHE
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Headache & Facial Pain')">
+
         <div class="topic-icon">🤕</div>
-        <div class="topic-title">سردرد و دردهای صورت</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            سردرد و دردهای صورت
+        </div>
+
+        <div class="topic-description">
+            Migraine، Cluster، TACs و Neuralgia
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 7 -->
+
+
+<!-- =====================================================
+     7. DEMENTIA
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Dementia & Cognitive Disorders')">
+
         <div class="topic-icon">🧩</div>
-        <div class="topic-title">دمانس و اختلالات شناختی</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            دمانس و اختلالات شناختی
+        </div>
+
+        <div class="topic-description">
+            Alzheimer، FTD، DLB، CJD و اختلالات شناختی
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 8 -->
+
+
+<!-- =====================================================
+     8. VIRAL / PRION
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Viral & Prion Diseases')">
+
         <div class="topic-icon">🦠</div>
-        <div class="topic-title">بیماری‌های ویروسی و پریونی</div>
-        <div class="topic-count">50 سؤال</div>
+
+        <div class="topic-title">
+            بیماری‌های ویروسی و پریونی
+        </div>
+
+        <div class="topic-description">
+            HSV، VZV، HIV، PML، CJD، Rabies و سایر موارد
+        </div>
+
+        <span class="topic-count">
+            50 سؤال
+        </span>
+
     </div>
-    <div class="topic-status" id="status-Viral"></div>
-    <div class="topic-actions" id="actions-Viral"></div>
+
+    <div class="topic-status"
+         id="status-Viral">
+    </div>
+
+    <div class="topic-actions"
+         id="actions-Viral">
+    </div>
+
 </div>
 
-<!-- 9 -->
+
+
+<!-- =====================================================
+     9. NEUROIMMUNOLOGY
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Neuroimmunology')">
+
         <div class="topic-icon">🛡️</div>
-        <div class="topic-title">نورواِمیونولوژی</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            نورواِمیونولوژی
+        </div>
+
+        <div class="topic-description">
+            بیماری‌های خودایمنی و پارانوپلاستیک
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 10 -->
+
+
+<!-- =====================================================
+     10. NEURO-ONCOLOGY
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Neuro-oncology')">
+
         <div class="topic-icon">🎗️</div>
-        <div class="topic-title">نوروانکولوژی</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            نوروانکولوژی
+        </div>
+
+        <div class="topic-description">
+            تومورهای CNS و سندرم‌های پارانوپلاستیک
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 11 -->
+
+
+<!-- =====================================================
+     11. NEUROGENETICS
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Neurogenetics & Metabolic Disorders')">
+
         <div class="topic-icon">🧬</div>
-        <div class="topic-title">بیماری‌های نوروجنتیک و متابولیک</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            بیماری‌های نوروجنتیک و متابولیک
+        </div>
+
+        <div class="topic-description">
+            Wilson، Mitochondrial، Leukodystrophy و Metabolic
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 12 -->
+
+
+<!-- =====================================================
+     12. SPINAL CORD
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Spinal Cord Disorders')">
+
         <div class="topic-icon">🦴</div>
-        <div class="topic-title">بیماری‌های نخاع</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            بیماری‌های نخاع
+        </div>
+
+        <div class="topic-description">
+            Myelopathy، Transverse Myelitis و Compression
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 13 -->
+
+
+<!-- =====================================================
+     13. NEURO-OPHTHALMOLOGY
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Neuro-ophthalmology')">
+
         <div class="topic-icon">👁️</div>
-        <div class="topic-title">نوروافتالمولوژی</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            نوروافتالمولوژی
+        </div>
+
+        <div class="topic-description">
+            Optic neuritis، Diplopia، Pupillary disorders
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 14 -->
+
+
+<!-- =====================================================
+     14. NEURO-OTOLOGY
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Neuro-otology')">
+
         <div class="topic-icon">👂</div>
-        <div class="topic-title">نورواتولوژی</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            نورواتولوژی
+        </div>
+
+        <div class="topic-description">
+            Vertigo، Vestibular disorders و Nystagmus
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 15 -->
+
+
+<!-- =====================================================
+     15. PEDIATRIC
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Pediatric Neurology')">
+
         <div class="topic-icon">👶</div>
-        <div class="topic-title">نورولوژی کودکان</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            نورولوژی کودکان
+        </div>
+
+        <div class="topic-description">
+            Epilepsy، Developmental disorders و Neurometabolic
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 16 -->
+
+
+<!-- =====================================================
+     16. NEUROCRITICAL
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Neurocritical Care')">
+
         <div class="topic-icon">🚑</div>
-        <div class="topic-title">نورولوژی مراقبت‌های ویژه</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            نورولوژی مراقبت‌های ویژه
+        </div>
+
+        <div class="topic-description">
+            Status، ICP، Brain death و Critical care
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 17 -->
+
+
+<!-- =====================================================
+     17. NEUROTRAUMA
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Neurotrauma')">
+
         <div class="topic-icon">🚨</div>
-        <div class="topic-title">نوروتروما</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            نوروتروما
+        </div>
+
+        <div class="topic-description">
+            TBI، Epidural، Subdural و Traumatic SAH
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 18 -->
+
+
+<!-- =====================================================
+     18. AUTONOMIC / SLEEP
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Autonomic & Sleep Disorders')">
+
         <div class="topic-icon">😴</div>
-        <div class="topic-title">اختلالات اتونوم و خواب</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            اختلالات اتونوم و خواب
+        </div>
+
+        <div class="topic-description">
+            Syncope، Dysautonomia، Sleep disorders
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 19 -->
+
+
+<!-- =====================================================
+     19. NEURODIAGNOSTIC
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Neurodiagnostic Methods')">
+
         <div class="topic-icon">🔬</div>
-        <div class="topic-title">روش‌های تشخیصی نورولوژی</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            روش‌های تشخیصی نورولوژی
+        </div>
+
+        <div class="topic-description">
+            MRI، CT، EEG، EMG، CSF و سایر تست‌ها
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
+
 </div>
 
-<!-- 20 -->
+
+
+<!-- =====================================================
+     20. NEUROPHARMACOLOGY
+===================================================== -->
+
 <div class="topic">
+
     <div class="topic-main"
          onclick="startTopic('Neuropharmacology & Principles of Treatment')">
+
         <div class="topic-icon">💊</div>
-        <div class="topic-title">نوروفارماکولوژی و اصول درمان</div>
-        <div class="topic-count empty">به‌زودی</div>
+
+        <div class="topic-title">
+            نوروفارماکولوژی و اصول درمان
+        </div>
+
+        <div class="topic-description">
+            داروهای نورولوژی، مکانیسم، عوارض و اصول درمان
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
     </div>
-</div>
 
 </div>
+
+
+    </div>
+
 </div>
+
 
 
 <!-- =====================================================
@@ -752,2942 +2112,635 @@ body {
 
 <div id="examPage">
 
-<div class="exam-top">
 
-    <div class="exam-info">
+    <!-- EXAM HEADER -->
 
-        <div class="exam-title" id="examTitle">
-            آزمون نورولوژی
+    <div class="exam-top">
+
+        <div class="exam-info">
+
+            <div class="exam-title"
+                 id="examTitle">
+
+                آزمون نورولوژی
+
+            </div>
+
+
+            <div class="progress"
+                 id="progressText">
+
+                سؤال 1 از 1
+
+            </div>
+
         </div>
 
-        <div class="progress" id="progressText">
-            سؤال 1 از 1
+
+        <div class="progress-bar">
+
+            <div class="progress-fill"
+                 id="progressFill">
+            </div>
+
         </div>
+
+    </div>
+
+
+
+    <!-- QUESTION -->
+
+    <div class="question-card">
+
+
+        <div class="question-number"
+             id="questionNumber">
+
+            سؤال 1
+
+        </div>
+
+
+        <div class="question-mode"
+             id="questionMode">
+
+            آزمون
+
+        </div>
+
+
+        <div class="question-text"
+             id="questionText">
+
+        </div>
+
+
+        <!-- OPTIONS -->
+
+        <div class="options"
+             id="optionsContainer">
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div id="resultBox"
+             class="result">
+
+            <div id="resultTitle"
+                 class="result-title">
+            </div>
+
+            <div id="resultMessage">
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             EDUCATIONAL ANALYSIS
+        ================================================== -->
+
+        <div class="analysis-container"
+             id="analysisContainer"
+             style="display:none;">
+
+
+            <!-- DIAGNOSIS -->
+
+            <div class="analysis-box diagnosis-box">
+
+                <div class="analysis-title">
+
+                    🧠 تشخیص بیماری طبق سؤال
+
+                </div>
+
+                <div id="diagnosisText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DIFFERENTIAL -->
+
+            <div class="analysis-box differential-box">
+
+                <div class="analysis-title">
+
+                    🔍 تشخیص‌های افتراقی مهم
+
+                </div>
+
+                <div id="differentialText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CORRECT REASON -->
+
+            <div class="analysis-box correct-reason-box">
+
+                <div class="analysis-title">
+
+                    ✅ علت درست بودن گزینه صحیح
+
+                </div>
+
+                <div id="correctReasonText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- WRONG REASONS -->
+
+            <div class="analysis-box wrong-reasons-box">
+
+                <div class="analysis-title">
+
+                    ❌ علت نادرست بودن سایر گزینه‌ها
+
+                </div>
+
+                <div id="wrongReasonsText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EXAM TIP -->
+
+            <div class="analysis-box exam-tip-box">
+
+                <div class="analysis-title">
+
+                    📌 نکته آزمونی
+
+                </div>
+
+                <div id="examTipText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TRAP -->
+
+            <div class="analysis-box trap-box">
+
+                <div class="analysis-title">
+
+                    ⚠️ تله آزمونی
+
+                </div>
+
+                <div id="examTrapText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUESTION FLASHCARD -->
+
+            <div class="analysis-box flashcard-box">
+
+                <div class="analysis-title">
+
+                    🃏 فلش‌کارت همین سؤال
+
+                </div>
+
+
+                <div class="flashcard-question"
+                     id="questionFlashcardQuestion">
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-flash"
+                    id="showQuestionFlashcardButton"
+                    onclick="toggleQuestionFlashcard()">
+
+                    نمایش پاسخ فلش‌کارت
+
+                </button>
+
+
+                <div class="flashcard-answer"
+                     id="questionFlashcardAnswer">
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- STATUS -->
+
+        <div id="examStatus"
+             class="exam-status">
+
+        </div>
+
+
+
+        <!-- =================================================
+             MAIN BUTTONS
+        ================================================== -->
+
+        <div class="buttons">
+
+
+            <button
+                type="button"
+                class="btn btn-back"
+                onclick="backToChapters()">
+
+                ↩ بازگشت به فصول
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-end"
+                onclick="endExam()">
+
+                ⏹ پایان آزمون
+
+            </button>
+
+
+            <button
+                type="button"
+                id="checkButton"
+                class="btn btn-check"
+                onclick="checkAnswer()">
+
+                ✓ بررسی پاسخ
+
+            </button>
+
+
+            <button
+                type="button"
+                id="nextButton"
+                class="btn btn-next"
+                onclick="nextQuestion()"
+                disabled>
+
+                سؤال بعدی ▶
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- SECONDARY BUTTONS -->
+
+        <div class="secondary-buttons">
+
+
+            <button
+                type="button"
+                id="reviewCurrentButton"
+                class="btn btn-review"
+                onclick="startWrongReview()"
+                style="display:none;">
+
+                🔄 مرور سؤالات غلط
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-flash"
+                onclick="openFlashcards()">
+
+                🃏 فلش‌کارت فصل
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SCORE BOX
+    ====================================================== -->
+
+    <div id="scoreBox"
+         class="score-box">
+
+
+        <h2 id="scoreTitle">
+
+            نتیجه آزمون
+
+        </h2>
+
+
+        <div class="final-score"
+             id="finalScore">
+
+        </div>
+
+
+        <div class="final-details"
+             id="finalDetails">
+
+        </div>
+
+
+        <p class="final-message"
+           id="finalMessage">
+
+        </p>
+
+
+        <div class="secondary-buttons">
+
+
+            <button
+                type="button"
+                class="btn btn-back"
+                onclick="backToChapters()">
+
+                ↩ بازگشت به فصول
+
+            </button>
+
+
+            <button
+                type="button"
+                id="scoreReviewButton"
+                class="btn btn-review"
+                onclick="startWrongReview()"
+                style="display:none;">
+
+                🔄 مرور سؤالات غلط
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-flash"
+                onclick="openFlashcards()">
+
+                🃏 فلش‌کارت فصل
+
+            </button>
+
+
+        </div>
+
 
     </div>
 
 </div>
 
-
-<div class="question-card">
-
-<div class="question-number" id="questionNumber">
-    سؤال 1
-</div>
-
-<div class="question-text" id="questionText"></div>
-
-<div class="options" id="optionsContainer"></div>
-
-
-<!-- RESULT -->
-
-<div id="resultBox" class="result">
-
-    <div id="resultTitle" class="result-title"></div>
-
-    <div id="resultMessage"></div>
-
-</div>
 
 
 <!-- =====================================================
-     EDUCATIONAL ANALYSIS
+     FLASHCARD PAGE
 ===================================================== -->
 
-<div id="analysis" class="analysis">
+<div id="flashcardPage">
 
-    <div id="diagnosisBox"
-         class="analysis-box diagnosis-box"
-         style="display:none;">
 
-        <div class="analysis-title">
-            🩺 تشخیص بیماری طبق سؤال
+    <div class="flashcard-main">
+
+
+        <h2>
+
+            🃏 فلش‌کارت‌های فصل
+
+        </h2>
+
+
+        <div id="flashcardTopicTitle">
+
         </div>
 
-        <div id="diagnosisText"></div>
 
-    </div>
+        <div class="flashcard-large">
 
 
-    <div id="differentialBox"
-         class="analysis-box differential-box"
-         style="display:none;">
+            <div
+                class="flashcard-large-question"
+                id="flashcardLargeQuestion">
 
-        <div class="analysis-title">
-            🔎 تشخیص‌های افتراقی
+            </div>
+
+
+            <button
+                type="button"
+                class="btn btn-flash"
+                id="flashcardShowButton"
+                onclick="toggleLargeFlashcard()"
+                style="margin-top:20px;">
+
+                نمایش پاسخ
+
+            </button>
+
+
+            <div
+                class="flashcard-large-answer"
+                id="flashcardLargeAnswer">
+
+            </div>
+
         </div>
 
-        <div id="differentialText"></div>
-
-    </div>
 
 
-    <div id="correctReasonBox"
-         class="analysis-box correct-reason-box"
-         style="display:none;">
+        <div class="flashcard-controls">
 
-        <div class="analysis-title">
-            ✅ چرا گزینه صحیح درست است؟
+
+            <button
+                type="button"
+                class="btn btn-back"
+                onclick="previousFlashcard()">
+
+                ◀ قبلی
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-flash"
+                onclick="toggleLargeFlashcard()">
+
+                👁 نمایش / مخفی پاسخ
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-next"
+                onclick="nextFlashcard()">
+
+                بعدی ▶
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-back"
+                onclick="closeFlashcards()">
+
+                ↩ بازگشت
+
+            </button>
+
+
         </div>
 
-        <div id="correctReasonText"></div>
 
-    </div>
+        <div
+            id="flashcardProgress"
+            class="exam-status"
+            style="margin-top:15px;">
 
-
-    <div id="optionReasonsBox"
-         class="analysis-box option-reasons-box"
-         style="display:none;">
-
-        <div class="analysis-title">
-            📋 چرا سایر گزینه‌ها نادرست هستند؟
         </div>
 
-        <div id="optionReasonsText"></div>
-
-    </div>
-
-
-    <div id="testTipBox"
-         class="analysis-box test-tip-box"
-         style="display:none;">
-
-        <div class="analysis-title">
-            💡 نکته تستی
-        </div>
-
-        <div id="testTipText"></div>
-
-    </div>
-
-
-    <div id="examTrapBox"
-         class="analysis-box exam-trap-box"
-         style="display:none;">
-
-        <div class="analysis-title">
-            ⚠️ تله آزمونی
-        </div>
-
-        <div id="examTrapText"></div>
 
     </div>
 
 </div>
 
 
-<!-- توضیح قدیمی -->
 
-<div id="explanationBox"
-     class="explanation"
-     style="display:none;">
+<!-- =====================================================
+     GENERAL MODAL
+===================================================== -->
 
-    <strong>توضیح:</strong>
-
-    <div id="explanationText"></div>
-
-</div>
+<div id="generalModal"
+     class="modal">
 
 
-<div id="noteBox"
-     class="note"
-     style="display:none;">
+    <div class="modal-content">
 
-    <strong>نکته:</strong>
-
-    <div id="noteText"></div>
-
-</div>
-
-
-<div id="examStatus"
-     class="exam-status">
-</div>
-
-
-<!-- BUTTONS -->
-
-<div class="buttons">
-
-    <button
-        type="button"
-        class="btn btn-back"
-        onclick="backToChapters()">
-        بازگشت به فصول
-    </button>
-
-    <button
-        type="button"
-        class="btn btn-end"
-        onclick="endExam()">
-        ⏹ پایان آزمون
-    </button>
-
-    <button
-        type="button"
-        id="checkButton"
-        class="btn btn-check"
-        onclick="checkAnswer()">
-        ✓ بررسی پاسخ
-    </button>
-
-    <button
-        type="button"
-        id="nextButton"
-        class="btn btn-next"
-        onclick="nextQuestion()"
-        disabled>
-        سؤال بعدی ▶
-    </button>
-
-</div>
-
-</div>
-
-
-<!-- SCORE -->
-
-<div id="scoreBox"
-     class="score-box">
-
-    <h2 id="scoreTitle">
-        نتیجه آزمون
-    </h2>
-
-    <div class="final-score"
-         id="finalScore">
-    </div>
-
-    <div class="final-details"
-         id="finalDetails">
-    </div>
-
-    <p id="finalMessage"></p>
-
-    <div style="margin-top:20px;">
 
         <button
             type="button"
-            class="btn btn-back"
-            onclick="backToChapters()">
-            بازگشت به فصول
+            class="close-modal"
+            onclick="closeGeneralModal()">
+
+            ✕
+
         </button>
 
-        <button
-            type="button"
-            id="scoreReviewButton"
-            class="btn btn-review"
-            onclick="startWrongReview()"
-            style="display:none;margin-right:8px;">
-            🔄 مرور سؤالات غلط
-        </button>
+
+        <div
+            id="modalTitle"
+            class="modal-title">
+
+        </div>
+
+
+        <div
+            id="modalContent">
+
+        </div>
+
 
     </div>
 
 </div>
 
-</div>
+
 
 </div>
+
 
 
 <!-- =====================================================
      QUESTION BANKS
+     
+     فعلاً دو بانک موجود شما فعال هستند.
+     
+     در آینده هر فصل فقط فایل خودش را اضافه می‌کنیم.
 ===================================================== -->
 
 <script src="questions.js"></script>
+
 <script src="viral-prion-questions.js"></script>
 
 
-<script>
 
-/* =====================================================
-   VARIABLES
-===================================================== */
+<!-- =====================================================
+     FUTURE QUESTION BANKS
+
+     بعد از ساخت هر فایل، فقط خط مربوط به آن را فعال می‌کنیم.
+     
+     index.html دیگر نیاز به بازنویسی نخواهد داشت.
+===================================================== -->
+
+<!--
+<script src="epilepsy-questions.js"></script>
+<script src="movement-questions.js"></script>
+<script src="ms-demyelination-questions.js"></script>
+<script src="neuromuscular-questions.js"></script>
+<script src="headache-questions.js"></script>
+<script src="dementia-questions.js"></script>
+<script src="neuroimmunology-questions.js"></script>
+<script src="neuro-oncology-questions.js"></script>
+<script src="neurogenetics-metabolic-questions.js"></script>
+<script src="spinal-cord-questions.js"></script>
+<script src="neuro-ophthalmology-questions.js"></script>
+<script src="neuro-otology-questions.js"></script>
+<script src="pediatric-neurology-questions.js"></script>
+<script src="neurocritical-care-questions.js"></script>
+<script src="neurotrauma-questions.js"></script>
+<script src="autonomic-sleep-questions.js"></script>
+<script src="neurodiagnostic-questions.js"></script>
+<script src="neuropharmacology-questions.js"></script>
+-->
+
+
+
+<!-- =====================================================
+     MAIN APPLICATION
+===================================================== -->
+
+<script src="app.js"></script>
 
-let currentQuestions = [];
-
-let currentQuestionIndex = 0;
-
-let score = 0;
-
-let answered = false;
-
-let currentTopic = "";
-
-let currentMode = "normal";
-
-let currentReviewIndexes = [];
-
-
-/* =====================================================
-   STORAGE
-===================================================== */
-
-function storageKey(topic) {
-
-    return "neurology_exam_" +
-        topic.replace(/[^a-zA-Z0-9]/g, "_");
-
-}
-
-
-function getTopicData(topic) {
-
-    const saved =
-        localStorage.getItem(
-            storageKey(topic)
-        );
-
-
-    if (saved) {
-
-        try {
-
-            const data =
-                JSON.parse(saved);
-
-
-            /*
-               سازگاری با نسخه‌های قدیمی
-            */
-
-            if (!data.answers) {
-                data.answers = {};
-            }
-
-            if (!data.wrong) {
-                data.wrong = [];
-            }
-
-            if (data.currentIndex === undefined) {
-                data.currentIndex = 0;
-            }
-
-            if (data.completed === undefined) {
-                data.completed = false;
-            }
-
-
-            return data;
-
-        }
-
-        catch (e) {
-
-            return {
-                currentIndex: 0,
-                answers: {},
-                wrong: [],
-                completed: false
-            };
-
-        }
-
-    }
-
-
-    return {
-        currentIndex: 0,
-        answers: {},
-        wrong: [],
-        completed: false
-    };
-
-}
-
-
-function saveTopicData(data) {
-
-    if (!currentTopic) {
-        return;
-    }
-
-
-    localStorage.setItem(
-        storageKey(currentTopic),
-        JSON.stringify(data)
-    );
-
-}
-
-
-/* =====================================================
-   QUESTION BANK
-===================================================== */
-
-function getQuestionsForTopic(topic) {
-
-    if (
-        topic === "Cerebrovascular Diseases" &&
-        typeof cerebrovascularQuestions !== "undefined"
-    ) {
-
-        return cerebrovascularQuestions;
-
-    }
-
-
-    if (
-        topic === "Viral & Prion Diseases" &&
-        typeof viralPrionQuestions !== "undefined"
-    ) {
-
-        return viralPrionQuestions;
-
-    }
-
-
-    if (
-        topic === "Epilepsy & Seizure" &&
-        typeof epilepsyQuestions !== "undefined"
-    ) {
-
-        return epilepsyQuestions;
-
-    }
-
-
-    return [];
-
-}
-
-
-/* =====================================================
-   START TOPIC
-===================================================== */
-
-function startTopic(topic) {
-
-    const questions =
-        getQuestionsForTopic(topic);
-
-
-    if (!questions.length) {
-
-        alert(
-            "بانک سؤال این فصل هنوز آماده نشده است."
-        );
-
-        return;
-
-    }
-
-
-    currentTopic = topic;
-
-    currentQuestions = questions;
-
-    currentMode = "normal";
-
-    currentReviewIndexes = [];
-
-
-    const data =
-        getTopicData(topic);
-
-
-    if (data.completed) {
-
-        const restart =
-            confirm(
-                "این فصل قبلاً تکمیل شده است.\n\n" +
-                "برای شروع مجدد «تأیید» را بزنید."
-            );
-
-
-        if (!restart) {
-            return;
-        }
-
-
-        data.currentIndex = 0;
-        data.answers = {};
-        data.wrong = [];
-        data.completed = false;
-
-
-        localStorage.setItem(
-            storageKey(topic),
-            JSON.stringify(data)
-        );
-
-    }
-
-
-    currentQuestionIndex =
-        data.currentIndex || 0;
-
-
-    if (
-        currentQuestionIndex >=
-        currentQuestions.length
-    ) {
-
-        currentQuestionIndex = 0;
-
-    }
-
-
-    score =
-        calculateScore(data.answers);
-
-
-    answered = false;
-
-
-    document.getElementById(
-        "chaptersPage"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "examPage"
-    ).style.display = "block";
-
-
-    document.getElementById(
-        "scoreBox"
-    ).style.display = "none";
-
-
-    document.querySelector(
-        ".question-card"
-    ).style.display = "block";
-
-
-    document.querySelector(
-        ".exam-top"
-    ).style.display = "block";
-
-
-    document.getElementById(
-        "examTitle"
-    ).textContent =
-        getTopicTitle(topic);
-
-
-    showQuestion();
-
-}
-
-
-/* =====================================================
-   CALCULATE SCORE
-===================================================== */
-
-function calculateScore(answers) {
-
-    let result = 0;
-
-
-    if (!answers) {
-        return 0;
-    }
-
-
-    Object.keys(answers).forEach(
-        function(key) {
-
-            const index =
-                parseInt(key);
-
-
-            if (
-                currentQuestions[index] &&
-                answers[key] ===
-                currentQuestions[index].correct
-            ) {
-
-                result++;
-
-            }
-
-        }
-    );
-
-
-    return result;
-
-}
-
-
-/* =====================================================
-   RESET ANALYSIS
-===================================================== */
-
-function resetAnalysis() {
-
-    document.getElementById(
-        "analysis"
-    ).style.display = "none";
-
-
-    const ids = [
-        "diagnosisBox",
-        "differentialBox",
-        "correctReasonBox",
-        "optionReasonsBox",
-        "testTipBox",
-        "examTrapBox"
-    ];
-
-
-    ids.forEach(
-        function(id) {
-
-            document.getElementById(
-                id
-            ).style.display = "none";
-
-        }
-    );
-
-
-    document.getElementById(
-        "explanationBox"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "noteBox"
-    ).style.display = "none";
-
-}
-
-
-/* =====================================================
-   RENDER EDUCATIONAL ANALYSIS
-===================================================== */
-
-function renderEducationalAnalysis(
-    question,
-    selectedIndex
-) {
-
-    resetAnalysis();
-
-
-    let hasAnalysis = false;
-
-
-    /*
-       تشخیص
-    */
-
-    if (question.diagnosis) {
-
-        document.getElementById(
-            "diagnosisText"
-        ).textContent =
-            question.diagnosis;
-
-
-        document.getElementById(
-            "diagnosisBox"
-        ).style.display = "block";
-
-
-        hasAnalysis = true;
-
-    }
-
-
-    /*
-       افتراق‌ها
-    */
-
-    if (question.differentials) {
-
-        const box =
-            document.getElementById(
-                "differentialText"
-            );
-
-
-        if (Array.isArray(
-            question.differentials
-        )) {
-
-            box.innerHTML =
-                "<ul class='analysis-list'>" +
-                question.differentials
-                    .map(
-                        function(item) {
-
-                            return "<li>" +
-                                item +
-                                "</li>";
-
-                        }
-                    )
-                    .join("") +
-                "</ul>";
-
-        }
-
-        else {
-
-            box.textContent =
-                question.differentials;
-
-        }
-
-
-        document.getElementById(
-            "differentialBox"
-        ).style.display = "block";
-
-
-        hasAnalysis = true;
-
-    }
-
-
-    /*
-       علت صحیح بودن گزینه صحیح
-    */
-
-    if (question.correctReason) {
-
-        document.getElementById(
-            "correctReasonText"
-        ).textContent =
-            question.correctReason;
-
-
-        document.getElementById(
-            "correctReasonBox"
-        ).style.display = "block";
-
-
-        hasAnalysis = true;
-
-    }
-
-    /*
-       اگر correctReason در بانک نبود،
-       از explanation فعلی استفاده می‌کنیم.
-    */
-
-    else if (question.explanation) {
-
-        document.getElementById(
-            "correctReasonText"
-        ).textContent =
-            question.explanation;
-
-
-        document.getElementById(
-            "correctReasonBox"
-        ).style.display = "block";
-
-
-        hasAnalysis = true;
-
-    }
-
-
-    /*
-       علت غلط بودن تک تک گزینه‌ها
-    */
-
-    if (question.optionExplanations) {
-
-        const box =
-            document.getElementById(
-                "optionReasonsText"
-            );
-
-
-        if (Array.isArray(
-            question.optionExplanations
-        )) {
-
-            box.innerHTML =
-                "<ul class='analysis-list'>";
-
-
-            question.optionExplanations.forEach(
-                function(reason, index) {
-
-                    if (reason) {
-
-                        box.innerHTML +=
-                            "<li><strong>" +
-                            String.fromCharCode(
-                                65 + index
-                            ) +
-                            ")</strong> " +
-                            reason +
-                            "</li>";
-
-                    }
-
-                }
-            );
-
-
-            box.innerHTML += "</ul>";
-
-        }
-
-        else {
-
-            box.textContent =
-                question.optionExplanations;
-
-        }
-
-
-        document.getElementById(
-            "optionReasonsBox"
-        ).style.display = "block";
-
-
-        hasAnalysis = true;
-
-    }
-
-
-    /*
-       نکته تستی
-    */
-
-    if (question.testTip) {
-
-        document.getElementById(
-            "testTipText"
-        ).textContent =
-            question.testTip;
-
-
-        document.getElementById(
-            "testTipBox"
-        ).style.display = "block";
-
-
-        hasAnalysis = true;
-
-    }
-
-    /*
-       اگر testTip وجود نداشت،
-       note فعلی به عنوان نکته تستی استفاده شود.
-    */
-
-    else if (question.note) {
-
-        document.getElementById(
-            "testTipText"
-        ).textContent =
-            question.note;
-
-
-        document.getElementById(
-            "testTipBox"
-        ).style.display = "block";
-
-
-        hasAnalysis = true;
-
-    }
-
-
-    /*
-       تله آزمونی
-    */
-
-    if (question.examTrap) {
-
-        document.getElementById(
-            "examTrapText"
-        ).textContent =
-            question.examTrap;
-
-
-        document.getElementById(
-            "examTrapBox"
-        ).style.display = "block";
-
-
-        hasAnalysis = true;
-
-    }
-
-
-    /*
-       نمایش تحلیل
-    */
-
-    if (hasAnalysis) {
-
-        document.getElementById(
-            "analysis"
-        ).style.display = "block";
-
-    }
-
-}
-
-
-/* =====================================================
-   SHOW QUESTION
-===================================================== */
-
-function showQuestion() {
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    const question =
-        currentQuestions[
-            currentQuestionIndex
-        ];
-
-
-    const data =
-        getTopicData(currentTopic);
-
-
-    answered = false;
-
-
-    document.getElementById(
-        "questionNumber"
-    ).textContent =
-        "سؤال " +
-        (currentQuestionIndex + 1);
-
-
-    document.getElementById(
-        "progressText"
-    ).textContent =
-        "سؤال " +
-        (currentQuestionIndex + 1) +
-        " از " +
-        currentQuestions.length;
-
-
-    document.getElementById(
-        "questionText"
-    ).textContent =
-        question.question;
-
-
-    const optionsContainer =
-        document.getElementById(
-            "optionsContainer"
-        );
-
-
-    optionsContainer.innerHTML = "";
-
-
-    question.options.forEach(
-        function(optionText, index) {
-
-            const label =
-                document.createElement("label");
-
-
-            label.className = "option";
-
-
-            const input =
-                document.createElement("input");
-
-
-            input.type = "radio";
-
-            input.name = "answer";
-
-            input.value = index;
-
-
-            const span =
-                document.createElement("span");
-
-
-            span.className =
-                "option-text";
-
-
-            span.textContent =
-                optionText;
-
-
-            const mark =
-                document.createElement("span");
-
-
-            mark.className =
-                "option-mark";
-
-
-            label.appendChild(input);
-
-            label.appendChild(span);
-
-            label.appendChild(mark);
-
-
-            optionsContainer.appendChild(
-                label
-            );
-
-        }
-    );
-
-
-    resetQuestionFeedback();
-
-
-    /*
-       پاسخ قبلی فقط در آزمون عادی بازیابی شود.
-       در حالت مرور هر سؤال کاملاً تازه است.
-    */
-
-    if (
-        currentMode === "normal"
-    ) {
-
-        const savedAnswer =
-            data.answers[
-                currentQuestionIndex
-            ];
-
-
-        if (
-            savedAnswer !== undefined
-        ) {
-
-            restoreSavedAnswer(
-                savedAnswer,
-                question
-            );
-
-        }
-
-        else {
-
-            document.getElementById(
-                "checkButton"
-            ).disabled = false;
-
-
-            document.getElementById(
-                "nextButton"
-            ).disabled = true;
-
-        }
-
-    }
-
-    else {
-
-        document.getElementById(
-            "checkButton"
-        ).disabled = false;
-
-
-        document.getElementById(
-            "nextButton"
-        ).disabled = true;
-
-    }
-
-
-    updateExamStatus(data);
-
-    updateReviewButton(data);
-
-}
-
-
-/* =====================================================
-   RESET QUESTION FEEDBACK
-===================================================== */
-
-function resetQuestionFeedback() {
-
-    document.getElementById(
-        "resultBox"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "resultBox"
-    ).className = "result";
-
-
-    document.getElementById(
-        "resultTitle"
-    ).textContent = "";
-
-
-    document.getElementById(
-        "resultMessage"
-    ).textContent = "";
-
-
-    resetAnalysis();
-
-
-    document.getElementById(
-        "examStatus"
-    ).textContent = "";
-
-}
-
-
-/* =====================================================
-   RESTORE SAVED ANSWER
-===================================================== */
-
-function restoreSavedAnswer(
-    selectedIndex,
-    question
-) {
-
-    answered = true;
-
-
-    const inputs =
-        document.querySelectorAll(
-            'input[name="answer"]'
-        );
-
-
-    const options =
-        document.querySelectorAll(
-            ".option"
-        );
-
-
-    if (inputs[selectedIndex]) {
-
-        inputs[selectedIndex].checked =
-            true;
-
-    }
-
-
-    if (
-        options[question.correct]
-    ) {
-
-        options[
-            question.correct
-        ].classList.add(
-            "correct-option"
-        );
-
-
-        options[
-            question.correct
-        ].querySelector(
-            ".option-mark"
-        ).textContent = "✓";
-
-    }
-
-
-    if (
-        selectedIndex ===
-        question.correct
-    ) {
-
-        showResult(
-            true,
-            "عالی",
-            "پاسخ شما صحیح است."
-        );
-
-    }
-
-    else {
-
-        if (
-            options[selectedIndex]
-        ) {
-
-            options[
-                selectedIndex
-            ].classList.add(
-                "wrong-option"
-            );
-
-
-            options[
-                selectedIndex
-            ].querySelector(
-                ".option-mark"
-            ).textContent = "✕";
-
-        }
-
-
-        showResult(
-            false,
-            "پاسخ غلط است",
-            "پاسخ صحیح با علامت سبز مشخص شده است."
-        );
-
-    }
-
-
-    renderEducationalAnalysis(
-        question,
-        selectedIndex
-    );
-
-
-    inputs.forEach(
-        function(input) {
-
-            input.disabled = true;
-
-        }
-    );
-
-
-    document.getElementById(
-        "checkButton"
-    ).disabled = true;
-
-
-    document.getElementById(
-        "nextButton"
-    ).disabled = false;
-
-
-    if (
-        currentQuestionIndex ===
-        currentQuestions.length - 1
-    ) {
-
-        document.getElementById(
-            "nextButton"
-        ).textContent =
-            "نمایش نتیجه";
-
-    }
-
-}
-
-
-/* =====================================================
-   CHECK ANSWER
-===================================================== */
-
-function checkAnswer() {
-
-    /*
-       حالت مرور
-    */
-
-    if (
-        currentMode === "review"
-    ) {
-
-        checkReviewAnswer();
-
-        return;
-
-    }
-
-
-    if (answered) {
-        return;
-    }
-
-
-    const selected =
-        document.querySelector(
-            'input[name="answer"]:checked'
-        );
-
-
-    if (!selected) {
-
-        alert(
-            "لطفاً ابتدا یک گزینه را انتخاب کنید."
-        );
-
-        return;
-
-    }
-
-
-    answered = true;
-
-
-    const selectedIndex =
-        parseInt(
-            selected.value
-        );
-
-
-    const question =
-        currentQuestions[
-            currentQuestionIndex
-        ];
-
-
-    const options =
-        document.querySelectorAll(
-            ".option"
-        );
-
-
-    const data =
-        getTopicData(currentTopic);
-
-
-    /*
-       ذخیره پاسخ
-    */
-
-    data.answers[
-        currentQuestionIndex
-    ] = selectedIndex;
-
-
-    /*
-       گزینه صحیح
-    */
-
-    options[
-        question.correct
-    ].classList.add(
-        "correct-option"
-    );
-
-
-    options[
-        question.correct
-    ].querySelector(
-        ".option-mark"
-    ).textContent = "✓";
-
-
-    /*
-       بررسی
-    */
-
-    if (
-        selectedIndex ===
-        question.correct
-    ) {
-
-        score++;
-
-
-        data.wrong =
-            data.wrong.filter(
-                function(item) {
-
-                    return item !==
-                        currentQuestionIndex;
-
-                }
-            );
-
-
-        showResult(
-            true,
-            "عالی",
-            "پاسخ شما صحیح است."
-        );
-
-    }
-
-    else {
-
-        options[
-            selectedIndex
-        ].classList.add(
-            "wrong-option"
-        );
-
-
-        options[
-            selectedIndex
-        ].querySelector(
-            ".option-mark"
-        ).textContent = "✕";
-
-
-        if (
-            !data.wrong.includes(
-                currentQuestionIndex
-            )
-        ) {
-
-            data.wrong.push(
-                currentQuestionIndex
-            );
-
-        }
-
-
-        showResult(
-            false,
-            "پاسخ غلط است",
-            "پاسخ صحیح با علامت سبز مشخص شده است."
-        );
-
-    }
-
-
-    /*
-       تحلیل آموزشی
-    */
-
-    renderEducationalAnalysis(
-        question,
-        selectedIndex
-    );
-
-
-    /*
-       غیرفعال کردن گزینه‌ها
-    */
-
-    const inputs =
-        document.querySelectorAll(
-            'input[name="answer"]'
-        );
-
-
-    inputs.forEach(
-        function(input) {
-
-            input.disabled = true;
-
-        }
-    );
-
-
-    document.getElementById(
-        "checkButton"
-    ).disabled = true;
-
-
-    document.getElementById(
-        "nextButton"
-    ).disabled = false;
-
-
-    /*
-       ذخیره سؤال بعدی
-    */
-
-    if (
-        currentQuestionIndex <
-        currentQuestions.length - 1
-    ) {
-
-        data.currentIndex =
-            currentQuestionIndex + 1;
-
-    }
-
-
-    saveTopicData(data);
-
-
-    updateExamStatus(data);
-
-    updateReviewButton(data);
-
-
-    if (
-        currentQuestionIndex ===
-        currentQuestions.length - 1
-    ) {
-
-        document.getElementById(
-            "nextButton"
-        ).textContent =
-            "نمایش نتیجه";
-
-    }
-
-}
-
-
-/* =====================================================
-   REVIEW ANSWER
-===================================================== */
-
-function checkReviewAnswer() {
-
-    if (answered) {
-        return;
-    }
-
-
-    const selected =
-        document.querySelector(
-            'input[name="answer"]:checked'
-        );
-
-
-    if (!selected) {
-
-        alert(
-            "لطفاً ابتدا یک گزینه را انتخاب کنید."
-        );
-
-        return;
-
-    }
-
-
-    answered = true;
-
-
-    const selectedIndex =
-        parseInt(
-            selected.value
-        );
-
-
-    const question =
-        currentQuestions[
-            currentQuestionIndex
-        ];
-
-
-    /*
-       شماره اصلی سؤال
-    */
-
-    const originalIndex =
-        currentReviewIndexes[
-            currentQuestionIndex
-        ];
-
-
-    const data =
-        getTopicData(currentTopic);
-
-
-    const options =
-        document.querySelectorAll(
-            ".option"
-        );
-
-
-    /*
-       نمایش پاسخ صحیح
-    */
-
-    options[
-        question.correct
-    ].classList.add(
-        "correct-option"
-    );
-
-
-    options[
-        question.correct
-    ].querySelector(
-        ".option-mark"
-    ).textContent = "✓";
-
-
-    /*
-       پاسخ صحیح در مرور
-    */
-
-    if (
-        selectedIndex ===
-        question.correct
-    ) {
-
-        /*
-           حذف از لیست غلط‌های اصلی
-        */
-
-        data.wrong =
-            data.wrong.filter(
-                function(item) {
-
-                    return item !==
-                        originalIndex;
-
-                }
-            );
-
-
-        showResult(
-            true,
-            "عالی",
-            "این سؤال را این بار درست پاسخ دادید و از فهرست سؤالات غلط حذف شد."
-        );
-
-    }
-
-    else {
-
-        /*
-           باقی ماندن در فهرست غلط‌ها
-        */
-
-        options[
-            selectedIndex
-        ].classList.add(
-            "wrong-option"
-        );
-
-
-        options[
-            selectedIndex
-        ].querySelector(
-            ".option-mark"
-        ).textContent = "✕";
-
-
-        if (
-            !data.wrong.includes(
-                originalIndex
-            )
-        ) {
-
-            data.wrong.push(
-                originalIndex
-            );
-
-        }
-
-
-        showResult(
-            false,
-            "پاسخ هنوز غلط است",
-            "این سؤال همچنان در فهرست سؤالات غلط باقی می‌ماند."
-        );
-
-    }
-
-
-    /*
-       نمایش تحلیل کامل
-    */
-
-    renderEducationalAnalysis(
-        question,
-        selectedIndex
-    );
-
-
-    /*
-       غیرفعال کردن گزینه‌ها
-    */
-
-    const inputs =
-        document.querySelectorAll(
-            'input[name="answer"]'
-        );
-
-
-    inputs.forEach(
-        function(input) {
-
-            input.disabled = true;
-
-        }
-    );
-
-
-    document.getElementById(
-        "checkButton"
-    ).disabled = true;
-
-
-    document.getElementById(
-        "nextButton"
-    ).disabled = false;
-
-
-    if (
-        currentQuestionIndex ===
-        currentQuestions.length - 1
-    ) {
-
-        document.getElementById(
-            "nextButton"
-        ).textContent =
-            "پایان مرور";
-
-    }
-
-
-    saveTopicData(data);
-
-}
-
-
-/* =====================================================
-   SHOW RESULT
-===================================================== */
-
-function showResult(
-    isCorrect,
-    title,
-    message
-) {
-
-    const resultBox =
-        document.getElementById(
-            "resultBox"
-        );
-
-
-    resultBox.style.display =
-        "block";
-
-
-    resultBox.className =
-        isCorrect
-        ? "result correct"
-        : "result wrong";
-
-
-    document.getElementById(
-        "resultTitle"
-    ).textContent =
-        title;
-
-
-    document.getElementById(
-        "resultMessage"
-    ).textContent =
-        message;
-
-}
-
-
-/* =====================================================
-   NEXT QUESTION
-===================================================== */
-
-function nextQuestion() {
-
-    if (!answered) {
-        return;
-    }
-
-
-    /*
-       مرور
-    */
-
-    if (
-        currentMode === "review"
-    ) {
-
-        if (
-            currentQuestionIndex <
-            currentQuestions.length - 1
-        ) {
-
-            currentQuestionIndex++;
-
-
-            /*
-               بسیار مهم:
-               سؤال بعدی مرور با showReviewQuestion
-               یا منطق مستقل آن نمایش داده می‌شود.
-            */
-
-            showReviewQuestion();
-
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        }
-
-        else {
-
-            showReviewScore();
-
-        }
-
-
-        return;
-
-    }
-
-
-    /*
-       آزمون عادی
-    */
-
-    if (
-        currentQuestionIndex <
-        currentQuestions.length - 1
-    ) {
-
-        currentQuestionIndex++;
-
-
-        showQuestion();
-
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-
-    else {
-
-        const data =
-            getTopicData(currentTopic);
-
-
-        data.completed = true;
-
-        data.currentIndex =
-            currentQuestions.length;
-
-
-        saveTopicData(data);
-
-
-        showScore();
-
-    }
-
-}
-
-
-/* =====================================================
-   SHOW REVIEW QUESTION
-===================================================== */
-
-function showReviewQuestion() {
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    /*
-       در این حالت سؤال همیشه تازه ساخته می‌شود.
-       هیچ پاسخ ذخیره‌شده‌ای بازیابی نمی‌شود.
-    */
-
-    answered = false;
-
-
-    const question =
-        currentQuestions[
-            currentQuestionIndex
-        ];
-
-
-    document.getElementById(
-        "questionNumber"
-    ).textContent =
-        "مرور سؤال " +
-        (currentQuestionIndex + 1);
-
-
-    document.getElementById(
-        "progressText"
-    ).textContent =
-        "مرور " +
-        (currentQuestionIndex + 1) +
-        " از " +
-        currentQuestions.length;
-
-
-    document.getElementById(
-        "questionText"
-    ).textContent =
-        question.question;
-
-
-    const optionsContainer =
-        document.getElementById(
-            "optionsContainer"
-        );
-
-
-    optionsContainer.innerHTML = "";
-
-
-    question.options.forEach(
-        function(optionText, index) {
-
-            const label =
-                document.createElement(
-                    "label"
-                );
-
-
-            label.className =
-                "option";
-
-
-            const input =
-                document.createElement(
-                    "input"
-                );
-
-
-            input.type = "radio";
-
-            input.name = "answer";
-
-            input.value = index;
-
-
-            const span =
-                document.createElement(
-                    "span"
-                );
-
-
-            span.className =
-                "option-text";
-
-
-            span.textContent =
-                optionText;
-
-
-            const mark =
-                document.createElement(
-                    "span"
-                );
-
-
-            mark.className =
-                "option-mark";
-
-
-            label.appendChild(input);
-
-            label.appendChild(span);
-
-            label.appendChild(mark);
-
-
-            optionsContainer.appendChild(
-                label
-            );
-
-        }
-    );
-
-
-    /*
-       هیچ پاسخ قبلی در حالت مرور بازیابی نمی‌شود.
-    */
-
-    resetQuestionFeedback();
-
-
-    document.getElementById(
-        "checkButton"
-    ).disabled = false;
-
-
-    document.getElementById(
-        "nextButton"
-    ).disabled = true;
-
-
-    document.getElementById(
-        "nextButton"
-    ).textContent =
-        currentQuestionIndex ===
-        currentQuestions.length - 1
-        ? "پایان مرور"
-        : "سؤال بعدی ▶";
-
-
-    document.getElementById(
-        "examStatus"
-    ).textContent =
-        "🔄 حالت مرور سؤالات غلط — این سؤال را دوباره پاسخ دهید.";
-
-}
-
-
-/* =====================================================
-   START WRONG REVIEW
-===================================================== */
-
-function startWrongReview() {
-
-    const data =
-        getTopicData(currentTopic);
-
-
-    if (
-        !data.wrong ||
-        data.wrong.length === 0
-    ) {
-
-        alert(
-            "در این فصل سؤال غلطی برای مرور وجود ندارد."
-        );
-
-        return;
-
-    }
-
-
-    const allQuestions =
-        getQuestionsForTopic(
-            currentTopic
-        );
-
-
-    /*
-       فقط سؤال‌هایی که هنوز غلط هستند
-    */
-
-    currentReviewIndexes =
-        data.wrong
-            .filter(
-                function(index) {
-
-                    return (
-                        allQuestions[index] !==
-                        undefined
-                    );
-
-                }
-            )
-            .slice();
-
-
-    if (
-        currentReviewIndexes.length === 0
-    ) {
-
-        alert(
-            "سؤال غلطی برای مرور وجود ندارد."
-        );
-
-        return;
-
-    }
-
-
-    currentMode = "review";
-
-
-    currentQuestions =
-        currentReviewIndexes.map(
-            function(index) {
-
-                return allQuestions[index];
-
-            }
-        );
-
-
-    currentQuestionIndex = 0;
-
-    score = 0;
-
-    answered = false;
-
-
-    document.getElementById(
-        "chaptersPage"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "examPage"
-    ).style.display = "block";
-
-
-    document.getElementById(
-        "scoreBox"
-    ).style.display = "none";
-
-
-    document.querySelector(
-        ".question-card"
-    ).style.display = "block";
-
-
-    document.querySelector(
-        ".exam-top"
-    ).style.display = "block";
-
-
-    document.getElementById(
-        "examTitle"
-    ).textContent =
-        getTopicTitle(currentTopic) +
-        " — مرور سؤالات غلط";
-
-
-    showReviewQuestion();
-
-}
-
-
-/* =====================================================
-   REVIEW SCORE
-===================================================== */
-
-function showReviewScore() {
-
-    const data =
-        getTopicData(currentTopic);
-
-
-    const remainingWrong =
-        data.wrong.length;
-
-
-    alert(
-        "مرور سؤالات غلط به پایان رسید.\n\n" +
-        "تعداد سؤالاتی که هنوز غلط باقی مانده‌اند: " +
-        remainingWrong
-    );
-
-
-    backToChapters();
-
-}
-
-
-/* =====================================================
-   END EXAM
-===================================================== */
-
-function endExam() {
-
-    /*
-       در حالت مرور فقط خارج می‌شویم.
-    */
-
-    if (
-        currentMode === "review"
-    ) {
-
-        backToChapters();
-
-        return;
-
-    }
-
-
-    const data =
-        getTopicData(currentTopic);
-
-
-    if (answered) {
-
-        if (
-            currentQuestionIndex <
-            currentQuestions.length - 1
-        ) {
-
-            data.currentIndex =
-                currentQuestionIndex + 1;
-
-        }
-
-        else {
-
-            data.currentIndex =
-                currentQuestions.length;
-
-        }
-
-    }
-
-    else {
-
-        data.currentIndex =
-            currentQuestionIndex;
-
-    }
-
-
-    data.completed = false;
-
-
-    saveTopicData(data);
-
-
-    showPartialScore(data);
-
-}
-
-
-/* =====================================================
-   PARTIAL SCORE
-===================================================== */
-
-function showPartialScore(data) {
-
-    document.querySelector(
-        ".question-card"
-    ).style.display = "none";
-
-
-    document.querySelector(
-        ".exam-top"
-    ).style.display = "none";
-
-
-    const scoreBox =
-        document.getElementById(
-            "scoreBox"
-        );
-
-
-    scoreBox.style.display = "block";
-
-
-    const answeredCount =
-        Object.keys(
-            data.answers
-        ).length;
-
-
-    const correctCount =
-        calculateScore(
-            data.answers
-        );
-
-
-    const wrongCount =
-        data.wrong.length;
-
-
-    const remaining =
-        currentQuestions.length -
-        answeredCount;
-
-
-    const percentage =
-        answeredCount > 0
-        ? Math.round(
-            (correctCount /
-             answeredCount) * 100
-          )
-        : 0;
-
-
-    document.getElementById(
-        "scoreTitle"
-    ).textContent =
-        "آزمون متوقف شد";
-
-
-    document.getElementById(
-        "finalScore"
-    ).textContent =
-        correctCount +
-        " صحیح از " +
-        answeredCount +
-        " پاسخ داده‌شده";
-
-
-    document.getElementById(
-        "finalDetails"
-    ).innerHTML =
-        "✅ صحیح: " +
-        correctCount +
-        "<br>" +
-        "❌ غلط: " +
-        wrongCount +
-        "<br>" +
-        "⏳ باقی‌مانده: " +
-        remaining +
-        "<br>" +
-        "📊 درصد پاسخ‌های صحیح: " +
-        percentage +
-        "%";
-
-
-    document.getElementById(
-        "finalMessage"
-    ).textContent =
-        "پیشرفت شما ذخیره شد. دفعه بعد می‌توانید از سؤال بعدی ادامه دهید.";
-
-
-    const reviewButton =
-        document.getElementById(
-            "scoreReviewButton"
-        );
-
-
-    reviewButton.style.display =
-        wrongCount > 0
-        ? "inline-block"
-        : "none";
-
-}
-
-
-/* =====================================================
-   FINAL SCORE
-===================================================== */
-
-function showScore() {
-
-    document.querySelector(
-        ".question-card"
-    ).style.display = "none";
-
-
-    document.querySelector(
-        ".exam-top"
-    ).style.display = "none";
-
-
-    const scoreBox =
-        document.getElementById(
-            "scoreBox"
-        );
-
-
-    scoreBox.style.display = "block";
-
-
-    const data =
-        getTopicData(currentTopic);
-
-
-    const correctCount =
-        calculateScore(
-            data.answers
-        );
-
-
-    const total =
-        currentQuestions.length;
-
-
-    const wrongCount =
-        data.wrong.length;
-
-
-    const percentage =
-        Math.round(
-            (correctCount / total) * 100
-        );
-
-
-    document.getElementById(
-        "scoreTitle"
-    ).textContent =
-        "آزمون به پایان رسید";
-
-
-    document.getElementById(
-        "finalScore"
-    ).textContent =
-        correctCount +
-        " از " +
-        total +
-        " (" +
-        percentage +
-        "%)";
-
-
-    document.getElementById(
-        "finalDetails"
-    ).innerHTML =
-        "✅ پاسخ صحیح: " +
-        correctCount +
-        "<br>" +
-        "❌ پاسخ غلط: " +
-        wrongCount +
-        "<br>" +
-        "📚 تعداد کل سؤالات: " +
-        total;
-
-
-    let message = "";
-
-
-    if (percentage >= 90) {
-
-        message =
-            "عملکرد عالی 🌟";
-
-    }
-
-    else if (percentage >= 75) {
-
-        message =
-            "عملکرد بسیار خوب 👍";
-
-    }
-
-    else if (percentage >= 60) {
-
-        message =
-            "عملکرد قابل قبول؛ مرور نکات اشتباه توصیه می‌شود.";
-
-    }
-
-    else {
-
-        message =
-            "بهتر است این فصل را دوباره مرور کنید.";
-
-    }
-
-
-    document.getElementById(
-        "finalMessage"
-    ).textContent =
-        message;
-
-
-    const reviewButton =
-        document.getElementById(
-            "scoreReviewButton"
-        );
-
-
-    reviewButton.style.display =
-        wrongCount > 0
-        ? "inline-block"
-        : "none";
-
-}
-
-
-/* =====================================================
-   EXAM STATUS
-===================================================== */
-
-function updateExamStatus(data) {
-
-    if (
-        currentMode === "review"
-    ) {
-
-        return;
-
-    }
-
-
-    const answeredCount =
-        Object.keys(
-            data.answers
-        ).length;
-
-
-    const wrongCount =
-        data.wrong.length;
-
-
-    const remaining =
-        currentQuestions.length -
-        answeredCount;
-
-
-    document.getElementById(
-        "examStatus"
-    ).textContent =
-        "پاسخ داده‌شده: " +
-        answeredCount +
-        " | صحیح: " +
-        calculateScore(data.answers) +
-        " | غلط: " +
-        wrongCount +
-        " | باقی‌مانده: " +
-        remaining;
-
-}
-
-
-/* =====================================================
-   REVIEW BUTTON
-===================================================== */
-
-function updateReviewButton(data) {
-
-    /*
-       دکمه داخل صفحه فعلاً مخفی می‌ماند.
-       دکمه اصلی مرور در صفحه نتیجه و فصل وجود دارد.
-    */
-
-}
-
-
-/* =====================================================
-   CHAPTER STATUS
-===================================================== */
-
-function updateChapterStatuses() {
-
-    updateOneChapterStatus(
-        "Cerebrovascular Diseases",
-        "status-Cerebrovascular",
-        "actions-Cerebrovascular"
-    );
-
-
-    updateOneChapterStatus(
-        "Viral & Prion Diseases",
-        "status-Viral",
-        "actions-Viral"
-    );
-
-
-    updateOneChapterStatus(
-        "Epilepsy & Seizure",
-        "status-Epilepsy",
-        "actions-Epilepsy"
-    );
-
-}
-
-
-/* =====================================================
-   ONE CHAPTER STATUS
-===================================================== */
-
-function updateOneChapterStatus(
-    topic,
-    statusId,
-    actionsId
-) {
-
-    const questions =
-        getQuestionsForTopic(topic);
-
-
-    const status =
-        document.getElementById(
-            statusId
-        );
-
-
-    const actions =
-        document.getElementById(
-            actionsId
-        );
-
-
-    if (!status || !actions) {
-        return;
-    }
-
-
-    actions.innerHTML = "";
-
-
-    if (!questions.length) {
-
-        status.textContent = "";
-
-        return;
-
-    }
-
-
-    const data =
-        getTopicData(topic);
-
-
-    const answeredCount =
-        Object.keys(
-            data.answers
-        ).length;
-
-
-    const wrongCount =
-        data.wrong.length;
-
-
-    if (data.completed) {
-
-        status.innerHTML =
-            "✅ تکمیل شده | غلط: " +
-            wrongCount;
-
-    }
-
-    else if (answeredCount > 0) {
-
-        status.innerHTML =
-            "🟡 پیشرفت: " +
-            answeredCount +
-            " از " +
-            questions.length +
-            " | ❌ غلط: " +
-            wrongCount;
-
-    }
-
-    else {
-
-        status.innerHTML =
-            "⚪ هنوز شروع نشده";
-
-    }
-
-
-    /*
-       شروع / ادامه
-    */
-
-    const startButton =
-        document.createElement(
-            "button"
-        );
-
-
-    startButton.type =
-        "button";
-
-
-    startButton.className =
-        answeredCount > 0 &&
-        !data.completed
-        ? "chapter-btn continue-btn"
-        : "chapter-btn start-btn";
-
-
-    startButton.textContent =
-        answeredCount > 0 &&
-        !data.completed
-        ? "▶ ادامه آزمون"
-        : "▶ شروع آزمون";
-
-
-    startButton.onclick =
-        function() {
-
-            startTopic(topic);
-
-        };
-
-
-    actions.appendChild(
-        startButton
-    );
-
-
-    /*
-       مرور غلط
-    */
-
-    if (wrongCount > 0) {
-
-        const reviewButton =
-            document.createElement(
-                "button"
-            );
-
-
-        reviewButton.type =
-            "button";
-
-
-        reviewButton.className =
-            "chapter-btn review-btn";
-
-
-        reviewButton.textContent =
-            "🔄 مرور " +
-            wrongCount +
-            " غلط";
-
-
-        reviewButton.onclick =
-            function() {
-
-                currentTopic =
-                    topic;
-
-                startWrongReview();
-
-            };
-
-
-        actions.appendChild(
-            reviewButton
-        );
-
-    }
-
-
-    /*
-       پاک کردن
-    */
-
-    if (answeredCount > 0) {
-
-        const resetButton =
-            document.createElement(
-                "button"
-            );
-
-
-        resetButton.type =
-            "button";
-
-
-        resetButton.className =
-            "chapter-btn reset-btn";
-
-
-        resetButton.textContent =
-            "پاک کردن پیشرفت";
-
-
-        resetButton.onclick =
-            function() {
-
-                resetTopic(topic);
-
-            };
-
-
-        actions.appendChild(
-            resetButton
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   RESET TOPIC
-===================================================== */
-
-function resetTopic(topic) {
-
-    const ok =
-        confirm(
-            "تمام پیشرفت، پاسخ‌ها و سؤالات غلط این فصل پاک شود؟"
-        );
-
-
-    if (!ok) {
-        return;
-    }
-
-
-    localStorage.removeItem(
-        storageKey(topic)
-    );
-
-
-    updateChapterStatuses();
-
-}
-
-
-/* =====================================================
-   TITLES
-===================================================== */
-
-function getTopicTitle(topic) {
-
-    const titles = {
-
-        "Cerebrovascular Diseases":
-            "بیماری‌های عروق مغزی",
-
-        "Epilepsy & Seizure":
-            "صرع و تشنج",
-
-        "Movement Disorders":
-            "اختلالات حرکتی",
-
-        "Multiple Sclerosis & Demyelinating Diseases":
-            "MS و بیماری‌های دمیلینه‌کننده",
-
-        "Neuromuscular Diseases":
-            "بیماری‌های نوروماسکولار",
-
-        "Headache & Facial Pain":
-            "سردرد و دردهای صورت",
-
-        "Dementia & Cognitive Disorders":
-            "دمانس و اختلالات شناختی",
-
-        "Viral & Prion Diseases":
-            "بیماری‌های ویروسی و پریونی",
-
-        "Neuroimmunology":
-            "نورواِمیونولوژی",
-
-        "Neuro-oncology":
-            "نوروانکولوژی",
-
-        "Neurogenetics & Metabolic Disorders":
-            "بیماری‌های نوروجنتیک و متابولیک",
-
-        "Spinal Cord Disorders":
-            "بیماری‌های نخاع",
-
-        "Neuro-ophthalmology":
-            "نوروافتالمولوژی",
-
-        "Neuro-otology":
-            "نورواتولوژی",
-
-        "Pediatric Neurology":
-            "نورولوژی کودکان",
-
-        "Neurocritical Care":
-            "نورولوژی مراقبت‌های ویژه",
-
-        "Neurotrauma":
-            "نوروتروما",
-
-        "Autonomic & Sleep Disorders":
-            "اختلالات اتونوم و خواب",
-
-        "Neurodiagnostic Methods":
-            "روش‌های تشخیصی نورولوژی",
-
-        "Neuropharmacology & Principles of Treatment":
-            "نوروفارماکولوژی و اصول درمان"
-
-    };
-
-
-    return titles[topic] || topic;
-
-}
-
-
-/* =====================================================
-   BACK TO CHAPTERS
-===================================================== */
-
-function backToChapters() {
-
-    /*
-       فقط در آزمون عادی ذخیره شود.
-       مرور نباید currentIndex آزمون اصلی را تغییر دهد.
-    */
-
-    if (
-        currentTopic &&
-        currentMode === "normal" &&
-        currentQuestions.length
-    ) {
-
-        const data =
-            getTopicData(currentTopic);
-
-
-        if (answered) {
-
-            if (
-                currentQuestionIndex <
-                currentQuestions.length - 1
-            ) {
-
-                data.currentIndex =
-                    currentQuestionIndex + 1;
-
-            }
-
-            else {
-
-                data.currentIndex =
-                    currentQuestions.length;
-
-            }
-
-        }
-
-
-        data.completed =
-            data.completed || false;
-
-
-        saveTopicData(data);
-
-    }
-
-
-    updateChapterStatuses();
-
-
-    document.getElementById(
-        "examPage"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "chaptersPage"
-    ).style.display = "block";
-
-
-    document.querySelector(
-        ".question-card"
-    ).style.display = "block";
-
-
-    document.querySelector(
-        ".exam-top"
-    ).style.display = "block";
-
-
-    document.getElementById(
-        "scoreBox"
-    ).style.display = "none";
-
-
-    currentQuestions = [];
-
-    currentQuestionIndex = 0;
-
-    score = 0;
-
-    answered = false;
-
-    currentTopic = "";
-
-    currentMode = "normal";
-
-    currentReviewIndexes = [];
-
-}
-
-
-/* =====================================================
-   PAGE LOAD
-===================================================== */
-
-window.addEventListener(
-    "load",
-    function() {
-
-        updateChapterStatuses();
-
-    }
-);
-
-</script>
 
 </body>
+
 </html>
