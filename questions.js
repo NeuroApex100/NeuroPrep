@@ -1,4 +1,4 @@
-const cerebrovascularQuestions = [
+var cerebrovascularQuestions = [
 
     // =========================
     // سؤال ۱
