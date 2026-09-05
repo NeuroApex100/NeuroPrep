@@ -1,2860 +1,1239 @@
-/* =========================================================
-   NeuroPrep - Main Application
-   Compatible with current index.html
-   ========================================================= */
-
-
-/* =========================================================
-   1. GLOBAL VARIABLES
-   ========================================================= */
-
-var currentTopic = "";
-var currentQuestions = [];
-var currentQuestionIndex = 0;
-var currentOriginalIndex = 0;
-
-var currentMode = "normal"; 
-// normal | review
-
-var currentAnswered = false;
-var currentScore = 0;
-
-var currentReviewIndexes = [];
-var currentReviewPosition = 0;
-
-var flashcardIndex = 0;
-
-
-/* =========================================================
-   2. TOPIC CONFIGURATION
-   ========================================================= */
-
-var TOPICS = {
-
-    "Cerebrovascular Diseases": {
-        title: "Cerebrovascular Diseases",
-        persian: "بیماری‌های عروقی مغز",
-        icon: "🧠",
-        variableName: "cerebrovascularQuestions"
-    },
-
-    "Epilepsy & Seizure": {
-        title: "Epilepsy & Seizure",
-        persian: "صرع و تشنج",
-        icon: "⚡",
-        variableName: "epilepsyQuestions"
-    },
-
-    "Movement Disorders": {
-        title: "Movement Disorders",
-        persian: "اختلالات حرکتی",
-        icon: "🕺",
-        variableName: "movementDisordersQuestions"
-    },
-
-    "Multiple Sclerosis & Demyelinating Diseases": {
-        title: "Multiple Sclerosis & Demyelinating Diseases",
-        persian: "MS و بیماری‌های دمیلینه‌کننده",
-        icon: "🧬",
-        variableName: "multipleSclerosisQuestions"
-    },
-
-    "Neuromuscular Diseases": {
-        title: "Neuromuscular Diseases",
-        persian: "بیماری‌های نوروموسکولار",
-        icon: "💪",
-        variableName: "neuromuscularQuestions"
-    },
-
-    "Headache & Facial Pain": {
-        title: "Headache & Facial Pain",
-        persian: "سردرد و دردهای صورت",
-        icon: "🤕",
-        variableName: "headacheQuestions"
-    },
-
-    "Dementia & Cognitive Disorders": {
-        title: "Dementia & Cognitive Disorders",
-        persian: "دمانس و اختلالات شناختی",
-        icon: "🧠",
-        variableName: "dementiaQuestions"
-    },
-
-    "Viral & Prion Diseases": {
-        title: "Viral & Prion Diseases",
-        persian: "بیماری‌های ویروسی و پریونی",
-        icon: "🦠",
-        variableName: "viralPrionQuestions"
-    },
-
-    "Neuroimmunology": {
-        title: "Neuroimmunology",
-        persian: "نوروايمونولوژی",
-        icon: "🛡️",
-        variableName: "neuroimmunologyQuestions"
-    },
-
-    "Neuro-oncology": {
-        title: "Neuro-oncology",
-        persian: "نوروانکولوژی",
-        icon: "🎗️",
-        variableName: "neuroOncologyQuestions"
-    },
-
-    "Neurogenetics & Metabolic Disorders": {
-        title: "Neurogenetics & Metabolic Disorders",
-        persian: "نوروجنتیک و بیماری‌های متابولیک",
-        icon: "🧬",
-        variableName: "neurogeneticsQuestions"
-    },
-
-    "Spinal Cord Disorders": {
-        title: "Spinal Cord Disorders",
-        persian: "بیماری‌های نخاع",
-        icon: "🦴",
-        variableName: "spinalCordQuestions"
-    },
-
-    "Neuro-ophthalmology": {
-        title: "Neuro-ophthalmology",
-        persian: "نوروافتالمولوژی",
-        icon: "👁️",
-        variableName: "neuroOphthalmologyQuestions"
-    },
-
-    "Neuro-otology": {
-        title: "Neuro-otology",
-        persian: "نورواتولوژی",
-        icon: "👂",
-        variableName: "neuroOtologyQuestions"
-    },
-
-    "Pediatric Neurology": {
-        title: "Pediatric Neurology",
-        persian: "نورولوژی کودکان",
-        icon: "👶",
-        variableName: "pediatricNeurologyQuestions"
-    },
-
-    "Neurocritical Care": {
-        title: "Neurocritical Care",
-        persian: "نوروانتنسيو",
-        icon: "🚑",
-        variableName: "neurocriticalCareQuestions"
-    },
-
-    "Neurotrauma": {
-        title: "Neurotrauma",
-        persian: "نوروتروما",
-        icon: "🚨",
-        variableName: "neurotraumaQuestions"
-    },
-
-    "Autonomic & Sleep Disorders": {
-        title: "Autonomic & Sleep Disorders",
-        persian: "اختلالات اتونوم و خواب",
-        icon: "😴",
-        variableName: "autonomicSleepQuestions"
-    },
-
-    "Neurodiagnostic Methods": {
-        title: "Neurodiagnostic Methods",
-        persian: "روش‌های تشخیص نورولوژیک",
-        icon: "🔬",
-        variableName: "neurodiagnosticQuestions"
-    },
-
-    "Neuropharmacology & Principles of Treatment": {
-        title: "Neuropharmacology & Principles of Treatment",
-        persian: "نوروفارماکولوژی و اصول درمان",
-        icon: "💊",
-        variableName: "neuropharmacologyQuestions"
-    }
-};
-
-
-/* =========================================================
-   3. STORAGE
-   ========================================================= */
-
-function storageKey(topic) {
-    return "neurologyprep_" +
-        topic.replace(/[^a-zA-Z0-9]/g, "_");
-}
-
-
-function defaultTopicData() {
-    return {
-        currentIndex: 0,
-        answers: {},
-        wrong: [],
-        completed: false,
-        lastUpdated: Date.now()
-    };
-}
-
-
-function getTopicData(topic) {
-
-    var key = storageKey(topic);
-    var raw = localStorage.getItem(key);
-
-    if (!raw) {
-        return defaultTopicData();
-    }
-
-    try {
-
-        var data = JSON.parse(raw);
-
-        if (!data || typeof data !== "object") {
-            return defaultTopicData();
-        }
-
-        if (!data.answers || typeof data.answers !== "object") {
-            data.answers = {};
-        }
-
-        if (!Array.isArray(data.wrong)) {
-            data.wrong = [];
-        }
-
-        data.wrong = data.wrong.map(function (x) {
-            return Number(x);
-        }).filter(function (x) {
-            return !isNaN(x);
-        });
-
-        if (typeof data.currentIndex !== "number") {
-            data.currentIndex = 0;
-        }
-
-        data.completed = !!data.completed;
-
-        return data;
-
-    } catch (error) {
-
-        console.error("Storage error:", error);
-        return defaultTopicData();
-    }
-}
-
-
-function saveTopicData(topic, data) {
-
-    data.lastUpdated = Date.now();
-
-    localStorage.setItem(
-        storageKey(topic),
-        JSON.stringify(data)
-    );
-}
-
-
-/* =========================================================
-   4. QUESTION BANK FINDER
-   ========================================================= */
-
-function getQuestionsForTopic(topic) {
-
-    var config = TOPICS[topic];
-
-    if (!config) {
-        console.error("Unknown topic:", topic);
-        return [];
-    }
-
-    var variableName = config.variableName;
-
-    /*
-       Because the question banks are declared with "var",
-       they are available through window in a classic script.
-    */
-
-    var bank = window[variableName];
-
-    if (Array.isArray(bank)) {
-        return bank;
-    }
-
-
-    /* Alternative aliases for future files */
-
-    var aliases = {
-
-        "Cerebrovascular Diseases":
-            ["cerebrovascularQuestions"],
-
-        "Viral & Prion Diseases":
-            ["viralPrionQuestions", "viralQuestions"],
-
-        "Multiple Sclerosis & Demyelinating Diseases":
-            ["multipleSclerosisQuestions", "msQuestions"],
-
-        "Neurogenetics & Metabolic Disorders":
-            ["neurogeneticsQuestions", "geneticMetabolicQuestions"],
-
-        "Neurodiagnostic Methods":
-            ["neurodiagnosticQuestions", "diagnosticMethodsQuestions"]
-
-    };
-
-
-    if (aliases[topic]) {
-
-        for (var i = 0; i < aliases[topic].length; i++) {
-
-            var possibleBank =
-                window[aliases[topic][i]];
-
-            if (Array.isArray(possibleBank)) {
-                return possibleBank;
-            }
-        }
-    }
-
-
-    console.warn(
-        "Question bank not found:",
-        topic,
-        variableName
-    );
-
-    return [];
-}
-
-
-/* =========================================================
-   5. START TOPIC
-   ========================================================= */
-
-function startTopic(topic) {
-
-    console.log("Starting topic:", topic);
-
-    var questions = getQuestionsForTopic(topic);
-
-    if (!questions || questions.length === 0) {
-
-        showGeneralModal(
-            "Question Bank",
-            "بانک سؤال این فصل هنوز آماده یا متصل نشده است."
-        );
-
-        console.error(
-            "Bank not ready:",
-            topic
-        );
-
-        return;
-    }
-
-
-    currentTopic = topic;
-    currentQuestions = questions;
-    currentMode = "normal";
-
-    currentReviewIndexes = [];
-    currentReviewPosition = 0;
-
-    var data = getTopicData(topic);
-
-
-    /*
-       If chapter has already been completed,
-       ask whether the user wants to restart.
-    */
-
-    if (data.completed) {
-
-        var restart = confirm(
-            "این فصل قبلاً تکمیل شده است.\n\n" +
-            "آیا می‌خواهید آزمون را از ابتدا شروع کنید؟"
-        );
-
-        if (restart) {
-
-            data = defaultTopicData();
-            saveTopicData(topic, data);
-
-        } else {
-
-            data.currentIndex =
-                Math.min(
-                    data.currentIndex,
-                    currentQuestions.length - 1
-                );
-        }
-    }
-
-
-    currentQuestionIndex =
-        Math.min(
-            data.currentIndex || 0,
-            currentQuestions.length - 1
-        );
-
-
-    currentScore = calculateScore();
-
-    showExamPage();
-
-    showQuestion();
-
-    updateExamStatus();
-}
-
-
-/* =========================================================
-   6. PAGE NAVIGATION
-   ========================================================= */
-
-function showExamPage() {
-
-    var chaptersPage =
-        document.getElementById("chaptersPage");
-
-    var examPage =
-        document.getElementById("examPage");
-
-    var scoreBox =
-        document.getElementById("scoreBox");
-
-    var flashcardPage =
-        document.getElementById("flashcardPage");
-
-
-    if (chaptersPage) {
-        chaptersPage.style.display = "none";
-    }
-
-    if (examPage) {
-        examPage.style.display = "block";
-    }
-
-    if (scoreBox) {
-        scoreBox.style.display = "none";
-    }
-
-    if (flashcardPage) {
-        flashcardPage.style.display = "none";
-    }
-}
-
-
-function backToChapters() {
-
-    var chaptersPage =
-        document.getElementById("chaptersPage");
-
-    var examPage =
-        document.getElementById("examPage");
-
-    var scoreBox =
-        document.getElementById("scoreBox");
-
-    var flashcardPage =
-        document.getElementById("flashcardPage");
-
-
-    if (examPage) {
-        examPage.style.display = "none";
-    }
-
-    if (scoreBox) {
-        scoreBox.style.display = "none";
-    }
-
-    if (flashcardPage) {
-        flashcardPage.style.display = "none";
-    }
-
-    if (chaptersPage) {
-        chaptersPage.style.display = "block";
-    }
-
-    updateChapterStatuses();
-}
-
-
-function endExam() {
-
-    if (!currentQuestions.length) {
-        backToChapters();
-        return;
-    }
-
-    var leave = confirm(
-        "آیا می‌خواهید آزمون را ترک کنید؟\n\n" +
-        "پاسخ‌های ثبت‌شده شما حفظ خواهند شد."
-    );
-
-    if (leave) {
-        backToChapters();
-    }
-}
-
-
-/* =========================================================
-   7. RENDER QUESTION
-   ========================================================= */
-
-function showQuestion() {
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    if (currentMode === "normal") {
-
-        if (
-            currentQuestionIndex < 0 ||
-            currentQuestionIndex >= currentQuestions.length
-        ) {
-            currentQuestionIndex = 0;
-        }
-
-        currentOriginalIndex =
-            currentQuestionIndex;
-
-    } else {
-
-        if (
-            currentReviewPosition < 0 ||
-            currentReviewPosition >= currentReviewIndexes.length
-        ) {
-            return;
-        }
-
-        currentOriginalIndex =
-            currentReviewIndexes[currentReviewPosition];
-    }
-
-
-    var question =
-        currentQuestions[currentOriginalIndex];
-
-    if (!question) {
-        return;
-    }
-
-
-    currentAnswered = false;
-
-
-    renderQuestion(
-        question,
-        currentOriginalIndex
-    );
-
-
-    /*
-       Restore previously answered question
-       in normal mode.
-    */
-
-    if (currentMode === "normal") {
-
-        var data =
-            getTopicData(currentTopic);
-
-        var savedAnswer =
-            data.answers[
-                String(currentOriginalIndex)
-            ];
-
-        if (
-            savedAnswer !== undefined &&
-            savedAnswer !== null
-        ) {
-
-            restoreNormalAnswer(
-                question,
-                Number(savedAnswer)
-            );
-        }
-    }
-
-
-    updateButtons();
-    updateExamStatus();
-}
-
-
-function renderQuestion(question, originalIndex) {
-
-    var config =
-        TOPICS[currentTopic];
-
-
-    var examTitle =
-        document.getElementById("examTitle");
-
-    var questionNumber =
-        document.getElementById("questionNumber");
-
-    var questionMode =
-        document.getElementById("questionMode");
-
-    var questionText =
-        document.getElementById("questionText");
-
-    var optionsContainer =
-        document.getElementById("optionsContainer");
-
-
-    if (examTitle) {
-
-        examTitle.textContent =
-            config
-                ? config.persian
-                : currentTopic;
-    }
-
-
-    if (questionNumber) {
-
-        questionNumber.textContent =
-            "سؤال " +
-            (originalIndex + 1) +
-            " از " +
-            currentQuestions.length;
-    }
-
-
-    if (questionMode) {
-
-        if (currentMode === "review") {
-
-            questionMode.textContent =
-                "مرور سؤالات غلط";
-
-        } else {
-
-            questionMode.textContent =
-                "آزمون";
-        }
-    }
-
-
-    if (questionText) {
-
-        questionText.innerHTML =
-            question.question || "";
-    }
-
-
-    if (optionsContainer) {
-
-        optionsContainer.innerHTML = "";
-
-
-        var letters = ["A", "B", "C", "D", "E"];
-
-
-        (question.options || []).forEach(
-            function (option, index) {
-
-                var label =
-                    document.createElement("label");
-
-                label.className =
-                    "option";
-
-                label.setAttribute(
-                    "data-option-index",
-                    index
-                );
-
-
-                var radio =
-                    document.createElement("input");
-
-                radio.type = "radio";
-                radio.name = "answer";
-                radio.value = index;
-
-
-                var square =
-                    document.createElement("span");
-
-                square.className =
-                    "option-square";
-
-
-                var letter =
-                    document.createElement("span");
-
-                letter.className =
-                    "option-letter";
-
-                letter.textContent =
-                    letters[index] || "";
-
-
-                var text =
-                    document.createElement("span");
-
-                text.className =
-                    "option-text";
-
-                text.innerHTML =
-                    option;
-
-
-                label.appendChild(radio);
-                label.appendChild(square);
-                label.appendChild(letter);
-                label.appendChild(text);
-
-                optionsContainer.appendChild(label);
-            }
-        );
-    }
-
-
-    resetAnalysis();
-}
-
-
-/* =========================================================
-   8. RESTORE SAVED ANSWER
-   ========================================================= */
-
-function restoreNormalAnswer(question, answerIndex) {
-
-    var radio =
-        document.querySelector(
-            'input[name="answer"][value="' +
-            answerIndex +
-            '"]'
-        );
-
-
-    if (!radio) {
-        return;
-    }
-
-
-    radio.checked = true;
-
-    currentAnswered = true;
-
-
-    if (Number(answerIndex) === Number(question.correct)) {
-
-        markCorrectOption(answerIndex);
-
-        showResult(
-            true,
-            "عالی",
-            "پاسخ شما صحیح است."
-        );
-
-    } else {
-
-        markWrongOption(answerIndex);
-
-        markCorrectOption(question.correct);
-
-        showResult(
-            false,
-            "پاسخ غلط است",
-            "پاسخ صحیح مشخص شده است."
-        );
-    }
-
-
-    disableOptions();
-
-    showQuestionAnalysis(question);
-
-    updateButtons();
-}
-
-
-/* =========================================================
-   9. CHECK ANSWER
-   ========================================================= */
-
-function checkAnswer() {
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    var selected =
-        document.querySelector(
-            'input[name="answer"]:checked'
-        );
-
-
-    if (!selected) {
-
-        showGeneralModal(
-            "انتخاب پاسخ",
-            "لطفاً ابتدا یکی از گزینه‌ها را انتخاب کنید."
-        );
-
-        return;
-    }
-
-
-    if (currentAnswered) {
-        return;
-    }
-
-
-    var answerIndex =
-        Number(selected.value);
-
-
-    var question =
-        currentQuestions[currentOriginalIndex];
-
-
-    if (!question) {
-        return;
-    }
-
-
-    currentAnswered = true;
-
-
-    var isCorrect =
-        answerIndex === Number(question.correct);
-
-
-    /*
-       Save answer
-    */
-
-    var data =
-        getTopicData(currentTopic);
-
-
-    data.answers[
-        String(currentOriginalIndex)
-    ] = answerIndex;
-
-
-    /*
-       Manage wrong answers
-    */
-
-    var wrongIndex =
-        data.wrong.indexOf(
-            currentOriginalIndex
-        );
-
-
-    if (!isCorrect) {
-
-        if (wrongIndex === -1) {
-
-            data.wrong.push(
-                currentOriginalIndex
-            );
-        }
-
-    } else {
-
-        if (wrongIndex !== -1) {
-
-            data.wrong.splice(
-                wrongIndex,
-                1
-            );
-        }
-    }
-
-
-    /*
-       If this is the last normal question,
-       mark chapter completed.
-    */
-
-    if (
-        currentMode === "normal" &&
-        currentOriginalIndex ===
-        currentQuestions.length - 1
-    ) {
-
-        data.completed = true;
-    }
-
-
-    /*
-       Save current position
-    */
-
-    if (currentMode === "normal") {
-
-        data.currentIndex =
-            currentQuestionIndex;
-    }
-
-
-    saveTopicData(
-        currentTopic,
-        data
-    );
-
-
-    /*
-       Update score
-    */
-
-    currentScore =
-        calculateScore();
-
-
-    /*
-       Visual feedback
-    */
-
-    if (isCorrect) {
-
-        markCorrectOption(
-            answerIndex
-        );
-
-        showResult(
-            true,
-            "عالی",
-            "پاسخ شما صحیح است."
-        );
-
-    } else {
-
-        markWrongOption(
-            answerIndex
-        );
-
-        markCorrectOption(
-            question.correct
-        );
-
-        showResult(
-            false,
-            "پاسخ غلط است",
-            "پاسخ صحیح مشخص شده است."
-        );
-    }
-
-
-    disableOptions();
-
-    showQuestionAnalysis(question);
-
-    updateButtons();
-
-    updateExamStatus();
-}
-
-
-/* =========================================================
-   10. OPTION VISUALS
-   ========================================================= */
-
-function markCorrectOption(index) {
-
-    var option =
-        document.querySelector(
-            '.option[data-option-index="' +
-            index +
-            '"]'
-        );
-
-
-    if (!option) {
-        return;
-    }
-
-
-    option.classList.add(
-        "correct-option"
-    );
-
-
-    var square =
-        option.querySelector(
-            ".option-square"
-        );
-
-
-    if (square) {
-        square.innerHTML = "✓";
-    }
-}
-
-
-function markWrongOption(index) {
-
-    var option =
-        document.querySelector(
-            '.option[data-option-index="' +
-            index +
-            '"]'
-        );
-
-
-    if (!option) {
-        return;
-    }
-
-
-    option.classList.add(
-        "wrong-option"
-    );
-
-
-    var square =
-        option.querySelector(
-            ".option-square"
-        );
-
-
-    if (square) {
-        square.innerHTML = "✕";
-    }
-}
-
-
-function disableOptions() {
-
-    var radios =
-        document.querySelectorAll(
-            'input[name="answer"]'
-        );
-
-
-    radios.forEach(
-        function (radio) {
-            radio.disabled = true;
-        }
-    );
-}
-
-
-/* =========================================================
-   11. RESULT BOX
-   ========================================================= */
-
-function showResult(
-    correct,
-    title,
-    message
-) {
-
-    var resultBox =
-        document.getElementById(
-            "resultBox"
-        );
-
-    var resultTitle =
-        document.getElementById(
-            "resultTitle"
-        );
-
-    var resultMessage =
-        document.getElementById(
-            "resultMessage"
-        );
-
-
-    if (!resultBox) {
-        return;
-    }
-
-
-    resultBox.style.display =
-        "block";
-
-
-    resultBox.classList.remove(
-        "correct-result",
-        "wrong-result"
-    );
-
-
-    resultBox.classList.add(
-        correct
-            ? "correct-result"
-            : "wrong-result"
-    );
-
-
-    if (resultTitle) {
-        resultTitle.textContent =
-            title;
-    }
-
-
-    if (resultMessage) {
-        resultMessage.textContent =
-            message;
-    }
-}
-
-
-/* =========================================================
-   12. ANALYSIS
-   ========================================================= */
-
-function resetAnalysis() {
-
-    var container =
-        document.getElementById(
-            "analysisContainer"
-        );
-
-
-    if (container) {
-        container.style.display = "none";
-    }
-
-
-    var ids = [
-        "diagnosisText",
-        "differentialText",
-        "correctReasonText",
-        "wrongReasonsText",
-        "examTipText",
-        "examTrapText"
-    ];
-
-
-    ids.forEach(
-        function (id) {
-
-            var el =
-                document.getElementById(id);
-
-            if (el) {
-                el.innerHTML = "";
-            }
-        }
-    );
-}
-
-
-function showQuestionAnalysis(question) {
-
-    var container =
-        document.getElementById(
-            "analysisContainer"
-        );
-
-
-    if (!container || !question) {
-        return;
-    }
-
-
-    container.style.display =
-        "block";
-
-
-    setAnalysisField(
-        "diagnosisText",
-        question.diagnosis
-    );
-
-
-    setAnalysisField(
-        "differentialText",
-        question.differentials
-    );
-
-
-    setAnalysisField(
-        "correctReasonText",
-        question.correctReason ||
-        question.explanation
-    );
-
-
-    /*
-       Preferred new format:
-       optionExplanations: [
-          "Explanation A",
-          "Explanation B",
-          ...
-       ]
-    */
-
-    var wrongReasons =
-        document.getElementById(
-            "wrongReasonsText"
-        );
-
-
-    if (wrongReasons) {
-
-        if (
-            Array.isArray(
-                question.optionExplanations
-            )
-        ) {
-
-            wrongReasons.innerHTML =
-                formatOptionExplanations(
-                    question
-                );
-
-        } else if (
-            Array.isArray(
-                question.wrongReasons
-            )
-        ) {
-
-            wrongReasons.innerHTML =
-                formatWrongReasons(
-                    question.wrongReasons
-                );
-
-        } else {
-
-            wrongReasons.innerHTML =
-                "";
-        }
-    }
-
-
-    setAnalysisField(
-        "examTipText",
-        question.examTip
-    );
-
-
-    setAnalysisField(
-        "examTrapText",
-        question.examTrap ||
-        question.trap
-    );
-}
-
-
-function setAnalysisField(
-    id,
-    value
-) {
-
-    var el =
-        document.getElementById(id);
-
-
-    if (!el || value === undefined || value === null) {
-        return;
-    }
-
-
-    if (Array.isArray(value)) {
-
-        el.innerHTML =
-            value.map(
-                function (item) {
-                    return "<div>" +
-                        item +
-                        "</div>";
-                }
-            ).join("");
-
-    } else {
-
-        el.innerHTML =
-            value;
-    }
-}
-
-
-/* =========================================================
-   13. OPTION-BY-OPTION EXPLANATIONS
-   ========================================================= */
-
-function formatOptionExplanations(question) {
-
-    var explanations =
-        question.optionExplanations || [];
-
-    var options =
-        question.options || [];
-
-    var correct =
-        Number(question.correct);
-
-
-    var letters =
-        ["A", "B", "C", "D", "E"];
-
-
-    var html =
-        '<div class="option-explanations">';
-
-
-    options.forEach(
-        function (option, index) {
-
-            var isCorrect =
-                index === correct;
-
-
-            var explanation =
-                explanations[index] ||
-                "";
-
-
-            html +=
-                '<div class="' +
-                (
-                    isCorrect
-                        ? "option-analysis-correct"
-                        : "option-analysis-wrong"
-                ) +
-                '">';
-
-
-            html +=
-                "<strong>" +
-                (letters[index] || "") +
-                (isCorrect
-                    ? " ✓"
-                    : " ✕") +
-                "</strong> ";
-
-
-            html +=
-                "<span>" +
-                option +
-                "</span>";
-
-
-            if (explanation) {
-
-                html +=
-                    '<div class="option-analysis-text">' +
-                    explanation +
-                    "</div>";
-            }
-
-
-            html +=
-                "</div>";
-        }
-    );
-
-
-    html +=
-        "</div>";
-
-
-    return html;
-}
-
-
-function formatWrongReasons(reasons) {
-
-    if (!Array.isArray(reasons)) {
-        return "";
-    }
-
-
-    return reasons.map(
-        function (reason) {
-
-            return "<div>" +
-                reason +
-                "</div>";
-        }
-    ).join("");
-}
-
-
-/* =========================================================
-   14. NEXT QUESTION
-   ========================================================= */
-
-function nextQuestion() {
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    if (!currentAnswered) {
-
-        showGeneralModal(
-            "پاسخ سؤال",
-            "ابتدا پاسخ سؤال را ثبت کنید."
-        );
-
-        return;
-    }
-
-
-    if (currentMode === "review") {
-
-        nextReviewQuestion();
-
-        return;
-    }
-
-
-    /*
-       Normal mode
-    */
-
-    if (
-        currentQuestionIndex <
-        currentQuestions.length - 1
-    ) {
-
-        currentQuestionIndex++;
-
-
-        var data =
-            getTopicData(currentTopic);
-
-
-        data.currentIndex =
-            currentQuestionIndex;
-
-
-        saveTopicData(
-            currentTopic,
-            data
-        );
-
-
-        showQuestion();
-
-    } else {
-
-        finishNormalExam();
-    }
-}
-
-
-/* =========================================================
-   15. FINISH NORMAL EXAM
-   ========================================================= */
-
-function finishNormalExam() {
-
-    var data =
-        getTopicData(currentTopic);
-
-
-    data.completed = true;
-
-    data.currentIndex =
-        currentQuestions.length - 1;
-
-
-    saveTopicData(
-        currentTopic,
-        data
-    );
-
-
-    currentScore =
-        calculateScore();
-
-
-    showFinalScore();
-}
-
-
-/* =========================================================
-   16. SCORE
-   ========================================================= */
-
-function calculateScore() {
-
-    if (!currentQuestions.length) {
-        return 0;
-    }
-
-
-    var data =
-        getTopicData(currentTopic);
-
-
-    var score = 0;
-
-
-    Object.keys(
-        data.answers
-    ).forEach(
-        function (key) {
-
-            var index =
-                Number(key);
-
-            var answer =
-                Number(data.answers[key]);
-
-
-            if (
-                index >= 0 &&
-                index < currentQuestions.length
-            ) {
-
-                var question =
-                    currentQuestions[index];
-
-
-                if (
-                    question &&
-                    answer ===
-                    Number(question.correct)
-                ) {
-
-                    score++;
-                }
-            }
-        }
-    );
-
-
-    return score;
-}
-
-
-function showFinalScore() {
-
-    var examPage =
-        document.getElementById(
-            "examPage"
-        );
-
-    var scoreBox =
-        document.getElementById(
-            "scoreBox"
-        );
-
-
-    if (examPage) {
-        examPage.style.display =
-            "none";
-    }
-
-
-    if (scoreBox) {
-        scoreBox.style.display =
-            "block";
-    }
-
-
-    var finalScore =
-        document.getElementById(
-            "finalScore"
-        );
-
-    var finalDetails =
-        document.getElementById(
-            "finalDetails"
-        );
-
-    var finalMessage =
-        document.getElementById(
-            "finalMessage"
-        );
-
-
-    var total =
-        currentQuestions.length;
-
-
-    var percent =
-        total > 0
-            ? Math.round(
-                currentScore /
-                total *
-                100
-            )
-            : 0;
-
-
-    if (finalScore) {
-
-        finalScore.textContent =
-            currentScore +
-            " / " +
-            total;
-    }
-
-
-    if (finalDetails) {
-
-        finalDetails.textContent =
-            "درصد پاسخ‌های صحیح: " +
-            percent +
-            "%";
-    }
-
-
-    if (finalMessage) {
-
-        if (percent >= 90) {
-
-            finalMessage.textContent =
-                "عملکرد عالی 👏";
-
-        } else if (percent >= 75) {
-
-            finalMessage.textContent =
-                "عملکرد بسیار خوب 👍";
-
-        } else if (percent >= 60) {
-
-            finalMessage.textContent =
-                "عملکرد قابل قبول؛ مرور سؤالات غلط پیشنهاد می‌شود.";
-
-        } else {
-
-            finalMessage.textContent =
-                "بهتر است سؤالات غلط را مرور و دوباره تمرین کنید.";
-        }
-    }
-
-
-    updateScoreReviewButton();
-}
-
-
-/* =========================================================
-   17. WRONG ANSWER REVIEW
-   ========================================================= */
-
-function startWrongReview() {
-
-    var data =
-        getTopicData(currentTopic);
-
-
-    var wrong =
-        Array.isArray(data.wrong)
-            ? data.wrong
-            : [];
-
-
-    wrong =
-        wrong.filter(
-            function (index) {
-
-                return (
-                    index >= 0 &&
-                    index < currentQuestions.length
-                );
-            }
-        );
-
-
-    if (wrong.length === 0) {
-
-        showGeneralModal(
-            "مرور سؤالات غلط",
-            "در حال حاضر سؤال غلطی برای مرور وجود ندارد."
-        );
-
-        return;
-    }
-
-
-    currentReviewIndexes =
-        wrong.slice();
-
-
-    currentReviewPosition = 0;
-
-    currentMode = "review";
-
-    showExamPage();
-
-    showReviewQuestion();
-}
-
-
-function showReviewQuestion() {
-
-    if (
-        currentReviewPosition < 0 ||
-        currentReviewPosition >=
-        currentReviewIndexes.length
-    ) {
-        showReviewScore();
-        return;
-    }
-
-
-    currentOriginalIndex =
-        currentReviewIndexes[
-            currentReviewPosition
-        ];
-
-
-    var question =
-        currentQuestions[
-            currentOriginalIndex
-        ];
-
-
-    currentAnswered = false;
-
-
-    renderQuestion(
-        question,
-        currentOriginalIndex
-    );
-
-
-    /*
-       In review mode, show previous answer
-       but allow user to answer again.
-    */
-
-    var data =
-        getTopicData(currentTopic);
-
-
-    var saved =
-        data.answers[
-            String(currentOriginalIndex)
-        ];
-
-
-    if (
-        saved !== undefined &&
-        saved !== null
-    ) {
-
-        var radio =
-            document.querySelector(
-                'input[name="answer"][value="' +
-                Number(saved) +
-                '"]'
-            );
-
-
-        if (radio) {
-            radio.checked = true;
-        }
-    }
-
-
-    updateButtons();
-}
-
-
-function nextReviewQuestion() {
-
-    if (!currentAnswered) {
-
-        showGeneralModal(
-            "پاسخ سؤال",
-            "ابتدا پاسخ سؤال را ثبت کنید."
-        );
-
-        return;
-    }
-
-
-    if (
-        currentReviewPosition <
-        currentReviewIndexes.length - 1
-    ) {
-
-        currentReviewPosition++;
-
-        showReviewQuestion();
-
-    } else {
-
-        showReviewScore();
-    }
-}
-
-
-function showReviewScore() {
-
-    currentMode = "normal";
-
-    currentReviewIndexes = [];
-    currentReviewPosition = 0;
-
-    showFinalScore();
-}
-
-
-/* =========================================================
-   18. PARTIAL SCORE
-   ========================================================= */
-
-function showPartialScore() {
-
-    var score =
-        calculateScore();
-
-    var total =
-        currentQuestions.length;
-
-
-    var answered =
-        Object.keys(
-            getTopicData(currentTopic).answers
-        ).length;
-
-
-    var percent =
-        total > 0
-            ? Math.round(
-                score /
-                total *
-                100
-            )
-            : 0;
-
-
-    showGeneralModal(
-        "وضعیت فعلی آزمون",
-        "<strong>" +
-        "پاسخ داده شده: " +
-        answered +
-        " از " +
-        total +
-        "</strong><br><br>" +
-        "پاسخ صحیح: " +
-        score +
-        "<br>" +
-        "درصد فعلی: " +
-        percent +
-        "%"
-    );
-}
-
-
-/* =========================================================
-   19. BUTTON MANAGEMENT
-   ========================================================= */
-
-function updateButtons() {
-
-    var checkButton =
-        document.getElementById(
-            "checkButton"
-        );
-
-    var nextButton =
-        document.getElementById(
-            "nextButton"
-        );
-
-
-    if (checkButton) {
-
-        checkButton.disabled =
-            currentAnswered;
-    }
-
-
-    if (nextButton) {
-
-        nextButton.disabled =
-            !currentAnswered;
-    }
-
-
-    /*
-       Update next button text
-    */
-
-    if (nextButton) {
-
-        if (currentMode === "review") {
-
-            if (
-                currentReviewPosition >=
-                currentReviewIndexes.length - 1
-            ) {
-
-                nextButton.textContent =
-                    "پایان مرور";
-
-            } else {
-
-                nextButton.textContent =
-                    "سؤال بعدی ←";
-            }
-
-        } else {
-
-            if (
-                currentQuestionIndex >=
-                currentQuestions.length - 1
-            ) {
-
-                nextButton.textContent =
-                    "پایان آزمون";
-
-            } else {
-
-                nextButton.textContent =
-                    "سؤال بعدی ←";
-            }
-        }
-    }
-}
-
-
-function updateExamStatus() {
-
-    var progressText =
-        document.getElementById(
-            "progressText"
-        );
-
-    var progressFill =
-        document.getElementById(
-            "progressFill"
-        );
-
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    var position;
-
-
-    if (currentMode === "review") {
-
-        position =
-            currentReviewPosition + 1;
-
-        if (progressText) {
-
-            progressText.textContent =
-                "مرور " +
-                position +
-                " از " +
-                currentReviewIndexes.length;
-        }
-
-        if (progressFill) {
-
-            progressFill.style.width =
-                (
-                    position /
-                    currentReviewIndexes.length *
-                    100
-                ) + "%";
-        }
-
-    } else {
-
-        position =
-            currentQuestionIndex + 1;
-
-        if (progressText) {
-
-            progressText.textContent =
-                position +
-                " از " +
-                currentQuestions.length;
-        }
-
-        if (progressFill) {
-
-            progressFill.style.width =
-                (
-                    position /
-                    currentQuestions.length *
-                    100
-                ) + "%";
-        }
-    }
-}
-
-
-/* =========================================================
-   20. CHAPTER STATUS
-   ========================================================= */
-
-function updateChapterStatuses() {
-
-    Object.keys(TOPICS).forEach(
-        function (topic) {
-
-            updateOneChapterStatus(
-                topic
-            );
-        }
-    );
-}
-
-
-function updateOneChapterStatus(topic) {
-
-    var config =
-        TOPICS[topic];
-
-
-    if (!config) {
-        return;
-    }
-
-
-    var questions =
-        getQuestionsForTopic(topic);
-
-
-    var data =
-        getTopicData(topic);
-
-
-    var statusId =
-        "status-" +
-        getChapterId(topic);
-
-
-    var actionsId =
-        "actions-" +
-        getChapterId(topic);
-
-
-    var status =
-        document.getElementById(
-            statusId
-        );
-
-    var actions =
-        document.getElementById(
-            actionsId
-        );
-
-
-    if (status) {
-
-        if (!questions.length) {
-
-            status.textContent =
-                "بانک سؤال آماده نیست";
-
-        } else if (data.completed) {
-
-            status.textContent =
-                questions.length +
-                " سؤال • تکمیل شده ✓";
-
-        } else {
-
-            var answered =
-                Object.keys(
-                    data.answers
-                ).length;
-
-
-            status.textContent =
-                questions.length +
-                " سؤال • " +
-                answered +
-                " پاسخ داده شده";
-        }
-    }
-
-
-    if (actions) {
-
-        actions.innerHTML = "";
-
-
-        if (questions.length) {
-
-            var button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.textContent =
-                "شروع / ادامه";
-
-            button.onclick =
-                function () {
-                    startTopic(topic);
-                };
-
-
-            actions.appendChild(
-                button
-            );
-        }
-    }
-}
-
-
-function getChapterId(topic) {
-
-    var ids = {
-
-        "Cerebrovascular Diseases":
-            "Cerebrovascular",
-
-        "Epilepsy & Seizure":
-            "Epilepsy",
-
-        "Movement Disorders":
-            "Movement",
-
-        "Viral & Prion Diseases":
-            "Viral"
-    };
-
-
-    return ids[topic] ||
-        topic
-            .replace(/[^a-zA-Z0-9]/g, "");
-}
-
-
-/* =========================================================
-   21. RESET CHAPTER
-   ========================================================= */
-
-function resetTopic() {
-
-    if (!currentTopic) {
-        return;
-    }
-
-
-    var reset =
-        confirm(
-            "تمام پاسخ‌های این فصل حذف شود؟"
-        );
-
-
-    if (!reset) {
-        return;
-    }
-
-
-    localStorage.removeItem(
-        storageKey(currentTopic)
-    );
-
-
-    currentQuestionIndex = 0;
-    currentScore = 0;
-    currentAnswered = false;
-
-
-    currentMode = "normal";
-
-
-    showQuestion();
-
-    updateChapterStatuses();
-}
-
-
-/* =========================================================
-   22. QUESTION FLASHCARD
-   ========================================================= */
-
-function openQuestionFlashcard() {
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    var question =
-        currentQuestions[
-            currentOriginalIndex
-        ];
-
-
-    if (!question) {
-        return;
-    }
-
-
-    var questionText =
-        document.getElementById(
-            "questionFlashcardQuestion"
-        );
-
-    var answerText =
-        document.getElementById(
-            "questionFlashcardAnswer"
-        );
-
-
-    if (questionText) {
-
-        questionText.innerHTML =
-            question.flashcardQuestion ||
-            question.question ||
-            "";
-    }
-
-
-    if (answerText) {
-
-        answerText.innerHTML =
-            question.flashcardAnswer ||
-            question.explanation ||
-            "";
-    }
-
-
-    if (answerText) {
-        answerText.style.display =
-            "none";
-    }
-}
-
-
-function toggleQuestionFlashcard() {
-
-    var answer =
-        document.getElementById(
-            "questionFlashcardAnswer"
-        );
-
-
-    if (!answer) {
-        return;
-    }
-
-
-    if (
-        answer.style.display === "none" ||
-        answer.style.display === ""
-    ) {
-
-        answer.style.display =
-            "block";
-
-    } else {
-
-        answer.style.display =
-            "none";
-    }
-}
-
-
-/* =========================================================
-   23. LARGE FLASHCARD PAGE
-   ========================================================= */
-
-function openFlashcards() {
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    flashcardIndex =
-        currentOriginalIndex;
-
-
-    var examPage =
-        document.getElementById(
-            "examPage"
-        );
-
-    var chaptersPage =
-        document.getElementById(
-            "chaptersPage"
-        );
-
-    var scoreBox =
-        document.getElementById(
-            "scoreBox"
-        );
-
-    var flashcardPage =
-        document.getElementById(
-            "flashcardPage"
-        );
-
-
-    if (examPage) {
-        examPage.style.display =
-            "none";
-    }
-
-    if (chaptersPage) {
-        chaptersPage.style.display =
-            "none";
-    }
-
-    if (scoreBox) {
-        scoreBox.style.display =
-            "none";
-    }
-
-    if (flashcardPage) {
-        flashcardPage.style.display =
-            "block";
-    }
-
-
-    renderLargeFlashcard();
-}
-
-
-function renderLargeFlashcard() {
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    if (
-        flashcardIndex < 0
-    ) {
-        flashcardIndex = 0;
-    }
-
-
-    if (
-        flashcardIndex >=
-        currentQuestions.length
-    ) {
-
-        flashcardIndex =
-            currentQuestions.length - 1;
-    }
-
-
-    var question =
-        currentQuestions[
-            flashcardIndex
-        ];
-
-
-    if (!question) {
-        return;
-    }
-
-
-    var title =
-        document.getElementById(
-            "flashcardTopicTitle"
-        );
-
-    var questionText =
-        document.getElementById(
-            "flashcardLargeQuestion"
-        );
-
-    var answerText =
-        document.getElementById(
-            "flashcardLargeAnswer"
-        );
-
-    var progress =
-        document.getElementById(
-            "flashcardProgress"
-        );
-
-
-    if (title) {
-
-        title.textContent =
-            TOPICS[currentTopic]
-                ? TOPICS[currentTopic].persian
-                : currentTopic;
-    }
-
-
-    if (questionText) {
-
-        questionText.innerHTML =
-            question.flashcardQuestion ||
-            question.question ||
-            "";
-    }
-
-
-    if (answerText) {
-
-        answerText.innerHTML =
-            question.flashcardAnswer ||
-            question.explanation ||
-            "";
-
-        answerText.style.display =
-            "none";
-    }
-
-
-    if (progress) {
-
-        progress.textContent =
-            "فلش‌کارت " +
-            (flashcardIndex + 1) +
-            " از " +
-            currentQuestions.length;
-    }
-}
-
-
-function toggleLargeFlashcard() {
-
-    var answer =
-        document.getElementById(
-            "flashcardLargeAnswer"
-        );
-
-
-    if (!answer) {
-        return;
-    }
-
-
-    if (
-        answer.style.display === "none" ||
-        answer.style.display === ""
-    ) {
-
-        answer.style.display =
-            "block";
-
-    } else {
-
-        answer.style.display =
-            "none";
-    }
-}
-
-
-function nextFlashcard() {
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    if (
-        flashcardIndex <
-        currentQuestions.length - 1
-    ) {
-
-        flashcardIndex++;
-
-        renderLargeFlashcard();
-    }
-}
-
-
-function previousFlashcard() {
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    if (flashcardIndex > 0) {
-
-        flashcardIndex--;
-
-        renderLargeFlashcard();
-    }
-}
-
-
-function closeFlashcards() {
-
-    var flashcardPage =
-        document.getElementById(
-            "flashcardPage"
-        );
-
-
-    if (flashcardPage) {
-        flashcardPage.style.display =
-            "none";
-    }
-
-
-    showExamPage();
-
-    showQuestion();
-}
-
-
-/* =========================================================
-   24. GENERAL MODAL
-   ========================================================= */
-
-function showGeneralModal(
-    title,
-    content
-) {
-
-    var modal =
-        document.getElementById(
-            "generalModal"
-        );
-
-    var modalTitle =
-        document.getElementById(
-            "modalTitle"
-        );
-
-    var modalContent =
-        document.getElementById(
-            "modalContent"
-        );
-
-
-    if (!modal) {
-
-        alert(
-            (title || "") +
-            "\n\n" +
-            stripHTML(content || "")
-        );
-
-        return;
-    }
-
-
-    if (modalTitle) {
-
-        modalTitle.textContent =
-            title || "";
-    }
-
-
-    if (modalContent) {
-
-        modalContent.innerHTML =
-            content || "";
-    }
-
-
-    modal.style.display =
-        "flex";
-}
-
-
-function closeGeneralModal() {
-
-    var modal =
-        document.getElementById(
-            "generalModal"
-        );
-
-
-    if (modal) {
-
-        modal.style.display =
-            "none";
-    }
-}
-
-
-function stripHTML(text) {
-
-    var div =
-        document.createElement(
-            "div"
-        );
-
-    div.innerHTML =
-        text;
-
-    return div.textContent ||
-        div.innerText ||
-        "";
-}
-
-
-/* =========================================================
-   25. REVIEW CURRENT QUESTION
-   ========================================================= */
-
-function reviewCurrentQuestion() {
-
-    if (!currentQuestions.length) {
-        return;
-    }
-
-
-    var question =
-        currentQuestions[
-            currentOriginalIndex
-        ];
-
-
-    if (!question) {
-        return;
-    }
-
-
-    showQuestionAnalysis(
-        question
-    );
-
-
-    var analysis =
-        document.getElementById(
-            "analysisContainer"
-        );
-
-
-    if (analysis) {
-
-        analysis.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }
-}
-
-
-/* =========================================================
-   26. SCORE REVIEW BUTTON
-   ========================================================= */
-
-function updateScoreReviewButton() {
-
-    var button =
-        document.getElementById(
-            "scoreReviewButton"
-        );
-
-
-    if (!button) {
-        return;
-    }
-
-
-    var data =
-        getTopicData(currentTopic);
-
-
-    var wrong =
-        Array.isArray(data.wrong)
-            ? data.wrong
-            : [];
-
-
-    button.style.display =
-        wrong.length
-            ? "inline-block"
-            : "none";
-
-
-    button.onclick =
-        function () {
-            startWrongReview();
-        };
-}
-
-
-/* =========================================================
-   27. KEYBOARD CONTROLS
-   ========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function (event) {
-
-        /*
-           Don't interfere with typing into inputs
-           or textareas.
-        */
-
-        var tag =
-            event.target &&
-            event.target.tagName
-                ? event.target.tagName.toLowerCase()
-                : "";
-
-
-        if (
-            tag === "input" ||
-            tag === "textarea" ||
-            tag === "select"
-        ) {
-            return;
-        }
-
-
-        /*
-           Enter = check answer
-        */
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            if (!currentAnswered) {
-
-                checkAnswer();
-
-            } else {
-
-                nextQuestion();
-            }
-        }
-
-
-        /*
-           ArrowRight / ArrowLeft
-           Support both directions.
-        */
-
-        if (
-            event.key === "ArrowRight"
-        ) {
-
-            if (currentAnswered) {
-                nextQuestion();
-            }
-        }
-
-
-        if (
-            event.key === "ArrowLeft"
-        ) {
-
-            if (
-                currentMode === "review" &&
-                currentReviewPosition > 0
-            ) {
-
-                currentReviewPosition--;
-
-                showReviewQuestion();
-
-            } else if (
-                currentMode === "normal" &&
-                currentQuestionIndex > 0
-            ) {
-
-                currentQuestionIndex--;
-
-                showQuestion();
-            }
-        }
-    }
-);
-
-
-/* =========================================================
-   28. CLICK OUTSIDE MODAL
-   ========================================================= */
-
-document.addEventListener(
-    "click",
-    function (event) {
-
-        var modal =
-            document.getElementById(
-                "generalModal"
-            );
-
-
-        if (
-            modal &&
-            event.target === modal
-        ) {
-
-            closeGeneralModal();
-        }
-    }
-);
-
-
-/* =========================================================
-   29. INITIALIZATION
-   ========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        console.log(
-            "NeuroPrep initialized."
-        );
-
-
-        console.log(
-            "Cerebrovascular bank:",
-            Array.isArray(
-                window.cerebrovascularQuestions
-            )
-                ? window.cerebrovascularQuestions.length
-                : "NOT FOUND"
-        );
-
-
-        console.log(
-            "Viral/Prion bank:",
-            Array.isArray(
-                window.viralPrionQuestions
-            )
-                ? window.viralPrionQuestions.length
-                : "NOT FOUND"
-        );
-
-
-        updateChapterStatuses();
-    }
-);
-
-
-/* =========================================================
-   30. DEBUG FUNCTION
-   ========================================================= */
-
-function showBankInformation() {
-
-    var result = [];
-
-
-    Object.keys(TOPICS).forEach(
-        function (topic) {
-
-            var bank =
-                getQuestionsForTopic(topic);
-
-
-            result.push(
-                topic +
-                " : " +
-                bank.length +
-                " سؤال"
-            );
-        }
-    );
-
-
-    console.log(
-        result.join("\n")
-    );
-
-
-    showGeneralModal(
-        "وضعیت بانک‌های سؤال",
-        result.join("<br>")
-    );
-}
-
-
-/* =========================================================
-   END OF APP.JS
-   ========================================================= */
+// =====================================================
+// CEREBROVASCULAR DISEASES
+// 30 Questions - 4 Options
+// =====================================================
+
+var cerebrovascularQuestions = [
+
+  // =====================================================
+  // سؤال ۱
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      خانم ۵۶ ساله‌ای با سابقه دیابت و فشارخون بالا،
+      به‌طور ناگهانی دچار همی‌پارزی راست با قدرت 2/5
+      در اندام فوقانی و تحتانی، اختلال حس سطحی در سمت راست
+      و همی‌آنوپی همنام راست شده است.
+      سطح هوشیاری و تکلم طبیعی است.
+
+      محتمل‌ترین محل ضایعه کدام است؟
+    `,
+
+    options: [
+      `Superior Division MCA`,
+      `PCA`,
+      `Anterior Choroidal Artery`,
+      `Inferior Division MCA`
+    ],
+
+    correct: 2,
+
+    explanation: `
+      ترکیب کلاسیک همی‌پارزی، اختلال حس و
+      <span class="english">Homonymous Hemianopia</span>
+      به‌شدت به نفع سندرم
+      <span class="english">Anterior Choroidal Artery</span>
+      است.
+
+      این شریان ساختارهایی از جمله قسمت‌هایی از
+      Posterior Limb of Internal Capsule، مسیر بینایی
+      و بخش‌هایی از تالاموس را خون‌رسانی می‌کند.
+    `,
+
+    note: `
+      <span class="english">
+      Anterior Choroidal Syndrome =
+      Hemiplegia + Hemisensory loss + Homonymous hemianopia
+      </span>
+    `,
+
+    trap: `
+      همی‌آنوپی همنام همراه با همی‌پارزی الزاماً به معنی
+      ضایعه MCA نیست؛ ترکیب سه‌گانه فوق را باید به یاد سپرد.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۲
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      بیماری پس از سکته مغزی دچار سرگیجه شدید همراه با
+      کاهش شنوایی یک‌طرفه شده است.
+      کدام شریان بیشتر مطرح است؟
+    `,
+
+    options: [
+      `PCA`,
+      `AICA`,
+      `PICA`,
+      `Basilar Artery`
+    ],
+
+    correct: 1,
+
+    explanation: `
+      وجود سرگیجه همراه با کاهش شنوایی یک‌طرفه،
+      به‌خصوص در زمینه سکته گردش خون خلفی،
+      بیشتر به نفع درگیری
+      <span class="english">AICA</span>
+      است.
+
+      AICA شریان لابیرنت را نیز معمولاً تأمین می‌کند
+      و بنابراین کاهش شنوایی می‌تواند دیده شود.
+    `,
+
+    note: `
+      <span class="english">
+      AICA → Vertigo + Ipsilateral Hearing Loss
+      </span>
+    `,
+
+    trap: `
+      PICA بیشتر با سندرم Wallenberg شناخته می‌شود؛
+      کاهش شنوایی واضح، AICA را بیشتر مطرح می‌کند.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۳
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      مرد ۶۰ ساله دیابتی دچار اختلال حس سطحی و عمقی
+      در سمت راست صورت و بدن همراه با ضعف خفیف همان سمت شده است.
+      کدام شریان بیشتر مطرح است؟
+    `,
+
+    options: [
+      `Interpeduncular Artery`,
+      `Thalamoperforating Artery`,
+      `Thalamogeniculate Artery`,
+      `Anterior Choroidal Artery`
+    ],
+
+    correct: 2,
+
+    explanation: `
+      درگیری حس سطحی و عمقی در صورت و بدن همراه با
+      ضعف خفیف می‌تواند ناشی از ضایعه تالاموس باشد.
+      درگیری ناحیه
+      <span class="english">Thalamogeniculate</span>
+      می‌تواند چنین تابلویی ایجاد کند.
+    `,
+
+    note: `
+      <span class="english">
+      Thalamogeniculate territory → Sensory syndrome
+      </span>
+    `,
+
+    trap: `
+      صرفاً وجود ضعف، تشخیص ضایعه کپسول داخلی را قطعی نمی‌کند؛
+      الگوی حسی تالاموسی اهمیت زیادی دارد.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۴
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      کدام ژن با Cerebral Amyloid Angiopathy ارتباط دارد؟
+    `,
+
+    options: [
+      `APOE2`,
+      `APOE4`,
+      `PARK7`,
+      `PARK2`
+    ],
+
+    correct: 1,
+
+    explanation: `
+      آلل
+      <span class="english">APOE ε4</span>
+      با رسوب آمیلوئید و افزایش خطر
+      <span class="english">Cerebral Amyloid Angiopathy</span>
+      ارتباط دارد.
+    `,
+
+    note: `
+      <span class="english">
+      APOE4 → Amyloid deposition / CAA risk
+      </span>
+    `,
+
+    trap: `
+      PARK2 و PARK7 بیشتر در زمینه بیماری‌های نورودژنراتیو
+      مانند پارکینسونیسم مطرح هستند.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۵
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      بیماری دچار یک اپیزود همی‌پارزی گذرا به مدت یک ساعت شده است.
+      کدام مورد کمترین احتمال را به‌عنوان منبع آمبولی دارد؟
+    `,
+
+    options: [
+      `Cardiac Embolism`,
+      `Aortic Source`,
+      `Carotid Artery`,
+      `MCA Embolism`
+    ],
+
+    correct: 3,
+
+    explanation: `
+      در این سؤال، MCA خود محل انسداد/آمبولی است و
+      در مقایسه با قلب، آئورت و کاروتید به‌عنوان
+      «منبع» آمبولی محسوب نمی‌شود.
+    `,
+
+    note: `
+      <span class="english">
+      Think carefully: Source of embolus ≠ site of arterial occlusion
+      </span>
+    `,
+
+    trap: `
+      تفاوت بین «منبع آمبولی» و «محل گیر افتادن آمبولی»
+      دام اصلی سؤال است.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۶
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      خانم ۵۰ ساله دیابتی، ۶ ساعت پس از شروع سکته مغزی مراجعه کرده است.
+      در بررسی، انسداد شریان MCA دیده می‌شود.
+      طبق کلید سؤال، بهترین درمان کدام است؟
+    `,
+
+    options: [
+      `IV Thrombolysis`,
+      `Intra-arterial Thrombolysis`,
+      `Mechanical Thrombectomy + Intra-arterial Treatment`,
+      `Aspirin + Clopidogrel`
+    ],
+
+    correct: 3,
+
+    explanation: `
+      پاسخ این سؤال مطابق کلید قدیمی دانشگاه تهران ۹۳،
+      گزینه D یعنی Aspirin + Clopidogrel است.
+
+      <strong>نکته بسیار مهم:</strong>
+      این سؤال از نظر درمان مدرن سکته مغزی نیازمند توجه ویژه است.
+      در بیمار واجد شرایط با انسداد عروق بزرگ و زمان ۶ ساعت،
+      ارزیابی برای Mechanical Thrombectomy اهمیت اساسی دارد.
+    `,
+
+    note: `
+      <strong>کلید آزمون قدیمی:</strong>
+      Aspirin + Clopidogrel
+
+      <br><br>
+
+      <strong>نکته علمی:</strong>
+      در LVO واجد شرایط، درمان اندوواسکولار امروزه اهمیت بسیار بیشتری دارد.
+    `,
+
+    trap: `
+      کلید قدیمی آزمون را با استاندارد درمان امروزی یکی ندانید.
+      برای امتحان، کلید منبع را حفظ کنید؛ برای طبابت، گایدلاین روز را ملاک قرار دهید.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۷
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      مرد ۴۵ ساله با همی‌پارزی راست، دیزآرتری و درد گردن مراجعه کرده است.
+      در معاینه پتوز و میوز سمت چپ دارد.
+      محتمل‌ترین تشخیص کدام است؟
+    `,
+
+    options: [
+      `Fibromuscular Dysplasia`,
+      `Giant Cell Arteritis`,
+      `Takayasu Arteritis`,
+      `Carotid Artery Dissection`
+    ],
+
+    correct: 3,
+
+    explanation: `
+      درد گردن همراه با علائم ایسکمیک مغزی و
+      <span class="english">Horner Syndrome</span>
+      به‌شدت به نفع
+      <span class="english">Carotid Artery Dissection</span>
+      است.
+    `,
+
+    note: `
+      <span class="english">
+      Neck pain + Stroke + Horner → Carotid Dissection
+      </span>
+    `,
+
+    trap: `
+      وجود Horner در زمینه درد گردن یک سرنخ مهم برای دیسکشن کاروتید است.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۸
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      خانم ۲۸ ساله‌ای با درد و ضعف اندام فوقانی راست مراجعه کرده است.
+      نبض براکیال کاهش یافته است.
+      در صورت مطرح بودن Takayasu Arteritis، کدام درمان مناسب‌تر است؟
+    `,
+
+    options: [
+      `Aspirin`,
+      `Warfarin`,
+      `Prednisolone`,
+      `Pentoxifylline`
+    ],
+
+    correct: 2,
+
+    explanation: `
+      Takayasu یک واسکولیت عروق بزرگ است و در فاز فعال بیماری،
+      کورتیکواستروئیدها درمان اصلی هستند.
+    `,
+
+    note: `
+      <span class="english">
+      Takayasu → Large-vessel vasculitis → Corticosteroids
+      </span>
+    `,
+
+    trap: `
+      کاهش نبض در فرد جوان همراه با علائم اندام فوقانی
+      باید بیماری عروق بزرگ را مطرح کند.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۹
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      بیماری که وارفارین مصرف می‌کند دچار ICH شده و INR بالاست.
+      سریع‌ترین روش برای اصلاح INR کدام است؟
+    `,
+
+    options: [
+      `rFVIIa`,
+      `FFP`,
+      `PCC`,
+      `Vitamin K`
+    ],
+
+    correct: 2,
+
+    explanation: `
+      <span class="english">Prothrombin Complex Concentrate (PCC)</span>
+      سریع‌ترین راه برای جایگزینی فاکتورهای وابسته به ویتامین K
+      و اصلاح فوری INR است.
+
+      ویتامین K نیز باید داده شود، اما اثر آن فوری نیست.
+    `,
+
+    note: `
+      <span class="english">
+      Warfarin-associated ICH → 4-factor PCC + IV Vitamin K
+      </span>
+    `,
+
+    trap: `
+      Vitamin K به تنهایی برای اصلاح سریع INR کافی نیست.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۱۰
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      خانم ۲۵ ساله‌ای با انسفالوپاتی، تغییرات رفتاری، سردرد،
+      تاری دید دوطرفه و آتاکسی مراجعه کرده است.
+      در بررسی چشم، Branch Retinal Artery Occlusion دیده می‌شود.
+      MRI ضایعات Snowball در Corpus Callosum نشان می‌دهد.
+      کدام عبارت نادرست است؟
+    `,
+
+    options: [
+      `بیماری از نوع Endothelial Immune-mediated Disease است`,
+      `IVIG می‌تواند در درمان کمک‌کننده باشد`,
+      `کاهش شنوایی یافته شایعی است`,
+      `CSF معمولاً Pleocytosis همراه با Protein طبیعی دارد`
+    ],
+
+    correct: 3,
+
+    explanation: `
+      این تابلوی کلاسیک
+      <span class="english">Susac Syndrome</span>
+      است.
+
+      سه‌گانه اصلی شامل:
+      Encephalopathy،
+      Branch Retinal Artery Occlusion،
+      و Hearing Loss
+      می‌باشد.
+
+      عبارت گزینه D مطابق کلید سؤال نادرست است.
+    `,
+
+    note: `
+      <span class="english">
+      Susac = Brain + Retina + Inner Ear
+      </span>
+    `,
+
+    trap: `
+      Snowball lesions در Corpus Callosum یک سرنخ بسیار مهم برای Susac است.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۱۱
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      مرد ۴۰ ساله‌ای با دمانس و سکته‌های متعدد مراجعه کرده است.
+      سابقه فشارخون و دیابت ندارد.
+      آزمایش ژنتیک NOTCH3 در کروموزوم ۱۹ را نشان می‌دهد.
+      کدام یافته MRI صحیح نیست؟
+    `,
+
+    options: [
+      `Multiple Focal White Matter Lesions`,
+      `درگیری Basal Ganglia ممکن است وجود داشته باشد`,
+      `ضایعات پشت Temporal Horn اختصاصی هستند`,
+      `ضایعات دوطرفه و گاهی نامتقارن`
+    ],
+
+    correct: 2,
+
+    explanation: `
+      در CADASIL، درگیری
+      <span class="english">Anterior Temporal Poles</span>
+      و <span class="english">External Capsule</span>
+      بسیار تیپیک است.
+
+      عبارت «ضایعات پشت Temporal Horn» به این شکل یافته اختصاصی CADASIL نیست.
+    `,
+
+    note: `
+      <span class="english">
+      CADASIL → Anterior Temporal Poles + External Capsule
+      </span>
+    `,
+
+    trap: `
+      Temporal pole را با Temporal horn اشتباه نکنید.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۱۲
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      مرد ۷۵ ساله‌ای دچار آفازی و همی‌پارزی گذرای ۱۵ دقیقه‌ای شده است.
+      CT ضایعه‌ای نشان نمی‌دهد.
+      در CTA تنگی ۷۵ درصدی ICA چپ دیده می‌شود.
+      بهترین درمان کدام است؟
+    `,
+
+    options: [
+      `Aspirin به دلیل سن بالا`,
+      `Carotid Endarterectomy در صورت ریسک جراحی کمتر از ۳ درصد`,
+      `Warfarin`,
+      `MCA-STA Bypass`
+    ],
+
+    correct: 1,
+
+    explanation: `
+      در بیمار دارای TIA علامت‌دار و تنگی قابل توجه کاروتید داخلی،
+      در صورت مناسب بودن شرایط بیمار و ریسک جراحی پایین،
+      Carotid Endarterectomy مطرح است.
+    `,
+
+    note: `
+      <span class="english">
+      Symptomatic Carotid Stenosis → Consider CEA
+      </span>
+    `,
+
+    trap: `
+      علامت‌دار بودن تنگی اهمیت زیادی دارد؛
+      صرف درصد تنگی بدون توجه به علائم کافی نیست.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۱۳
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      در مورد Cavernous Malformation کدام عبارت نادرست است؟
+    `,
+
+    options: [
+      `از AVM کمتر شایع است`,
+      `حدود نیمی از موارد می‌توانند در Brainstem باشند`,
+      `تمایل به خونریزی آن به‌طور واضح از AVM بیشتر است`,
+      `MRI روش اصلی تشخیص است`
+    ],
+
+    correct: 2,
+
+    explanation: `
+      MRI روش اصلی تشخیص Cavernous Malformation است و
+      ضایعات معمولاً ظاهر کلاسیک
+      <span class="english">Popcorn/Mulberry</span>
+      دارند.
+
+      عبارت مربوط به اینکه تمایل به خونریزی آن به‌طور واضح
+      از AVM بیشتر است، طبق کلید سؤال نادرست است.
+    `,
+
+    note: `
+      <span class="english">
+      Cavernoma → MRI → Popcorn / Mulberry appearance
+      </span>
+    `,
+
+    trap: `
+      Cavernoma را با AVM از نظر ظاهر تصویربرداری و خطر خونریزی یکی ندانید.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۱۴
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      کدام محل در MRI برای CADASIL اختصاصی‌تر است؟
+    `,
+
+    options: [
+      `Periventricular White Matter`,
+      `Internal Capsule`,
+      `Cerebellar Hemispheres`,
+      `Temporal Poles`
+    ],
+
+    correct: 3,
+
+    explanation: `
+      درگیری Anterior Temporal Poles یکی از یافته‌های بسیار
+      تیپیک CADASIL است و در کنار External Capsule اهمیت دارد.
+    `,
+
+    note: `
+      <span class="english">
+      CADASIL → Temporal Poles + External Capsule
+      </span>
+    `,
+
+    trap: `
+      Periventricular lesions در بسیاری از بیماری‌های عروق کوچک
+      دیده می‌شوند و اختصاصی CADASIL نیستند.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۱۵
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      در Vertebral Artery Dissection کدام مورد دیده نمی‌شود؟
+    `,
+
+    options: [
+      `Cortical Blindness`,
+      `Wallenberg Syndrome`,
+      `Neck Pain`,
+      `Anterior Ischemic Optic Neuropathy`
+    ],
+
+    correct: 3,
+
+    explanation: `
+      Vertebral artery dissection می‌تواند باعث علائم گردش خون خلفی،
+      از جمله Wallenberg Syndrome و اختلالات بینایی مرکزی شود.
+
+      AION یک تابلوی عروقی قدامی و مربوط به عصب بینایی است
+      و یافته تیپیک Vertebral Artery Dissection محسوب نمی‌شود.
+    `,
+
+    note: `
+      <span class="english">
+      Vertebral Dissection → Posterior Circulation
+      </span>
+    `,
+
+    trap: `
+      اختلال بینایی مرکزی را با AION که یک optic nerve disorder است
+      اشتباه نکنید.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۱۶
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      تفاوت Carotid Artery Dissection با Atherosclerotic Stenosis
+      بیشتر در کدام مورد مشخص می‌شود؟
+    `,
+
+    options: [
+      `شدت تنگی`,
+      `علائم نورولوژیک`,
+      `تغییرات همودینامیک`,
+      `محل تنگی`
+    ],
+
+    correct: 3,
+
+    explanation: `
+      محل تنگی یکی از مهم‌ترین تفاوت‌های تصویربرداری است.
+      دیسکشن معمولاً در قسمت‌های خاصی از شریان و خارج از محل‌های
+      کلاسیک آترواسکلروز رخ می‌دهد.
+    `,
+
+    note: `
+      <span class="english">
+      Dissection vs Atherosclerosis → Location matters
+      </span>
+    `,
+
+    trap: `
+      صرفاً شدت تنگی نمی‌تواند علت تنگی را مشخص کند.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۱۷
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      در Top of the Basilar Syndrome کدام تظاهر کمتر مطرح است؟
+    `,
+
+    options: [
+      `Monocular Blindness`,
+      `Left Hemiparesis`,
+      `Cortical Blindness`,
+      `Acute Confusional State`
+    ],
+
+    correct: 0,
+
+    explanation: `
+      Top of the Basilar Syndrome می‌تواند باعث اختلال هوشیاری،
+      علائم چشمی، اختلالات حرکتی و Cortical Blindness شود.
+
+      Monocular blindness بیشتر به درگیری مسیر بینایی قدامی
+      مانند retinal/optic nerve یا circulation مربوط است.
+    `,
+
+    note: `
+      <span class="english">
+      Top of Basilar → Midbrain + Thalamus + Occipital regions
+      </span>
+    `,
+
+    trap: `
+      Monocular blindness را با Cortical Blindness اشتباه نکنید.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۱۸
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      در مورد Carotid Bruit کدام عبارت صحیح است؟
+    `,
+
+    options: [
+      `شدت Bruit مستقیماً با شدت تنگی متناسب است`,
+      `فقط در سمت دارای تنگی یا انسداد شنیده می‌شود`,
+      `نشان‌دهنده افزایش جریان در همان سمت است`,
+      `می‌تواند ناشی از تنگی External Carotid Artery نیز باشد`
+    ],
+
+    correct: 3,
+
+    explanation: `
+      Carotid bruit الزاماً معادل شدت تنگی ICA نیست و
+      می‌تواند در شرایط مختلف جریان توربولانت ایجاد شود.
+
+      تنگی External Carotid نیز می‌تواند باعث ایجاد bruit شود.
+    `,
+
+    note: `
+      <span class="english">
+      Bruit ≠ Direct measure of stenosis severity
+      </span>
+    `,
+
+    trap: `
+      شدت صدای bruit را نباید به‌طور مستقیم معادل درصد stenosis دانست.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۱۹
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      در بیمار مبتلا به تنگی بدون علامت شریان کاروتید،
+      حداقل درصد تنگی برای مطرح شدن Carotid Endarterectomy
+      طبق کلید این سؤال کدام است؟
+    `,
+
+    options: [
+      `50%`,
+      `80%`,
+      `99%`,
+      `70%`
+    ],
+
+    correct: 3,
+
+    explanation: `
+      پاسخ طبق کلید قدیمی سؤال:
+      70 درصد.
+
+      <strong>نکته مهم:</strong>
+      در گایدلاین‌های جدید، تصمیم برای CEA در تنگی بدون علامت
+      تنها بر اساس درصد تنگی نیست و عواملی مانند امید به زندگی،
+      ریسک جراحی، ویژگی‌های پلاک و درمان طبی بهینه نیز اهمیت دارند.
+    `,
+
+    note: `
+      <strong>کلید آزمون:</strong> 70%
+
+      <br><br>
+
+      <strong>نکته بالینی:</strong>
+      تصمیم امروزی چندعاملی است.
+    `,
+
+    trap: `
+      درصد stenosis را به تنهایی معیار مطلق برای انجام CEA در نظر نگیرید.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۲۰
+  // =====================================================
+  {
+    source: "دانشگاه تهران ۹۳",
+
+    question: `
+      Warfarin در کدام وضعیت بیشترین کاربرد را دارد؟
+    `,
+
+    options: [
+      `Recurrent TIA`,
+      `Aortic Arch Plaque`,
+      `PFO`,
+      `Transient Atrial Fibrillation`
+    ],
+
+    correct: 3,
+
+    explanation: `
+      Atrial Fibrillation یک منبع مهم آمبولی قلبی است و
+      درمان ضدانعقادی برای پیشگیری از سکته مغزی در بیماران مناسب
+      اهمیت دارد.
+    `,
+
+    note: `
+      <span class="english">
+      Atrial Fibrillation → Cardioembolic Stroke Risk → Anticoagulation
+      </span>
+    `,
+
+    trap: `
+      Warfarin درمان روتین هر TIA یا PFO نیست.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۲۱
+  // =====================================================
+  {
+    source: "دانشگاه ایران ۹۳",
+
+    question: `
+      بیمار ۲۵ ساله با سرگیجه حاد، نیستاگموس دوطرفه،
+      آتاکسی و درد گردن مراجعه کرده است.
+      محتمل‌ترین تشخیص کدام است؟
+    `,
+
+    options: [
+      `BPPV`,
+      `Vertebral Artery Dissection`,
+      `Vestibular Neuritis`,
+      `Meniere Disease`
+    ],
+
+    correct: 1,
+
+    explanation: `
+      در فرد جوان، وجود سرگیجه حاد همراه با علائم عصبی
+      و درد گردن، به‌شدت به نفع
+      <span class="english">Vertebral Artery Dissection</span>
+      است.
+    `,
+
+    note: `
+      <span class="english">
+      Young patient + Neck pain + Posterior circulation signs
+      </span>
+    `,
+
+    trap: `
+      وجود سرگیجه به‌تنهایی نباید باعث تشخیص بیماری گوش داخلی شود.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۲۲
+  // =====================================================
+  {
+    source: "دانشگاه ایران ۹۳",
+
+    question: `
+      کدام یافته در تصویربرداری دیسکشن کاروتید اختصاصی‌تر است؟
+    `,
+
+    options: [
+      `Double Lumen`,
+      `Generalized Stenosis`,
+      `Calcification`,
+      `Atherosclerotic Plaque`
+    ],
+
+    correct: 0,
+
+    explanation: `
+      وجود
+      <span class="english">Double Lumen</span>
+      یا
+      <span class="english">Intimal Flap</span>
+      از یافته‌های تیپیک دیسکشن است.
+    `,
+
+    note: `
+      <span class="english">
+      Dissection → Intimal flap + Double lumen
+      </span>
+    `,
+
+    trap: `
+      تنگی به‌تنهایی اختصاصی دیسکشن نیست.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۲۳
+  // =====================================================
+  {
+    source: "دانشگاه ایران ۹۳",
+
+    question: `
+      در انفارکت وسیع شریان مغزی میانی،
+      کدام بیمار بیشترین سود را از همی‌کرانیوکتومی می‌برد؟
+    `,
+
+    options: [
+      `بیمار ۳۰ ساله در ۲۴ ساعت اول`,
+      `بیمار ۸۰ ساله بعد از یک هفته`,
+      `بیمار با انفارکت کوچک`,
+      `بیمار بدون ادم مغزی`
+    ],
+
+    correct: 0,
+
+    explanation: `
+      در Malignant MCA Infarction،
+      سن پایین‌تر و انجام زودهنگام Decompressive Hemicraniectomy
+      با پیامد بهتر همراه است.
+    `,
+
+    note: `
+      <span class="english">
+      Malignant MCA infarction → Early decompression
+      </span>
+    `,
+
+    trap: `
+      هرنی شدید مرحله پیشرفته و دیررس است و نباید منتظر ایجاد
+      هرنی کامل برای تصمیم‌گیری درباره دکمپرسیون ماند.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۲۴
+  // =====================================================
+  {
+    source: "دانشگاه ایران ۹۳",
+
+    question: `
+      خانم جوانی با چند حمله سردرد Thunderclap پس از مصرف
+      سودوافدرین مراجعه کرده است.
+      MRI طبیعی است.
+      بهترین اقدام چیست؟
+    `,
+
+    options: [
+      `EEG`,
+      `MR Angiography`,
+      `Lumbar Puncture`,
+      `MRI با کنتراست`
+    ],
+
+    correct: 1,
+
+    explanation: `
+      سردردهای Thunderclap عودکننده پس از مصرف داروهای
+      سمپاتومیمتیک می‌تواند به نفع
+      <span class="english">Reversible Cerebral Vasoconstriction Syndrome (RCVS)</span>
+      باشد و MRA برای بررسی عروق مغزی کمک‌کننده است.
+    `,
+
+    note: `
+      <span class="english">
+      Recurrent Thunderclap + Sympathomimetic → RCVS
+      </span>
+    `,
+
+    trap: `
+      سابقه میگرن نباید باعث شود یک Thunderclap Headache
+      بدون بررسی بیشتر به میگرن نسبت داده شود.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۲۵
+  // =====================================================
+  {
+    source: "دانشگاه ایران ۹۳",
+
+    question: `
+      در تنگی شدید شریان در TCD کدام یافته انتظار نمی‌رود؟
+    `,
+
+    options: [
+      `افزایش سرعت سیستولیک`,
+      `افزایش سرعت دیاستولیک`,
+      `Spectral Broadening`,
+      `جریان Bidirectional`
+    ],
+
+    correct: 3,
+
+    explanation: `
+      در محل تنگی شدید، افزایش سرعت جریان و آشفتگی جریان
+      می‌تواند مشاهده شود.
+
+      جریان Bidirectional یافته معمول تنگی شریانی نیست.
+    `,
+
+    note: `
+      <span class="english">
+      Arterial Stenosis → Increased Flow Velocity
+      </span>
+    `,
+
+    trap: `
+      Bidirectional flow را با افزایش velocity در محل stenosis
+      اشتباه نکنید.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۲۶
+  // =====================================================
+  {
+    source: "دانشگاه بهشتی ۹۳",
+
+    question: `
+      در صرع پس از سکته مغزی کدام عبارت صحیح است؟
+    `,
+
+    options: [
+      `همه بیماران مادام‌العمر دارو می‌گیرند`,
+      `EEG به تنهایی تعیین‌کننده طول درمان است`,
+      `مدت درمان بر اساس شرایط بالینی تعیین می‌شود`,
+      `نیازی به درمان ندارد`
+    ],
+
+    correct: 2,
+
+    explanation: `
+      تصمیم برای شروع و ادامه درمان ضدصرع پس از سکته
+      بر اساس نوع تشنج، زمان وقوع آن، نوع ضایعه مغزی
+      و خطر عود گرفته می‌شود.
+    `,
+
+    note: `
+      <span class="english">
+      Post-stroke epilepsy management is individualized
+      </span>
+    `,
+
+    trap: `
+      EEG به‌تنهایی تعیین‌کننده مدت درمان نیست.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۲۷
+  // =====================================================
+  {
+    source: "دانشگاه بهشتی ۹۳",
+
+    question: `
+      مهم‌ترین عارضه زودرس SAH ناشی از آنوریسم چیست؟
+    `,
+
+    options: [
+      `Rebleeding`,
+      `Vasospasm`,
+      `Hydrocephalus`,
+      `Seizure`
+    ],
+
+    correct: 0,
+
+    explanation: `
+      Rebleeding یکی از خطرناک‌ترین عوارض زودرس
+      Aneurysmal SAH است و به‌خصوص در روزهای ابتدایی
+      اهمیت زیادی دارد.
+    `,
+
+    note: `
+      <span class="english">
+      Early SAH complication → Rebleeding
+      </span>
+    `,
+
+    trap: `
+      Vasospasm معمولاً چند روز پس از SAH بیشتر مطرح می‌شود
+      و عارضه غالب ساعات اولیه نیست.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۲۸
+  // =====================================================
+  {
+    source: "دانشگاه بهشتی ۹۳",
+
+    question: `
+      کدام مورد جزء سندرم Anterior Choroidal نیست؟
+    `,
+
+    options: [
+      `درگیری بازوی خلفی کپسول داخلی`,
+      `همی‌پارزی مقابل`,
+      `همی‌هیپوستزی مقابل`,
+      `همونیموس همی‌آنوپی`
+    ],
+
+    correct: 0,
+
+    explanation: `
+      سندرم کلاسیک Anterior Choroidal شامل:
+      همی‌پارزی،
+      همی‌هیپوستزی
+      و Homonymous Hemianopia
+      در سمت مقابل است.
+
+      طبق کلید سؤال، گزینه A به‌عنوان پاسخ انتخاب شده است.
+    `,
+
+    note: `
+      <span class="english">
+      Anterior Choroidal Syndrome =
+      Hemiparesis + Hemisensory loss + Homonymous hemianopia
+      </span>
+    `,
+
+    trap: `
+      Posterior limb of internal capsule با این سندرم ارتباط دارد؛
+      آن را با Anterior limb اشتباه نکنید.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۲۹
+  // =====================================================
+  {
+    source: "دانشگاه بهشتی ۹۳",
+
+    question: `
+      بیمار با پتوز و میوز همان سمت،
+      آتاکسی همان سمت و اختلال حس سمت مقابل دارد.
+      محل ضایعه کجاست؟
+    `,
+
+    options: [
+      `Midbrain دورسولترال`,
+      `Pons`,
+      `Medulla`,
+      `Cortex`
+    ],
+
+    correct: 0,
+
+    explanation: `
+      ترکیب Horner Syndrome در یک سمت،
+      آتاکسی همان سمت و اختلال حسی در سمت مقابل،
+      به نفع ضایعه دورسولترال Midbrain است.
+    `,
+
+    note: `
+      <span class="english">
+      Ipsilateral Horner + Ipsilateral Ataxia +
+      Contralateral Sensory Loss → Dorsolateral Midbrain
+      </span>
+    `,
+
+    trap: `
+      وجود علائم متقاطع در ساقه مغز به تعیین محل ضایعه کمک زیادی می‌کند.
+    `
+  },
+
+
+  // =====================================================
+  // سؤال ۳۰
+  // =====================================================
+  {
+    source: "دانشگاه بهشتی ۹۳",
+
+    question: `
+      در Susac Syndrome کدام یافته تیپیک‌تر است؟
+    `,
+
+    options: [
+      `درگیری Corpus Callosum`,
+      `درگیری نخاع`,
+      `ضایعات Basal Ganglia`,
+      `درگیری عصب محیطی`
+    ],
+
+    correct: 0,
+
+    explanation: `
+      Susac Syndrome یک بیماری میکروآنژیوپاتی است که
+      مغز، شبکیه و گوش داخلی را درگیر می‌کند.
+
+      ضایعات Corpus Callosum، به‌خصوص الگوهای Snowball،
+      از یافته‌های تصویربرداری تیپیک بیماری هستند.
+    `,
+
+    note: `
+      <span class="english">
+      Susac = Brain + Retina + Inner Ear
+      <br>
+      Corpus Callosum Snowball Lesions
+      </span>
+    `,
+
+    trap: `
+      درگیری نخاع یا عصب محیطی جزء تظاهرات اصلی Susac نیست.
+    `
+  }
+
+];
