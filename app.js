@@ -1,245 +1,627 @@
 /* =========================================================
-   NEUROLOGY EXAM
-   Main Application
+   NEUROLOGY LEARNING SYSTEM
+   app.js
    ========================================================= */
 
-
-/* =========================================================
-   GLOBAL VARIABLES
-   ========================================================= */
-
-var currentTopic = "";
+var currentChapter = null;
 var currentQuestions = [];
-
-var currentQuestionIndex = 0;
-var score = 0;
-
+var currentIndex = 0;
 var answered = false;
+var currentScore = 0;
 
-var flashcardIndex = 0;
+var STORAGE_KEY = "neurologyLearningSystem_v1";
 
 
 /* =========================================================
-   QUESTION BANK RESOLVER
+   CHAPTERS
    ========================================================= */
 
-function getQuestionBank(topic) {
+var chapters = [
 
-    if (topic === "Cerebrovascular Diseases") {
+{
+    id:"cerebrovascular",
+    title:"Cerebrovascular Diseases",
+    fa:"بیماری‌های عروق مغزی",
+    icon:"🧠",
+    bank:"cerebrovascularQuestions"
+},
 
-        if (typeof cerebrovascularQuestions !== "undefined") {
-            return cerebrovascularQuestions;
-        }
+{
+    id:"epilepsy",
+    title:"Epilepsy & Seizure",
+    fa:"صرع و تشنج",
+    icon:"⚡",
+    bank:"epilepsyQuestions"
+},
 
-        if (window.cerebrovascularQuestions) {
-            return window.cerebrovascularQuestions;
-        }
+{
+    id:"movement",
+    title:"Movement Disorders",
+    fa:"اختلالات حرکتی",
+    icon:"🕺",
+    bank:"movementQuestions"
+},
+
+{
+    id:"ms",
+    title:"MS & Demyelinating Diseases",
+    fa:"ام‌اس و بیماری‌های دمیلینه‌کننده",
+    icon:"🧬",
+    bank:"msQuestions"
+},
+
+{
+    id:"neuromuscular",
+    title:"Neuromuscular Diseases",
+    fa:"بیماری‌های نوروموسکولار",
+    icon:"💪",
+    bank:"neuromuscularQuestions"
+},
+
+{
+    id:"headache",
+    title:"Headache & Facial Pain",
+    fa:"سردرد و درد صورت",
+    icon:"🤕",
+    bank:"headacheQuestions"
+},
+
+{
+    id:"dementia",
+    title:"Dementia & Cognitive Disorders",
+    fa:"دمانس و اختلالات شناختی",
+    icon:"🧩",
+    bank:"dementiaQuestions"
+},
+
+{
+    id:"viral-prion",
+    title:"Viral & Prion Diseases",
+    fa:"بیماری‌های ویروسی و پریونی",
+    icon:"🦠",
+    bank:"viralPrionQuestions"
+},
+
+{
+    id:"neuroimmunology",
+    title:"Neuroimmunology",
+    fa:"نورواِمیونولوژی",
+    icon:"🛡️",
+    bank:"neuroimmunologyQuestions"
+},
+
+{
+    id:"neuro-oncology",
+    title:"Neuro-oncology",
+    fa:"نوروانکولوژی",
+    icon:"🎗️",
+    bank:"neuroOncologyQuestions"
+},
+
+{
+    id:"genetics",
+    title:"Neurogenetics & Metabolic Disorders",
+    fa:"نوروجنتیک و بیماری‌های متابولیک",
+    icon:"🧬",
+    bank:"neurogeneticsQuestions"
+},
+
+{
+    id:"spinal",
+    title:"Spinal Cord Disorders",
+    fa:"اختلالات نخاع",
+    icon:"🦴",
+    bank:"spinalCordQuestions"
+},
+
+{
+    id:"neuro-ophthalmology",
+    title:"Neuro-ophthalmology",
+    fa:"نوروافتالمولوژی",
+    icon:"👁️",
+    bank:"neuroOphthalmologyQuestions"
+},
+
+{
+    id:"neuro-otology",
+    title:"Neuro-otology",
+    fa:"نورواتولوژی",
+    icon:"👂",
+    bank:"neuroOtologyQuestions"
+},
+
+{
+    id:"pediatric",
+    title:"Pediatric Neurology",
+    fa:"نورولوژی کودکان",
+    icon:"👶",
+    bank:"pediatricNeurologyQuestions"
+},
+
+{
+    id:"critical",
+    title:"Neurocritical Care",
+    fa:"نوروانتنسيو",
+    icon:"🚑",
+    bank:"neurocriticalQuestions"
+},
+
+{
+    id:"trauma",
+    title:"Neurotrauma",
+    fa:"نوروتروما",
+    icon:"🚨",
+    bank:"neurotraumaQuestions"
+},
+
+{
+    id:"sleep",
+    title:"Autonomic & Sleep Disorders",
+    fa:"اختلالات اتونومیک و خواب",
+    icon:"😴",
+    bank:"autonomicSleepQuestions"
+},
+
+{
+    id:"diagnostic",
+    title:"Neurodiagnostic Methods",
+    fa:"روش‌های تشخیصی نورولوژی",
+    icon:"🔬",
+    bank:"neurodiagnosticQuestions"
+},
+
+{
+    id:"pharmacology",
+    title:"Neuropharmacology & Treatment",
+    fa:"نوروفارماکولوژی و اصول درمان",
+    icon:"💊",
+    bank:"neuropharmacologyQuestions"
+}
+
+];
+
+
+/* =========================================================
+   BASIC HELPERS
+   ========================================================= */
+
+function $(id){
+    return document.getElementById(id);
+}
+
+
+function escapeHtml(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   STORAGE
+   ========================================================= */
+
+function loadData(){
+
+    var raw = localStorage.getItem(STORAGE_KEY);
+
+    if(!raw){
+
+        return {
+            questions:{},
+            flashcards:{},
+            activity:[]
+        };
+
     }
 
+    try{
 
-    if (topic === "Viral & Prion Diseases") {
+        return JSON.parse(raw);
 
-        if (typeof viralPrionQuestions !== "undefined") {
-            return viralPrionQuestions;
-        }
-
-        if (window.viralPrionQuestions) {
-            return window.viralPrionQuestions;
-        }
     }
 
+    catch(e){
 
-    /*
-      Future chapters can be connected here.
+        return {
+            questions:{},
+            flashcards:{},
+            activity:[]
+        };
 
-      Example:
+    }
 
-      if (topic === "Epilepsy & Seizure") {
-          return epilepsyQuestions;
-      }
-    */
+}
 
+
+function saveData(data){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* =========================================================
+   GET QUESTION BANK
+   ========================================================= */
+
+function getBank(chapter){
+
+    var bank = window[chapter.bank];
+
+    if(
+        Object.prototype.toString.call(bank)
+        === "[object Array]"
+    ){
+
+        return bank;
+
+    }
 
     return [];
+
 }
 
 
 /* =========================================================
-   START TOPIC
+   PAGE NAVIGATION
    ========================================================= */
 
-function startTopic(topic) {
+function showPage(id){
 
-    currentTopic = topic;
+    var pages =
+        document.querySelectorAll(".page");
 
-    currentQuestions = getQuestionBank(topic);
+    for(
+        var i=0;
+        i<pages.length;
+        i++
+    ){
 
-    currentQuestionIndex = 0;
-    score = 0;
-    answered = false;
+        pages[i].classList.remove("active");
 
-
-    document.getElementById("chaptersPage").classList.remove("active");
-    document.getElementById("flashcardPage").classList.remove("active");
-    document.getElementById("examPage").classList.add("active");
-
-
-    document.getElementById("examTitle").innerText = topic;
-
-
-    var scoreBox = document.getElementById("scoreBox");
-
-    if (scoreBox) {
-        scoreBox.style.display = "none";
     }
 
+    if($(id)){
 
-    if (!currentQuestions || currentQuestions.length === 0) {
+        $(id).classList.add("active");
 
-        document.getElementById("questionText").innerHTML =
-            "⚠️ هنوز بانک سوالات این فصل اضافه نشده است.";
-
-        document.getElementById("questionNumber").innerText = "";
-
-        document.getElementById("optionsContainer").innerHTML = "";
-
-        document.getElementById("resultBox").style.display = "none";
-
-        document.getElementById("analysisContainer").style.display = "none";
-
-        document.getElementById("questionFlashcard").style.display = "none";
-
-        document.getElementById("checkButton").style.display = "none";
-
-        document.getElementById("nextButton").style.display = "none";
-
-        return;
     }
 
+    window.scrollTo(0,0);
 
-    document.getElementById("analysisContainer").style.display = "none";
+    updateDashboard();
 
-    document.getElementById("questionFlashcard").style.display = "none";
-
-    document.getElementById("checkButton").style.display = "inline-block";
-
-    document.getElementById("nextButton").style.display = "none";
-
-
-    showQuestion();
 }
 
 
 /* =========================================================
-   SHOW QUESTION
+   CHAPTER LIST
    ========================================================= */
 
-function showQuestion() {
+function renderChapters(){
 
-    if (!currentQuestions ||
-        currentQuestions.length === 0) {
-        return;
+    var box = $("chaptersGrid");
+
+    if(!box) return;
+
+    box.innerHTML = "";
+
+    for(
+        var i=0;
+        i<chapters.length;
+        i++
+    ){
+
+        var c = chapters[i];
+
+        var bank = getBank(c);
+
+        var card =
+            document.createElement("div");
+
+        card.className = "chapter";
+
+        card.onclick =
+            (function(chapter){
+
+                return function(){
+
+                    openChapter(
+                        chapter.id
+                    );
+
+                };
+
+            })(c);
+
+
+        var count =
+            bank.length
+            ? bank.length+" سؤال"
+            : "بانک سؤال هنوز اضافه نشده";
+
+
+        card.innerHTML =
+
+            '<div class="icon">'+
+            c.icon+
+            '</div>'+
+
+            '<h3>'+
+            escapeHtml(c.fa)+
+            '</h3>'+
+
+            '<small>'+
+            escapeHtml(c.title)+
+            '</small>'+
+
+            '<div class="count">'+
+            count+
+            '</div>';
+
+
+        box.appendChild(card);
+
     }
 
+}
 
-    var question =
-        currentQuestions[currentQuestionIndex];
+
+/* =========================================================
+   OPEN CHAPTER
+   ========================================================= */
+
+function openChapter(id){
+
+    for(
+        var i=0;
+        i<chapters.length;
+        i++
+    ){
+
+        if(chapters[i].id === id){
+
+            currentChapter =
+                chapters[i];
+
+            currentQuestions =
+                getBank(
+                    currentChapter
+                ).slice(0);
+
+            currentIndex = 0;
+
+            currentScore = 0;
+
+            answered = false;
+
+
+            if(!currentQuestions.length){
+
+                showModal(
+
+                    currentChapter.fa,
+
+                    '<p>'+
+                    'برای این فصل هنوز بانک سؤال در برنامه تعریف نشده است.'+
+                    '</p>'+
+
+                    '<p>'+
+                    'ساختار برنامه آماده است و بعداً می‌توانیم بانک این فصل را اضافه کنیم.'+
+                    '</p>'
+
+                );
+
+                return;
+
+            }
+
+
+            $("examTitle").textContent =
+                currentChapter.icon+
+                " "+
+                currentChapter.fa;
+
+
+            $("questionSource").textContent =
+                currentChapter.title;
+
+
+            showPage("examPage");
+
+            renderQuestion();
+
+            return;
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER QUESTION
+   ========================================================= */
+
+function renderQuestion(){
+
+    if(!currentQuestions.length)
+        return;
+
+
+    var q =
+        currentQuestions[currentIndex];
 
 
     answered = false;
 
 
-    var total = currentQuestions.length;
-
-    var number =
-        currentQuestionIndex + 1;
+    $("questionNumber").textContent =
+        "سؤال "+(currentIndex+1);
 
 
-    document.getElementById("questionNumber").innerText =
-        "سوال " + number + " از " + total;
+    $("progressText").textContent =
+        "سؤال "+
+        (currentIndex+1)+
+        " از "+
+        currentQuestions.length;
 
 
-    document.getElementById("progressText").innerText =
-        "پیشرفت: " + number + " از " + total;
+    $("progressFill").style.width =
+
+        (
+            (
+                (currentIndex+1)
+                /
+                currentQuestions.length
+            )
+            *
+            100
+        )+"%";
 
 
-    var percent =
-        ((currentQuestionIndex) / total) * 100;
+    $("questionText").textContent =
+
+        q.question
+        ||
+        q.questionText
+        ||
+        "متن سؤال موجود نیست";
 
 
-    document.getElementById("progressFill").style.width =
-        percent + "%";
-
-
-    document.getElementById("questionText").innerHTML =
-        formatText(question.question || question.text || "");
-
-
-    var optionsContainer =
-        document.getElementById("optionsContainer");
-
-
-    optionsContainer.innerHTML = "";
+    $("optionsContainer").innerHTML = "";
 
 
     var options =
-        question.options || [];
+        q.options || [];
 
 
-    for (var i = 0; i < options.length; i++) {
+    for(
+        var i=0;
+        i<options.length;
+        i++
+    ){
 
-        var option = document.createElement("label");
-
-        option.className = "option";
-
-        option.setAttribute("data-index", i);
-
-
-        var radio =
-            document.createElement("input");
-
-        radio.type = "radio";
-
-        radio.name = "answer";
-
-        radio.value = i;
+        var label =
+            document.createElement("label");
 
 
-        var text =
-            document.createElement("span");
-
-        text.innerHTML =
-            formatText(options[i]);
+        label.className =
+            "option";
 
 
-        option.appendChild(radio);
+        label.innerHTML =
 
-        option.appendChild(text);
+            '<input type="radio" '+
+            'name="answer" '+
+            'value="'+i+'">'+
 
-        optionsContainer.appendChild(option);
+            '<span>'+
+
+            '<b>'+
+            String.fromCharCode(65+i)+
+            ".</b> "+
+
+            escapeHtml(
+                String(options[i])
+            )+
+
+            '</span>';
+
+
+        $("optionsContainer")
+            .appendChild(label);
+
     }
 
 
-    hideResult();
-
-    hideAnalysis();
-
-    prepareFlashcard(question);
+    $("resultBox").className =
+        "result";
 
 
-    document.getElementById("checkButton").style.display =
-        "inline-block";
-
-
-    document.getElementById("nextButton").style.display =
+    $("resultBox").style.display =
         "none";
 
 
-    document.getElementById("questionFlashcard").style.display =
-        "block";
+    $("analysisContainer")
+        .style.display =
+        "none";
 
 
-    updateProgress();
+    $("questionFlashcards")
+        .innerHTML =
+        "";
+
+
+    $("checkButton")
+        .style.display =
+        "inline-block";
+
+
+    $("nextButton")
+        .style.display =
+        "none";
+
+}
+
+
+/* =========================================================
+   NORMALIZE CORRECT ANSWER
+   ========================================================= */
+
+function normalizeCorrect(value){
+
+    if(typeof value === "number"){
+
+        return value;
+
+    }
+
+
+    if(typeof value === "string"){
+
+        var s =
+            value.trim()
+                .toUpperCase();
+
+
+        if(
+            /^[A-E]$/.test(s)
+        ){
+
+            return (
+                s.charCodeAt(0)-65
+            );
+
+        }
+
+
+        if(
+            /^\d+$/.test(s)
+        ){
+
+            return parseInt(
+                s,
+                10
+            );
+
+        }
+
+    }
+
+
+    return -1;
+
 }
 
 
@@ -247,11 +629,10 @@ function showQuestion() {
    CHECK ANSWER
    ========================================================= */
 
-function checkAnswer() {
+function checkAnswer(){
 
-    if (answered) {
+    if(answered)
         return;
-    }
 
 
     var selected =
@@ -260,406 +641,906 @@ function checkAnswer() {
         );
 
 
-    if (!selected) {
+    if(!selected){
 
         showModal(
             "انتخاب پاسخ",
-            "لطفاً ابتدا یکی از گزینه‌ها را انتخاب کنید."
+            "<p>لطفاً ابتدا یکی از گزینه‌ها را انتخاب کنید.</p>"
         );
 
         return;
+
     }
 
 
-    var question =
-        currentQuestions[currentQuestionIndex];
+    var q =
+        currentQuestions[currentIndex];
 
 
-    var selectedIndex =
-        parseInt(selected.value, 10);
+    var chosen =
+        parseInt(
+            selected.value,
+            10
+        );
 
 
-    var correctIndex =
-        getCorrectIndex(question);
+    var correct =
+        normalizeCorrect(
+            q.correct
+        );
+
+
+    var isCorrect =
+        chosen === correct;
 
 
     answered = true;
 
 
-    var optionLabels =
-        document.querySelectorAll(".option");
+    if(isCorrect){
 
+        currentScore++;
 
-    for (var i = 0; i < optionLabels.length; i++) {
-
-        optionLabels[i].classList.add("disabled");
-
-        var radio =
-            optionLabels[i].querySelector("input");
-
-        if (radio) {
-            radio.disabled = true;
-        }
-
-
-        if (i === correctIndex) {
-
-            optionLabels[i].classList.add("correct");
-
-            addCorrectMark(optionLabels[i]);
-        }
-
-
-        if (i === selectedIndex &&
-            selectedIndex !== correctIndex) {
-
-            optionLabels[i].classList.add("incorrect");
-
-            addIncorrectMark(optionLabels[i]);
-        }
     }
 
 
-    var isCorrect =
-        selectedIndex === correctIndex;
+    var labels =
+        document.querySelectorAll(
+            ".option"
+        );
 
 
-    if (isCorrect) {
-        score++;
+    for(
+        var i=0;
+        i<labels.length;
+        i++
+    ){
+
+        var inp =
+            labels[i]
+                .querySelector("input");
+
+
+        inp.disabled = true;
+
+
+        labels[i]
+            .classList
+            .add("disabled");
+
+
+        if(i === correct){
+
+            labels[i]
+                .classList
+                .add("correct");
+
+        }
+
+
+        if(
+            i === chosen
+            &&
+            !isCorrect
+        ){
+
+            labels[i]
+                .classList
+                .add("wrong");
+
+        }
+
     }
 
 
-    showResult(isCorrect, question);
+    $("resultBox").style.display =
+        "block";
 
 
-    showAnalysis(question, correctIndex);
+    $("resultBox").className =
+
+        isCorrect
+        ? "result correct"
+        : "result wrong";
 
 
-    document.getElementById("checkButton").style.display =
+    $("resultTitle").textContent =
+
+        isCorrect
+        ? "🟢 عالی — پاسخ صحیح است"
+        : "🔴 پاسخ غلط است";
+
+
+    $("resultMessage").textContent =
+
+        isCorrect
+
+        ? "اکنون تحلیل آموزشی سؤال را مرور کنید."
+
+        : "پاسخ صحیح مشخص شده است. تحلیل سؤال را با دقت مطالعه کنید.";
+
+
+    saveQuestionResult(
+        q,
+        isCorrect,
+        chosen,
+        correct
+    );
+
+
+    renderAnalysis(
+        q,
+        correct
+    );
+
+
+    $("checkButton")
+        .style.display =
         "none";
 
 
-    if (currentQuestionIndex <
-        currentQuestions.length - 1) {
+    $("nextButton")
+        .style.display =
+        "inline-block";
 
-        document.getElementById("nextButton").style.display =
-            "inline-block";
 
-    } else {
+    updateDashboard();
 
-        document.getElementById("nextButton").innerText =
-            "مشاهده نتیجه";
-
-        document.getElementById("nextButton").style.display =
-            "inline-block";
-    }
 }
 
 
 /* =========================================================
-   CORRECT ANSWER INDEX
+   SAVE QUESTION RESULT
    ========================================================= */
 
-function getCorrectIndex(question) {
+function saveQuestionResult(
+    q,
+    isCorrect,
+    chosen,
+    correct
+){
 
-    var correct = question.correct;
+    var data =
+        loadData();
 
 
-    if (typeof correct === "number") {
-        return correct;
+    var id =
+        questionId(
+            currentChapter,
+            q,
+            currentIndex
+        );
+
+
+    if(!data.questions[id]){
+
+        data.questions[id] = {
+
+            chapter:
+                currentChapter.id,
+
+            attempts:0,
+
+            correct:0,
+
+            wrong:0,
+
+            lastAnswer:null,
+
+            lastCorrect:null,
+
+            nextReview:null
+
+        };
+
     }
 
 
-    if (typeof correct === "string") {
-
-        var value =
-            correct.trim().toUpperCase();
+    var item =
+        data.questions[id];
 
 
-        /*
-          Supports:
-          A B C D E
-        */
-
-        if (value === "A") return 0;
-        if (value === "B") return 1;
-        if (value === "C") return 2;
-        if (value === "D") return 3;
-        if (value === "E") return 4;
+    item.attempts++;
 
 
-        /*
-          Also supports:
-          "0", "1", "2", ...
-        */
+    item.lastAnswer =
+        chosen;
 
-        if (!isNaN(parseInt(value, 10))) {
-            return parseInt(value, 10);
-        }
+
+    item.lastCorrect =
+        isCorrect;
+
+
+    if(isCorrect){
+
+        item.correct++;
+
+    }
+
+    else{
+
+        item.wrong++;
+
     }
 
 
-    return 0;
+    /*
+       Spaced repetition اولیه
+
+       Correct:
+       1 → 2 → 4 → 8 → 16 → 30 روز
+
+       Wrong:
+       1 روز
+    */
+
+    var days;
+
+
+    if(isCorrect){
+
+        days =
+            Math.min(
+                30,
+                Math.pow(
+                    2,
+                    Math.min(
+                        item.correct,
+                        5
+                    )
+                )
+            );
+
+    }
+
+    else{
+
+        days = 1;
+
+    }
+
+
+    var d =
+        new Date();
+
+
+    d.setDate(
+        d.getDate()+days
+    );
+
+
+    item.nextReview =
+        d.toISOString();
+
+
+    data.activity.unshift({
+
+        id:id,
+
+        chapter:
+            currentChapter.fa,
+
+        text:
+            isCorrect
+            ? "پاسخ صحیح"
+            : "پاسخ غلط",
+
+        date:
+            new Date()
+                .toISOString()
+
+    });
+
+
+    if(
+        data.activity.length > 30
+    ){
+
+        data.activity.length = 30;
+
+    }
+
+
+    saveData(data);
+
 }
 
 
 /* =========================================================
-   RESULT
+   RENDER EDUCATIONAL ANALYSIS
    ========================================================= */
 
-function showResult(isCorrect, question) {
+function renderAnalysis(
+    q,
+    correct
+){
 
-    var resultBox =
-        document.getElementById("resultBox");
-
-    var title =
-        document.getElementById("resultTitle");
-
-    var message =
-        document.getElementById("resultMessage");
-
-
-    resultBox.style.display = "block";
-
-
-    if (isCorrect) {
-
-        resultBox.className =
-            "result-box correct-result";
-
-        title.innerHTML =
-            "✓ عالی! پاسخ شما صحیح است.";
-
-        message.innerHTML =
-            "پاسخ صحیح را انتخاب کردید.";
-
-    } else {
-
-        resultBox.className =
-            "result-box incorrect-result";
-
-        title.innerHTML =
-            "✕ پاسخ غلط است.";
-
-        var correctIndex =
-            getCorrectIndex(question);
-
-        var correctOption =
-            question.options &&
-            question.options[correctIndex]
-                ? question.options[correctIndex]
-                : "";
-
-
-        message.innerHTML =
-            "<strong>پاسخ صحیح:</strong> " +
-            formatText(correctOption);
-    }
-}
-
-
-/* =========================================================
-   HIDE RESULT
-   ========================================================= */
-
-function hideResult() {
-
-    var box =
-        document.getElementById("resultBox");
-
-    box.style.display = "none";
-
-    box.className = "result-box";
-
-    document.getElementById("resultTitle").innerHTML = "";
-
-    document.getElementById("resultMessage").innerHTML = "";
-}
-
-
-/* =========================================================
-   ANALYSIS
-   ========================================================= */
-
-function showAnalysis(question, correctIndex) {
-
-    var container =
-        document.getElementById("analysisContainer");
+    $("analysisContainer")
+        .style.display =
+        "block";
 
 
     var diagnosis =
-        question.diagnosis ||
-        question.concept ||
-        question.topic ||
-        "اطلاعات تکمیلی برای این سؤال در بانک وارد نشده است.";
+        q.diagnosis
+        ||
+        q.mainDiagnosis
+        ||
+        q.diagnosisText;
+
+
+    var reasoning =
+        q.clinicalReasoning
+        ||
+        q.reasoning;
 
 
     var differential =
-        question.differential ||
-        question.differentials ||
-        "در بانک سؤال اطلاعاتی برای تشخیص افتراقی ثبت نشده است.";
+        q.differentialDiagnosis
+        ||
+        q.differential
+        ||
+        [];
 
 
-    var correctReason =
-        question.explanation ||
-        question.correctExplanation ||
-        "توضیح اختصاصی برای این سؤال هنوز وارد نشده است.";
+    var whyCorrect =
+        q.whyCorrect
+        ||
+        q.explanation
+        ||
+        q.correctExplanation;
 
 
-    var wrongReasons =
-        question.wrongReasons ||
-        buildWrongReasons(question, correctIndex);
+    var highYield =
+        q.highYield
+        ||
+        q.note
+        ||
+        q.examTip
+        ||
+        q.highYieldPoint;
 
 
-    var examTip =
-        question.examTip ||
-        question.note ||
-        "نکته اختصاصی امتحانی برای این سؤال هنوز وارد نشده است.";
+    var trap =
+        q.examTrap
+        ||
+        q.trap;
 
 
-    var examTrap =
-        question.examTrap ||
-        question.trap ||
-        "دام امتحانی اختصاصی برای این سؤال هنوز وارد نشده است.";
+    var related =
+        q.relatedTopics
+        ||
+        q.related
+        ||
+        [];
 
 
-    document.getElementById("diagnosisText").innerHTML =
-        formatText(diagnosis);
+    var reference =
+        q.reference
+        ||
+        q.references
+        ||
+        "";
 
 
-    document.getElementById("differentialText").innerHTML =
-        formatText(differential);
+    $("diagnosisText").textContent =
+
+        diagnosis
+        ||
+        "برای این سؤال هنوز تشخیص آموزشی جداگانه در بانک ثبت نشده است.";
 
 
-    document.getElementById("correctReasonText").innerHTML =
-        formatText(correctReason);
+    $("clinicalReasoningText")
+        .textContent =
+
+        reasoning
+        ||
+        "استدلال بالینی اختصاصی هنوز در بانک سؤال وارد نشده است.";
 
 
-    document.getElementById("wrongReasonsText").innerHTML =
-        formatText(wrongReasons);
+    $("differentialText")
+        .innerHTML =
+
+        formatList(
+            differential
+        );
 
 
-    document.getElementById("examTipText").innerHTML =
-        formatText(examTip);
+    $("correctReasonText")
+        .textContent =
+
+        whyCorrect
+        ||
+        "توضیح پاسخ صحیح در بانک سؤال ثبت نشده است.";
 
 
-    document.getElementById("examTrapText").innerHTML =
-        formatText(examTrap);
+    $("examTipText")
+        .textContent =
+
+        highYield
+        ||
+        "نکته High-Yield برای این سؤال ثبت نشده است.";
 
 
-    container.style.display = "block";
+    $("examTrapText")
+        .textContent =
+
+        trap
+        ||
+        "دام امتحانی برای این سؤال ثبت نشده است.";
+
+
+    $("relatedTopicsText")
+        .innerHTML =
+
+        formatList(
+            related
+        );
+
+
+    $("referenceText")
+        .textContent =
+
+        reference
+        ||
+        "منبع اختصاصی در بانک سؤال ثبت نشده است.";
+
+
+    renderWrongReasons(
+        q,
+        correct
+    );
+
+
+    renderQuestionFlashcards(q);
+
 }
 
 
 /* =========================================================
-   BUILD WRONG REASONS
+   WRONG OPTIONS
    ========================================================= */
 
-function buildWrongReasons(question, correctIndex) {
+function renderWrongReasons(
+    q,
+    correct
+){
 
-    if (!question.options) {
-        return "اطلاعات گزینه‌ها موجود نیست.";
-    }
+    var box =
+        $("wrongReasonsText");
 
 
-    var result = [];
+    box.innerHTML = "";
 
 
-    for (var i = 0;
-         i < question.options.length;
-         i++) {
+    var options =
+        q.options || [];
 
-        if (i === correctIndex) {
+
+    var wr =
+        q.whyWrong
+        ||
+        q.wrongReasons
+        ||
+        {};
+
+
+    for(
+        var i=0;
+        i<options.length;
+        i++
+    ){
+
+        if(i === correct)
             continue;
+
+
+        var letter =
+            String.fromCharCode(
+                65+i
+            );
+
+
+        var text =
+            wr[letter];
+
+
+        if(
+            text === undefined
+            &&
+            wr[i] !== undefined
+        ){
+
+            text =
+                wr[i];
+
         }
 
 
-        result.push(
-            "<strong>گزینه " +
-            getOptionLetter(i) +
-            ":</strong> " +
-            formatText(question.options[i])
+        if(text === undefined){
+
+            if(i === 0)
+                text = q.explanationA;
+
+            if(i === 1)
+                text = q.explanationB;
+
+            if(i === 2)
+                text = q.explanationC;
+
+            if(i === 3)
+                text = q.explanationD;
+
+            if(i === 4)
+                text = q.explanationE;
+
+        }
+
+
+        var div =
+            document.createElement("div");
+
+
+        div.innerHTML =
+
+            "<b>"+
+            letter+
+            ".</b> "+
+
+            escapeHtml(
+
+                text
+                ||
+                "علت رد این گزینه هنوز در بانک سؤال ثبت نشده است."
+
+            );
+
+
+        box.appendChild(div);
+
+    }
+
+}
+
+
+/* =========================================================
+   QUESTION FLASHCARDS
+   ========================================================= */
+
+function renderQuestionFlashcards(q){
+
+    var box =
+        $("questionFlashcards");
+
+
+    box.innerHTML = "";
+
+
+    var cards =
+        q.flashcards
+        ||
+        q.learningFlashcards
+        ||
+        [];
+
+
+    /*
+       اگر فلش‌کارت اختصاصی در بانک وجود داشته باشد
+       همان‌ها نمایش داده می‌شوند.
+    */
+
+    if(
+        Object.prototype.toString.call(cards)
+        === "[object Array]"
+        &&
+        cards.length
+    ){
+
+        for(
+            var i=0;
+            i<cards.length;
+            i++
+        ){
+
+            addFlashcardCard(
+                box,
+                cards[i],
+                currentChapter,
+                q,
+                i
+            );
+
+        }
+
+        return;
+
+    }
+
+
+    /*
+       اگر هنوز فلش‌کارت اختصاصی ساخته نشده باشد،
+       از اطلاعات آموزشی موجود کارت مفهومی می‌سازیم.
+
+       نکته:
+       صورت سؤال اصلی هرگز به‌عنوان فلش‌کارت
+       استفاده نمی‌شود.
+    */
+
+    var generated = [];
+
+
+    if(
+        q.diagnosis
+        ||
+        q.mainDiagnosis
+    ){
+
+        generated.push({
+
+            question:
+                "تشخیص اصلی این سؤال چیست؟",
+
+            answer:
+                q.diagnosis
+                ||
+                q.mainDiagnosis
+
+        });
+
+    }
+
+
+    if(
+        q.highYield
+        ||
+        q.note
+    ){
+
+        generated.push({
+
+            question:
+                "مهم‌ترین نکته High-Yield این سؤال چیست؟",
+
+            answer:
+                q.highYield
+                ||
+                q.note
+
+        });
+
+    }
+
+
+    if(
+        q.examTrap
+        ||
+        q.trap
+    ){
+
+        generated.push({
+
+            question:
+                "دام امتحانی این مبحث چیست؟",
+
+            answer:
+                q.examTrap
+                ||
+                q.trap
+
+        });
+
+    }
+
+
+    for(
+        var j=0;
+        j<generated.length;
+        j++
+    ){
+
+        addFlashcardCard(
+
+            box,
+
+            generated[j],
+
+            currentChapter,
+
+            q,
+
+            j
+
         );
+
     }
 
 
-    if (result.length === 0) {
-        return "گزینه دیگری برای مقایسه وجود ندارد.";
+    if(!generated.length){
+
+        box.innerHTML =
+
+            '<div class="empty">'+
+            'برای این سؤال هنوز فلش‌کارت مفهومی جداگانه در بانک ثبت نشده است.'+
+            '</div>';
+
     }
 
-
-    return result.join("<br><br>");
 }
 
 
 /* =========================================================
-   OPTION LETTER
+   ADD FLASHCARD
    ========================================================= */
 
-function getOptionLetter(index) {
+function addFlashcardCard(
+    container,
+    card,
+    chapter,
+    q,
+    index
+){
 
-    var letters = [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E"
-    ];
+    var div =
+        document.createElement("div");
 
-    return letters[index] || "";
+
+    div.className =
+        "flashcard";
+
+
+    var question =
+        card.question
+        ||
+        card.front
+        ||
+        card.q
+        ||
+        "";
+
+
+    var answer =
+        card.answer
+        ||
+        card.back
+        ||
+        card.a
+        ||
+        "";
+
+
+    var key =
+        card.keyPoint
+        ||
+        card.key
+        ||
+        "";
+
+
+    div.innerHTML =
+
+        '<div class="flash-q">'+
+        '🧠 '+
+        escapeHtml(question)+
+        '</div>'+
+
+        '<div class="flash-a">'+
+
+        '<div>'+
+        escapeHtml(answer)+
+        '</div>'+
+
+        (
+            key
+
+            ?
+
+            '<p><b>⭐ نکته:</b> '+
+            escapeHtml(key)+
+            '</p>'
+
+            :
+
+            ''
+
+        )+
+
+        '</div>'+
+
+        '<div class="actions">'+
+
+        '<button class="secondary" '+
+        'onclick="toggleFlash(this)">'+
+        'نمایش پاسخ'+
+        '</button>'+
+
+        '</div>';
+
+
+    container.appendChild(div);
+
+
+    /*
+       ذخیره در localStorage
+    */
+
+    var data =
+        loadData();
+
+
+    var id =
+        questionId(
+            chapter,
+            q,
+            index
+        )+
+        "_fc_"+index;
+
+
+    if(!data.flashcards[id]){
+
+        data.flashcards[id] = {
+
+            chapter:
+                chapter.id,
+
+            question:
+                question,
+
+            answer:
+                answer,
+
+            keyPoint:
+                key,
+
+            created:
+                new Date()
+                    .toISOString()
+
+        };
+
+
+        saveData(data);
+
+    }
+
 }
 
 
 /* =========================================================
-   ADD MARKS
+   TOGGLE FLASHCARD
    ========================================================= */
 
-function addCorrectMark(element) {
+function toggleFlash(btn){
 
-    removeMark(element);
-
-    var mark =
-        document.createElement("span");
-
-    mark.className = "answer-mark";
-
-    mark.innerHTML = " ✓";
-
-    mark.style.color = "#277342";
-
-    mark.style.fontWeight = "bold";
-
-    element.appendChild(mark);
-}
+    var card =
+        btn.parentNode.parentNode;
 
 
-function addIncorrectMark(element) {
-
-    removeMark(element);
-
-    var mark =
-        document.createElement("span");
-
-    mark.className = "answer-mark";
-
-    mark.innerHTML = " ✕";
-
-    mark.style.color = "#b43d3d";
-
-    mark.style.fontWeight = "bold";
-
-    element.appendChild(mark);
-}
+    var answer =
+        card.querySelector(
+            ".flash-a"
+        );
 
 
-function removeMark(element) {
+    if(
+        answer.classList.contains("show")
+    ){
 
-    var old =
-        element.querySelector(".answer-mark");
+        answer.classList.remove("show");
 
-    if (old) {
-        old.parentNode.removeChild(old);
+        btn.textContent =
+            "نمایش پاسخ";
+
     }
+
+    else{
+
+        answer.classList.add("show");
+
+        btn.textContent =
+            "مخفی کردن پاسخ";
+
+    }
+
 }
 
 
@@ -667,24 +1548,31 @@ function removeMark(element) {
    NEXT QUESTION
    ========================================================= */
 
-function nextQuestion() {
+function nextQuestion(){
 
-    if (!answered) {
-        return;
+    if(
+        currentIndex
+        <
+        currentQuestions.length-1
+    ){
+
+        currentIndex++;
+
+        renderQuestion();
+
+        window.scrollTo(
+            0,
+            0
+        );
+
     }
 
-
-    if (currentQuestionIndex <
-        currentQuestions.length - 1) {
-
-        currentQuestionIndex++;
-
-        showQuestion();
-
-    } else {
+    else{
 
         finishExam();
+
     }
+
 }
 
 
@@ -692,459 +1580,631 @@ function nextQuestion() {
    FINISH EXAM
    ========================================================= */
 
-function finishExam() {
-
-    document.getElementById("questionText").innerHTML =
-        "آزمون این فصل به پایان رسید.";
-
-    document.getElementById("questionNumber").innerText = "";
-
-    document.getElementById("optionsContainer").innerHTML = "";
-
-    document.getElementById("resultBox").style.display = "none";
-
-    document.getElementById("analysisContainer").style.display = "none";
-
-    document.getElementById("questionFlashcard").style.display = "none";
-
-    document.getElementById("checkButton").style.display = "none";
-
-    document.getElementById("nextButton").style.display = "none";
-
-
-    var total =
-        currentQuestions.length;
-
+function finishExam(){
 
     var percent =
-        total > 0
-            ? Math.round((score / total) * 100)
-            : 0;
+
+        currentQuestions.length
+
+        ?
+
+        Math.round(
+
+            (
+                currentScore
+                /
+                currentQuestions.length
+            )
+            *
+            100
+
+        )
+
+        :
+
+        0;
 
 
-    document.getElementById("scoreBox").style.display =
-        "block";
+    $("finalScore")
+        .textContent =
+        percent+"%";
 
 
-    document.getElementById("finalScore").innerText =
-        score + " / " + total;
+    $("finalDetails")
+        .textContent =
+
+        currentScore+
+        " پاسخ صحیح از "+
+        currentQuestions.length+
+        " سؤال";
 
 
-    document.getElementById("finalDetails").innerHTML =
-        "درصد پاسخ‌های صحیح: <strong>" +
-        percent +
-        "%</strong>";
+    if(percent >= 85){
 
+        $("finalMessage")
+            .textContent =
+            "عملکرد عالی؛ اکنون سؤالات غلط و فلش‌کارت‌ها را مرور کنید.";
 
-    var message = "";
+    }
 
+    else if(percent >= 70){
 
-    if (percent >= 80) {
-        message = "عملکرد بسیار خوب 👏";
-    } else if (percent >= 60) {
-        message = "عملکرد خوب؛ مرور نکات اشتباه توصیه می‌شود.";
-    } else {
-        message = "بهتر است این فصل را دوباره مرور کنید.";
+        $("finalMessage")
+            .textContent =
+            "خوب است؛ برای تثبیت، سؤالات غلط را مرور کنید.";
+
+    }
+
+    else{
+
+        $("finalMessage")
+            .textContent =
+            "این فصل نیاز به مرور بیشتر دارد. ابتدا تحلیل سؤالات غلط را مطالعه کنید.";
+
     }
 
 
-    document.getElementById("finalMessage").innerText =
-        message;
+    showPage(
+        "finalPage"
+    );
 
-
-    document.getElementById("progressFill").style.width =
-        "100%";
 }
 
 
 /* =========================================================
-   END EXAM
+   WRONG QUESTIONS
    ========================================================= */
 
-function endExam() {
+function renderWrongQuestions(){
 
-    if (!currentQuestions ||
-        currentQuestions.length === 0) {
+    var box =
+        $("wrongQuestionsList");
 
-        backToChapters();
+
+    box.innerHTML = "";
+
+
+    var data =
+        loadData();
+
+
+    var found = [];
+
+
+    for(
+        var i=0;
+        i<chapters.length;
+        i++
+    ){
+
+        var bank =
+            getBank(
+                chapters[i]
+            );
+
+
+        for(
+            var j=0;
+            j<bank.length;
+            j++
+        ){
+
+            var id =
+                questionId(
+                    chapters[i],
+                    bank[j],
+                    j
+                );
+
+
+            if(
+                data.questions[id]
+                &&
+                data.questions[id].wrong > 0
+                &&
+                data.questions[id].lastCorrect === false
+            ){
+
+                found.push({
+
+                    chapter:
+                        chapters[i],
+
+                    question:
+                        bank[j],
+
+                    index:j,
+
+                    stats:
+                        data.questions[id]
+
+                });
+
+            }
+
+        }
+
+    }
+
+
+    if(!found.length){
+
+        box.innerHTML =
+
+            '<div class="empty">'+
+            'هنوز سؤال غلطی ثبت نشده است. عالی!'+
+            '</div>';
 
         return;
+
     }
 
 
-    finishExam();
-}
+    for(
+        var k=0;
+        k<found.length;
+        k++
+    ){
+
+        var item =
+            found[k];
 
 
-/* =========================================================
-   RESTART
-   ========================================================= */
-
-function restartTopic() {
-
-    startTopic(currentTopic);
-}
+        var card =
+            document.createElement("div");
 
 
-/* =========================================================
-   BACK TO CHAPTERS
-   ========================================================= */
-
-function backToChapters() {
-
-    document.getElementById("examPage").classList.remove("active");
-
-    document.getElementById("flashcardPage").classList.remove("active");
-
-    document.getElementById("chaptersPage").classList.add("active");
-}
+        card.className =
+            "panel";
 
 
-/* =========================================================
-   FLASHCARD — CURRENT QUESTION
-   ========================================================= */
+        card.innerHTML =
 
-function prepareFlashcard(question) {
+            '<h3>'+
+            escapeHtml(
+                item.chapter.fa
+            )+
+            '</h3>'+
 
-    var card =
-        document.getElementById("questionFlashcard");
+            '<p>'+
+            escapeHtml(
+                item.question.question
+                ||
+                item.question.questionText
+                ||
+                ""
+            )+
+            '</p>'+
 
+            '<small>'+
+            'تعداد تلاش: '+
+            item.stats.attempts+
+            ' | غلط: '+
+            item.stats.wrong+
+            '</small>'+
 
-    var q =
-        document.getElementById("questionFlashcardQuestion");
+            '<div class="actions">'+
 
+            '<button class="primary">'+
+            'مرور سؤال'+
+            '</button>'+
 
-    var a =
-        document.getElementById("questionFlashcardAnswer");
-
-
-    q.innerHTML =
-        formatText(
-            question.flashcardQuestion ||
-            question.question ||
-            ""
-        );
-
-
-    var answer =
-        question.flashcardAnswer ||
-        buildFlashcardAnswer(question);
-
-
-    a.innerHTML =
-        formatText(answer);
-
-
-    a.classList.remove("visible");
+            '</div>';
 
 
-    document.getElementById(
-        "showQuestionFlashcardButton"
-    ).innerText =
-        "نمایش پاسخ فلش‌کارت";
+        card
+            .querySelector("button")
+            .onclick =
+
+            (function(x){
+
+                return function(){
+
+                    currentChapter =
+                        x.chapter;
 
 
-    card.style.display = "block";
-}
+                    currentQuestions =
+                        getBank(
+                            x.chapter
+                        ).slice(0);
 
 
-/* =========================================================
-   BUILD FLASHCARD ANSWER
-   ========================================================= */
-
-function buildFlashcardAnswer(question) {
-
-    var correctIndex =
-        getCorrectIndex(question);
+                    currentIndex =
+                        x.index;
 
 
-    var answer =
-        question.options &&
-        question.options[correctIndex]
-            ? question.options[correctIndex]
-            : "";
+                    currentScore =
+                        0;
 
 
-    var explanation =
-        question.explanation ||
-        question.correctExplanation ||
-        "";
+                    showPage(
+                        "examPage"
+                    );
 
 
-    if (explanation) {
+                    renderQuestion();
 
-        answer +=
-            "<br><br><strong>توضیح:</strong><br>" +
-            explanation;
+                };
+
+            })(item);
+
+
+        box.appendChild(card);
+
     }
 
-
-    var note =
-        question.note ||
-        question.examTip ||
-        "";
-
-
-    if (note) {
-
-        answer +=
-            "<br><br><strong>نکته:</strong><br>" +
-            note;
-    }
-
-
-    return answer;
 }
 
 
 /* =========================================================
-   TOGGLE CURRENT FLASHCARD
+   ALL FLASHCARDS
    ========================================================= */
 
-function toggleQuestionFlashcard() {
+function renderFlashcards(){
 
-    var answer =
-        document.getElementById(
-            "questionFlashcardAnswer"
+    var box =
+        $("allFlashcards");
+
+
+    box.innerHTML = "";
+
+
+    var data =
+        loadData();
+
+
+    var keys =
+        Object.keys(
+            data.flashcards
         );
 
 
-    var button =
-        document.getElementById(
-            "showQuestionFlashcardButton"
-        );
+    if(!keys.length){
 
+        box.innerHTML =
 
-    if (answer.classList.contains("visible")) {
-
-        answer.classList.remove("visible");
-
-        button.innerText =
-            "نمایش پاسخ فلش‌کارت";
-
-    } else {
-
-        answer.classList.add("visible");
-
-        button.innerText =
-            "پنهان کردن پاسخ";
-    }
-}
-
-
-/* =========================================================
-   FLASHCARD PAGE
-   ========================================================= */
-
-function openFlashcards() {
-
-    if (!currentQuestions ||
-        currentQuestions.length === 0) {
-
-        showModal(
-            "فلش‌کارت",
-            "برای این فصل هنوز فلش‌کارتی وجود ندارد."
-        );
+            '<div class="empty">'+
+            'هنوز فلش‌کارتی ساخته نشده است.'+
+            '</div>';
 
         return;
+
     }
 
 
-    flashcardIndex =
-        currentQuestionIndex;
+    for(
+        var i=0;
+        i<keys.length;
+        i++
+    ){
+
+        var c =
+            data.flashcards[
+                keys[i]
+            ];
 
 
-    document.getElementById("examPage").classList.remove("active");
-
-    document.getElementById("chaptersPage").classList.remove("active");
-
-    document.getElementById("flashcardPage").classList.add("active");
+        var div =
+            document.createElement("div");
 
 
-    document.getElementById("flashcardTopicTitle").innerText =
-        "فلش‌کارت‌های " + currentTopic;
+        div.className =
+            "flashcard";
 
 
-    showLargeFlashcard();
+        div.innerHTML =
+
+            '<div class="flash-q">'+
+            '🧠 '+
+            escapeHtml(
+                c.question
+            )+
+            '</div>'+
+
+            '<div class="flash-a">'+
+
+            '<div>'+
+            escapeHtml(
+                c.answer
+            )+
+            '</div>'+
+
+            (
+                c.keyPoint
+
+                ?
+
+                '<p><b>⭐ نکته:</b> '+
+                escapeHtml(
+                    c.keyPoint
+                )+
+                '</p>'
+
+                :
+
+                ''
+
+            )+
+
+            '</div>'+
+
+            '<div class="actions">'+
+
+            '<button class="secondary" '+
+            'onclick="toggleFlash(this)">'+
+            'نمایش پاسخ'+
+            '</button>'+
+
+            '</div>';
+
+
+        box.appendChild(div);
+
+    }
+
 }
 
 
 /* =========================================================
-   SHOW LARGE FLASHCARD
+   DASHBOARD
    ========================================================= */
 
-function showLargeFlashcard() {
+function updateDashboard(){
 
-    var question =
-        currentQuestions[flashcardIndex];
-
-
-    if (!question) {
-        return;
-    }
+    var data =
+        loadData();
 
 
-    document.getElementById(
-        "flashcardLargeQuestion"
-    ).innerHTML =
-        formatText(
-            question.flashcardQuestion ||
-            question.question ||
-            ""
+    var answered = 0;
+
+    var correct = 0;
+
+    var wrong = 0;
+
+
+    var keys =
+        Object.keys(
+            data.questions
         );
 
 
-    document.getElementById(
-        "flashcardLargeAnswer"
-    ).innerHTML =
-        formatText(
-            question.flashcardAnswer ||
-            buildFlashcardAnswer(question)
+    for(
+        var i=0;
+        i<keys.length;
+        i++
+    ){
+
+        var q =
+            data.questions[
+                keys[i]
+            ];
+
+
+        answered +=
+            q.attempts || 0;
+
+
+        correct +=
+            q.correct || 0;
+
+
+        wrong +=
+            q.wrong || 0;
+
+    }
+
+
+    $("statAnswered")
+        .textContent =
+        answered;
+
+
+    $("statCorrect")
+        .textContent =
+        correct;
+
+
+    $("statWrong")
+        .textContent =
+        wrong;
+
+
+    var mastery =
+
+        answered
+
+        ?
+
+        Math.round(
+            (
+                correct
+                /
+                answered
+            )
+            *
+            100
+        )
+
+        :
+
+        0;
+
+
+    $("statMastery")
+        .textContent =
+        mastery+"%";
+
+
+    $("overallProgress")
+        .style.width =
+        mastery+"%";
+
+
+    $("overallText")
+        .textContent =
+
+        answered
+
+        ?
+
+        "از "+
+        answered+
+        " تلاش ثبت‌شده، "+
+        correct+
+        " پاسخ صحیح بوده است."
+
+        :
+
+        "هنوز فعالیتی ثبت نشده است.";
+
+
+    var act =
+        $("recentActivity");
+
+
+    if(
+        data.activity
+        &&
+        data.activity.length
+    ){
+
+        var html = "";
+
+        var n =
+            Math.min(
+                5,
+                data.activity.length
+            );
+
+
+        for(
+            var j=0;
+            j<n;
+            j++
+        ){
+
+            html +=
+
+                "<div>• "+
+                escapeHtml(
+                    data.activity[j]
+                        .chapter
+                )+
+                " — "+
+                escapeHtml(
+                    data.activity[j]
+                        .text
+                )+
+                "</div>";
+
+        }
+
+
+        act.innerHTML =
+            html;
+
+    }
+
+    else{
+
+        act.innerHTML =
+            "برای شروع، یک فصل را انتخاب کنید.";
+
+    }
+
+}
+
+
+/* =========================================================
+   QUESTION ID
+   ========================================================= */
+
+function questionId(
+    chapter,
+    q,
+    index
+){
+
+    if(
+        q
+        &&
+        q.id
+    ){
+
+        return (
+            chapter.id+
+            "_"+
+            String(q.id)
         );
 
-
-    document.getElementById(
-        "flashcardLargeAnswer"
-    ).classList.remove("visible");
-
-
-    document.getElementById(
-        "flashcardShowButton"
-    ).innerText =
-        "نمایش پاسخ";
-
-
-    document.getElementById(
-        "flashcardProgress"
-    ).innerText =
-        "فلش‌کارت " +
-        (flashcardIndex + 1) +
-        " از " +
-        currentQuestions.length;
-}
-
-
-/* =========================================================
-   TOGGLE LARGE FLASHCARD
-   ========================================================= */
-
-function toggleLargeFlashcard() {
-
-    var answer =
-        document.getElementById(
-            "flashcardLargeAnswer"
-        );
-
-
-    var button =
-        document.getElementById(
-            "flashcardShowButton"
-        );
-
-
-    if (answer.classList.contains("visible")) {
-
-        answer.classList.remove("visible");
-
-        button.innerText =
-            "نمایش پاسخ";
-
-    } else {
-
-        answer.classList.add("visible");
-
-        button.innerText =
-            "پنهان کردن پاسخ";
-    }
-}
-
-
-/* =========================================================
-   PREVIOUS FLASHCARD
-   ========================================================= */
-
-function previousFlashcard() {
-
-    if (flashcardIndex > 0) {
-
-        flashcardIndex--;
-
-        showLargeFlashcard();
-    }
-}
-
-
-/* =========================================================
-   NEXT FLASHCARD
-   ========================================================= */
-
-function nextFlashcard() {
-
-    if (flashcardIndex <
-        currentQuestions.length - 1) {
-
-        flashcardIndex++;
-
-        showLargeFlashcard();
-
-    } else {
-
-        flashcardIndex = 0;
-
-        showLargeFlashcard();
-    }
-}
-
-
-/* =========================================================
-   CLOSE FLASHCARDS
-   ========================================================= */
-
-function closeFlashcards() {
-
-    document.getElementById("flashcardPage").classList.remove("active");
-
-    document.getElementById("examPage").classList.add("active");
-
-    showQuestion();
-}
-
-
-/* =========================================================
-   HIDE ANALYSIS
-   ========================================================= */
-
-function hideAnalysis() {
-
-    document.getElementById(
-        "analysisContainer"
-    ).style.display = "none";
-}
-
-
-/* =========================================================
-   PROGRESS
-   ========================================================= */
-
-function updateProgress() {
-
-    var total =
-        currentQuestions.length;
-
-
-    if (!total) {
-        return;
     }
 
 
-    var percent =
-        ((currentQuestionIndex) / total) * 100;
+    return (
+        chapter.id+
+        "_q_"+
+        index
+    );
+
+}
 
 
-    document.getElementById(
-        "progressFill"
-    ).style.width =
-        percent + "%";
+/* =========================================================
+   FORMAT LIST
+   ========================================================= */
+
+function formatList(value){
+
+    if(
+        Object.prototype.toString.call(value)
+        === "[object Array]"
+    ){
+
+        if(!value.length){
+
+            return "موردی ثبت نشده است.";
+
+        }
+
+
+        var out = "";
+
+
+        for(
+            var i=0;
+            i<value.length;
+            i++
+        ){
+
+            out +=
+
+                "• "+
+                escapeHtml(
+                    String(value[i])
+                )+
+                "<br>";
+
+        }
+
+
+        return out;
+
+    }
+
+
+    return value
+
+        ?
+
+        escapeHtml(
+            String(value)
+        )
+
+        :
+
+        "موردی ثبت نشده است.";
+
 }
 
 
@@ -1152,62 +2212,45 @@ function updateProgress() {
    MODAL
    ========================================================= */
 
-function showModal(title, content) {
+function showModal(
+    title,
+    body
+){
 
-    document.getElementById(
-        "modalTitle"
-    ).innerText = title;
-
-
-    document.getElementById(
-        "modalContent"
-    ).innerHTML = content;
+    $("modalTitle")
+        .textContent =
+        title;
 
 
-    document.getElementById(
-        "generalModal"
-    ).style.display = "flex";
+    $("modalBody")
+        .innerHTML =
+        body;
+
+
+    $("modal")
+        .classList
+        .add("show");
+
 }
 
 
-function closeGeneralModal() {
+function closeModal(){
 
-    document.getElementById(
-        "generalModal"
-    ).style.display = "none";
-}
+    $("modal")
+        .classList
+        .remove("show");
 
-
-/* =========================================================
-   TEXT FORMATTER
-   ========================================================= */
-
-function formatText(text) {
-
-    if (text === null ||
-        text === undefined) {
-
-        return "";
-    }
-
-
-    return String(text)
-        .replace(/\n/g, "<br>");
 }
 
 
 /* =========================================================
-   INITIALIZATION
+   START
    ========================================================= */
 
-window.onload = function() {
+window.onload = function(){
 
-    /*
-      We deliberately do not start a question here.
-      The user must first select a chapter.
-    */
+    renderChapters();
 
-    document.getElementById("chaptersPage")
-        .classList.add("active");
+    updateDashboard();
 
 };
