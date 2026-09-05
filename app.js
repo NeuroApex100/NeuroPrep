@@ -1,1239 +1,2746 @@
-// =====================================================
-// CEREBROVASCULAR DISEASES
-// 30 Questions - 4 Options
-// =====================================================
-
-var cerebrovascularQuestions = [
-
-  // =====================================================
-  // سؤال ۱
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      خانم ۵۶ ساله‌ای با سابقه دیابت و فشارخون بالا،
-      به‌طور ناگهانی دچار همی‌پارزی راست با قدرت 2/5
-      در اندام فوقانی و تحتانی، اختلال حس سطحی در سمت راست
-      و همی‌آنوپی همنام راست شده است.
-      سطح هوشیاری و تکلم طبیعی است.
-
-      محتمل‌ترین محل ضایعه کدام است؟
-    `,
-
-    options: [
-      `Superior Division MCA`,
-      `PCA`,
-      `Anterior Choroidal Artery`,
-      `Inferior Division MCA`
-    ],
-
-    correct: 2,
-
-    explanation: `
-      ترکیب کلاسیک همی‌پارزی، اختلال حس و
-      <span class="english">Homonymous Hemianopia</span>
-      به‌شدت به نفع سندرم
-      <span class="english">Anterior Choroidal Artery</span>
-      است.
-
-      این شریان ساختارهایی از جمله قسمت‌هایی از
-      Posterior Limb of Internal Capsule، مسیر بینایی
-      و بخش‌هایی از تالاموس را خون‌رسانی می‌کند.
-    `,
-
-    note: `
-      <span class="english">
-      Anterior Choroidal Syndrome =
-      Hemiplegia + Hemisensory loss + Homonymous hemianopia
-      </span>
-    `,
-
-    trap: `
-      همی‌آنوپی همنام همراه با همی‌پارزی الزاماً به معنی
-      ضایعه MCA نیست؛ ترکیب سه‌گانه فوق را باید به یاد سپرد.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۲
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      بیماری پس از سکته مغزی دچار سرگیجه شدید همراه با
-      کاهش شنوایی یک‌طرفه شده است.
-      کدام شریان بیشتر مطرح است؟
-    `,
-
-    options: [
-      `PCA`,
-      `AICA`,
-      `PICA`,
-      `Basilar Artery`
-    ],
-
-    correct: 1,
-
-    explanation: `
-      وجود سرگیجه همراه با کاهش شنوایی یک‌طرفه،
-      به‌خصوص در زمینه سکته گردش خون خلفی،
-      بیشتر به نفع درگیری
-      <span class="english">AICA</span>
-      است.
-
-      AICA شریان لابیرنت را نیز معمولاً تأمین می‌کند
-      و بنابراین کاهش شنوایی می‌تواند دیده شود.
-    `,
-
-    note: `
-      <span class="english">
-      AICA → Vertigo + Ipsilateral Hearing Loss
-      </span>
-    `,
-
-    trap: `
-      PICA بیشتر با سندرم Wallenberg شناخته می‌شود؛
-      کاهش شنوایی واضح، AICA را بیشتر مطرح می‌کند.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۳
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      مرد ۶۰ ساله دیابتی دچار اختلال حس سطحی و عمقی
-      در سمت راست صورت و بدن همراه با ضعف خفیف همان سمت شده است.
-      کدام شریان بیشتر مطرح است؟
-    `,
-
-    options: [
-      `Interpeduncular Artery`,
-      `Thalamoperforating Artery`,
-      `Thalamogeniculate Artery`,
-      `Anterior Choroidal Artery`
-    ],
-
-    correct: 2,
-
-    explanation: `
-      درگیری حس سطحی و عمقی در صورت و بدن همراه با
-      ضعف خفیف می‌تواند ناشی از ضایعه تالاموس باشد.
-      درگیری ناحیه
-      <span class="english">Thalamogeniculate</span>
-      می‌تواند چنین تابلویی ایجاد کند.
-    `,
-
-    note: `
-      <span class="english">
-      Thalamogeniculate territory → Sensory syndrome
-      </span>
-    `,
-
-    trap: `
-      صرفاً وجود ضعف، تشخیص ضایعه کپسول داخلی را قطعی نمی‌کند؛
-      الگوی حسی تالاموسی اهمیت زیادی دارد.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۴
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      کدام ژن با Cerebral Amyloid Angiopathy ارتباط دارد؟
-    `,
-
-    options: [
-      `APOE2`,
-      `APOE4`,
-      `PARK7`,
-      `PARK2`
-    ],
-
-    correct: 1,
-
-    explanation: `
-      آلل
-      <span class="english">APOE ε4</span>
-      با رسوب آمیلوئید و افزایش خطر
-      <span class="english">Cerebral Amyloid Angiopathy</span>
-      ارتباط دارد.
-    `,
-
-    note: `
-      <span class="english">
-      APOE4 → Amyloid deposition / CAA risk
-      </span>
-    `,
-
-    trap: `
-      PARK2 و PARK7 بیشتر در زمینه بیماری‌های نورودژنراتیو
-      مانند پارکینسونیسم مطرح هستند.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۵
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      بیماری دچار یک اپیزود همی‌پارزی گذرا به مدت یک ساعت شده است.
-      کدام مورد کمترین احتمال را به‌عنوان منبع آمبولی دارد؟
-    `,
-
-    options: [
-      `Cardiac Embolism`,
-      `Aortic Source`,
-      `Carotid Artery`,
-      `MCA Embolism`
-    ],
-
-    correct: 3,
-
-    explanation: `
-      در این سؤال، MCA خود محل انسداد/آمبولی است و
-      در مقایسه با قلب، آئورت و کاروتید به‌عنوان
-      «منبع» آمبولی محسوب نمی‌شود.
-    `,
-
-    note: `
-      <span class="english">
-      Think carefully: Source of embolus ≠ site of arterial occlusion
-      </span>
-    `,
-
-    trap: `
-      تفاوت بین «منبع آمبولی» و «محل گیر افتادن آمبولی»
-      دام اصلی سؤال است.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۶
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      خانم ۵۰ ساله دیابتی، ۶ ساعت پس از شروع سکته مغزی مراجعه کرده است.
-      در بررسی، انسداد شریان MCA دیده می‌شود.
-      طبق کلید سؤال، بهترین درمان کدام است؟
-    `,
-
-    options: [
-      `IV Thrombolysis`,
-      `Intra-arterial Thrombolysis`,
-      `Mechanical Thrombectomy + Intra-arterial Treatment`,
-      `Aspirin + Clopidogrel`
-    ],
-
-    correct: 3,
-
-    explanation: `
-      پاسخ این سؤال مطابق کلید قدیمی دانشگاه تهران ۹۳،
-      گزینه D یعنی Aspirin + Clopidogrel است.
-
-      <strong>نکته بسیار مهم:</strong>
-      این سؤال از نظر درمان مدرن سکته مغزی نیازمند توجه ویژه است.
-      در بیمار واجد شرایط با انسداد عروق بزرگ و زمان ۶ ساعت،
-      ارزیابی برای Mechanical Thrombectomy اهمیت اساسی دارد.
-    `,
-
-    note: `
-      <strong>کلید آزمون قدیمی:</strong>
-      Aspirin + Clopidogrel
-
-      <br><br>
-
-      <strong>نکته علمی:</strong>
-      در LVO واجد شرایط، درمان اندوواسکولار امروزه اهمیت بسیار بیشتری دارد.
-    `,
-
-    trap: `
-      کلید قدیمی آزمون را با استاندارد درمان امروزی یکی ندانید.
-      برای امتحان، کلید منبع را حفظ کنید؛ برای طبابت، گایدلاین روز را ملاک قرار دهید.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۷
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      مرد ۴۵ ساله با همی‌پارزی راست، دیزآرتری و درد گردن مراجعه کرده است.
-      در معاینه پتوز و میوز سمت چپ دارد.
-      محتمل‌ترین تشخیص کدام است؟
-    `,
-
-    options: [
-      `Fibromuscular Dysplasia`,
-      `Giant Cell Arteritis`,
-      `Takayasu Arteritis`,
-      `Carotid Artery Dissection`
-    ],
-
-    correct: 3,
-
-    explanation: `
-      درد گردن همراه با علائم ایسکمیک مغزی و
-      <span class="english">Horner Syndrome</span>
-      به‌شدت به نفع
-      <span class="english">Carotid Artery Dissection</span>
-      است.
-    `,
-
-    note: `
-      <span class="english">
-      Neck pain + Stroke + Horner → Carotid Dissection
-      </span>
-    `,
-
-    trap: `
-      وجود Horner در زمینه درد گردن یک سرنخ مهم برای دیسکشن کاروتید است.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۸
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      خانم ۲۸ ساله‌ای با درد و ضعف اندام فوقانی راست مراجعه کرده است.
-      نبض براکیال کاهش یافته است.
-      در صورت مطرح بودن Takayasu Arteritis، کدام درمان مناسب‌تر است؟
-    `,
-
-    options: [
-      `Aspirin`,
-      `Warfarin`,
-      `Prednisolone`,
-      `Pentoxifylline`
-    ],
-
-    correct: 2,
-
-    explanation: `
-      Takayasu یک واسکولیت عروق بزرگ است و در فاز فعال بیماری،
-      کورتیکواستروئیدها درمان اصلی هستند.
-    `,
-
-    note: `
-      <span class="english">
-      Takayasu → Large-vessel vasculitis → Corticosteroids
-      </span>
-    `,
-
-    trap: `
-      کاهش نبض در فرد جوان همراه با علائم اندام فوقانی
-      باید بیماری عروق بزرگ را مطرح کند.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۹
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      بیماری که وارفارین مصرف می‌کند دچار ICH شده و INR بالاست.
-      سریع‌ترین روش برای اصلاح INR کدام است؟
-    `,
-
-    options: [
-      `rFVIIa`,
-      `FFP`,
-      `PCC`,
-      `Vitamin K`
-    ],
-
-    correct: 2,
-
-    explanation: `
-      <span class="english">Prothrombin Complex Concentrate (PCC)</span>
-      سریع‌ترین راه برای جایگزینی فاکتورهای وابسته به ویتامین K
-      و اصلاح فوری INR است.
-
-      ویتامین K نیز باید داده شود، اما اثر آن فوری نیست.
-    `,
-
-    note: `
-      <span class="english">
-      Warfarin-associated ICH → 4-factor PCC + IV Vitamin K
-      </span>
-    `,
-
-    trap: `
-      Vitamin K به تنهایی برای اصلاح سریع INR کافی نیست.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۱۰
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      خانم ۲۵ ساله‌ای با انسفالوپاتی، تغییرات رفتاری، سردرد،
-      تاری دید دوطرفه و آتاکسی مراجعه کرده است.
-      در بررسی چشم، Branch Retinal Artery Occlusion دیده می‌شود.
-      MRI ضایعات Snowball در Corpus Callosum نشان می‌دهد.
-      کدام عبارت نادرست است؟
-    `,
-
-    options: [
-      `بیماری از نوع Endothelial Immune-mediated Disease است`,
-      `IVIG می‌تواند در درمان کمک‌کننده باشد`,
-      `کاهش شنوایی یافته شایعی است`,
-      `CSF معمولاً Pleocytosis همراه با Protein طبیعی دارد`
-    ],
-
-    correct: 3,
-
-    explanation: `
-      این تابلوی کلاسیک
-      <span class="english">Susac Syndrome</span>
-      است.
-
-      سه‌گانه اصلی شامل:
-      Encephalopathy،
-      Branch Retinal Artery Occlusion،
-      و Hearing Loss
-      می‌باشد.
-
-      عبارت گزینه D مطابق کلید سؤال نادرست است.
-    `,
-
-    note: `
-      <span class="english">
-      Susac = Brain + Retina + Inner Ear
-      </span>
-    `,
-
-    trap: `
-      Snowball lesions در Corpus Callosum یک سرنخ بسیار مهم برای Susac است.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۱۱
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      مرد ۴۰ ساله‌ای با دمانس و سکته‌های متعدد مراجعه کرده است.
-      سابقه فشارخون و دیابت ندارد.
-      آزمایش ژنتیک NOTCH3 در کروموزوم ۱۹ را نشان می‌دهد.
-      کدام یافته MRI صحیح نیست؟
-    `,
-
-    options: [
-      `Multiple Focal White Matter Lesions`,
-      `درگیری Basal Ganglia ممکن است وجود داشته باشد`,
-      `ضایعات پشت Temporal Horn اختصاصی هستند`,
-      `ضایعات دوطرفه و گاهی نامتقارن`
-    ],
-
-    correct: 2,
-
-    explanation: `
-      در CADASIL، درگیری
-      <span class="english">Anterior Temporal Poles</span>
-      و <span class="english">External Capsule</span>
-      بسیار تیپیک است.
-
-      عبارت «ضایعات پشت Temporal Horn» به این شکل یافته اختصاصی CADASIL نیست.
-    `,
-
-    note: `
-      <span class="english">
-      CADASIL → Anterior Temporal Poles + External Capsule
-      </span>
-    `,
-
-    trap: `
-      Temporal pole را با Temporal horn اشتباه نکنید.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۱۲
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      مرد ۷۵ ساله‌ای دچار آفازی و همی‌پارزی گذرای ۱۵ دقیقه‌ای شده است.
-      CT ضایعه‌ای نشان نمی‌دهد.
-      در CTA تنگی ۷۵ درصدی ICA چپ دیده می‌شود.
-      بهترین درمان کدام است؟
-    `,
-
-    options: [
-      `Aspirin به دلیل سن بالا`,
-      `Carotid Endarterectomy در صورت ریسک جراحی کمتر از ۳ درصد`,
-      `Warfarin`,
-      `MCA-STA Bypass`
-    ],
-
-    correct: 1,
-
-    explanation: `
-      در بیمار دارای TIA علامت‌دار و تنگی قابل توجه کاروتید داخلی،
-      در صورت مناسب بودن شرایط بیمار و ریسک جراحی پایین،
-      Carotid Endarterectomy مطرح است.
-    `,
-
-    note: `
-      <span class="english">
-      Symptomatic Carotid Stenosis → Consider CEA
-      </span>
-    `,
-
-    trap: `
-      علامت‌دار بودن تنگی اهمیت زیادی دارد؛
-      صرف درصد تنگی بدون توجه به علائم کافی نیست.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۱۳
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      در مورد Cavernous Malformation کدام عبارت نادرست است؟
-    `,
-
-    options: [
-      `از AVM کمتر شایع است`,
-      `حدود نیمی از موارد می‌توانند در Brainstem باشند`,
-      `تمایل به خونریزی آن به‌طور واضح از AVM بیشتر است`,
-      `MRI روش اصلی تشخیص است`
-    ],
-
-    correct: 2,
-
-    explanation: `
-      MRI روش اصلی تشخیص Cavernous Malformation است و
-      ضایعات معمولاً ظاهر کلاسیک
-      <span class="english">Popcorn/Mulberry</span>
-      دارند.
-
-      عبارت مربوط به اینکه تمایل به خونریزی آن به‌طور واضح
-      از AVM بیشتر است، طبق کلید سؤال نادرست است.
-    `,
-
-    note: `
-      <span class="english">
-      Cavernoma → MRI → Popcorn / Mulberry appearance
-      </span>
-    `,
-
-    trap: `
-      Cavernoma را با AVM از نظر ظاهر تصویربرداری و خطر خونریزی یکی ندانید.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۱۴
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      کدام محل در MRI برای CADASIL اختصاصی‌تر است؟
-    `,
-
-    options: [
-      `Periventricular White Matter`,
-      `Internal Capsule`,
-      `Cerebellar Hemispheres`,
-      `Temporal Poles`
-    ],
-
-    correct: 3,
-
-    explanation: `
-      درگیری Anterior Temporal Poles یکی از یافته‌های بسیار
-      تیپیک CADASIL است و در کنار External Capsule اهمیت دارد.
-    `,
-
-    note: `
-      <span class="english">
-      CADASIL → Temporal Poles + External Capsule
-      </span>
-    `,
-
-    trap: `
-      Periventricular lesions در بسیاری از بیماری‌های عروق کوچک
-      دیده می‌شوند و اختصاصی CADASIL نیستند.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۱۵
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      در Vertebral Artery Dissection کدام مورد دیده نمی‌شود؟
-    `,
-
-    options: [
-      `Cortical Blindness`,
-      `Wallenberg Syndrome`,
-      `Neck Pain`,
-      `Anterior Ischemic Optic Neuropathy`
-    ],
-
-    correct: 3,
-
-    explanation: `
-      Vertebral artery dissection می‌تواند باعث علائم گردش خون خلفی،
-      از جمله Wallenberg Syndrome و اختلالات بینایی مرکزی شود.
-
-      AION یک تابلوی عروقی قدامی و مربوط به عصب بینایی است
-      و یافته تیپیک Vertebral Artery Dissection محسوب نمی‌شود.
-    `,
-
-    note: `
-      <span class="english">
-      Vertebral Dissection → Posterior Circulation
-      </span>
-    `,
-
-    trap: `
-      اختلال بینایی مرکزی را با AION که یک optic nerve disorder است
-      اشتباه نکنید.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۱۶
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      تفاوت Carotid Artery Dissection با Atherosclerotic Stenosis
-      بیشتر در کدام مورد مشخص می‌شود؟
-    `,
-
-    options: [
-      `شدت تنگی`,
-      `علائم نورولوژیک`,
-      `تغییرات همودینامیک`,
-      `محل تنگی`
-    ],
-
-    correct: 3,
-
-    explanation: `
-      محل تنگی یکی از مهم‌ترین تفاوت‌های تصویربرداری است.
-      دیسکشن معمولاً در قسمت‌های خاصی از شریان و خارج از محل‌های
-      کلاسیک آترواسکلروز رخ می‌دهد.
-    `,
-
-    note: `
-      <span class="english">
-      Dissection vs Atherosclerosis → Location matters
-      </span>
-    `,
-
-    trap: `
-      صرفاً شدت تنگی نمی‌تواند علت تنگی را مشخص کند.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۱۷
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      در Top of the Basilar Syndrome کدام تظاهر کمتر مطرح است؟
-    `,
-
-    options: [
-      `Monocular Blindness`,
-      `Left Hemiparesis`,
-      `Cortical Blindness`,
-      `Acute Confusional State`
-    ],
-
-    correct: 0,
-
-    explanation: `
-      Top of the Basilar Syndrome می‌تواند باعث اختلال هوشیاری،
-      علائم چشمی، اختلالات حرکتی و Cortical Blindness شود.
-
-      Monocular blindness بیشتر به درگیری مسیر بینایی قدامی
-      مانند retinal/optic nerve یا circulation مربوط است.
-    `,
-
-    note: `
-      <span class="english">
-      Top of Basilar → Midbrain + Thalamus + Occipital regions
-      </span>
-    `,
-
-    trap: `
-      Monocular blindness را با Cortical Blindness اشتباه نکنید.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۱۸
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      در مورد Carotid Bruit کدام عبارت صحیح است؟
-    `,
-
-    options: [
-      `شدت Bruit مستقیماً با شدت تنگی متناسب است`,
-      `فقط در سمت دارای تنگی یا انسداد شنیده می‌شود`,
-      `نشان‌دهنده افزایش جریان در همان سمت است`,
-      `می‌تواند ناشی از تنگی External Carotid Artery نیز باشد`
-    ],
-
-    correct: 3,
-
-    explanation: `
-      Carotid bruit الزاماً معادل شدت تنگی ICA نیست و
-      می‌تواند در شرایط مختلف جریان توربولانت ایجاد شود.
-
-      تنگی External Carotid نیز می‌تواند باعث ایجاد bruit شود.
-    `,
-
-    note: `
-      <span class="english">
-      Bruit ≠ Direct measure of stenosis severity
-      </span>
-    `,
-
-    trap: `
-      شدت صدای bruit را نباید به‌طور مستقیم معادل درصد stenosis دانست.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۱۹
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      در بیمار مبتلا به تنگی بدون علامت شریان کاروتید،
-      حداقل درصد تنگی برای مطرح شدن Carotid Endarterectomy
-      طبق کلید این سؤال کدام است؟
-    `,
-
-    options: [
-      `50%`,
-      `80%`,
-      `99%`,
-      `70%`
-    ],
-
-    correct: 3,
-
-    explanation: `
-      پاسخ طبق کلید قدیمی سؤال:
-      70 درصد.
-
-      <strong>نکته مهم:</strong>
-      در گایدلاین‌های جدید، تصمیم برای CEA در تنگی بدون علامت
-      تنها بر اساس درصد تنگی نیست و عواملی مانند امید به زندگی،
-      ریسک جراحی، ویژگی‌های پلاک و درمان طبی بهینه نیز اهمیت دارند.
-    `,
-
-    note: `
-      <strong>کلید آزمون:</strong> 70%
-
-      <br><br>
-
-      <strong>نکته بالینی:</strong>
-      تصمیم امروزی چندعاملی است.
-    `,
-
-    trap: `
-      درصد stenosis را به تنهایی معیار مطلق برای انجام CEA در نظر نگیرید.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۲۰
-  // =====================================================
-  {
-    source: "دانشگاه تهران ۹۳",
-
-    question: `
-      Warfarin در کدام وضعیت بیشترین کاربرد را دارد؟
-    `,
-
-    options: [
-      `Recurrent TIA`,
-      `Aortic Arch Plaque`,
-      `PFO`,
-      `Transient Atrial Fibrillation`
-    ],
-
-    correct: 3,
-
-    explanation: `
-      Atrial Fibrillation یک منبع مهم آمبولی قلبی است و
-      درمان ضدانعقادی برای پیشگیری از سکته مغزی در بیماران مناسب
-      اهمیت دارد.
-    `,
-
-    note: `
-      <span class="english">
-      Atrial Fibrillation → Cardioembolic Stroke Risk → Anticoagulation
-      </span>
-    `,
-
-    trap: `
-      Warfarin درمان روتین هر TIA یا PFO نیست.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۲۱
-  // =====================================================
-  {
-    source: "دانشگاه ایران ۹۳",
-
-    question: `
-      بیمار ۲۵ ساله با سرگیجه حاد، نیستاگموس دوطرفه،
-      آتاکسی و درد گردن مراجعه کرده است.
-      محتمل‌ترین تشخیص کدام است؟
-    `,
-
-    options: [
-      `BPPV`,
-      `Vertebral Artery Dissection`,
-      `Vestibular Neuritis`,
-      `Meniere Disease`
-    ],
-
-    correct: 1,
-
-    explanation: `
-      در فرد جوان، وجود سرگیجه حاد همراه با علائم عصبی
-      و درد گردن، به‌شدت به نفع
-      <span class="english">Vertebral Artery Dissection</span>
-      است.
-    `,
-
-    note: `
-      <span class="english">
-      Young patient + Neck pain + Posterior circulation signs
-      </span>
-    `,
-
-    trap: `
-      وجود سرگیجه به‌تنهایی نباید باعث تشخیص بیماری گوش داخلی شود.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۲۲
-  // =====================================================
-  {
-    source: "دانشگاه ایران ۹۳",
-
-    question: `
-      کدام یافته در تصویربرداری دیسکشن کاروتید اختصاصی‌تر است؟
-    `,
-
-    options: [
-      `Double Lumen`,
-      `Generalized Stenosis`,
-      `Calcification`,
-      `Atherosclerotic Plaque`
-    ],
-
-    correct: 0,
-
-    explanation: `
-      وجود
-      <span class="english">Double Lumen</span>
-      یا
-      <span class="english">Intimal Flap</span>
-      از یافته‌های تیپیک دیسکشن است.
-    `,
-
-    note: `
-      <span class="english">
-      Dissection → Intimal flap + Double lumen
-      </span>
-    `,
-
-    trap: `
-      تنگی به‌تنهایی اختصاصی دیسکشن نیست.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۲۳
-  // =====================================================
-  {
-    source: "دانشگاه ایران ۹۳",
-
-    question: `
-      در انفارکت وسیع شریان مغزی میانی،
-      کدام بیمار بیشترین سود را از همی‌کرانیوکتومی می‌برد؟
-    `,
-
-    options: [
-      `بیمار ۳۰ ساله در ۲۴ ساعت اول`,
-      `بیمار ۸۰ ساله بعد از یک هفته`,
-      `بیمار با انفارکت کوچک`,
-      `بیمار بدون ادم مغزی`
-    ],
-
-    correct: 0,
-
-    explanation: `
-      در Malignant MCA Infarction،
-      سن پایین‌تر و انجام زودهنگام Decompressive Hemicraniectomy
-      با پیامد بهتر همراه است.
-    `,
-
-    note: `
-      <span class="english">
-      Malignant MCA infarction → Early decompression
-      </span>
-    `,
-
-    trap: `
-      هرنی شدید مرحله پیشرفته و دیررس است و نباید منتظر ایجاد
-      هرنی کامل برای تصمیم‌گیری درباره دکمپرسیون ماند.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۲۴
-  // =====================================================
-  {
-    source: "دانشگاه ایران ۹۳",
-
-    question: `
-      خانم جوانی با چند حمله سردرد Thunderclap پس از مصرف
-      سودوافدرین مراجعه کرده است.
-      MRI طبیعی است.
-      بهترین اقدام چیست؟
-    `,
-
-    options: [
-      `EEG`,
-      `MR Angiography`,
-      `Lumbar Puncture`,
-      `MRI با کنتراست`
-    ],
-
-    correct: 1,
-
-    explanation: `
-      سردردهای Thunderclap عودکننده پس از مصرف داروهای
-      سمپاتومیمتیک می‌تواند به نفع
-      <span class="english">Reversible Cerebral Vasoconstriction Syndrome (RCVS)</span>
-      باشد و MRA برای بررسی عروق مغزی کمک‌کننده است.
-    `,
-
-    note: `
-      <span class="english">
-      Recurrent Thunderclap + Sympathomimetic → RCVS
-      </span>
-    `,
-
-    trap: `
-      سابقه میگرن نباید باعث شود یک Thunderclap Headache
-      بدون بررسی بیشتر به میگرن نسبت داده شود.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۲۵
-  // =====================================================
-  {
-    source: "دانشگاه ایران ۹۳",
-
-    question: `
-      در تنگی شدید شریان در TCD کدام یافته انتظار نمی‌رود؟
-    `,
-
-    options: [
-      `افزایش سرعت سیستولیک`,
-      `افزایش سرعت دیاستولیک`,
-      `Spectral Broadening`,
-      `جریان Bidirectional`
-    ],
-
-    correct: 3,
-
-    explanation: `
-      در محل تنگی شدید، افزایش سرعت جریان و آشفتگی جریان
-      می‌تواند مشاهده شود.
-
-      جریان Bidirectional یافته معمول تنگی شریانی نیست.
-    `,
-
-    note: `
-      <span class="english">
-      Arterial Stenosis → Increased Flow Velocity
-      </span>
-    `,
-
-    trap: `
-      Bidirectional flow را با افزایش velocity در محل stenosis
-      اشتباه نکنید.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۲۶
-  // =====================================================
-  {
-    source: "دانشگاه بهشتی ۹۳",
-
-    question: `
-      در صرع پس از سکته مغزی کدام عبارت صحیح است؟
-    `,
-
-    options: [
-      `همه بیماران مادام‌العمر دارو می‌گیرند`,
-      `EEG به تنهایی تعیین‌کننده طول درمان است`,
-      `مدت درمان بر اساس شرایط بالینی تعیین می‌شود`,
-      `نیازی به درمان ندارد`
-    ],
-
-    correct: 2,
-
-    explanation: `
-      تصمیم برای شروع و ادامه درمان ضدصرع پس از سکته
-      بر اساس نوع تشنج، زمان وقوع آن، نوع ضایعه مغزی
-      و خطر عود گرفته می‌شود.
-    `,
-
-    note: `
-      <span class="english">
-      Post-stroke epilepsy management is individualized
-      </span>
-    `,
-
-    trap: `
-      EEG به‌تنهایی تعیین‌کننده مدت درمان نیست.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۲۷
-  // =====================================================
-  {
-    source: "دانشگاه بهشتی ۹۳",
-
-    question: `
-      مهم‌ترین عارضه زودرس SAH ناشی از آنوریسم چیست؟
-    `,
-
-    options: [
-      `Rebleeding`,
-      `Vasospasm`,
-      `Hydrocephalus`,
-      `Seizure`
-    ],
-
-    correct: 0,
-
-    explanation: `
-      Rebleeding یکی از خطرناک‌ترین عوارض زودرس
-      Aneurysmal SAH است و به‌خصوص در روزهای ابتدایی
-      اهمیت زیادی دارد.
-    `,
-
-    note: `
-      <span class="english">
-      Early SAH complication → Rebleeding
-      </span>
-    `,
-
-    trap: `
-      Vasospasm معمولاً چند روز پس از SAH بیشتر مطرح می‌شود
-      و عارضه غالب ساعات اولیه نیست.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۲۸
-  // =====================================================
-  {
-    source: "دانشگاه بهشتی ۹۳",
-
-    question: `
-      کدام مورد جزء سندرم Anterior Choroidal نیست؟
-    `,
-
-    options: [
-      `درگیری بازوی خلفی کپسول داخلی`,
-      `همی‌پارزی مقابل`,
-      `همی‌هیپوستزی مقابل`,
-      `همونیموس همی‌آنوپی`
-    ],
-
-    correct: 0,
-
-    explanation: `
-      سندرم کلاسیک Anterior Choroidal شامل:
-      همی‌پارزی،
-      همی‌هیپوستزی
-      و Homonymous Hemianopia
-      در سمت مقابل است.
-
-      طبق کلید سؤال، گزینه A به‌عنوان پاسخ انتخاب شده است.
-    `,
-
-    note: `
-      <span class="english">
-      Anterior Choroidal Syndrome =
-      Hemiparesis + Hemisensory loss + Homonymous hemianopia
-      </span>
-    `,
-
-    trap: `
-      Posterior limb of internal capsule با این سندرم ارتباط دارد؛
-      آن را با Anterior limb اشتباه نکنید.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۲۹
-  // =====================================================
-  {
-    source: "دانشگاه بهشتی ۹۳",
-
-    question: `
-      بیمار با پتوز و میوز همان سمت،
-      آتاکسی همان سمت و اختلال حس سمت مقابل دارد.
-      محل ضایعه کجاست؟
-    `,
-
-    options: [
-      `Midbrain دورسولترال`,
-      `Pons`,
-      `Medulla`,
-      `Cortex`
-    ],
-
-    correct: 0,
-
-    explanation: `
-      ترکیب Horner Syndrome در یک سمت،
-      آتاکسی همان سمت و اختلال حسی در سمت مقابل،
-      به نفع ضایعه دورسولترال Midbrain است.
-    `,
-
-    note: `
-      <span class="english">
-      Ipsilateral Horner + Ipsilateral Ataxia +
-      Contralateral Sensory Loss → Dorsolateral Midbrain
-      </span>
-    `,
-
-    trap: `
-      وجود علائم متقاطع در ساقه مغز به تعیین محل ضایعه کمک زیادی می‌کند.
-    `
-  },
-
-
-  // =====================================================
-  // سؤال ۳۰
-  // =====================================================
-  {
-    source: "دانشگاه بهشتی ۹۳",
-
-    question: `
-      در Susac Syndrome کدام یافته تیپیک‌تر است؟
-    `,
-
-    options: [
-      `درگیری Corpus Callosum`,
-      `درگیری نخاع`,
-      `ضایعات Basal Ganglia`,
-      `درگیری عصب محیطی`
-    ],
-
-    correct: 0,
-
-    explanation: `
-      Susac Syndrome یک بیماری میکروآنژیوپاتی است که
-      مغز، شبکیه و گوش داخلی را درگیر می‌کند.
-
-      ضایعات Corpus Callosum، به‌خصوص الگوهای Snowball،
-      از یافته‌های تصویربرداری تیپیک بیماری هستند.
-    `,
-
-    note: `
-      <span class="english">
-      Susac = Brain + Retina + Inner Ear
-      <br>
-      Corpus Callosum Snowball Lesions
-      </span>
-    `,
-
-    trap: `
-      درگیری نخاع یا عصب محیطی جزء تظاهرات اصلی Susac نیست.
-    `
-  }
-
-];
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+      content="#3f7650">
+
+<title>Neurology Exam</title>
+
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf8f0,
+            #f7fbf8
+        );
+
+    color: #26352b;
+
+    line-height: 1.8;
+}
+
+
+button,
+input {
+
+    font-family: inherit;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+.container {
+
+    width: 94%;
+
+    max-width: 1150px;
+
+    margin:
+        20px auto 40px auto;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    padding: 24px 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 4px 18px
+        rgba(0,0,0,0.07);
+
+    margin-bottom: 22px;
+
+    border-top:
+        5px solid #4d865c;
+
+}
+
+
+.header h1 {
+
+    margin: 0 0 5px 0;
+
+    color: #285f3b;
+
+    font-size: 29px;
+
+    font-weight: 500;
+
+}
+
+
+.header p {
+
+    margin: 0;
+
+    color: #718077;
+
+    font-size: 14px;
+
+}
+
+
+.header-subtitle {
+
+    margin-top: 10px;
+
+    font-size: 13px;
+
+    color: #6c7d71;
+
+}
+
+
+/* =========================================================
+   PAGE TITLES
+========================================================= */
+
+.page-title {
+
+    text-align: center;
+
+    color: #315e3e;
+
+    font-weight: 500;
+
+    font-size: 21px;
+
+    margin:
+        20px 0 18px 0;
+
+}
+
+
+.page-description {
+
+    text-align: center;
+
+    color: #6e7c72;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================================================
+   CHAPTERS
+========================================================= */
+
+.topics {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(250px, 1fr)
+        );
+
+    gap: 15px;
+
+}
+
+
+.topic {
+
+    background: #ffffff;
+
+    border-radius: 17px;
+
+    padding: 17px;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,0.06);
+
+    border:
+        1px solid #e5eee7;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+
+}
+
+
+.topic:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 7px 18px
+        rgba(0,0,0,0.10);
+
+}
+
+
+.topic-main {
+
+    cursor: pointer;
+
+}
+
+
+.topic-icon {
+
+    font-size: 29px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.topic-title {
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    color: #285a38;
+
+    margin-bottom: 5px;
+
+}
+
+
+.topic-description {
+
+    color: #728076;
+
+    font-size: 12px;
+
+    min-height: 22px;
+
+}
+
+
+.topic-count {
+
+    display: inline-block;
+
+    margin-top: 6px;
+
+    padding: 3px 9px;
+
+    background: #edf7ef;
+
+    color: #477453;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+}
+
+
+.topic-count.empty {
+
+    background: #f3f4f3;
+
+    color: #9a9f9b;
+
+}
+
+
+/* CHAPTER STATUS */
+
+.topic-status {
+
+    margin-top: 13px;
+
+    padding-top: 10px;
+
+    border-top:
+        1px solid #e5ece7;
+
+    color: #607167;
+
+    font-size: 12px;
+
+    line-height: 1.9;
+
+}
+
+
+.topic-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 10px;
+
+}
+
+
+.chapter-btn {
+
+    border: none;
+
+    border-radius: 9px;
+
+    padding:
+        8px 11px;
+
+    font-size: 12px;
+
+    transition: 0.2s;
+
+}
+
+
+.chapter-btn:hover {
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.start-btn {
+
+    background: #e5f2e8;
+
+    color: #28613a;
+
+}
+
+
+.continue-btn {
+
+    background: #d9eee0;
+
+    color: #205a34;
+
+}
+
+
+.review-btn {
+
+    background: #fff2d5;
+
+    color: #765817;
+
+}
+
+
+.flash-btn {
+
+    background: #e8eef9;
+
+    color: #3f577e;
+
+}
+
+
+.reset-btn {
+
+    background: #f5e8e8;
+
+    color: #8a4545;
+
+}
+
+
+/* =========================================================
+   EXAM PAGE
+========================================================= */
+
+#examPage {
+
+    display: none;
+
+}
+
+
+.exam-top {
+
+    background: #ffffff;
+
+    border-radius: 17px;
+
+    padding:
+        15px 18px;
+
+    margin-bottom: 15px;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,0.06);
+
+}
+
+
+.exam-info {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.exam-title {
+
+    color: #285d39;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+}
+
+
+.progress {
+
+    color: #68766d;
+
+    font-size: 13px;
+
+}
+
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 7px;
+
+    background: #edf1ee;
+
+    border-radius: 20px;
+
+    margin-top: 12px;
+
+    overflow: hidden;
+
+}
+
+
+.progress-fill {
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #5b9369;
+
+    border-radius: 20px;
+
+    transition:
+        width 0.3s;
+
+}
+
+
+/* =========================================================
+   QUESTION CARD
+========================================================= */
+
+.question-card {
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 4px 16px
+        rgba(0,0,0,0.07);
+
+}
+
+
+.question-number {
+
+    color: #548060;
+
+    font-size: 13px;
+
+    margin-bottom: 9px;
+
+}
+
+
+.question-mode {
+
+    display: inline-block;
+
+    background: #edf6ef;
+
+    color: #477354;
+
+    border-radius: 20px;
+
+    padding:
+        3px 10px;
+
+    font-size: 11px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.question-text {
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    font-weight: 500;
+
+    color: #25352b;
+
+    margin-bottom: 21px;
+
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+.options {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+.option {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 13px;
+
+    border:
+        1px solid #d9e5dc;
+
+    border-radius: 12px;
+
+    background: #f8fcf9;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        border 0.2s,
+        transform 0.15s;
+
+}
+
+
+.option:hover {
+
+    background: #f0f8f2;
+
+    transform:
+        translateX(-2px);
+
+}
+
+
+.option input {
+
+    width: 18px;
+
+    height: 18px;
+
+    margin-top: 5px;
+
+    flex-shrink: 0;
+
+}
+
+
+.option-text {
+
+    flex: 1;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+}
+
+
+.option-mark {
+
+    min-width: 24px;
+
+    text-align: center;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+
+.option.correct-option {
+
+    background: #e7f6ea;
+
+    border-color: #63a86e;
+
+}
+
+
+.option.wrong-option {
+
+    background: #fff0f0;
+
+    border-color: #d76b6b;
+
+}
+
+
+.option.correct-option
+.option-text {
+
+    color: #26733a;
+
+}
+
+
+.option.wrong-option
+.option-text {
+
+    color: #a42f2f;
+
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+.result {
+
+    display: none;
+
+    margin-top: 17px;
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    line-height: 1.9;
+
+}
+
+
+.result.correct {
+
+    display: block;
+
+    background: #e7f7ea;
+
+    border:
+        1px solid #9ed1a7;
+
+    color: #28733b;
+
+}
+
+
+.result.wrong {
+
+    display: block;
+
+    background: #fff0f0;
+
+    border:
+        1px solid #e0aaaa;
+
+    color: #a32f2f;
+
+}
+
+
+.result-title {
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    margin-bottom: 4px;
+
+}
+
+
+/* =========================================================
+   EDUCATIONAL ANALYSIS
+========================================================= */
+
+.analysis-container {
+
+    margin-top: 18px;
+
+}
+
+
+.analysis-box {
+
+    margin-top: 12px;
+
+    padding: 15px 16px;
+
+    border-radius: 12px;
+
+    line-height: 2;
+
+    font-size: 14px;
+
+}
+
+
+.analysis-title {
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    margin-bottom: 5px;
+
+}
+
+
+/* Diagnosis */
+
+.diagnosis-box {
+
+    background: #eef7f0;
+
+    border-right:
+        4px solid #5c9369;
+
+}
+
+
+/* Differential */
+
+.differential-box {
+
+    background: #f1f5fb;
+
+    border-right:
+        4px solid #7189ad;
+
+}
+
+
+/* Correct answer */
+
+.correct-reason-box {
+
+    background: #eaf7ed;
+
+    border-right:
+        4px solid #4c9a5d;
+
+}
+
+
+/* Wrong answers */
+
+.wrong-reasons-box {
+
+    background: #fff3f3;
+
+    border-right:
+        4px solid #c96969;
+
+}
+
+
+.wrong-option-reason {
+
+    padding:
+        8px 0;
+
+    border-bottom:
+        1px solid #f0dcdc;
+
+}
+
+
+.wrong-option-reason:last-child {
+
+    border-bottom: none;
+
+}
+
+
+/* Exam tip */
+
+.exam-tip-box {
+
+    background: #fffbea;
+
+    border-right:
+        4px solid #d4b85c;
+
+}
+
+
+/* Trap */
+
+.trap-box {
+
+    background: #fff3e8;
+
+    border-right:
+        4px solid #d38b51;
+
+}
+
+
+/* Flashcard */
+
+.flashcard-box {
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef3fb,
+            #f8faff
+        );
+
+    border:
+        1px solid #d6deee;
+
+    text-align: center;
+
+}
+
+
+.flashcard-question {
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+
+}
+
+
+.flashcard-answer {
+
+    display: none;
+
+    margin-top: 12px;
+
+    padding: 12px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    line-height: 2;
+
+}
+
+
+/* =========================================================
+   EXAM STATUS
+========================================================= */
+
+.exam-status {
+
+    margin-top: 15px;
+
+    padding:
+        9px 13px;
+
+    background: #f3f8f4;
+
+    border-radius: 9px;
+
+    color: #587060;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    gap: 9px;
+
+    margin-top: 21px;
+
+}
+
+
+.btn {
+
+    border: none;
+
+    border-radius: 11px;
+
+    padding:
+        13px 10px;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+
+}
+
+
+.btn:hover {
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.btn:disabled {
+
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+.btn-check {
+
+    background: #4d8b5b;
+
+    color: white;
+
+}
+
+
+.btn-next {
+
+    background: #3d704d;
+
+    color: white;
+
+}
+
+
+.btn-back {
+
+    background: #e7eee9;
+
+    color: #36533e;
+
+}
+
+
+.btn-end {
+
+    background: #f5e5e5;
+
+    color: #8a4141;
+
+}
+
+
+.btn-review {
+
+    background: #fff0cf;
+
+    color: #785817;
+
+}
+
+
+.btn-flash {
+
+    background: #e8eef9;
+
+    color: #3f577e;
+
+}
+
+
+.secondary-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 12px;
+
+}
+
+
+/* =========================================================
+   SCORE
+========================================================= */
+
+.score-box {
+
+    display: none;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 4px 16px
+        rgba(0,0,0,0.07);
+
+}
+
+
+.score-box h2 {
+
+    color: #2e6540;
+
+    font-weight: 500;
+
+}
+
+
+.final-score {
+
+    font-size: 34px;
+
+    color: #39754a;
+
+    margin:
+        18px 0;
+
+}
+
+
+.final-details {
+
+    max-width: 550px;
+
+    margin:
+        15px auto;
+
+    padding: 16px;
+
+    background: #f3f8f4;
+
+    border-radius: 12px;
+
+    line-height: 2;
+
+}
+
+
+.final-message {
+
+    color: #607067;
+
+}
+
+
+/* =========================================================
+   FLASHCARD PAGE
+========================================================= */
+
+#flashcardPage {
+
+    display: none;
+
+}
+
+
+.flashcard-main {
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 28px 22px;
+
+    box-shadow:
+        0 4px 16px
+        rgba(0,0,0,0.07);
+
+    text-align: center;
+
+}
+
+
+.flashcard-main h2 {
+
+    color: #315f40;
+
+    font-weight: 500;
+
+}
+
+
+.flashcard-large {
+
+    min-height: 250px;
+
+    margin-top: 20px;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3f8ff,
+            #ffffff
+        );
+
+    border:
+        1px solid #dbe4f2;
+
+    border-radius: 17px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.flashcard-large-question {
+
+    font-size: 19px;
+
+    line-height: 2;
+
+    font-weight: 500;
+
+}
+
+
+.flashcard-large-answer {
+
+    display: none;
+
+    margin-top: 20px;
+
+    padding: 16px;
+
+    background: #eef7f0;
+
+    border-radius: 12px;
+
+    width: 100%;
+
+    line-height: 2;
+
+}
+
+
+.flashcard-controls {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+}
+
+
+/* =========================================================
+   EMPTY / MESSAGE
+========================================================= */
+
+.empty-message {
+
+    text-align: center;
+
+    padding: 25px;
+
+    color: #8a938d;
+
+    background: white;
+
+    border-radius: 15px;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 1000;
+
+    left: 0;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        rgba(20,40,27,0.48);
+
+    padding: 20px;
+
+    overflow-y: auto;
+
+}
+
+
+.modal-content {
+
+    background: white;
+
+    max-width: 650px;
+
+    margin:
+        50px auto;
+
+    border-radius: 18px;
+
+    padding: 23px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,0.20);
+
+}
+
+
+.modal-title {
+
+    color: #315f40;
+
+    font-size: 18px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.close-modal {
+
+    float: left;
+
+    border: none;
+
+    background: #f3e7e7;
+
+    color: #8b4444;
+
+    border-radius: 8px;
+
+    padding: 6px 10px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .container {
+
+        width: 96%;
+
+        margin-top: 10px;
+
+    }
+
+
+    .header {
+
+        padding: 19px 14px;
+
+    }
+
+
+    .header h1 {
+
+        font-size: 24px;
+
+    }
+
+
+    .question-card {
+
+        padding: 17px;
+
+    }
+
+
+    .question-text {
+
+        font-size: 16px;
+
+    }
+
+
+    .buttons {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .btn {
+
+        width: 100%;
+
+    }
+
+
+    .analysis-box {
+
+        font-size: 13px;
+
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .buttons {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .topic-actions {
+
+        flex-direction: column;
+
+    }
+
+
+    .chapter-btn {
+
+        width: 100%;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<div class="header">
+
+    <h1>Neurology Exam</h1>
+
+    <p>
+        سامانه جامع تمرین و آزمون نورولوژی
+    </p>
+
+    <div class="header-subtitle">
+
+        مطالعه فصل‌به‌فصل،
+        آزمون،
+        مرور سؤالات غلط و
+        یادگیری نکات آزمونی
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CHAPTERS PAGE
+===================================================== -->
+
+<div id="chaptersPage">
+
+    <div class="page-title">
+        فصول نورولوژی
+    </div>
+
+    <div class="page-description">
+
+        فصل مورد نظر را انتخاب کنید.
+        پیشرفت آزمون‌ها به صورت خودکار ذخیره می‌شود.
+
+    </div>
+
+
+    <div class="topics">
+
+
+<!-- =====================================================
+     1. CEREBROVASCULAR
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Cerebrovascular Diseases')">
+
+        <div class="topic-icon">🧠</div>
+
+        <div class="topic-title">
+            بیماری‌های عروق مغزی
+        </div>
+
+        <div class="topic-description">
+            Stroke، TIA، ICH، SAH، CVT و مداخلات عروقی
+        </div>
+
+        <span class="topic-count">
+            بانک سؤال موجود
+        </span>
+
+    </div>
+
+    <div class="topic-status"
+         id="status-Cerebrovascular">
+    </div>
+
+    <div class="topic-actions"
+         id="actions-Cerebrovascular">
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     2. EPILEPSY
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Epilepsy & Seizure')">
+
+        <div class="topic-icon">⚡</div>
+
+        <div class="topic-title">
+            صرع و تشنج
+        </div>
+
+        <div class="topic-description">
+            تشخیص، طبقه‌بندی، EEG و درمان صرع
+        </div>
+
+        <span class="topic-count empty">
+            بانک سؤال در حال تکمیل
+        </span>
+
+    </div>
+
+    <div class="topic-status"
+         id="status-Epilepsy">
+    </div>
+
+    <div class="topic-actions"
+         id="actions-Epilepsy">
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     3. MOVEMENT
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Movement Disorders')">
+
+        <div class="topic-icon">🚶</div>
+
+        <div class="topic-title">
+            اختلالات حرکتی
+        </div>
+
+        <div class="topic-description">
+            Parkinson، Tremor، Dystonia، Chorea و Tic
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+    <div class="topic-status"
+         id="status-Movement">
+    </div>
+
+    <div class="topic-actions"
+         id="actions-Movement">
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     4. MS / DEMYELINATION
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Multiple Sclerosis & Demyelinating Diseases')">
+
+        <div class="topic-icon">🧬</div>
+
+        <div class="topic-title">
+            MS و بیماری‌های دمیلینه‌کننده
+        </div>
+
+        <div class="topic-description">
+            MS، NMOSD، MOGAD و سایر دمیلیناسیون‌ها
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     5. NEUROMUSCULAR
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Neuromuscular Diseases')">
+
+        <div class="topic-icon">💪</div>
+
+        <div class="topic-title">
+            بیماری‌های نوروماسکولار
+        </div>
+
+        <div class="topic-description">
+            GBS، CIDP، MG، ALS و بیماری‌های عضله
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     6. HEADACHE
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Headache & Facial Pain')">
+
+        <div class="topic-icon">🤕</div>
+
+        <div class="topic-title">
+            سردرد و دردهای صورت
+        </div>
+
+        <div class="topic-description">
+            Migraine، Cluster، TACs و Neuralgia
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     7. DEMENTIA
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Dementia & Cognitive Disorders')">
+
+        <div class="topic-icon">🧩</div>
+
+        <div class="topic-title">
+            دمانس و اختلالات شناختی
+        </div>
+
+        <div class="topic-description">
+            Alzheimer، FTD، DLB، CJD و اختلالات شناختی
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     8. VIRAL / PRION
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Viral & Prion Diseases')">
+
+        <div class="topic-icon">🦠</div>
+
+        <div class="topic-title">
+            بیماری‌های ویروسی و پریونی
+        </div>
+
+        <div class="topic-description">
+            HSV، VZV، HIV، PML، CJD، Rabies و سایر موارد
+        </div>
+
+        <span class="topic-count">
+            50 سؤال
+        </span>
+
+    </div>
+
+    <div class="topic-status"
+         id="status-Viral">
+    </div>
+
+    <div class="topic-actions"
+         id="actions-Viral">
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     9. NEUROIMMUNOLOGY
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Neuroimmunology')">
+
+        <div class="topic-icon">🛡️</div>
+
+        <div class="topic-title">
+            نورواِمیونولوژی
+        </div>
+
+        <div class="topic-description">
+            بیماری‌های خودایمنی و پارانوپلاستیک
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     10. NEURO-ONCOLOGY
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Neuro-oncology')">
+
+        <div class="topic-icon">🎗️</div>
+
+        <div class="topic-title">
+            نوروانکولوژی
+        </div>
+
+        <div class="topic-description">
+            تومورهای CNS و سندرم‌های پارانوپلاستیک
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     11. NEUROGENETICS
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Neurogenetics & Metabolic Disorders')">
+
+        <div class="topic-icon">🧬</div>
+
+        <div class="topic-title">
+            بیماری‌های نوروجنتیک و متابولیک
+        </div>
+
+        <div class="topic-description">
+            Wilson، Mitochondrial، Leukodystrophy و Metabolic
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     12. SPINAL CORD
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Spinal Cord Disorders')">
+
+        <div class="topic-icon">🦴</div>
+
+        <div class="topic-title">
+            بیماری‌های نخاع
+        </div>
+
+        <div class="topic-description">
+            Myelopathy، Transverse Myelitis و Compression
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     13. NEURO-OPHTHALMOLOGY
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Neuro-ophthalmology')">
+
+        <div class="topic-icon">👁️</div>
+
+        <div class="topic-title">
+            نوروافتالمولوژی
+        </div>
+
+        <div class="topic-description">
+            Optic neuritis، Diplopia، Pupillary disorders
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     14. NEURO-OTOLOGY
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Neuro-otology')">
+
+        <div class="topic-icon">👂</div>
+
+        <div class="topic-title">
+            نورواتولوژی
+        </div>
+
+        <div class="topic-description">
+            Vertigo، Vestibular disorders و Nystagmus
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     15. PEDIATRIC
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Pediatric Neurology')">
+
+        <div class="topic-icon">👶</div>
+
+        <div class="topic-title">
+            نورولوژی کودکان
+        </div>
+
+        <div class="topic-description">
+            Epilepsy، Developmental disorders و Neurometabolic
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     16. NEUROCRITICAL
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Neurocritical Care')">
+
+        <div class="topic-icon">🚑</div>
+
+        <div class="topic-title">
+            نورولوژی مراقبت‌های ویژه
+        </div>
+
+        <div class="topic-description">
+            Status، ICP، Brain death و Critical care
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     17. NEUROTRAUMA
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Neurotrauma')">
+
+        <div class="topic-icon">🚨</div>
+
+        <div class="topic-title">
+            نوروتروما
+        </div>
+
+        <div class="topic-description">
+            TBI، Epidural، Subdural و Traumatic SAH
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     18. AUTONOMIC / SLEEP
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Autonomic & Sleep Disorders')">
+
+        <div class="topic-icon">😴</div>
+
+        <div class="topic-title">
+            اختلالات اتونوم و خواب
+        </div>
+
+        <div class="topic-description">
+            Syncope، Dysautonomia، Sleep disorders
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     19. NEURODIAGNOSTIC
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Neurodiagnostic Methods')">
+
+        <div class="topic-icon">🔬</div>
+
+        <div class="topic-title">
+            روش‌های تشخیصی نورولوژی
+        </div>
+
+        <div class="topic-description">
+            MRI، CT، EEG، EMG، CSF و سایر تست‌ها
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     20. NEUROPHARMACOLOGY
+===================================================== -->
+
+<div class="topic">
+
+    <div class="topic-main"
+         onclick="startTopic('Neuropharmacology & Principles of Treatment')">
+
+        <div class="topic-icon">💊</div>
+
+        <div class="topic-title">
+            نوروفارماکولوژی و اصول درمان
+        </div>
+
+        <div class="topic-description">
+            داروهای نورولوژی، مکانیسم، عوارض و اصول درمان
+        </div>
+
+        <span class="topic-count empty">
+            به‌زودی
+        </span>
+
+    </div>
+
+</div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     EXAM PAGE
+===================================================== -->
+
+<div id="examPage">
+
+
+    <!-- EXAM HEADER -->
+
+    <div class="exam-top">
+
+        <div class="exam-info">
+
+            <div class="exam-title"
+                 id="examTitle">
+
+                آزمون نورولوژی
+
+            </div>
+
+
+            <div class="progress"
+                 id="progressText">
+
+                سؤال 1 از 1
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div class="progress-fill"
+                 id="progressFill">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- QUESTION -->
+
+    <div class="question-card">
+
+
+        <div class="question-number"
+             id="questionNumber">
+
+            سؤال 1
+
+        </div>
+
+
+        <div class="question-mode"
+             id="questionMode">
+
+            آزمون
+
+        </div>
+
+
+        <div class="question-text"
+             id="questionText">
+
+        </div>
+
+
+        <!-- OPTIONS -->
+
+        <div class="options"
+             id="optionsContainer">
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div id="resultBox"
+             class="result">
+
+            <div id="resultTitle"
+                 class="result-title">
+            </div>
+
+            <div id="resultMessage">
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             EDUCATIONAL ANALYSIS
+        ================================================== -->
+
+        <div class="analysis-container"
+             id="analysisContainer"
+             style="display:none;">
+
+
+            <!-- DIAGNOSIS -->
+
+            <div class="analysis-box diagnosis-box">
+
+                <div class="analysis-title">
+
+                    🧠 تشخیص بیماری طبق سؤال
+
+                </div>
+
+                <div id="diagnosisText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DIFFERENTIAL -->
+
+            <div class="analysis-box differential-box">
+
+                <div class="analysis-title">
+
+                    🔍 تشخیص‌های افتراقی مهم
+
+                </div>
+
+                <div id="differentialText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CORRECT REASON -->
+
+            <div class="analysis-box correct-reason-box">
+
+                <div class="analysis-title">
+
+                    ✅ علت درست بودن گزینه صحیح
+
+                </div>
+
+                <div id="correctReasonText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- WRONG REASONS -->
+
+            <div class="analysis-box wrong-reasons-box">
+
+                <div class="analysis-title">
+
+                    ❌ علت نادرست بودن سایر گزینه‌ها
+
+                </div>
+
+                <div id="wrongReasonsText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EXAM TIP -->
+
+            <div class="analysis-box exam-tip-box">
+
+                <div class="analysis-title">
+
+                    📌 نکته آزمونی
+
+                </div>
+
+                <div id="examTipText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TRAP -->
+
+            <div class="analysis-box trap-box">
+
+                <div class="analysis-title">
+
+                    ⚠️ تله آزمونی
+
+                </div>
+
+                <div id="examTrapText">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUESTION FLASHCARD -->
+
+            <div class="analysis-box flashcard-box">
+
+                <div class="analysis-title">
+
+                    🃏 فلش‌کارت همین سؤال
+
+                </div>
+
+
+                <div class="flashcard-question"
+                     id="questionFlashcardQuestion">
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-flash"
+                    id="showQuestionFlashcardButton"
+                    onclick="toggleQuestionFlashcard()">
+
+                    نمایش پاسخ فلش‌کارت
+
+                </button>
+
+
+                <div class="flashcard-answer"
+                     id="questionFlashcardAnswer">
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- STATUS -->
+
+        <div id="examStatus"
+             class="exam-status">
+
+        </div>
+
+
+
+        <!-- =================================================
+             MAIN BUTTONS
+        ================================================== -->
+
+        <div class="buttons">
+
+
+            <button
+                type="button"
+                class="btn btn-back"
+                onclick="backToChapters()">
+
+                ↩ بازگشت به فصول
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-end"
+                onclick="endExam()">
+
+                ⏹ پایان آزمون
+
+            </button>
+
+
+            <button
+                type="button"
+                id="checkButton"
+                class="btn btn-check"
+                onclick="checkAnswer()">
+
+                ✓ بررسی پاسخ
+
+            </button>
+
+
+            <button
+                type="button"
+                id="nextButton"
+                class="btn btn-next"
+                onclick="nextQuestion()"
+                disabled>
+
+                سؤال بعدی ▶
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- SECONDARY BUTTONS -->
+
+        <div class="secondary-buttons">
+
+
+            <button
+                type="button"
+                id="reviewCurrentButton"
+                class="btn btn-review"
+                onclick="startWrongReview()"
+                style="display:none;">
+
+                🔄 مرور سؤالات غلط
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-flash"
+                onclick="openFlashcards()">
+
+                🃏 فلش‌کارت فصل
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SCORE BOX
+    ====================================================== -->
+
+    <div id="scoreBox"
+         class="score-box">
+
+
+        <h2 id="scoreTitle">
+
+            نتیجه آزمون
+
+        </h2>
+
+
+        <div class="final-score"
+             id="finalScore">
+
+        </div>
+
+
+        <div class="final-details"
+             id="finalDetails">
+
+        </div>
+
+
+        <p class="final-message"
+           id="finalMessage">
+
+        </p>
+
+
+        <div class="secondary-buttons">
+
+
+            <button
+                type="button"
+                class="btn btn-back"
+                onclick="backToChapters()">
+
+                ↩ بازگشت به فصول
+
+            </button>
+
+
+            <button
+                type="button"
+                id="scoreReviewButton"
+                class="btn btn-review"
+                onclick="startWrongReview()"
+                style="display:none;">
+
+                🔄 مرور سؤالات غلط
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-flash"
+                onclick="openFlashcards()">
+
+                🃏 فلش‌کارت فصل
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FLASHCARD PAGE
+===================================================== -->
+
+<div id="flashcardPage">
+
+
+    <div class="flashcard-main">
+
+
+        <h2>
+
+            🃏 فلش‌کارت‌های فصل
+
+        </h2>
+
+
+        <div id="flashcardTopicTitle">
+
+        </div>
+
+
+        <div class="flashcard-large">
+
+
+            <div
+                class="flashcard-large-question"
+                id="flashcardLargeQuestion">
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn btn-flash"
+                id="flashcardShowButton"
+                onclick="toggleLargeFlashcard()"
+                style="margin-top:20px;">
+
+                نمایش پاسخ
+
+            </button>
+
+
+            <div
+                class="flashcard-large-answer"
+                id="flashcardLargeAnswer">
+
+            </div>
+
+        </div>
+
+
+
+        <div class="flashcard-controls">
+
+
+            <button
+                type="button"
+                class="btn btn-back"
+                onclick="previousFlashcard()">
+
+                ◀ قبلی
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-flash"
+                onclick="toggleLargeFlashcard()">
+
+                👁 نمایش / مخفی پاسخ
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-next"
+                onclick="nextFlashcard()">
+
+                بعدی ▶
+
+            </button>
+
+
+            <button
+                type="button"
+                class="btn btn-back"
+                onclick="closeFlashcards()">
+
+                ↩ بازگشت
+
+            </button>
+
+
+        </div>
+
+
+        <div
+            id="flashcardProgress"
+            class="exam-status"
+            style="margin-top:15px;">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     GENERAL MODAL
+===================================================== -->
+
+<div id="generalModal"
+     class="modal">
+
+
+    <div class="modal-content">
+
+
+        <button
+            type="button"
+            class="close-modal"
+            onclick="closeGeneralModal()">
+
+            ✕
+
+        </button>
+
+
+        <div
+            id="modalTitle"
+            class="modal-title">
+
+        </div>
+
+
+        <div
+            id="modalContent">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- =====================================================
+     QUESTION BANKS
+     
+     فعلاً دو بانک موجود شما فعال هستند.
+     
+     در آینده هر فصل فقط فایل خودش را اضافه می‌کنیم.
+===================================================== -->
+
+<script src="questions.js"></script>
+
+<script src="viral-prion-questions.js"></script>
+
+
+
+<!-- =====================================================
+     FUTURE QUESTION BANKS
+
+     بعد از ساخت هر فایل، فقط خط مربوط به آن را فعال می‌کنیم.
+     
+     index.html دیگر نیاز به بازنویسی نخواهد داشت.
+===================================================== -->
+
+<!--
+<script src="epilepsy-questions.js"></script>
+<script src="movement-questions.js"></script>
+<script src="ms-demyelination-questions.js"></script>
+<script src="neuromuscular-questions.js"></script>
+<script src="headache-questions.js"></script>
+<script src="dementia-questions.js"></script>
+<script src="neuroimmunology-questions.js"></script>
+<script src="neuro-oncology-questions.js"></script>
+<script src="neurogenetics-metabolic-questions.js"></script>
+<script src="spinal-cord-questions.js"></script>
+<script src="neuro-ophthalmology-questions.js"></script>
+<script src="neuro-otology-questions.js"></script>
+<script src="pediatric-neurology-questions.js"></script>
+<script src="neurocritical-care-questions.js"></script>
+<script src="neurotrauma-questions.js"></script>
+<script src="autonomic-sleep-questions.js"></script>
+<script src="neurodiagnostic-questions.js"></script>
+<script src="neuropharmacology-questions.js"></script>
+-->
+
+
+
+<!-- =====================================================
+     MAIN APPLICATION
+===================================================== -->
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>
